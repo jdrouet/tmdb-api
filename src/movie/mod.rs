@@ -1,12 +1,11 @@
 pub mod details;
-pub mod genre;
 pub mod search;
 
 use crate::common::country::Country;
-use crate::common::genre::Genre;
 use crate::common::language::Language;
 use crate::common::status::Status;
 use crate::company::CompanyShort;
+use crate::genre::Genre;
 use serde::Deserialize;
 
 #[derive(Clone, Debug, Deserialize)]
