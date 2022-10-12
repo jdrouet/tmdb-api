@@ -115,7 +115,6 @@ mod integration_tests {
         let cmd = GetSimilarMovies::new(106912);
 
         let result = cmd.execute(&client).await.unwrap();
-        println!("{:?}", result);
         assert_eq!(result.page, 1);
         assert_eq!(result.results.len(), 20);
         assert_eq!(result.total_pages, 500);
