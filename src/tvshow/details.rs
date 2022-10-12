@@ -1,83 +1,4 @@
-use crate::common::country::Country;
-use crate::common::genre::Genre;
-use crate::common::language::Language;
-use crate::company::CompanyShort;
-use serde::Deserialize;
 use std::borrow::Cow;
-
-#[derive(Clone, Debug, Deserialize)]
-pub struct EpisodeShort {
-    #[serde(with = "crate::util::date")]
-    pub air_date: chrono::NaiveDate,
-    pub episode_number: u64,
-    pub id: u64,
-    pub name: String,
-    pub overview: String,
-    pub production_code: String,
-    pub season_number: u64,
-    pub still_path: Option<String>,
-    pub vote_average: f64,
-    pub vote_count: u64,
-}
-
-#[derive(Clone, Debug, Deserialize)]
-pub struct SeasonShort {
-    #[serde(with = "crate::util::date")]
-    pub air_date: chrono::NaiveDate,
-    pub episode_count: u64,
-    pub id: u64,
-    pub name: String,
-    pub overview: String,
-    pub poster_path: String,
-    pub season_number: u64,
-}
-
-#[derive(Clone, Debug, Deserialize)]
-pub struct PersonShort {
-    pub id: u64,
-    pub credit_id: String,
-    pub name: String,
-    pub gender: u64,
-    pub profile_path: Option<String>,
-}
-
-#[derive(Clone, Debug, Deserialize)]
-pub struct Item {
-    pub backdrop_path: Option<String>,
-    pub created_by: Vec<PersonShort>,
-    pub episode_run_time: Vec<u64>,
-    #[serde(with = "crate::util::date")]
-    pub first_air_date: chrono::NaiveDate,
-    pub genres: Vec<Genre>,
-    pub homepage: String,
-    pub id: u64,
-    pub in_production: bool,
-    pub languages: Vec<String>,
-    #[serde(with = "crate::util::date")]
-    pub last_air_date: chrono::NaiveDate,
-    pub last_episode_to_air: Option<EpisodeShort>,
-    pub name: String,
-    pub next_episode_to_air: Option<EpisodeShort>,
-    pub networks: Vec<CompanyShort>,
-    pub number_of_episodes: u64,
-    pub number_of_seasons: u64,
-    pub origin_country: Vec<String>,
-    pub original_language: String,
-    pub original_name: String,
-    pub overview: String,
-    pub popularity: f64,
-    pub poster_path: Option<String>,
-    pub production_companies: Vec<CompanyShort>,
-    pub production_countries: Vec<Country>,
-    pub seasons: Vec<SeasonShort>,
-    pub spoken_languages: Vec<Language>,
-    pub status: String,
-    pub tagline: String,
-    #[serde(rename = "type")]
-    pub ttype: String,
-    pub vote_average: f64,
-    pub vote_count: u64,
-}
 
 /// Command to search for tvshows
 #[derive(Clone, Debug, Default)]
@@ -98,7 +19,7 @@ impl TVShowDetails {
 }
 
 impl crate::prelude::Command for TVShowDetails {
-    type Output = Item;
+    type Output = super::TVShow;
 
     fn path(&self) -> Cow<'static, str> {
         Cow::Owned(format!("/tv/{}", self.tv_id))
@@ -131,7 +52,7 @@ mod tests {
 
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let result = TVShowDetails::new(1399).execute(&client).await.unwrap();
-        assert_eq!(result.id, 1399);
+        assert_eq!(result.inner.id, 1399);
     }
 
     #[tokio::test]
@@ -177,6 +98,6 @@ mod integration_tests {
         let client = Client::new(secret);
 
         let result = TVShowDetails::new(1399).execute(&client).await.unwrap();
-        assert_eq!(result.id, 1399);
+        assert_eq!(result.inner.id, 1399);
     }
 }
