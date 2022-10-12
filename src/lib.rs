@@ -4,6 +4,7 @@ pub use reqwest;
 pub mod error;
 pub mod movie;
 pub mod prelude;
+pub mod tvshow;
 mod util;
 
 use std::borrow::Cow;
