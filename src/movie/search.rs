@@ -1,6 +1,8 @@
 use serde::Deserialize;
 use std::borrow::Cow;
 
+const PATH: &str = "/search/movie";
+
 #[derive(Clone, Debug, Deserialize)]
 pub struct Item {
     pub id: u64,
@@ -54,8 +56,8 @@ impl MovieSearch {
 impl crate::prelude::Command for MovieSearch {
     type Output = crate::prelude::PaginatedResult<Item>;
 
-    fn path() -> &'static str {
-        "/search/movie"
+    fn path(&self) -> Cow<'static, str> {
+        Cow::Borrowed(PATH)
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
@@ -99,7 +101,7 @@ mod tests {
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let cmd = MovieSearch::new("Whatever".into());
 
-        let _m = mock("GET", "/search/movie")
+        let _m = mock("GET", super::PATH)
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
                 Matcher::UrlEncoded("query".into(), "Whatever".into()),
@@ -122,7 +124,7 @@ mod tests {
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let cmd = MovieSearch::new("Whatever".into());
 
-        let _m = mock("GET", "/search/movie")
+        let _m = mock("GET", super::PATH)
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
                 Matcher::UrlEncoded("query".into(), "Whatever".into()),
@@ -141,7 +143,7 @@ mod tests {
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let cmd = MovieSearch::new("Whatever".into());
 
-        let _m = mock("GET", "/search/movie")
+        let _m = mock("GET", super::PATH)
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
                 Matcher::UrlEncoded("query".into(), "Whatever".into()),

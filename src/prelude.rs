@@ -4,11 +4,11 @@ use std::borrow::Cow;
 pub trait Command {
     type Output: serde::de::DeserializeOwned;
 
-    fn path() -> &'static str;
+    fn path(&self) -> Cow<'static, str>;
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)>;
 
     async fn execute(&self, client: &crate::Client) -> Result<Self::Output, crate::error::Error> {
-        client.execute(Self::path(), self.params()).await
+        client.execute(self.path().as_ref(), self.params()).await
     }
 }
 

@@ -1,14 +1,7 @@
-use crate::common::genre::GenreResult;
-use serde::Deserialize;
+use crate::common::genre::{Genre, GenreResult};
 use std::borrow::Cow;
 
 const PATH: &str = "/genre/movie/list";
-
-#[derive(Clone, Debug, Deserialize)]
-pub struct Item {
-    pub id: u64,
-    pub name: String,
-}
 
 /// Command to search for movie genres
 #[derive(Clone, Debug, Default)]
@@ -19,10 +12,10 @@ pub struct MovieGenreList {
 
 #[async_trait::async_trait]
 impl crate::prelude::Command for MovieGenreList {
-    type Output = Vec<Item>;
+    type Output = Vec<Genre>;
 
-    fn path() -> &'static str {
-        PATH
+    fn path(&self) -> Cow<'static, str> {
+        Cow::Borrowed(PATH)
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
@@ -35,7 +28,7 @@ impl crate::prelude::Command for MovieGenreList {
 
     async fn execute(&self, client: &crate::Client) -> Result<Self::Output, crate::error::Error> {
         client
-            .execute::<GenreResult<Item>>(Self::path(), self.params())
+            .execute::<GenreResult>(self.path().as_ref(), self.params())
             .await
             .map(|res| res.genres)
     }
