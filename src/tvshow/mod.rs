@@ -5,6 +5,7 @@ use crate::common::country::Country;
 use crate::common::language::Language;
 use crate::company::CompanyShort;
 use crate::genre::Genre;
+use crate::people::PersonShort;
 use serde::Deserialize;
 
 #[derive(Clone, Debug, Deserialize)]
@@ -56,15 +57,6 @@ pub struct SeasonShort {
     pub overview: String,
     pub poster_path: String,
     pub season_number: u64,
-}
-
-#[derive(Clone, Debug, Deserialize)]
-pub struct PersonShort {
-    pub id: u64,
-    pub credit_id: String,
-    pub name: String,
-    pub gender: u64,
-    pub profile_path: Option<String>,
 }
 
 #[derive(Clone, Debug, serde::Deserialize)]
