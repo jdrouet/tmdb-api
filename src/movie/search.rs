@@ -96,7 +96,7 @@ mod tests {
         assert_eq!(result.total_pages, 1);
         assert_eq!(result.total_results, 14);
         let item = result.results.first().unwrap();
-        assert_eq!(item.title, "The Avengers");
+        assert_eq!(item.inner.title, "The Avengers");
     }
 
     #[tokio::test]
@@ -156,6 +156,6 @@ mod integration_tests {
         assert_eq!(result.total_pages, 1);
         assert_eq!(result.total_results, 1);
         let item = result.results.first().unwrap();
-        assert_eq!(item.title, "RRRrrrr!!!");
+        assert_eq!(item.inner.title, "RRRrrrr!!!");
     }
 }

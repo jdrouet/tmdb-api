@@ -2,8 +2,15 @@ pub mod details;
 pub mod genre;
 pub mod search;
 
-#[derive(Clone, Debug, serde::Deserialize)]
-pub struct MovieShort {
+use crate::common::country::Country;
+use crate::common::genre::Genre;
+use crate::common::language::Language;
+use crate::common::status::Status;
+use crate::company::CompanyShort;
+use serde::Deserialize;
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct MovieBase {
     pub id: u64,
     pub title: String,
     pub original_title: String,
@@ -11,7 +18,6 @@ pub struct MovieShort {
     pub overview: String,
     #[serde(with = "crate::util::date")]
     pub release_date: chrono::NaiveDate,
-    pub genre_ids: Vec<u64>,
     pub poster_path: Option<String>,
     pub backdrop_path: Option<String>,
     pub adult: bool,
@@ -19,4 +25,28 @@ pub struct MovieShort {
     pub vote_count: u64,
     pub vote_average: f64,
     pub video: bool,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct MovieShort {
+    #[serde(flatten)]
+    pub inner: MovieBase,
+    pub genre_ids: Vec<u64>,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct Movie {
+    #[serde(flatten)]
+    pub inner: MovieBase,
+    pub budget: u64,
+    pub genres: Vec<Genre>,
+    pub homepage: Option<String>,
+    pub imdb_id: Option<String>,
+    pub production_companies: Vec<CompanyShort>,
+    pub production_countries: Vec<Country>,
+    pub revenue: u64,
+    pub runtime: Option<u64>,
+    pub spoken_languages: Vec<Language>,
+    pub status: Status,
+    pub tagline: Option<String>,
 }
