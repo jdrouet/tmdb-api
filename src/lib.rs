@@ -5,6 +5,8 @@ pub mod error;
 pub mod movie;
 pub mod prelude;
 pub mod tvshow;
+
+mod common;
 mod util;
 
 use std::borrow::Cow;
