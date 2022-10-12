@@ -1,8 +1,8 @@
-use crate::common::company::Company;
 use crate::common::country::Country;
 use crate::common::genre::Genre;
 use crate::common::language::Language;
 use crate::common::status::Status;
+use crate::company::CompanyShort;
 use serde::Deserialize;
 use std::borrow::Cow;
 
@@ -20,7 +20,7 @@ pub struct Item {
     pub overview: Option<String>,
     pub popularity: f64,
     pub poster_path: Option<String>,
-    pub production_companies: Vec<Company>,
+    pub production_companies: Vec<CompanyShort>,
     pub production_countries: Vec<Country>,
     #[serde(with = "crate::util::date")]
     pub release_date: chrono::NaiveDate,

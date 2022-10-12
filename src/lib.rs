@@ -1,6 +1,7 @@
 /// The used version of reqwest
 pub use reqwest;
 
+pub mod company;
 pub mod error;
 pub mod movie;
 pub mod prelude;

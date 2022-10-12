@@ -1,7 +1,7 @@
-use crate::common::company::Company;
 use crate::common::country::Country;
 use crate::common::genre::Genre;
 use crate::common::language::Language;
+use crate::company::CompanyShort;
 use serde::Deserialize;
 use std::borrow::Cow;
 
@@ -58,7 +58,7 @@ pub struct Item {
     pub last_episode_to_air: Option<EpisodeShort>,
     pub name: String,
     pub next_episode_to_air: Option<EpisodeShort>,
-    pub networks: Vec<Company>,
+    pub networks: Vec<CompanyShort>,
     pub number_of_episodes: u64,
     pub number_of_seasons: u64,
     pub origin_country: Vec<String>,
@@ -67,7 +67,7 @@ pub struct Item {
     pub overview: String,
     pub popularity: f64,
     pub poster_path: Option<String>,
-    pub production_companies: Vec<Company>,
+    pub production_companies: Vec<CompanyShort>,
     pub production_countries: Vec<Country>,
     pub seasons: Vec<SeasonShort>,
     pub spoken_languages: Vec<Language>,
