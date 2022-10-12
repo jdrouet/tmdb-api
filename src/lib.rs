@@ -3,6 +3,7 @@ pub use reqwest;
 
 pub mod company;
 pub mod error;
+pub mod genre;
 pub mod movie;
 pub mod prelude;
 pub mod tvshow;
