@@ -1,26 +1,6 @@
-use serde::Deserialize;
 use std::borrow::Cow;
 
 const PATH: &str = "/search/movie";
-
-#[derive(Clone, Debug, Deserialize)]
-pub struct Item {
-    pub id: u64,
-    pub title: String,
-    pub original_title: String,
-    pub original_language: String,
-    pub overview: String,
-    #[serde(with = "crate::util::date")]
-    pub release_date: chrono::NaiveDate,
-    pub genre_ids: Vec<u64>,
-    pub poster_path: Option<String>,
-    pub backdrop_path: Option<String>,
-    pub adult: bool,
-    pub popularity: f64,
-    pub vote_count: u64,
-    pub vote_average: f64,
-    pub video: bool,
-}
 
 /// Command to search for movies
 #[derive(Clone, Debug, Default)]
@@ -54,7 +34,7 @@ impl MovieSearch {
 }
 
 impl crate::prelude::Command for MovieSearch {
-    type Output = crate::prelude::PaginatedResult<Item>;
+    type Output = crate::common::PaginatedResult<super::MovieShort>;
 
     fn path(&self) -> Cow<'static, str> {
         Cow::Borrowed(PATH)
