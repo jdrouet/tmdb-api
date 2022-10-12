@@ -1,39 +1,4 @@
-use crate::common::country::Country;
-use crate::common::genre::Genre;
-use crate::common::language::Language;
-use crate::common::status::Status;
-use crate::company::CompanyShort;
-use serde::Deserialize;
 use std::borrow::Cow;
-
-#[derive(Clone, Debug, Deserialize)]
-pub struct Item {
-    pub adult: bool,
-    pub backdrop_path: Option<String>,
-    pub budget: u64,
-    pub genres: Vec<Genre>,
-    pub homepage: Option<String>,
-    pub id: u64,
-    pub imdb_id: Option<String>,
-    pub original_language: String,
-    pub original_title: String,
-    pub overview: Option<String>,
-    pub popularity: f64,
-    pub poster_path: Option<String>,
-    pub production_companies: Vec<CompanyShort>,
-    pub production_countries: Vec<Country>,
-    #[serde(with = "crate::util::date")]
-    pub release_date: chrono::NaiveDate,
-    pub revenue: u64,
-    pub runtime: Option<u64>,
-    pub spoken_languages: Vec<Language>,
-    pub status: Status,
-    pub tagline: Option<String>,
-    pub title: String,
-    pub video: bool,
-    pub vote_average: f64,
-    pub vote_count: u64,
-}
 
 /// Command to search for movies
 #[derive(Clone, Debug, Default)]
@@ -54,7 +19,7 @@ impl MovieDetails {
 }
 
 impl crate::prelude::Command for MovieDetails {
-    type Output = Item;
+    type Output = super::Movie;
 
     fn path(&self) -> Cow<'static, str> {
         Cow::Owned(format!("/movie/{}", self.movie_id))
@@ -87,7 +52,7 @@ mod tests {
 
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let result = MovieDetails::new(550).execute(&client).await.unwrap();
-        assert_eq!(result.id, 550);
+        assert_eq!(result.inner.id, 550);
     }
 
     #[tokio::test]
@@ -133,6 +98,6 @@ mod integration_tests {
         let client = Client::new(secret);
 
         let result = MovieDetails::new(550).execute(&client).await.unwrap();
-        assert_eq!(result.id, 550);
+        assert_eq!(result.inner.id, 550);
     }
 }
