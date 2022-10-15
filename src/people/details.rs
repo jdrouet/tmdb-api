@@ -1,6 +1,23 @@
 use std::borrow::Cow;
 
-/// Command to search for people
+/// Command to get the details of a person
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::people::details::PersonDetails;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = PersonDetails::new(1);
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct PersonDetails {
     /// ID of the person
@@ -15,6 +32,11 @@ impl PersonDetails {
             person_id,
             language: None,
         }
+    }
+
+    pub fn with_language(mut self, value: Option<String>) -> Self {
+        self.language = value;
+        self
     }
 }
 

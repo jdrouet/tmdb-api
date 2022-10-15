@@ -3,6 +3,23 @@ use std::borrow::Cow;
 const PATH: &str = "/search/tv";
 
 /// Command to search for tvshows
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::tvshow::search::TVShowSearch;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = TVShowSearch::new("simpsons".into());
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct TVShowSearch {
     /// Text query to search.
@@ -25,6 +42,26 @@ impl TVShowSearch {
             include_adult: false,
             first_air_date_year: None,
         }
+    }
+
+    pub fn with_language(mut self, value: Option<String>) -> Self {
+        self.language = value;
+        self
+    }
+
+    pub fn with_page(mut self, value: Option<u32>) -> Self {
+        self.page = value;
+        self
+    }
+
+    pub fn with_include_adult(mut self, value: bool) -> Self {
+        self.include_adult = value;
+        self
+    }
+
+    pub fn with_first_air_date_year(mut self, value: Option<u16>) -> Self {
+        self.first_air_date_year = value;
+        self
     }
 }
 

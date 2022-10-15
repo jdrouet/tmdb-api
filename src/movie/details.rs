@@ -1,6 +1,23 @@
 use std::borrow::Cow;
 
-/// Command to search for movies
+/// Command to get the details of a movie
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::movie::details::MovieDetails;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = MovieDetails::new(1);
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct MovieDetails {
     /// ID of the movie.
@@ -15,6 +32,11 @@ impl MovieDetails {
             movie_id,
             language: None,
         }
+    }
+
+    pub fn with_language(mut self, value: Option<String>) -> Self {
+        self.language = value;
+        self
     }
 }
 

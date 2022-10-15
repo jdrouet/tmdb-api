@@ -1,6 +1,23 @@
 use std::borrow::Cow;
 
-/// Command to search for movies
+/// Command to get similar movies to a movie
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::movie::similar::GetSimilarMovies;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = GetSimilarMovies::new(1);
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct GetSimilarMovies {
     /// ID of the movie
@@ -18,6 +35,16 @@ impl GetSimilarMovies {
             language: None,
             page: None,
         }
+    }
+
+    pub fn with_language(mut self, value: Option<String>) -> Self {
+        self.language = value;
+        self
+    }
+
+    pub fn with_page(mut self, value: Option<u32>) -> Self {
+        self.page = value;
+        self
     }
 }
 

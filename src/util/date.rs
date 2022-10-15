@@ -1,8 +1,13 @@
-/// Module to help serializing and deserializing tmdb dates
+//! Module to help serializing and deserializing tmdb dates
+
 use chrono::NaiveDate;
 use serde::{self, Deserialize, Deserializer, Serializer};
 
-const FORMAT: &'static str = "%Y-%m-%d";
+const FORMAT: &str = "%Y-%m-%d";
+
+pub(super) fn parse_date(input: &str) -> Result<NaiveDate, chrono::ParseError> {
+    NaiveDate::parse_from_str(input, FORMAT)
+}
 
 #[allow(dead_code)]
 pub(crate) fn serialize<S>(date: &NaiveDate, serializer: S) -> Result<S::Ok, S::Error>
@@ -18,7 +23,7 @@ where
     D: Deserializer<'de>,
 {
     let value = String::deserialize(deserializer)?;
-    NaiveDate::parse_from_str(&value, FORMAT).map_err(serde::de::Error::custom)
+    parse_date(&value).map_err(serde::de::Error::custom)
 }
 
 #[cfg(test)]

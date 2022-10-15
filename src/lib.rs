@@ -1,3 +1,7 @@
+//! Another implementation of a client for the TMDB API
+//!
+//! It provides a support for async and implements each command using the Command pattern.
+
 /// The used version of reqwest
 pub use reqwest;
 
@@ -16,6 +20,13 @@ use std::borrow::Cow;
 
 const BASE_URL: &str = "https://api.themoviedb.org/3";
 
+/// HTTP client for TMDB
+///
+/// ```rust
+/// use tmdb_api::Client;
+///
+/// let client = Client::new("this-is-my-secret-token".into());
+/// ```
 pub struct Client {
     client: reqwest::Client,
     base_url: Cow<'static, str>,

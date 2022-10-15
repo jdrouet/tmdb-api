@@ -3,6 +3,23 @@ use std::borrow::Cow;
 const PATH: &str = "/search/movie";
 
 /// Command to search for movies
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::movie::search::MovieSearch;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = MovieSearch::new("die hard".into());
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct MovieSearch {
     /// Text query to search.
@@ -30,6 +47,36 @@ impl MovieSearch {
             year: None,
             primary_release_year: None,
         }
+    }
+
+    pub fn with_language(mut self, value: Option<String>) -> Self {
+        self.language = value;
+        self
+    }
+
+    pub fn with_page(mut self, value: Option<u32>) -> Self {
+        self.page = value;
+        self
+    }
+
+    pub fn with_include_adult(mut self, value: bool) -> Self {
+        self.include_adult = value;
+        self
+    }
+
+    pub fn with_region(mut self, value: Option<String>) -> Self {
+        self.region = value;
+        self
+    }
+
+    pub fn with_year(mut self, value: Option<u16>) -> Self {
+        self.year = value;
+        self
+    }
+
+    pub fn with_primary_release_year(mut self, value: Option<u16>) -> Self {
+        self.primary_release_year = value;
+        self
     }
 }
 

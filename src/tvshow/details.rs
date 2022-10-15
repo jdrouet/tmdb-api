@@ -1,6 +1,23 @@
 use std::borrow::Cow;
 
-/// Command to search for tvshows
+/// Command to get the details of a tvshow
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::tvshow::details::TVShowDetails;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = TVShowDetails::new(1);
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct TVShowDetails {
     /// ID of the TV Show
@@ -15,6 +32,11 @@ impl TVShowDetails {
             tv_id,
             language: None,
         }
+    }
+
+    pub fn with_language(mut self, value: Option<String>) -> Self {
+        self.language = value;
+        self
     }
 }
 

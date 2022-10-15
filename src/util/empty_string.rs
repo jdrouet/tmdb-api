@@ -1,4 +1,5 @@
-/// Module to help deserializing strings that could be empty
+//! Module to help deserializing strings that could be empty
+
 use serde::{self, Deserialize, Deserializer};
 
 pub(crate) fn deserialize<'de, D>(deserializer: D) -> Result<Option<String>, D::Error>

@@ -14,7 +14,7 @@ pub struct Genre {
     pub name: String,
 }
 
-/// Command to list tvshows genres
+/// Command to list genres
 #[derive(Clone, Debug, Default)]
 pub struct GenreList {
     path: &'static str,
