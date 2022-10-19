@@ -6,9 +6,9 @@ use crate::common::language::Language;
 use crate::company::CompanyShort;
 use crate::genre::Genre;
 use crate::people::PersonShort;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct TVShowBase {
     pub id: u64,
     pub name: String,
@@ -25,14 +25,14 @@ pub struct TVShowBase {
     pub vote_average: f64,
 }
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct TVShowShort {
     #[serde(flatten)]
     pub inner: TVShowBase,
     pub genre_ids: Vec<u64>,
 }
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct EpisodeShort {
     #[serde(with = "crate::util::date")]
     pub air_date: chrono::NaiveDate,
@@ -47,7 +47,7 @@ pub struct EpisodeShort {
     pub vote_count: u64,
 }
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct SeasonShort {
     #[serde(with = "crate::util::date")]
     pub air_date: chrono::NaiveDate,
@@ -59,7 +59,7 @@ pub struct SeasonShort {
     pub season_number: u64,
 }
 
-#[derive(Clone, Debug, serde::Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct TVShow {
     #[serde(flatten)]
     pub inner: TVShowBase,

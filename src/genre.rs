@@ -1,14 +1,15 @@
+use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
 const TV_PATH: &str = "/genre/tv/list";
 const MOVIE_PATH: &str = "/genre/movie/list";
 
-#[derive(Clone, Debug, serde::Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub(crate) struct GenreResult {
     pub genres: Vec<Genre>,
 }
 
-#[derive(Clone, Debug, serde::Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Genre {
     pub id: u64,
     pub name: String,
