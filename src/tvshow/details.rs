@@ -78,6 +78,20 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn complex_works() {
+        let _m = mock("GET", "/tv/2")
+            .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
+            .with_status(200)
+            .with_header("content-type", "application/json")
+            .with_body(include_str!("../../assets/tv-details-complex.json"))
+            .create();
+
+        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let result = TVShowDetails::new(2).execute(&client).await.unwrap();
+        assert_eq!(result.inner.id, 2);
+    }
+
+    #[tokio::test]
     async fn invalid_api_key() {
         let _m = mock("GET", "/tv/1399")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -119,7 +133,9 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
 
-        let result = TVShowDetails::new(1399).execute(&client).await.unwrap();
-        assert_eq!(result.inner.id, 1399);
+        for i in 1..5 {
+            let result = TVShowDetails::new(i).execute(&client).await.unwrap();
+            assert_eq!(result.inner.id, i);
+        }
     }
 }

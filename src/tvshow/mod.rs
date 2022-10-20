@@ -49,13 +49,14 @@ pub struct EpisodeShort {
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct SeasonShort {
-    #[serde(with = "crate::util::date")]
-    pub air_date: chrono::NaiveDate,
+    #[serde(with = "crate::util::optional_date")]
+    pub air_date: Option<chrono::NaiveDate>,
     pub episode_count: u64,
     pub id: u64,
     pub name: String,
-    pub overview: String,
-    pub poster_path: String,
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    pub overview: Option<String>,
+    pub poster_path: Option<String>,
     pub season_number: u64,
 }
 
@@ -70,8 +71,8 @@ pub struct TVShow {
     pub homepage: String,
     pub in_production: bool,
     pub languages: Vec<String>,
-    #[serde(with = "crate::util::date")]
-    pub last_air_date: chrono::NaiveDate,
+    #[serde(with = "crate::util::optional_date")]
+    pub last_air_date: Option<chrono::NaiveDate>,
     pub last_episode_to_air: Option<EpisodeShort>,
     pub next_episode_to_air: Option<EpisodeShort>,
     pub networks: Vec<CompanyShort>,
@@ -82,7 +83,8 @@ pub struct TVShow {
     pub seasons: Vec<SeasonShort>,
     pub spoken_languages: Vec<Language>,
     pub status: String,
-    pub tagline: String,
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    pub tagline: Option<String>,
     #[serde(rename = "type")]
     pub ttype: String,
 }
