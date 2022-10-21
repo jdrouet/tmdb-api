@@ -9,7 +9,12 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+      - run: cargo test --features integration
+        if: github.repository == 'jdrouet/tmdb-api'
+        env:
+          TMDB_TOKEN_V3: '${{ secrets.TMDB_TOKEN_V3 }}'
       - run: cargo test
+        if: github.repository != 'jdrouet/tmdb-api'
 
   clippy:
     name: Check clippy suggestions
