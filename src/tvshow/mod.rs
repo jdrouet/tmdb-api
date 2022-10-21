@@ -2,6 +2,8 @@ pub mod details;
 pub mod search;
 pub mod similar;
 
+pub mod season;
+
 use crate::common::country::Country;
 use crate::common::language::Language;
 use crate::company::CompanyShort;
@@ -40,7 +42,8 @@ pub struct EpisodeShort {
     pub episode_number: u64,
     pub id: u64,
     pub name: String,
-    pub overview: String,
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    pub overview: Option<String>,
     pub production_code: String,
     pub season_number: u64,
     pub still_path: Option<String>,
@@ -49,16 +52,40 @@ pub struct EpisodeShort {
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct SeasonShort {
+pub struct Episode {
+    #[serde(flatten)]
+    pub inner: EpisodeShort,
+    //
+    pub crew: Vec<PersonShort>,
+    pub guest_stars: Vec<PersonShort>,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct SeasonBase {
     #[serde(with = "crate::util::optional_date")]
     pub air_date: Option<chrono::NaiveDate>,
-    pub episode_count: u64,
     pub id: u64,
     pub name: String,
     #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub overview: Option<String>,
     pub poster_path: Option<String>,
     pub season_number: u64,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct SeasonShort {
+    #[serde(flatten)]
+    pub inner: SeasonBase,
+    //
+    pub episode_count: u64,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct Season {
+    pub _id: String,
+    #[serde(flatten)]
+    pub inner: SeasonBase,
+    pub episodes: Vec<Episode>,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
