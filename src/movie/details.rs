@@ -119,7 +119,9 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
 
-        let result = MovieDetails::new(550).execute(&client).await.unwrap();
-        assert_eq!(result.inner.id, 550);
+        for i in &[2, 3, 5, 6, 8, 9, 11] {
+            let result = MovieDetails::new(*i).execute(&client).await.unwrap();
+            assert_eq!(result.inner.id, *i);
+        }
     }
 }
