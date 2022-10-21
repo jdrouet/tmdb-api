@@ -1,5 +1,6 @@
 pub mod details;
 pub mod search;
+pub mod similar;
 
 use crate::common::country::Country;
 use crate::common::language::Language;
