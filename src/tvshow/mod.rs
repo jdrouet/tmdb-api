@@ -2,6 +2,7 @@ pub mod details;
 pub mod search;
 pub mod similar;
 
+pub mod episode;
 pub mod season;
 
 use crate::common::country::Country;
