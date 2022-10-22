@@ -2,7 +2,9 @@ pub mod country;
 pub mod language;
 pub mod status;
 
-#[derive(Clone, Debug, serde::Deserialize)]
+use serde::{Deserialize, Serialize};
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct PaginatedResult<T> {
     pub page: u64,
     pub total_results: u64,
