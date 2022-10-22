@@ -13,7 +13,7 @@ pub mod people;
 pub mod prelude;
 pub mod tvshow;
 
-mod common;
+pub mod common;
 mod util;
 
 use std::borrow::Cow;
