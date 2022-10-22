@@ -113,7 +113,7 @@ mod tests {
             .create();
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.body.status_code, 7);
+        assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
     }
 
     #[tokio::test]
@@ -129,7 +129,7 @@ mod tests {
             .create();
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.body.status_code, 34);
+        assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);
     }
 }
 

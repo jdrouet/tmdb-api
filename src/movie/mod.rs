@@ -16,8 +16,8 @@ pub struct MovieBase {
     pub original_title: String,
     pub original_language: String,
     pub overview: String,
-    #[serde(with = "crate::util::date")]
-    pub release_date: chrono::NaiveDate,
+    #[serde(default, with = "crate::util::optional_date")]
+    pub release_date: Option<chrono::NaiveDate>,
     pub poster_path: Option<String>,
     pub backdrop_path: Option<String>,
     pub adult: bool,

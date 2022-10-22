@@ -103,7 +103,7 @@ mod tests {
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let err = TVShowDetails::new(1399).execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.body.status_code, 7);
+        assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
     }
 
     #[tokio::test]
@@ -118,7 +118,7 @@ mod tests {
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let err = TVShowDetails::new(1399).execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.body.status_code, 34);
+        assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);
     }
 }
 

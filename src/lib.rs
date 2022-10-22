@@ -4,6 +4,7 @@
 
 /// The used version of reqwest
 pub use reqwest;
+use reqwest::StatusCode;
 
 pub mod company;
 pub mod error;
@@ -59,11 +60,13 @@ impl Client {
         let res = self.client.get(url).query(&params).send().await?;
         let status_code = res.status();
         if status_code.is_success() {
-            let payload: T = res.json().await?;
-            Ok(payload)
+            Ok(res.json::<T>().await?)
+        } else if status_code == StatusCode::UNPROCESSABLE_ENTITY {
+            let payload: error::ServerValidationBodyError = res.json().await?;
+            Err(error::Error::from((status_code, payload.into())))
         } else {
-            let payload: error::ServerBodyError = res.json().await?;
-            Err(error::Error::from((status_code, payload)))
+            let payload: error::ServerOtherBodyError = res.json().await?;
+            Err(error::Error::from((status_code, payload.into())))
         }
     }
 }
