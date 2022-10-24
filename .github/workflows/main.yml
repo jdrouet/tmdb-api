@@ -16,6 +16,14 @@ jobs:
       - run: cargo test
         if: github.repository != 'jdrouet/tmdb-api'
 
+  check-features:
+    name: Ensure all features are building correctly
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiki-e/install-action@cargo-hack
+      - uses: actions/checkout@v1
+      - run: cargo hack check --tests --feature-powerset
+
   clippy:
     name: Check clippy suggestions
     runs-on: ubuntu-latest
