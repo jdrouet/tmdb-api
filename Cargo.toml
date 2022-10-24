@@ -11,10 +11,14 @@ readme = "readme.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [features]
+default = ["commands"]
+commands = ["async-trait"]
+
+# only used for testing
 integration = []
 
 [dependencies]
-async-trait = { version = "0.1" }
+async-trait = { version = "0.1", optional = true }
 chrono = { version = "0.4" }
 reqwest = { version = "0.11", features = [
     "json",

@@ -1,3 +1,4 @@
+use super::Genre;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
@@ -7,12 +8,6 @@ const MOVIE_PATH: &str = "/genre/movie/list";
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub(crate) struct GenreResult {
     pub genres: Vec<Genre>,
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct Genre {
-    pub id: u64,
-    pub name: String,
 }
 
 /// Command to list genres
@@ -79,7 +74,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../assets/genre-movie-list-success.json"))
+            .with_body(include_str!("../../assets/genre-movie-list-success.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.len(), 1);
@@ -94,7 +89,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../assets/genre-tvshow-list-success.json"))
+            .with_body(include_str!("../../assets/genre-tvshow-list-success.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.len(), 1);
@@ -109,7 +104,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../assets/invalid-api-key.json"))
+            .with_body(include_str!("../../assets/invalid-api-key.json"))
             .create();
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -125,7 +120,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../assets/resource-not-found.json"))
+            .with_body(include_str!("../../assets/resource-not-found.json"))
             .create();
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
