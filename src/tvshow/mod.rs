@@ -1,5 +1,8 @@
+#[cfg(feature = "commands")]
 pub mod details;
+#[cfg(feature = "commands")]
 pub mod search;
+#[cfg(feature = "commands")]
 pub mod similar;
 
 pub mod episode;
