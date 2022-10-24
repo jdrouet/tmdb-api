@@ -236,10 +236,10 @@ mod integration_tests {
 
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
-        assert_eq!(result.results.len(), 1);
-        assert_eq!(result.total_pages, 1);
-        assert_eq!(result.total_results, 1);
+        assert_eq!(result.results.len(), 20);
+        assert_eq!(result.total_pages, 2);
+        assert_eq!(result.total_results, 25);
         let item = result.results.first().unwrap();
-        assert_eq!(item.inner.title, "simpsons");
+        assert_eq!(item.inner.title, "The Simpsons in Plusaversary");
     }
 }
