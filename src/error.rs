@@ -1,5 +1,3 @@
-use reqwest::StatusCode;
-
 #[derive(Debug, serde::Deserialize, serde::Serialize)]
 pub struct ServerOtherBodyError {
     pub status_code: u16,
@@ -48,16 +46,18 @@ impl ServerBodyError {
 
 #[derive(Debug)]
 pub struct ServerError {
-    pub code: StatusCode,
+    pub code: u16,
     pub body: ServerBodyError,
 }
 
+#[cfg(feature = "commands")]
 #[derive(Debug)]
 pub enum Error {
     Reqwest(reqwest::Error),
     Server(ServerError),
 }
 
+#[cfg(feature = "commands")]
 impl Error {
     pub fn as_reqwest_error(&self) -> Option<&reqwest::Error> {
         match self {
@@ -82,14 +82,19 @@ impl Error {
     }
 }
 
+#[cfg(feature = "commands")]
 impl From<reqwest::Error> for Error {
     fn from(err: reqwest::Error) -> Self {
         Self::Reqwest(err)
     }
 }
 
-impl From<(StatusCode, ServerBodyError)> for Error {
-    fn from((code, body): (StatusCode, ServerBodyError)) -> Self {
-        Self::Server(ServerError { code, body })
+#[cfg(feature = "commands")]
+impl From<(reqwest::StatusCode, ServerBodyError)> for Error {
+    fn from((code, body): (reqwest::StatusCode, ServerBodyError)) -> Self {
+        Self::Server(ServerError {
+            code: code.as_u16(),
+            body,
+        })
     }
 }
