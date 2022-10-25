@@ -1,6 +1,14 @@
 //! Module to help deserializing strings that could be empty
 
-use serde::{self, Deserialize, Deserializer};
+use serde::{Deserialize, Deserializer, Serializer};
+
+#[allow(dead_code)]
+pub(crate) fn serialize<S>(value: Option<String>, serializer: S) -> Result<S::Ok, S::Error>
+where
+    S: Serializer,
+{
+    serializer.serialize_some(&value)
+}
 
 pub(crate) fn deserialize<'de, D>(deserializer: D) -> Result<Option<String>, D::Error>
 where

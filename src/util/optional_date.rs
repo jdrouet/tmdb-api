@@ -1,7 +1,7 @@
 //! Module to help serializing and deserializing tmdb dates
 
 use chrono::NaiveDate;
-use serde::{self, Deserialize, Deserializer, Serializer};
+use serde::{Deserialize, Deserializer, Serializer};
 
 #[allow(dead_code)]
 pub(crate) fn serialize<S>(date: &Option<NaiveDate>, serializer: S) -> Result<S::Ok, S::Error>
@@ -21,9 +21,13 @@ where
 {
     let value: Option<String> = Option::deserialize(deserializer)?;
     if let Some(inner) = value.as_ref() {
-        super::date::parse_date(inner)
-            .map(Some)
-            .map_err(serde::de::Error::custom)
+        if inner.is_empty() {
+            Ok(None)
+        } else {
+            super::date::parse_date(inner)
+                .map(Some)
+                .map_err(serde::de::Error::custom)
+        }
     } else {
         Ok(None)
     }

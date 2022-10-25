@@ -1,7 +1,7 @@
 //! Module to help serializing and deserializing tmdb dates
 
 use chrono::NaiveDate;
-use serde::{self, Deserialize, Deserializer, Serializer};
+use serde::{Deserialize, Deserializer, Serializer};
 
 const FORMAT: &str = "%Y-%m-%d";
 

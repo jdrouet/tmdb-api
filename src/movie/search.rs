@@ -205,6 +205,26 @@ mod tests {
             1
         );
     }
+
+    #[tokio::test]
+    async fn premature_end_of_line() {
+        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let cmd = MovieSearch::new("game of thrones".into());
+
+        let _m = mock("GET", super::PATH)
+            .match_query(Matcher::AllOf(vec![
+                Matcher::UrlEncoded("api_key".into(), "secret".into()),
+                Matcher::UrlEncoded("query".into(), "game of thrones".into()),
+            ]))
+            .with_status(200)
+            .with_header("content-type", "application/json;charset=utf-8")
+            .with_body(include_str!(
+                "../../assets/search-tvshow-decoding-error.json"
+            ))
+            .create();
+        let result = cmd.execute(&client).await.unwrap();
+        assert_eq!(result.page, 1);
+    }
 }
 
 #[cfg(all(test, feature = "integration"))]
