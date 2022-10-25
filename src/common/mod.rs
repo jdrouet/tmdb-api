@@ -4,7 +4,7 @@ pub mod status;
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct PaginatedResult<T> {
     pub page: u64,
     pub total_results: u64,

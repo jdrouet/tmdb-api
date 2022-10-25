@@ -12,7 +12,7 @@ use crate::company::CompanyShort;
 use crate::genre::Genre;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct MovieBase {
     pub id: u64,
     pub title: String,
@@ -30,14 +30,14 @@ pub struct MovieBase {
     pub video: bool,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct MovieShort {
     #[serde(flatten)]
     pub inner: MovieBase,
     pub genre_ids: Vec<u64>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct Movie {
     #[serde(flatten)]
     pub inner: MovieBase,

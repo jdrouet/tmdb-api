@@ -3,7 +3,7 @@ pub mod details;
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct PersonShort {
     pub id: u64,
     pub credit_id: Option<String>,
@@ -12,7 +12,7 @@ pub struct PersonShort {
     pub profile_path: Option<String>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct Person {
     #[serde(flatten)]
     pub inner: PersonShort,

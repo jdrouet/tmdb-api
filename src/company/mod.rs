@@ -3,7 +3,7 @@ pub mod details;
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CompanyShort {
     pub id: u64,
     pub name: String,
@@ -12,7 +12,7 @@ pub struct CompanyShort {
     pub origin_country: Option<String>,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Company {
     #[serde(flatten)]
     pub inner: CompanyShort,

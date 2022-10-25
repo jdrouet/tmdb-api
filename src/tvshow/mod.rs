@@ -15,7 +15,7 @@ use crate::genre::Genre;
 use crate::people::PersonShort;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TVShowBase {
     pub id: u64,
     pub name: String,
@@ -32,14 +32,14 @@ pub struct TVShowBase {
     pub vote_average: f64,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TVShowShort {
     #[serde(flatten)]
     pub inner: TVShowBase,
     pub genre_ids: Vec<u64>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct EpisodeShort {
     #[serde(with = "crate::util::date")]
     pub air_date: chrono::NaiveDate,
@@ -55,7 +55,7 @@ pub struct EpisodeShort {
     pub vote_count: u64,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct Episode {
     #[serde(flatten)]
     pub inner: EpisodeShort,
@@ -64,7 +64,7 @@ pub struct Episode {
     pub guest_stars: Vec<PersonShort>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct SeasonBase {
     #[serde(with = "crate::util::optional_date")]
     pub air_date: Option<chrono::NaiveDate>,
@@ -76,7 +76,7 @@ pub struct SeasonBase {
     pub season_number: u64,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct SeasonShort {
     #[serde(flatten)]
     pub inner: SeasonBase,
@@ -84,7 +84,7 @@ pub struct SeasonShort {
     pub episode_count: u64,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct Season {
     pub _id: String,
     #[serde(flatten)]
@@ -92,7 +92,7 @@ pub struct Season {
     pub episodes: Vec<Episode>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TVShow {
     #[serde(flatten)]
     pub inner: TVShowBase,
