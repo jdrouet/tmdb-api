@@ -43,6 +43,7 @@ pub struct Movie {
     pub inner: MovieBase,
     pub budget: u64,
     pub genres: Vec<Genre>,
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub homepage: Option<String>,
     pub imdb_id: Option<String>,
     pub production_companies: Vec<CompanyShort>,
@@ -52,4 +53,18 @@ pub struct Movie {
     pub spoken_languages: Vec<Language>,
     pub status: Status,
     pub tagline: Option<String>,
+}
+
+#[cfg(test)]
+mod tests {
+
+    #[test]
+    fn serialize() {
+        let origin = include_str!("../../assets/movie-details-success.json");
+        let movie: super::Movie = serde_json::from_str(origin).unwrap();
+        let serial = serde_json::to_string_pretty(&movie).unwrap();
+        println!("serial: {}", serial);
+        let expected: super::Movie = serde_json::from_str(&serial).unwrap();
+        assert_eq!(movie, expected);
+    }
 }

@@ -14,7 +14,17 @@ pub(crate) fn deserialize<'de, D>(deserializer: D) -> Result<Option<String>, D::
 where
     D: Deserializer<'de>,
 {
-    String::deserialize(deserializer).map(|value| if value.is_empty() { None } else { Some(value) })
+    Option::<String>::deserialize(deserializer).map(|value| {
+        if let Some(value) = value {
+            if value.is_empty() {
+                None
+            } else {
+                Some(value)
+            }
+        } else {
+            None
+        }
+    })
 }
 
 #[cfg(test)]
