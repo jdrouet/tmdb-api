@@ -254,12 +254,6 @@ mod integration_tests {
         let client = Client::new(secret);
         let cmd = MovieSearch::new("simpsons".into());
 
-        let result = cmd.execute(&client).await.unwrap();
-        assert_eq!(result.page, 1);
-        assert_eq!(result.results.len(), 20);
-        assert_eq!(result.total_pages, 2);
-        assert_eq!(result.total_results, 25);
-        let item = result.results.first().unwrap();
-        assert_eq!(item.inner.title, "The Simpsons in Plusaversary");
+        let _result = cmd.execute(&client).await.unwrap();
     }
 }
