@@ -7,6 +7,7 @@
 pub use reqwest;
 
 pub mod certification;
+pub mod changes;
 #[cfg(feature = "commands")]
 pub mod client;
 pub mod company;
