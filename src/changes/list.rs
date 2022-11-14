@@ -1,3 +1,5 @@
+use crate::util::date::format_date;
+use chrono::NaiveDate;
 use std::borrow::Cow;
 
 const TV_PATH: &str = "/tv/changes";
@@ -8,19 +10,55 @@ const PERSON_PATH: &str = "/person/changes";
 #[derive(Clone, Debug, Default)]
 pub struct ChangeList {
     path: &'static str,
+    /// Filter the results with a start date.
+    pub start_date: Option<NaiveDate>,
+    /// Filter the results with a end date.
+    pub end_date: Option<NaiveDate>,
+    /// Which page to query.
+    pub page: Option<u32>,
 }
 
 impl ChangeList {
     pub fn tv() -> Self {
-        Self { path: TV_PATH }
+        Self {
+            path: TV_PATH,
+            start_date: None,
+            end_date: None,
+            page: None,
+        }
     }
 
     pub fn movie() -> Self {
-        Self { path: MOVIE_PATH }
+        Self {
+            path: MOVIE_PATH,
+            start_date: None,
+            end_date: None,
+            page: None,
+        }
     }
 
     pub fn person() -> Self {
-        Self { path: PERSON_PATH }
+        Self {
+            path: PERSON_PATH,
+            start_date: None,
+            end_date: None,
+            page: None,
+        }
+    }
+
+    pub fn with_start_date(mut self, value: Option<NaiveDate>) -> Self {
+        self.start_date = value;
+        self
+    }
+
+    pub fn with_end_date(mut self, value: Option<NaiveDate>) -> Self {
+        self.end_date = value;
+        self
+    }
+
+    pub fn with_page(mut self, value: Option<u32>) -> Self {
+        self.page = value;
+        self
     }
 }
 
@@ -33,7 +71,17 @@ impl crate::prelude::Command for ChangeList {
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        Vec::new()
+        let mut res = Vec::with_capacity(3);
+        if let Some(ref start_date) = self.start_date {
+            res.push(("start_date", Cow::Owned(format_date(start_date))));
+        }
+        if let Some(ref end_date) = self.end_date {
+            res.push(("end_date", Cow::Owned(format_date(end_date))));
+        }
+        if let Some(page) = self.page {
+            res.push(("page", Cow::Owned(page.to_string())));
+        }
+        res
     }
 
     async fn execute(&self, client: &crate::Client) -> Result<Self::Output, crate::error::Error> {
@@ -46,6 +94,7 @@ mod tests {
     use super::ChangeList;
     use crate::prelude::Command;
     use crate::Client;
+    use chrono::NaiveDate;
     use mockito::{mock, Matcher};
 
     #[tokio::test]
@@ -60,6 +109,33 @@ mod tests {
             .with_body(include_str!("../../assets/change-list-success.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
+        assert_eq!(result.page, 1);
+    }
+
+    #[tokio::test]
+    async fn tv_works_with_args() {
+        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+
+        let _m = mock("GET", super::TV_PATH)
+            .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
+            .match_query(Matcher::AllOf(vec![
+                Matcher::UrlEncoded("api_key".into(), "secret".into()),
+                Matcher::UrlEncoded("start_date".into(), "2015-03-14".into()),
+                Matcher::UrlEncoded("end_date".into(), "2019-03-14".into()),
+                Matcher::UrlEncoded("page".into(), "2".into()),
+            ]))
+            .with_status(200)
+            .with_header("content-type", "application/json")
+            .with_body(include_str!("../../assets/change-list-success.json"))
+            .create();
+
+        let result = ChangeList::tv()
+            .with_start_date(Some(NaiveDate::from_ymd(2015, 3, 14)))
+            .with_end_date(Some(NaiveDate::from_ymd(2019, 3, 14)))
+            .with_page(Some(2))
+            .execute(&client)
+            .await
+            .unwrap();
         assert_eq!(result.page, 1);
     }
 
