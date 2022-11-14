@@ -9,6 +9,10 @@ pub(super) fn parse_date(input: &str) -> Result<NaiveDate, chrono::ParseError> {
     NaiveDate::parse_from_str(input, FORMAT)
 }
 
+pub(crate) fn format_date(input: &NaiveDate) -> String {
+    input.format(FORMAT).to_string()
+}
+
 #[allow(dead_code)]
 pub(crate) fn serialize<S>(date: &NaiveDate, serializer: S) -> Result<S::Ok, S::Error>
 where
