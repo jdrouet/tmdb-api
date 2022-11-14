@@ -1,6 +1,8 @@
 #[cfg(feature = "commands")]
 pub mod alternative_titles;
 #[cfg(feature = "commands")]
+pub mod changes;
+#[cfg(feature = "commands")]
 pub mod details;
 #[cfg(feature = "commands")]
 pub mod search;
