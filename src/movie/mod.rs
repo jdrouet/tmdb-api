@@ -7,6 +7,8 @@ pub mod credits;
 #[cfg(feature = "commands")]
 pub mod details;
 #[cfg(feature = "commands")]
+pub mod external_ids;
+#[cfg(feature = "commands")]
 pub mod search;
 #[cfg(feature = "commands")]
 pub mod similar;
