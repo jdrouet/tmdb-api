@@ -1,4 +1,5 @@
 pub mod country;
+pub mod credits;
 pub mod language;
 pub mod status;
 
