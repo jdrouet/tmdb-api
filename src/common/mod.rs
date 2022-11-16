@@ -3,6 +3,7 @@ pub mod credits;
 pub mod image;
 pub mod keyword;
 pub mod language;
+pub mod release_date;
 pub mod status;
 
 use serde::{Deserialize, Serialize};
