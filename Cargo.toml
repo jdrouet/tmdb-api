@@ -26,6 +26,7 @@ reqwest = { version = "0.11", features = [
     "tokio-rustls",
 ], default-features = false, optional = true }
 serde = { version = "1.0", features = ["derive"] }
+serde_repr = { version = "0.1" }
 
 [dev-dependencies]
 mockito = { version = "0.31" }
