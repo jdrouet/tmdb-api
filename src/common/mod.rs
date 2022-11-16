@@ -1,6 +1,7 @@
 pub mod country;
 pub mod credits;
 pub mod image;
+pub mod keyword;
 pub mod language;
 pub mod status;
 
