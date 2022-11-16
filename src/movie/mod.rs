@@ -15,6 +15,8 @@ pub mod keywords;
 #[cfg(feature = "commands")]
 pub mod lists;
 #[cfg(feature = "commands")]
+pub mod recommendations;
+#[cfg(feature = "commands")]
 pub mod search;
 #[cfg(feature = "commands")]
 pub mod similar;
