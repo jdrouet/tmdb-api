@@ -19,6 +19,8 @@ pub mod recommendations;
 #[cfg(feature = "commands")]
 pub mod release_dates;
 #[cfg(feature = "commands")]
+pub mod reviews;
+#[cfg(feature = "commands")]
 pub mod search;
 #[cfg(feature = "commands")]
 pub mod similar;
