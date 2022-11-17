@@ -28,6 +28,8 @@ pub mod similar;
 pub mod translations;
 #[cfg(feature = "commands")]
 pub mod videos;
+#[cfg(feature = "commands")]
+pub mod watch_providers;
 
 use crate::common::country::Country;
 use crate::common::language::Language;
