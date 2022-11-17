@@ -35,6 +35,8 @@ pub mod top_rated;
 #[cfg(feature = "commands")]
 pub mod translations;
 #[cfg(feature = "commands")]
+pub mod upcoming;
+#[cfg(feature = "commands")]
 pub mod videos;
 #[cfg(feature = "commands")]
 pub mod watch_providers;
