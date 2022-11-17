@@ -6,6 +6,7 @@ pub mod language;
 pub mod release_date;
 pub mod status;
 pub mod video;
+pub mod watch_providers;
 
 use serde::{Deserialize, Serialize};
 
