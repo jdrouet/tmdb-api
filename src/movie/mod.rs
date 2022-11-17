@@ -13,6 +13,8 @@ pub mod images;
 #[cfg(feature = "commands")]
 pub mod keywords;
 #[cfg(feature = "commands")]
+pub mod latest;
+#[cfg(feature = "commands")]
 pub mod lists;
 #[cfg(feature = "commands")]
 pub mod recommendations;
