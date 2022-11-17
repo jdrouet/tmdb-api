@@ -17,6 +17,8 @@ pub mod latest;
 #[cfg(feature = "commands")]
 pub mod lists;
 #[cfg(feature = "commands")]
+pub mod now_playing;
+#[cfg(feature = "commands")]
 pub mod recommendations;
 #[cfg(feature = "commands")]
 pub mod release_dates;
