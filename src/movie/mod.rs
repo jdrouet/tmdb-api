@@ -26,6 +26,8 @@ pub mod search;
 pub mod similar;
 #[cfg(feature = "commands")]
 pub mod translations;
+#[cfg(feature = "commands")]
+pub mod videos;
 
 use crate::common::country::Country;
 use crate::common::language::Language;
