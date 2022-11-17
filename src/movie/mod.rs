@@ -31,6 +31,8 @@ pub mod search;
 #[cfg(feature = "commands")]
 pub mod similar;
 #[cfg(feature = "commands")]
+pub mod top_rated;
+#[cfg(feature = "commands")]
 pub mod translations;
 #[cfg(feature = "commands")]
 pub mod videos;
