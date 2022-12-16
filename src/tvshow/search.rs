@@ -114,13 +114,13 @@ mod tests {
             ]))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/search-tvshow-success.json"))
+            .with_body(include_str!("../../assets/search-tv.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
-        assert_eq!(result.results.len(), 1);
-        assert_eq!(result.total_pages, 1);
-        assert_eq!(result.total_results, 1);
+        assert!(!result.results.is_empty());
+        assert!(result.total_pages > 0);
+        assert!(result.total_results > 0);
         let item = result.results.first().unwrap();
         assert_eq!(item.inner.name, "Game of Thrones");
     }

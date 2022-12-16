@@ -1,0 +1,208 @@
+{
+  "id": 550,
+  "page": 1,
+  "results": [
+    {
+      "description": "Library",
+      "favorite_count": 0,
+      "id": 102379,
+      "item_count": 659,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "Plex Movies",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8211688,
+      "item_count": 190,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "Movies - DONE",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8199283,
+      "item_count": 536,
+      "iso_639_1": "de",
+      "list_type": "movie",
+      "name": "Films watched",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8168597,
+      "item_count": 13445,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "movies",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8208157,
+      "item_count": 308,
+      "iso_639_1": "pl",
+      "list_type": "movie",
+      "name": "watched ",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 80639,
+      "item_count": 836,
+      "iso_639_1": "es",
+      "list_type": "movie",
+      "name": "Películas",
+      "poster_path": null
+    },
+    {
+      "description": "Master List In Progress",
+      "favorite_count": 0,
+      "id": 51108,
+      "item_count": 9616,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "My Movies",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8225055,
+      "item_count": 61,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "Movies",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 7075790,
+      "item_count": 1267,
+      "iso_639_1": "es",
+      "list_type": "movie",
+      "name": "Accion",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8231416,
+      "item_count": 38,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "mi lista de peliculas",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8228992,
+      "item_count": 420,
+      "iso_639_1": "pt",
+      "list_type": "movie",
+      "name": "Filmes",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8211179,
+      "item_count": 409,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "myList",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8195808,
+      "item_count": 399,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "Watched",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8227387,
+      "item_count": 419,
+      "iso_639_1": "ru",
+      "list_type": "movie",
+      "name": "Мій список",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8218341,
+      "item_count": 621,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "Watched",
+      "poster_path": null
+    },
+    {
+      "description": "FILMES E SÉRIES FAVORITAS.",
+      "favorite_count": 0,
+      "id": 20941,
+      "item_count": 781,
+      "iso_639_1": "pt",
+      "list_type": "movie",
+      "name": "NEILTON SILVA",
+      "poster_path": null
+    },
+    {
+      "description": "All movies and shows I've seen",
+      "favorite_count": 0,
+      "id": 7111094,
+      "item_count": 2736,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "Movies I've seen",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 7102480,
+      "item_count": 1363,
+      "iso_639_1": "en",
+      "list_type": "movie",
+      "name": "All Watched Films",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 7069622,
+      "item_count": 508,
+      "iso_639_1": "tr",
+      "list_type": "movie",
+      "name": "izledim",
+      "poster_path": null
+    },
+    {
+      "description": "",
+      "favorite_count": 0,
+      "id": 8191899,
+      "item_count": 252,
+      "iso_639_1": "fr",
+      "list_type": "movie",
+      "name": "Vu",
+      "poster_path": null
+    }
+  ],
+  "total_pages": 113,
+  "total_results": 2256
+}

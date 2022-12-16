@@ -70,8 +70,10 @@ pub struct MovieChangeItem {
     pub action: String,
     pub time: chrono::DateTime<chrono::Utc>,
     pub iso_639_1: String,
-    pub value: String,
-    pub original_value: String,
+    pub iso_3166_1: String,
+    // TODO handle really dynamic kind of values
+    // pub value: String,
+    // pub original_value: String,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -104,12 +106,12 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/movie-changes-success.json"))
+            .with_body(include_str!("../../assets/movie-single-changes.json"))
             .create();
 
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let result = MovieChanges::new(3).execute(&client).await.unwrap();
-        assert_eq!(result.changes.len(), 1);
+        assert!(!result.changes.is_empty());
     }
 
     #[tokio::test]

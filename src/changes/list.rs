@@ -106,7 +106,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/change-list-success.json"))
+            .with_body(include_str!("../../assets/tv-all-changes.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
@@ -126,7 +126,7 @@ mod tests {
             ]))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/change-list-success.json"))
+            .with_body(include_str!("../../assets/tv-all-changes.json"))
             .create();
 
         let result = ChangeList::tv()
@@ -148,7 +148,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/change-list-success.json"))
+            .with_body(include_str!("../../assets/movie-all-changes.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
@@ -163,7 +163,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/change-list-success.json"))
+            .with_body(include_str!("../../assets/movie-all-changes.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);

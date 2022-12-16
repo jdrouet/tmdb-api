@@ -68,10 +68,10 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/movie-external-ids-success.json"))
+            .with_body(include_str!("../../assets/movie-external-ids.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
-        assert_eq!(result.id, 335984);
+        assert_eq!(result.id, 550);
     }
 
     #[tokio::test]

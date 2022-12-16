@@ -85,7 +85,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/tvshow-similar-success.json"))
+            .with_body(include_str!("../../assets/tv-similar.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
@@ -93,7 +93,7 @@ mod tests {
         assert_eq!(result.total_pages, 500);
         assert_eq!(result.total_results, 10000);
         let item = result.results.first().unwrap();
-        assert_eq!(item.inner.name, "Salem's Lot");
+        assert_eq!(item.inner.name, "The Great Queen Seondeok");
     }
 
     #[tokio::test]

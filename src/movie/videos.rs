@@ -76,13 +76,13 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/movie-videos-success.json"))
+            .with_body(include_str!("../../assets/movie-videos.json"))
             .create();
 
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let result = MovieVideos::new(550).execute(&client).await.unwrap();
         assert_eq!(result.id, 550);
-        assert_eq!(result.results.len(), 2);
+        assert!(!result.results.is_empty());
     }
 
     #[tokio::test]

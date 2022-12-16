@@ -96,7 +96,7 @@ mod tests {
 
     #[test]
     fn serialize() {
-        let origin = include_str!("../../assets/movie-details-success.json");
+        let origin = include_str!("../../assets/movie-details.json");
         let movie: super::Movie = serde_json::from_str(origin).unwrap();
         let serial = serde_json::to_string_pretty(&movie).unwrap();
         println!("serial: {}", serial);

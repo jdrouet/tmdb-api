@@ -1,0 +1,401 @@
+{
+  "dates": {
+    "maximum": "2023-01-10",
+    "minimum": "2022-12-22"
+  },
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/7zQJYV02yehWrQN6NjKsBorqUUS.jpg",
+      "genre_ids": [
+        28,
+        18,
+        36
+      ],
+      "id": 724495,
+      "original_language": "en",
+      "original_title": "The Woman King",
+      "overview": "The story of the Agojie, the all-female unit of warriors who protected the African Kingdom of Dahomey in the 1800s with skills and a fierceness unlike anything the world has ever seen, and General Nanisca as she trains the next generation of recruits and readies them for battle against an enemy determined to destroy their way of life.",
+      "popularity": 2451.611,
+      "poster_path": "/lQMJHnHxUyj8kJlC2YOKNuzuwMP.jpg",
+      "release_date": "2022-09-15",
+      "title": "The Woman King",
+      "video": false,
+      "vote_average": 7.9,
+      "vote_count": 741
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "id": 505642,
+      "original_language": "en",
+      "original_title": "Black Panther: Wakanda Forever",
+      "overview": "Queen Ramonda, Shuri, M’Baku, Okoye and the Dora Milaje fight to protect their nation from intervening world powers in the wake of King T’Challa’s death. As the Wakandans strive to embrace their next chapter, the heroes must band together with the help of War Dog Nakia and Everett Ross and forge a new path for the kingdom of Wakanda.",
+      "popularity": 1580.087,
+      "poster_path": "/ps2oKfhY6DL3alynlSqY97gHSsg.jpg",
+      "release_date": "2022-11-09",
+      "title": "Black Panther: Wakanda Forever",
+      "video": false,
+      "vote_average": 7.5,
+      "vote_count": 1340
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/vNuHqmOJRQXY0PBd887DklSDlBP.jpg",
+      "genre_ids": [
+        16,
+        12,
+        35,
+        10751,
+        14
+      ],
+      "id": 315162,
+      "original_language": "en",
+      "original_title": "Puss in Boots: The Last Wish",
+      "overview": "Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.",
+      "popularity": 896.147,
+      "poster_path": "/1NqwE6LP9IEdOZ57NCT51ftHtWT.jpg",
+      "release_date": "2022-12-07",
+      "title": "Puss in Boots: The Last Wish",
+      "video": false,
+      "vote_average": 8,
+      "vote_count": 48
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/c1bz69r0v065TGFA5nqBiKzPDys.jpg",
+      "genre_ids": [
+        35,
+        10751,
+        10402
+      ],
+      "id": 830784,
+      "original_language": "en",
+      "original_title": "Lyle, Lyle, Crocodile",
+      "overview": "When the Primm family moves to New York City, their young son Josh struggles to adapt to his new school and new friends. All of that changes when he discovers Lyle — a singing crocodile who loves baths, caviar and great music — living in the attic of his new home. But when Lyle’s existence is threatened by evil neighbor Mr. Grumps, the Primms must band together to show the world that family can come from the most unexpected places.",
+      "popularity": 657.486,
+      "poster_path": "/irIS5Tn3TXjNi1R9BpWvGAN4CZ1.jpg",
+      "release_date": "2022-10-07",
+      "title": "Lyle, Lyle, Crocodile",
+      "video": false,
+      "vote_average": 7.9,
+      "vote_count": 173
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/tlin6STxxVoln0f818sEQYH7PyC.jpg",
+      "genre_ids": [
+        27,
+        53
+      ],
+      "id": 663712,
+      "original_language": "en",
+      "original_title": "Terrifier 2",
+      "overview": "After being resurrected by a sinister entity, Art the Clown returns to Miles County where he must hunt down and destroy a teenage girl and her younger brother on Halloween night.  As the body count rises, the siblings fight to stay alive while uncovering the true nature of Art's evil intent.",
+      "popularity": 554.929,
+      "poster_path": "/8gLhu8UFPZfH2Hv11JhTZkb9CVl.jpg",
+      "release_date": "2022-10-06",
+      "title": "Terrifier 2",
+      "video": false,
+      "vote_average": 7,
+      "vote_count": 746
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/AaV1YIdWKnjAIAOe8UUKBFm327v.jpg",
+      "genre_ids": [
+        28,
+        18
+      ],
+      "id": 361743,
+      "original_language": "en",
+      "original_title": "Top Gun: Maverick",
+      "overview": "After more than thirty years of service as one of the Navy’s top aviators, and dodging the advancement in rank that would ground him, Pete “Maverick” Mitchell finds himself training a detachment of TOP GUN graduates for a specialized mission the likes of which no living pilot has ever seen.",
+      "popularity": 395.716,
+      "poster_path": "/62HCnUTziyWcpDaBO2i1DX17ljH.jpg",
+      "release_date": "2022-05-24",
+      "title": "Top Gun: Maverick",
+      "video": false,
+      "vote_average": 8.3,
+      "vote_count": 5017
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/9bbxqz1iPEfZN9Xi2ZjJhkp5JRo.jpg",
+      "genre_ids": [
+        16,
+        878,
+        28
+      ],
+      "id": 610150,
+      "original_language": "ja",
+      "original_title": "ドラゴンボール超 スーパーヒーロー",
+      "overview": "The Red Ribbon Army, an evil organization that was once destroyed by Goku in the past, has been reformed by a group of people who have created new and mightier Androids, Gamma 1 and Gamma 2, and seek vengeance against Goku and his family.",
+      "popularity": 387.514,
+      "poster_path": "/rugyJdeoJm7cSJL1q4jBpTNbxyU.jpg",
+      "release_date": "2022-06-11",
+      "title": "Dragon Ball Super: Super Hero",
+      "video": false,
+      "vote_average": 8,
+      "vote_count": 2075
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/etP5jwlwvkNhwe7jnI2AyA6ZKrR.jpg",
+      "genre_ids": [
+        878
+      ],
+      "id": 575322,
+      "original_language": "en",
+      "original_title": "Звёздный разум",
+      "overview": "After depleting Earth's resources for centuries, humankind's survival requires an exodus to outer space. An international expedition is quickly formed to find a suitable new planet, but when plans go awry, the crew is suddenly stranded without power on a strange planet, where something unimaginable lies in wait.",
+      "popularity": 364.152,
+      "poster_path": "/rFljUdOozFEv6HDHIFpFvcYW0ec.jpg",
+      "release_date": "2022-01-06",
+      "title": "Project Gemini",
+      "video": false,
+      "vote_average": 5.7,
+      "vote_count": 180
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/xFPoCs4MM6UsysZyJ9eiwU9YnGS.jpg",
+      "genre_ids": [
+        27,
+        53
+      ],
+      "id": 676547,
+      "original_language": "en",
+      "original_title": "Prey for the Devil",
+      "overview": "In response to a global rise in demonic possessions, the Catholic Church reopens exorcism schools to train priests in the Rite of Exorcism. On this spiritual battlefield, an unlikely warrior rises: a young nun, Sister Ann. Thrust onto the spiritual frontline with fellow student Father Dante, Sister Ann finds herself in a battle for the soul of a young girl and soon realizes the Devil has her right where he wants her.",
+      "popularity": 264.405,
+      "poster_path": "/w3s6XEDNVGq5LUlghqs6VlvsvL6.jpg",
+      "release_date": "2022-10-23",
+      "title": "Prey for the Devil",
+      "video": false,
+      "vote_average": 6.1,
+      "vote_count": 100
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/2iGUavwv86Hubv3V5Iq4qEQXDfE.jpg",
+      "genre_ids": [
+        53,
+        18,
+        27
+      ],
+      "id": 848058,
+      "original_language": "es",
+      "original_title": "Cerdita",
+      "overview": "A bullied overweight teenager sees a glimpse of hope when her tormentors are brutally abducted by a mesmerizing stranger.",
+      "popularity": 206.43,
+      "poster_path": "/8EIQAvJjXdbNDMmBtHtgGqbc09V.jpg",
+      "release_date": "2022-10-07",
+      "title": "Piggy",
+      "video": false,
+      "vote_average": 6.7,
+      "vote_count": 231
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/5tb7RjF0OAAaiGDUXsuedvhoGqV.jpg",
+      "genre_ids": [
+        18,
+        36
+      ],
+      "id": 837881,
+      "original_language": "en",
+      "original_title": "She Said",
+      "overview": "New York Times reporters Megan Twohey and Jodi Kantor break one of the most important stories in a generation — a story that helped launch the #MeToo movement and shattered decades of silence around the subject of sexual assault in Hollywood.",
+      "popularity": 171.527,
+      "poster_path": "/b2g0XtMU4zH2URSkx62n1aWTXTV.jpg",
+      "release_date": "2022-11-17",
+      "title": "She Said",
+      "video": false,
+      "vote_average": 7.4,
+      "vote_count": 93
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/1zuz2RgFoOjulkjjNHHFc3WiHGB.jpg",
+      "genre_ids": [
+        27,
+        878,
+        53
+      ],
+      "id": 536554,
+      "original_language": "en",
+      "original_title": "M3GAN",
+      "overview": "A brilliant toy company roboticist uses artificial intelligence to develop M3GAN, a life-like doll programmed to emotionally bond with her newly orphaned niece. But when the doll's programming works too well, she becomes overprotective of her new friend with terrifying results.",
+      "popularity": 143.809,
+      "poster_path": "/7CNCv9uhqdwK7Fv4bR4nmDysnd9.jpg",
+      "release_date": "2023-01-04",
+      "title": "M3GAN",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/6RCf9jzKxyjblYV4CseayK6bcJo.jpg",
+      "genre_ids": [
+        18
+      ],
+      "id": 804095,
+      "original_language": "en",
+      "original_title": "The Fabelmans",
+      "overview": "Growing up in post-World War II era Arizona, young Sammy Fabelman aspires to become a filmmaker as he reaches adolescence, but soon discovers a shattering family secret and explores how the power of films can help him see the truth.",
+      "popularity": 125.842,
+      "poster_path": "/d2IywyOPS78vEnJvwVqkVRTiNC1.jpg",
+      "release_date": "2022-11-11",
+      "title": "The Fabelmans",
+      "video": false,
+      "vote_average": 7.9,
+      "vote_count": 44
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/9VIURlZvfnmFACs2m0MdUDDC3In.jpg",
+      "genre_ids": [
+        14,
+        18,
+        10749
+      ],
+      "id": 556694,
+      "original_language": "en",
+      "original_title": "Three Thousand Years of Longing",
+      "overview": "A solitary scholar discovers an ancient bottle while on a trip to Istanbul and unleashes a djinn who offers her three wishes. Filled with reluctance, she is unable to come up with one, so the djinn tries to inspire her with his stories.",
+      "popularity": 79.525,
+      "poster_path": "/wpmhxPi6DLdOav4Gfx1XCOG1jWw.jpg",
+      "release_date": "2022-08-24",
+      "title": "Three Thousand Years of Longing",
+      "video": false,
+      "vote_average": 7.1,
+      "vote_count": 506
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/idVZgSQsQzHyRyr5DmLW6FZ8pwb.jpg",
+      "genre_ids": [
+        18,
+        35
+      ],
+      "id": 937278,
+      "original_language": "en",
+      "original_title": "A Man Called Otto",
+      "overview": "The story of Otto Anderson, a grumpy widower who is very set in his ways. When a lively young family moves in next door, he meets his match in quick-witted and very pregnant Marisol, leading to an unlikely friendship that will turn his world upside-down.",
+      "popularity": 49.346,
+      "poster_path": "/lltnxfKikNH91poAR2BTi8f1UGj.jpg",
+      "release_date": "2022-12-28",
+      "title": "A Man Called Otto",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/9Md4CqzUGDtK5oEkRRvozLkGc9d.jpg",
+      "genre_ids": [
+        18,
+        35
+      ],
+      "id": 674324,
+      "original_language": "en",
+      "original_title": "The Banshees of Inisherin",
+      "overview": "Two lifelong friends find themselves at an impasse when one abruptly ends their relationship, with alarming consequences for both of them.",
+      "popularity": 100.199,
+      "poster_path": "/6tgmoZtdRWerdmK1KPcdf87uZyE.jpg",
+      "release_date": "2022-10-21",
+      "title": "The Banshees of Inisherin",
+      "video": false,
+      "vote_average": 8,
+      "vote_count": 83
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/qp8qKiP7Q7zK4z3LItwWMHfV9kJ.jpg",
+      "genre_ids": [
+        53
+      ],
+      "id": 764835,
+      "original_language": "en",
+      "original_title": "The Desperate Hour",
+      "overview": "A woman desperately races to save her child after police place her hometown on lockdown due to an active shooter incident.",
+      "popularity": 67.093,
+      "poster_path": "/u6Pg9eTklhg6Aa7kXaxrfdE1Chi.jpg",
+      "release_date": "2021-09-12",
+      "title": "The Desperate Hour",
+      "video": false,
+      "vote_average": 6.1,
+      "vote_count": 297
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/A1bWhTFQKkhF1yhSKWosSyzn2Hp.jpg",
+      "genre_ids": [
+        9648,
+        53,
+        80,
+        18,
+        10749
+      ],
+      "id": 705996,
+      "original_language": "ko",
+      "original_title": "헤어질 결심",
+      "overview": "From a mountain peak in South Korea, a man plummets to his death. Did he jump, or was he pushed? When detective Hae-joon arrives on the scene, he begins to suspect the dead man’s wife Seo-rae. But as he digs deeper into the investigation, he finds himself trapped in a web of deception and desire.",
+      "popularity": 61.739,
+      "poster_path": "/N0rskx91Eh6aWjvBybeY6epNic.jpg",
+      "release_date": "2022-06-29",
+      "title": "Decision to Leave",
+      "video": false,
+      "vote_average": 7.3,
+      "vote_count": 331
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/vNPY4oCSUp7CxbHkKJNRx1fmCl0.jpg",
+      "genre_ids": [
+        35,
+        18
+      ],
+      "id": 497828,
+      "original_language": "en",
+      "original_title": "Triangle of Sadness",
+      "overview": "A celebrity model couple are invited on a luxury cruise for the uber-rich, helmed by an unhinged captain. What first appeared Instagrammable ends catastrophically, leaving the survivors stranded on a desert island and fighting for survival.",
+      "popularity": 61.906,
+      "poster_path": "/fgy78BLl0gk8OzTWHZyGrSlIEON.jpg",
+      "release_date": "2022-09-23",
+      "title": "Triangle of Sadness",
+      "video": false,
+      "vote_average": 7.5,
+      "vote_count": 404
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/6xDnykX6JiBCB5FEfjLxW9PNzj.jpg",
+      "genre_ids": [
+        18,
+        53
+      ],
+      "id": 925459,
+      "original_language": "fr",
+      "original_title": "Entre la vie et la mort",
+      "overview": "One night, Leo, a Spaniard working in Brussels as a subway driver, sees a young man on the edge of the platform, just before he falls onto the tracks.",
+      "popularity": 46.784,
+      "poster_path": "/4Yz7qqW2diUylxqs94E4uBFfhrP.jpg",
+      "release_date": "2022-06-29",
+      "title": "On the Edge",
+      "video": false,
+      "vote_average": 6.2,
+      "vote_count": 16
+    }
+  ],
+  "total_pages": 18,
+  "total_results": 351
+}

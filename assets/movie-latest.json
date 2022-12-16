@@ -1,0 +1,33 @@
+{
+  "adult": false,
+  "backdrop_path": null,
+  "belongs_to_collection": null,
+  "budget": 0,
+  "genres": [],
+  "homepage": "",
+  "id": 1061997,
+  "imdb_id": null,
+  "original_language": "de",
+  "original_title": "Der stumme Schrei des Todes",
+  "overview": "",
+  "popularity": 0,
+  "poster_path": null,
+  "production_companies": [],
+  "production_countries": [],
+  "release_date": "",
+  "revenue": 0,
+  "runtime": 0,
+  "spoken_languages": [
+    {
+      "english_name": "German",
+      "iso_639_1": "de",
+      "name": "Deutsch"
+    }
+  ],
+  "status": "Released",
+  "tagline": "",
+  "title": "Der stumme Schrei des Todes",
+  "video": false,
+  "vote_average": 0,
+  "vote_count": 0
+}
