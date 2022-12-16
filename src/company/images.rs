@@ -70,16 +70,16 @@ mod tests {
 
     #[tokio::test]
     async fn it_works() {
-        let _m = mock("GET", "/company/4/images")
+        let _m = mock("GET", "/company/1/images")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/company-images-success.json"))
+            .with_body(include_str!("../../assets/company-images.json"))
             .create();
 
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
-        let result = CompanyImages::new(4).execute(&client).await.unwrap();
-        assert_eq!(result.id, 4);
+        let result = CompanyImages::new(1).execute(&client).await.unwrap();
+        assert_eq!(result.id, 1);
     }
 
     #[tokio::test]

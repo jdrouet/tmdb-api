@@ -66,7 +66,7 @@ mod tests {
     use mockito::{mock, Matcher};
 
     #[tokio::test]
-    async fn tv_works() {
+    async fn movie_works() {
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let cmd = GenreList::movie();
 
@@ -74,14 +74,14 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/genre-movie-list-success.json"))
+            .with_body(include_str!("../../assets/genre-movie-list.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
-        assert_eq!(result.len(), 1);
+        assert!(!result.is_empty());
     }
 
     #[tokio::test]
-    async fn movie_works() {
+    async fn tv_works() {
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let cmd = GenreList::tv();
 
@@ -89,10 +89,10 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/genre-tvshow-list-success.json"))
+            .with_body(include_str!("../../assets/genre-tv-list.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
-        assert_eq!(result.len(), 1);
+        assert!(!result.is_empty());
     }
 
     #[tokio::test]

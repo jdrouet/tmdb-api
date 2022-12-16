@@ -85,15 +85,15 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/movie-similar-success.json"))
+            .with_body(include_str!("../../assets/movie-similar.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
-        assert_eq!(result.results.len(), 1);
-        assert_eq!(result.total_pages, 9);
-        assert_eq!(result.total_results, 168);
+        assert!(!result.results.is_empty());
+        assert!(result.total_pages > 0);
+        assert!(result.total_results > 0);
         let item = result.results.first().unwrap();
-        assert_eq!(item.inner.title, "Darna: The Return");
+        assert_eq!(item.inner.title, "A Christmas Miracle for Daisy");
     }
 
     #[tokio::test]

@@ -66,7 +66,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/movie-keywords-success.json"))
+            .with_body(include_str!("../../assets/movie-keywords.json"))
             .create();
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.id, 550);

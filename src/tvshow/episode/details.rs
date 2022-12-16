@@ -78,7 +78,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../../assets/tvshow-episode-success.json"))
+            .with_body(include_str!("../../../assets/tv-episode-details.json"))
             .create();
 
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());

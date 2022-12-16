@@ -62,12 +62,10 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!(
-                "../../assets/certification-tv-list-success.json"
-            ))
+            .with_body(include_str!("../../assets/certification-tv-list.json"))
             .create();
         let result = CertificationList::tv().execute(&client).await.unwrap();
-        assert_eq!(result.len(), 10);
+        assert!(!result.is_empty());
     }
 
     #[tokio::test]
@@ -78,12 +76,10 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!(
-                "../../assets/certification-movie-list-success.json"
-            ))
+            .with_body(include_str!("../../assets/certification-movie-list.json"))
             .create();
         let result = CertificationList::movie().execute(&client).await.unwrap();
-        assert_eq!(result.len(), 15);
+        assert!(!result.is_empty());
     }
 
     #[tokio::test]

@@ -59,12 +59,12 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/movie-latest-success.json"))
+            .with_body(include_str!("../../assets/movie-latest.json"))
             .create();
 
         let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let result = MovieLatest::default().execute(&client).await.unwrap();
-        assert_eq!(result.inner.id, 413323);
+        assert_eq!(result.inner.id, 1061997);
     }
 
     #[tokio::test]
