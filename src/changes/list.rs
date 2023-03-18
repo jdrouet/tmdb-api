@@ -95,28 +95,33 @@ mod tests {
     use crate::prelude::Command;
     use crate::Client;
     use chrono::NaiveDate;
-    use mockito::{mock, Matcher};
+    use mockito::Matcher;
 
     #[tokio::test]
     async fn tv_works() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
         let cmd = ChangeList::tv();
 
-        let _m = mock("GET", super::TV_PATH)
+        let _m = server
+            .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/tv-all-changes.json"))
-            .create();
+            .create_async()
+            .await;
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
     }
 
     #[tokio::test]
     async fn tv_works_with_args() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
 
-        let _m = mock("GET", super::TV_PATH)
+        let _m = server
+            .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
@@ -127,7 +132,8 @@ mod tests {
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/tv-all-changes.json"))
-            .create();
+            .create_async()
+            .await;
 
         let result = ChangeList::tv()
             .with_start_date(Some(NaiveDate::from_ymd(2015, 3, 14)))
@@ -141,45 +147,54 @@ mod tests {
 
     #[tokio::test]
     async fn movie_works() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
         let cmd = ChangeList::movie();
 
-        let _m = mock("GET", super::MOVIE_PATH)
+        let _m = server
+            .mock("GET", super::MOVIE_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/movie-all-changes.json"))
-            .create();
+            .create_async()
+            .await;
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
     }
 
     #[tokio::test]
     async fn person_works() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
         let cmd = ChangeList::person();
 
-        let _m = mock("GET", super::PERSON_PATH)
+        let _m = server
+            .mock("GET", super::PERSON_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/movie-all-changes.json"))
-            .create();
+            .create_async()
+            .await;
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
     }
 
     #[tokio::test]
     async fn invalid_api_key() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
         let cmd = ChangeList::tv();
 
-        let _m = mock("GET", super::TV_PATH)
+        let _m = server
+            .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/invalid-api-key.json"))
-            .create();
+            .create_async()
+            .await;
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
@@ -187,15 +202,18 @@ mod tests {
 
     #[tokio::test]
     async fn resource_not_found() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
         let cmd = ChangeList::tv();
 
-        let _m = mock("GET", super::TV_PATH)
+        let _m = server
+            .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/resource-not-found.json"))
-            .create();
+            .create_async()
+            .await;
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);

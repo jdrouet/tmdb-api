@@ -63,49 +63,58 @@ mod tests {
     use super::GenreList;
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::{mock, Matcher};
+    use mockito::Matcher;
 
     #[tokio::test]
     async fn movie_works() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
         let cmd = GenreList::movie();
 
-        let _m = mock("GET", super::MOVIE_PATH)
+        let _m = server
+            .mock("GET", super::MOVIE_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/genre-movie-list.json"))
-            .create();
+            .create_async()
+            .await;
         let result = cmd.execute(&client).await.unwrap();
         assert!(!result.is_empty());
     }
 
     #[tokio::test]
     async fn tv_works() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
         let cmd = GenreList::tv();
 
-        let _m = mock("GET", super::TV_PATH)
+        let _m = server
+            .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/genre-tv-list.json"))
-            .create();
+            .create_async()
+            .await;
         let result = cmd.execute(&client).await.unwrap();
         assert!(!result.is_empty());
     }
 
     #[tokio::test]
     async fn invalid_api_key() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
         let cmd = GenreList::tv();
 
-        let _m = mock("GET", super::TV_PATH)
+        let _m = server
+            .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/invalid-api-key.json"))
-            .create();
+            .create_async()
+            .await;
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
@@ -113,15 +122,18 @@ mod tests {
 
     #[tokio::test]
     async fn resource_not_found() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
         let cmd = GenreList::tv();
 
-        let _m = mock("GET", super::TV_PATH)
+        let _m = server
+            .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/resource-not-found.json"))
-            .create();
+            .create_async()
+            .await;
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);

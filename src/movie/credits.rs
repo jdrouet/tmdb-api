@@ -71,32 +71,40 @@ mod tests {
     use super::MovieCredits;
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::{mock, Matcher};
+    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {
-        let _m = mock("GET", "/movie/3/credits")
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
+        let _m = server
+            .mock("GET", "/movie/3/credits")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/movie-credits.json"))
-            .create();
+            .create_async()
+            .await;
 
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let result = MovieCredits::new(3).execute(&client).await.unwrap();
         assert_eq!(result.id, 550);
     }
 
     #[tokio::test]
     async fn invalid_api_key() {
-        let _m = mock("GET", "/movie/1/credits")
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
+        let _m = server
+            .mock("GET", "/movie/1/credits")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/invalid-api-key.json"))
-            .create();
+            .create_async()
+            .await;
 
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let err = MovieCredits::new(1).execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
@@ -104,14 +112,18 @@ mod tests {
 
     #[tokio::test]
     async fn resource_not_found() {
-        let _m = mock("GET", "/movie/1/credits")
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
+        let _m = server
+            .mock("GET", "/movie/1/credits")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/resource-not-found.json"))
-            .create();
+            .create_async()
+            .await;
 
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let err = MovieCredits::new(1).execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);

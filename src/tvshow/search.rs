@@ -100,14 +100,17 @@ mod tests {
     use super::TVShowSearch;
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::{mock, Matcher};
+    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
         let cmd = TVShowSearch::new("Whatever".into());
 
-        let _m = mock("GET", super::PATH)
+        let _m = server
+            .mock("GET", super::PATH)
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
                 Matcher::UrlEncoded("query".into(), "Whatever".into()),
@@ -115,7 +118,8 @@ mod tests {
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/search-tv.json"))
-            .create();
+            .create_async()
+            .await;
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
         assert!(!result.results.is_empty());
@@ -127,10 +131,13 @@ mod tests {
 
     #[tokio::test]
     async fn invalid_api_key() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
         let cmd = TVShowSearch::new("Whatever".into());
 
-        let _m = mock("GET", super::PATH)
+        let _m = server
+            .mock("GET", super::PATH)
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
                 Matcher::UrlEncoded("query".into(), "Whatever".into()),
@@ -138,7 +145,8 @@ mod tests {
             .with_status(401)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/invalid-api-key.json"))
-            .create();
+            .create_async()
+            .await;
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
@@ -146,10 +154,13 @@ mod tests {
 
     #[tokio::test]
     async fn resource_not_found() {
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
         let cmd = TVShowSearch::new("Whatever".into());
 
-        let _m = mock("GET", super::PATH)
+        let _m = server
+            .mock("GET", super::PATH)
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
                 Matcher::UrlEncoded("query".into(), "Whatever".into()),
@@ -157,7 +168,8 @@ mod tests {
             .with_status(404)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/resource-not-found.json"))
-            .create();
+            .create_async()
+            .await;
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);

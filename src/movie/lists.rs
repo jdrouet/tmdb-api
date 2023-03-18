@@ -87,18 +87,22 @@ mod tests {
     use super::MovieLists;
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::{mock, Matcher};
+    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {
-        let _m = mock("GET", "/movie/550/lists")
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
+        let _m = server
+            .mock("GET", "/movie/550/lists")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/movie-lists.json"))
-            .create();
+            .create_async()
+            .await;
 
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let result = MovieLists::new(550).execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
         assert_eq!(result.results.len(), 20);
@@ -106,14 +110,18 @@ mod tests {
 
     #[tokio::test]
     async fn invalid_api_key() {
-        let _m = mock("GET", "/movie/550/lists")
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
+        let _m = server
+            .mock("GET", "/movie/550/lists")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/invalid-api-key.json"))
-            .create();
+            .create_async()
+            .await;
 
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let err = MovieLists::new(550).execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
@@ -121,14 +129,18 @@ mod tests {
 
     #[tokio::test]
     async fn resource_not_found() {
-        let _m = mock("GET", "/movie/550/lists")
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
+        let _m = server
+            .mock("GET", "/movie/550/lists")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/resource-not-found.json"))
-            .create();
+            .create_async()
+            .await;
 
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let err = MovieLists::new(550).execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);

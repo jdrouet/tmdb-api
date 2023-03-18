@@ -64,18 +64,22 @@ mod tests {
     use super::CompanyAlternativeNames;
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::{mock, Matcher};
+    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {
-        let _m = mock("GET", "/company/1/alternative_names")
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
+        let _m = server
+            .mock("GET", "/company/1/alternative_names")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/company-alternative-names.json"))
-            .create();
+            .create_async()
+            .await;
 
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let result = CompanyAlternativeNames::new(1)
             .execute(&client)
             .await
@@ -85,14 +89,18 @@ mod tests {
 
     #[tokio::test]
     async fn invalid_api_key() {
-        let _m = mock("GET", "/company/1/alternative_names")
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
+        let _m = server
+            .mock("GET", "/company/1/alternative_names")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/invalid-api-key.json"))
-            .create();
+            .create_async()
+            .await;
 
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let err = CompanyAlternativeNames::new(1)
             .execute(&client)
             .await
@@ -103,14 +111,18 @@ mod tests {
 
     #[tokio::test]
     async fn resource_not_found() {
-        let _m = mock("GET", "/company/1/alternative_names")
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
+        let _m = server
+            .mock("GET", "/company/1/alternative_names")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/resource-not-found.json"))
-            .create();
+            .create_async()
+            .await;
 
-        let client = Client::new("secret".into()).with_base_url(mockito::server_url());
         let err = CompanyAlternativeNames::new(1)
             .execute(&client)
             .await
