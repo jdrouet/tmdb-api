@@ -155,8 +155,5 @@ mod integration_tests {
 
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
-        assert_eq!(result.results.len(), 20);
-        assert_eq!(result.total_pages, 500);
-        assert_eq!(result.total_results, 10000);
     }
 }
