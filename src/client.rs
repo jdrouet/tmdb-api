@@ -27,10 +27,13 @@ impl Client {
         }
     }
 
-    #[cfg(test)]
     pub fn with_base_url(mut self, base_url: String) -> Self {
         self.base_url = Cow::Owned(base_url);
         self
+    }
+
+    pub fn base_url(&self) -> &str {
+        &self.base_url
     }
 
     pub async fn execute<T: serde::de::DeserializeOwned>(
