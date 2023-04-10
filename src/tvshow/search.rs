@@ -129,6 +129,33 @@ mod tests {
         assert_eq!(item.inner.name, "Game of Thrones");
     }
 
+    /// Refering to issue https://github.com/jdrouet/tmdb-api/issues/25
+    #[tokio::test]
+    async fn fix_issue_25() {
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::new("secret".into()).with_base_url(server.url());
+
+        let cmd = TVShowSearch::new("rick and morty".into());
+
+        let _m = server
+            .mock("GET", super::PATH)
+            .match_query(Matcher::AllOf(vec![
+                Matcher::UrlEncoded("api_key".into(), "secret".into()),
+                Matcher::UrlEncoded("query".into(), "rick and morty".into()),
+            ]))
+            .with_status(200)
+            .with_header("content-type", "application/json")
+            .with_body(include_str!("../../assets/search-tv-rick-and-morty.json"))
+            .create_async()
+            .await;
+        let result = cmd.execute(&client).await.unwrap();
+        assert_eq!(result.page, 1);
+        assert_eq!(result.total_pages, 1);
+        assert_eq!(result.total_results, 2);
+        let item = result.results.first().unwrap();
+        assert_eq!(item.inner.name, "Rick and Morty");
+    }
+
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
