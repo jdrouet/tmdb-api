@@ -22,14 +22,19 @@ pub struct TVShowBase {
     pub original_name: String,
     pub original_language: String,
     pub origin_country: Vec<String>,
-    pub overview: String,
-    #[serde(with = "crate::util::date")]
-    pub first_air_date: chrono::NaiveDate,
+    #[serde(default)]
+    pub overview: Option<String>,
+    #[serde(with = "crate::util::empty_date")]
+    pub first_air_date: Option<chrono::NaiveDate>,
+    #[serde(default)]
     pub poster_path: Option<String>,
+    #[serde(default)]
     pub backdrop_path: Option<String>,
     pub popularity: f64,
     pub vote_count: u64,
     pub vote_average: f64,
+    #[serde(default)]
+    pub adult: bool,
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
