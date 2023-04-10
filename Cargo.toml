@@ -2,7 +2,7 @@
 name = "tmdb-api"
 description = "Yet another TMDB client. This one is using async methods."
 authors = ["Jeremie Drouet <jeremie.drouet@gmail.com>"]
-version = "0.3.5"
+version = "0.4.0"
 edition = "2021"
 repository = "https://github.com/jdrouet/tmdb-api"
 license = "MIT"
