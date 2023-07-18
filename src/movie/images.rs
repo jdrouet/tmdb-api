@@ -47,6 +47,7 @@ pub struct MovieImagesResult {
     pub id: u64,
     pub backdrops: Vec<Image>,
     pub posters: Vec<Image>,
+    pub logos: Vec<Image>,
 }
 
 impl crate::prelude::Command for MovieImages {
