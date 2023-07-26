@@ -1,4 +1,5 @@
-on: [push, workflow_call]
+on:
+  push: {}
 
 jobs:
   tests:
@@ -12,7 +13,7 @@ jobs:
       - run: cargo test --features integration
         if: github.repository == 'jdrouet/tmdb-api'
         env:
-          TMDB_TOKEN_V3: '${{ secrets.TMDB_TOKEN_V3 }}'
+          TMDB_TOKEN_V3: "${{ secrets.TMDB_TOKEN_V3 }}"
       - run: cargo test
         if: github.repository != 'jdrouet/tmdb-api'
 
@@ -32,7 +33,7 @@ jobs:
       - run: rustup component add clippy
       - uses: actions-rs/clippy-check@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: "${{ secrets.GITHUB_TOKEN }}"
           args: --all-features
 
   lint:

@@ -1,7 +1,7 @@
 on:
   push:
-    tags:        
-      - 'v*'
+    tags:
+      - "v*"
 
 name: Publish
 
@@ -9,7 +9,6 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
-    if: github.repository == 'jdrouet/tmdb-api'
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -23,4 +22,4 @@ jobs:
 
       - run: cargo publish --token ${CRATES_TOKEN}
         env:
-          CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
+          CRATES_TOKEN: "${{ secrets.CRATES_TOKEN }}"
