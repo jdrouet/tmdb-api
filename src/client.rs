@@ -18,6 +18,13 @@ pub struct Client {
 }
 
 #[cfg(feature = "commands")]
+#[derive(Clone, Debug)]
+pub struct ClientBuilder {
+    client: Option<reqwest::Client>,
+    base_url: Cow<'static, str>,
+}
+
+#[cfg(feature = "commands")]
 impl Client {
     pub fn new(api_key: String) -> Self {
         Self {
@@ -25,6 +32,10 @@ impl Client {
             base_url: Cow::Borrowed(BASE_URL),
             api_key,
         }
+    }
+
+    pub fn builder() -> ClientBuilder {
+        ClientBuilder::default()
     }
 
     pub fn with_base_url(mut self, base_url: String) -> Self {
@@ -54,6 +65,37 @@ impl Client {
         } else {
             let payload: crate::error::ServerOtherBodyError = res.json().await?;
             Err(crate::error::Error::from((status_code, payload.into())))
+        }
+    }
+}
+
+#[cfg(feature = "commands")]
+impl Default for ClientBuilder {
+    fn default() -> Self {
+        Self {
+            client: None,
+            base_url: Cow::Borrowed(BASE_URL),
+        }
+    }
+}
+
+#[cfg(feature = "commands")]
+impl ClientBuilder {
+    pub fn http_client(mut self, client: reqwest::Client) -> Self {
+        self.client = Some(client);
+        self
+    }
+
+    pub fn base_url<T: Into<Cow<'static, str>>>(mut self, base_url: T) -> Self {
+        self.base_url = base_url.into();
+        self
+    }
+
+    pub fn build(self, api_key: String) -> Client {
+        Client {
+            client: self.client.unwrap_or_default(),
+            base_url: self.base_url,
+            api_key,
         }
     }
 }
