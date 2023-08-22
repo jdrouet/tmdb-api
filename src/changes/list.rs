@@ -100,7 +100,11 @@ mod tests {
     #[tokio::test]
     async fn tv_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
         let cmd = ChangeList::tv();
 
         let _m = server
@@ -118,7 +122,11 @@ mod tests {
     #[tokio::test]
     async fn tv_works_with_args() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
 
         let _m = server
             .mock("GET", super::TV_PATH)
@@ -136,8 +144,8 @@ mod tests {
             .await;
 
         let result = ChangeList::tv()
-            .with_start_date(Some(NaiveDate::from_ymd(2015, 3, 14)))
-            .with_end_date(Some(NaiveDate::from_ymd(2019, 3, 14)))
+            .with_start_date(Some(NaiveDate::from_ymd_opt(2015, 3, 14).unwrap()))
+            .with_end_date(Some(NaiveDate::from_ymd_opt(2019, 3, 14).unwrap()))
             .with_page(Some(2))
             .execute(&client)
             .await
@@ -148,7 +156,11 @@ mod tests {
     #[tokio::test]
     async fn movie_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
         let cmd = ChangeList::movie();
 
         let _m = server
@@ -166,7 +178,11 @@ mod tests {
     #[tokio::test]
     async fn person_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
         let cmd = ChangeList::person();
 
         let _m = server
@@ -184,7 +200,11 @@ mod tests {
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
         let cmd = ChangeList::tv();
 
         let _m = server
@@ -203,7 +223,11 @@ mod tests {
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
         let cmd = ChangeList::tv();
 
         let _m = server

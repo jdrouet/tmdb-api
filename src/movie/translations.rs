@@ -78,7 +78,11 @@ mod tests {
     #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
 
         let _m = server
             .mock("GET", "/movie/550/translations")
@@ -97,7 +101,11 @@ mod tests {
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
 
         let _m = server
             .mock("GET", "/movie/550/translations")
@@ -119,7 +127,11 @@ mod tests {
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
 
         let _m = server
             .mock("GET", "/movie/550/translations")
