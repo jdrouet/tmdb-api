@@ -41,7 +41,7 @@ mod tests {
     #[test]
     fn should_serialize() {
         let value = TestingStruct {
-            value: chrono::NaiveDate::from_ymd(1990, 1, 22),
+            value: chrono::NaiveDate::from_ymd_opt(1990, 1, 22).unwrap(),
         };
         let result = serde_json::to_string(&value).unwrap();
         assert_eq!(result, r#"{"value":"1990-01-22"}"#);
@@ -49,7 +49,7 @@ mod tests {
 
     #[test]
     fn should_deserialize() {
-        let date = chrono::NaiveDate::from_ymd(1990, 1, 22);
+        let date = chrono::NaiveDate::from_ymd_opt(1990, 1, 22).unwrap();
         let result: TestingStruct = serde_json::from_str(r#"{"value":"1990-01-22"}"#).unwrap();
         assert_eq!(result.value, date);
     }
