@@ -68,7 +68,11 @@ mod tests {
     #[tokio::test]
     async fn movie_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
         let cmd = GenreList::movie();
 
         let _m = server
@@ -86,7 +90,11 @@ mod tests {
     #[tokio::test]
     async fn tv_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
         let cmd = GenreList::tv();
 
         let _m = server
@@ -104,7 +112,11 @@ mod tests {
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
         let cmd = GenreList::tv();
 
         let _m = server
@@ -123,7 +135,11 @@ mod tests {
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
         let cmd = GenreList::tv();
 
         let _m = server

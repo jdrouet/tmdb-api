@@ -72,7 +72,8 @@ mod tests {
         let client = Client::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
-            .build();
+            .build()
+            .unwrap();
 
         let _m = server
             .mock("GET", "/tv/1399/season/1")

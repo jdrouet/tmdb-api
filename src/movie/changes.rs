@@ -103,7 +103,11 @@ mod tests {
     #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
 
         let _m = server
             .mock("GET", "/movie/3/changes")
@@ -121,7 +125,11 @@ mod tests {
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
 
         let _m = server
             .mock("GET", "/movie/1/changes")
@@ -140,7 +148,11 @@ mod tests {
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::new("secret".into()).with_base_url(server.url());
+        let client = Client::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
 
         let _m = server
             .mock("GET", "/movie/1/changes")
@@ -169,8 +181,8 @@ mod integration_tests {
         let client = Client::new(secret);
 
         let result = MovieChanges::new(1)
-            .with_start_date(Some(chrono::NaiveDate::from_ymd(2015, 3, 14)))
-            .with_end_date(Some(chrono::NaiveDate::from_ymd(2019, 3, 14)))
+            .with_start_date(Some(chrono::NaiveDate::from_ymd_opt(2015, 3, 14).unwrap()))
+            .with_end_date(Some(chrono::NaiveDate::from_ymd_opt(2019, 3, 14).unwrap()))
             .execute(&client)
             .await
             .unwrap();
