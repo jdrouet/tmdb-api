@@ -4,6 +4,8 @@ pub mod details;
 pub mod search;
 #[cfg(feature = "commands")]
 pub mod similar;
+#[cfg(feature = "commands")]
+pub mod watch_providers;
 
 pub mod episode;
 pub mod season;
