@@ -2,7 +2,7 @@ use std::borrow::Cow;
 
 use crate::common::watch_providers::WatchProviderResult;
 
-/// Get a list of translations that have been created for a movie.
+/// Get a list of watch providers for a movie.
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;
