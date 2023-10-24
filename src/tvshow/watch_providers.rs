@@ -7,7 +7,7 @@ use crate::common::watch_providers::WatchProviderResult;
 /// ```rust
 /// use tmdb_api::prelude::Command;
 /// use tmdb_api::Client;
-/// use tmdb_api::movie::watch_providers::TVShowWatchProviders;
+/// use tmdb_api::tvshow::watch_providers::TVShowWatchProviders;
 ///
 /// #[tokio::main]
 /// async fn main() {
