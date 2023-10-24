@@ -1,5 +1,4 @@
-on:
-  push: {}
+on: [push]
 
 jobs:
   tests:
@@ -7,9 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
       - run: cargo test --features integration
         if: github.repository == 'jdrouet/tmdb-api'
         env:
@@ -31,10 +27,18 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: rustup component add clippy
-      - uses: actions-rs/clippy-check@v1
+      - name: run code check with clippy
+        uses: giraffate/clippy-action@v1
+        if: github.event_name == 'pull_request'
         with:
-          token: "${{ secrets.GITHUB_TOKEN }}"
-          args: --all-features
+          clippy_flags: -- -Dwarnings
+          fail_on_error: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: 'github-pr-review'
+
+      - name: run code check with clippy
+        if: github.event_name != 'pull_request'
+        run: cargo clippy --tests -- -D warnings
 
   lint:
     name: Check all linting
