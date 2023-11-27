@@ -1,15 +1,15 @@
 #[cfg(feature = "commands")]
 pub mod details;
 #[cfg(feature = "commands")]
+pub mod images;
+#[cfg(feature = "commands")]
+pub mod latest;
+#[cfg(feature = "commands")]
 pub mod search;
 #[cfg(feature = "commands")]
 pub mod similar;
 #[cfg(feature = "commands")]
 pub mod watch_providers;
-#[cfg(feature = "commands")]
-pub mod latest;
-#[cfg(feature = "commands")]
-pub mod images;
 
 pub mod episode;
 pub mod season;
