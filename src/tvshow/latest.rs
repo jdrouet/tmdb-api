@@ -72,7 +72,7 @@ mod tests {
             .await;
 
         let result = TVShowLatest::default().execute(&client).await.unwrap();
-        assert_eq!(result.inner.id, 1061997);
+        assert_eq!(result.inner.id, 1399);
     }
 
     #[tokio::test]
