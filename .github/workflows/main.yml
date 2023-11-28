@@ -1,9 +1,12 @@
-on: [push, pull_request_target]
+on: [push, pull_request, pull_request_target]
 
 jobs:
   tests:
     name: Test on stable
     runs-on: ubuntu-latest
+    concurrency: 
+      group: ${{ github.ref }}-tests
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v2
       - run: cargo test --features integration
@@ -16,6 +19,9 @@ jobs:
   check-features:
     name: Ensure all features are building correctly
     runs-on: ubuntu-latest
+    concurrency: 
+      group: ${{ github.ref }}-check-features
+      cancel-in-progress: true
     steps:
       - uses: taiki-e/install-action@cargo-hack
       - uses: actions/checkout@v1
@@ -24,6 +30,9 @@ jobs:
   clippy:
     name: Check clippy suggestions
     runs-on: ubuntu-latest
+    concurrency: 
+      group: ${{ github.ref }}-clippy
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v1
       - run: rustup component add clippy
@@ -43,6 +52,9 @@ jobs:
   lint:
     name: Check all linting
     runs-on: ubuntu-latest
+    concurrency: 
+      group: ${{ github.ref }}-lint
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v1
       - run: cargo fmt --all --check
