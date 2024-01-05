@@ -1,0 +1,423 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/9TXcHOeCsM8W3ZKKIKjdYUsRSeq.jpg",
+      "genre_ids": [
+        80,
+        18
+      ],
+      "id": 72879,
+      "origin_country": [
+        "FR"
+      ],
+      "original_language": "fr",
+      "original_name": "Demain nous appartient",
+      "overview": "The story revolves around the people of Sète, France. Their lives are punctuated by family rivalries, romance and scenes from daily life, but also by plots involving police investigations, secrets and betrayals.",
+      "popularity": 3134.184,
+      "poster_path": "/3uU5uJzOX7xe7mn7YKpBM9oiEZO.jpg",
+      "first_air_date": "2017-07-17",
+      "name": "Tomorrow Is Ours",
+      "vote_average": 6.085,
+      "vote_count": 47
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/qmcoEOrTm6BcgR4iO7KBQKE9AKT.jpg",
+      "genre_ids": [
+        80,
+        18,
+        10759
+      ],
+      "id": 4614,
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "NCIS",
+      "overview": "From murder and espionage to terrorism and stolen submarines, a team of special agents investigates any crime that has a shred of evidence connected to Navy and Marine Corps personnel, regardless of rank or position.",
+      "popularity": 2727.563,
+      "poster_path": "/2exOHePjOTquUsbThPGhuEjYTyA.jpg",
+      "first_air_date": "2003-09-23",
+      "name": "NCIS",
+      "vote_average": 7.616,
+      "vote_count": 2099
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/oOce9hLMVFubjAJliau4kiSNPnW.jpg",
+      "genre_ids": [
+        80,
+        18
+      ],
+      "id": 549,
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Law & Order",
+      "overview": "In cases ripped from the headlines, police investigate serious and often deadly crimes, weighing the evidence and questioning the suspects until someone is taken into custody. The district attorney's office then builds a case to convict the perpetrator by proving the person guilty beyond a reasonable doubt. Working together, these expert teams navigate all sides of the complex criminal justice system to make New York a safer place.",
+      "popularity": 2589.859,
+      "poster_path": "/77OPlbsvX3pzoFbyfpcE3GXMCod.jpg",
+      "first_air_date": "1990-09-13",
+      "name": "Law & Order",
+      "vote_average": 7.4,
+      "vote_count": 495
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/eWF3oRyL4QWaidN9F4uvM7cBJUV.jpg",
+      "genre_ids": [
+        10766
+      ],
+      "id": 206559,
+      "origin_country": [
+        "ZA"
+      ],
+      "original_language": "af",
+      "original_name": "Binnelanders",
+      "overview": "A South African Afrikaans soap opera. It is set in and around the fictional private hospital, Binneland Kliniek, in Pretoria, and the storyline follows the trials, trauma and tribulations of the staff and patients of the hospital.",
+      "popularity": 3580.903,
+      "poster_path": "/v9nGSRx5lFz6KEgfmgHJMSgaARC.jpg",
+      "first_air_date": "2005-10-13",
+      "name": "Binnelanders",
+      "vote_average": 5.575,
+      "vote_count": 20
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/rj3jBAZwPiOgkwAy1205MAgLahj.jpg",
+      "genre_ids": [
+        10766
+      ],
+      "id": 81329,
+      "origin_country": [
+        "FR"
+      ],
+      "original_language": "fr",
+      "original_name": "Un si grand soleil",
+      "overview": "",
+      "popularity": 2450.222,
+      "poster_path": "/t6jVlbPMtZOJoAOfeoR4yQmnjXM.jpg",
+      "first_air_date": "2018-08-27",
+      "name": "Chronicles of the Sun",
+      "vote_average": 7.491,
+      "vote_count": 53
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/4W2sH4CXzJ98ScuLGRij1KakzSv.jpg",
+      "genre_ids": [
+        10751,
+        35
+      ],
+      "id": 230525,
+      "origin_country": [
+        "KR"
+      ],
+      "original_language": "ko",
+      "original_name": "우당탕탕 패밀리",
+      "overview": "A romantic family drama about a divorced couple who broke up 30 years ago out of hate, reuniting as in-laws through their children and overcoming long overdue conflicts and enmity.",
+      "popularity": 2212.633,
+      "poster_path": "/goMzJ6rxTndGki2pKpyAKuKNXHY.jpg",
+      "first_air_date": "2023-09-18",
+      "name": "Unpredictable Family",
+      "vote_average": 6.8,
+      "vote_count": 5
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/pg5YXJzHfA2wWru1EayHk3Ztd2d.jpg",
+      "genre_ids": [
+        18,
+        80,
+        10766
+      ],
+      "id": 209265,
+      "origin_country": [
+        "BR"
+      ],
+      "original_language": "pt",
+      "original_name": "Terra e Paixão",
+      "overview": "When her husband is killed in a land grabbing attempt, Aline takes charge of cultivating his land and protecting his family. Facing the powerful Antonio La Selva, responsible for the death of her husband and the largest landowner in the region, Aline is determined to keep possession of her land and invest in its production. However, she didn't expect that she would fall in love with Daniel, son of her rival, who is at odds with his rebellious half-brother, Caio, who, in turn, also falls in love with the girl. In the interior of Brazil, Aline will have to fight two battles: the dispute for her lands and for her heart.",
+      "popularity": 2171.954,
+      "poster_path": "/uepOV5gGm58evBKHpAtHePYtNYc.jpg",
+      "first_air_date": "2023-05-08",
+      "name": "Land of Desire",
+      "vote_average": 6.474,
+      "vote_count": 135
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/qZ7CdO7rkH0KyCxvZBoP4Mm2cQL.jpg",
+      "genre_ids": [
+        10767,
+        99
+      ],
+      "id": 132544,
+      "origin_country": [
+        "KR"
+      ],
+      "original_language": "ko",
+      "original_name": "위대한 수업, 그레이트 마인즈",
+      "overview": "",
+      "popularity": 2308.265,
+      "poster_path": "/lj46PSaBziqCqbGXlmnXN325biA.jpg",
+      "first_air_date": "2021-08-30",
+      "name": "Great Minds",
+      "vote_average": 4.6,
+      "vote_count": 10
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/46PJ9taXITt1aXPZTMJXpBw5MlU.jpg",
+      "genre_ids": [
+        18
+      ],
+      "id": 232937,
+      "origin_country": [
+        "MX"
+      ],
+      "original_language": "es",
+      "original_name": "Minas de Pasión",
+      "overview": "Emilia a single mother who works in a mine fall in love with Leonardo the son of Roberta Castro the most powerful of the people. Roberta will seek revenge on Emilia by making her life miserable.",
+      "popularity": 2133.208,
+      "poster_path": "/lLJBisfhikqTD0Cj9a2ZJw5kyOe.jpg",
+      "first_air_date": "2023-08-21",
+      "name": "Minas de Pasión",
+      "vote_average": 7.6,
+      "vote_count": 34
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/wrhLyiY7ksW0fQCqNpa52qiOAH8.jpg",
+      "genre_ids": [
+        10759,
+        80,
+        18
+      ],
+      "id": 108978,
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Reacher",
+      "overview": "Jack Reacher, a veteran military police investigator, has just recently entered civilian life. Reacher is a drifter, carrying no phone and the barest of essentials as he travels the country and explores the nation he once served.",
+      "popularity": 2098.308,
+      "poster_path": "/jFuH0md41x5mB4qj5344mSmtHrO.jpg",
+      "first_air_date": "2022-02-03",
+      "name": "Reacher",
+      "vote_average": 8.094,
+      "vote_count": 1090
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/3oZgE4220UrqaaiZXxz5MtNCVxJ.jpg",
+      "genre_ids": [
+        10764
+      ],
+      "id": 12513,
+      "origin_country": [
+        "ES"
+      ],
+      "original_language": "es",
+      "original_name": "Operación Triunfo",
+      "overview": "Reality-show talent contest aimed to find the country's next solo singing sensation, putting a selection of hopefuls through their paces by getting them to sing a variety of cover versions of popular songs, with tutoring from various professionals.",
+      "popularity": 2126.567,
+      "poster_path": "/8Qfq22zP5PeUKJfN5bFPFJtJz5i.jpg",
+      "first_air_date": "2001-10-22",
+      "name": "Operación Triunfo",
+      "vote_average": 5.846,
+      "vote_count": 13
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/yYNa1nqvNK94xZz3eKyfvZdAvPi.jpg",
+      "genre_ids": [
+        10766
+      ],
+      "id": 112470,
+      "origin_country": [
+        "FR"
+      ],
+      "original_language": "fr",
+      "original_name": "Ici tout commence",
+      "overview": "",
+      "popularity": 1973.036,
+      "poster_path": "/60cqjI590JKXCAABqCStVmSBGET.jpg",
+      "first_air_date": "2020-11-02",
+      "name": "Here it all begins",
+      "vote_average": 6.7,
+      "vote_count": 33
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/i8iqYtAy9qcO5RSrA1f6fY1n6SN.jpg",
+      "genre_ids": [
+        10766
+      ],
+      "id": 235484,
+      "origin_country": [
+        "ZA"
+      ],
+      "original_language": "af",
+      "original_name": "Suidooster",
+      "overview": "Suidooster is a South African television soap opera produced by Suidooster Films which revolves around a matriarch, her family, friends and the people of Suidooster, a small shopping and business centre in the fictional Cape Town suburb of Ruiterbosch.",
+      "popularity": 2025.579,
+      "poster_path": "/u4tPY6df9atOne5soyW7vUyRgvD.jpg",
+      "first_air_date": "2015-11-16",
+      "name": "Suidooster",
+      "vote_average": 8.5,
+      "vote_count": 4
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/2Bkqjc9tNWo3KLr1aRYyJ7vMQtM.jpg",
+      "genre_ids": [
+        10764
+      ],
+      "id": 235493,
+      "origin_country": [
+        "NL"
+      ],
+      "original_language": "nl",
+      "original_name": "De Bondgenoten",
+      "overview": "",
+      "popularity": 1873.388,
+      "poster_path": "/wsipinibYxrZhpkQ6MKxIMgL0hv.jpg",
+      "first_air_date": "2023-10-22",
+      "name": "De Bondgenoten",
+      "vote_average": 6.333,
+      "vote_count": 3
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/pEJL28C17jVPCwUipGO0JdTUobO.jpg",
+      "genre_ids": [
+        35,
+        10766
+      ],
+      "id": 213026,
+      "origin_country": [
+        "BR"
+      ],
+      "original_language": "pt",
+      "original_name": "Fuzuê",
+      "overview": "The department store Fuzue, specialized in popular items, is a success led by Nero Braga e Silva. Little does he know that the store's grounds have hidden relics for over 300 years.",
+      "popularity": 1954.024,
+      "poster_path": "/zNNFg8z3z7uT817n6M0kHRcYwq1.jpg",
+      "first_air_date": "2023-08-14",
+      "name": "Fuzue",
+      "vote_average": 5.739,
+      "vote_count": 23
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/179sUCj5AcFKdQpvDhkIX15NRgy.jpg",
+      "genre_ids": [
+        18,
+        10759,
+        80
+      ],
+      "id": 146176,
+      "origin_country": [
+        "ES"
+      ],
+      "original_language": "es",
+      "original_name": "Berlín",
+      "overview": "During his glory days, Berlin and a gang assembled in Paris for one of his greatest plans ever: stealing 44 million euros' worth of jewels in one night.",
+      "popularity": 1830.018,
+      "poster_path": "/69YuvoiWTtK6oyYH2Jl4Q6SgZ59.jpg",
+      "first_air_date": "2023-12-29",
+      "name": "Berlin",
+      "vote_average": 7.823,
+      "vote_count": 124
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/eDxBkRZRmbzwCxVqY1oSyTKNIid.jpg",
+      "genre_ids": [
+        35
+      ],
+      "id": 2316,
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "The Office",
+      "overview": "The everyday lives of office employees in the Scranton, Pennsylvania branch of the fictional Dunder Mifflin Paper Company.",
+      "popularity": 1825.117,
+      "poster_path": "/7DJKHzAi83BmQrWLrYYOqcoKfhR.jpg",
+      "first_air_date": "2005-03-24",
+      "name": "The Office",
+      "vote_average": 8.589,
+      "vote_count": 3615
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/feZaJvuAYpioLHQ252wYUcjy6xL.jpg",
+      "genre_ids": [],
+      "id": 239559,
+      "origin_country": [
+        "MX"
+      ],
+      "original_language": "es",
+      "original_name": "El Maleficio",
+      "overview": "",
+      "popularity": 1775.515,
+      "poster_path": "/kigrjsIbNKvBCh5RYXtjnmyvLW.jpg",
+      "first_air_date": "2023-11-13",
+      "name": "El Maleficio",
+      "vote_average": 6.182,
+      "vote_count": 11
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/65Y6PweSvQ1OOFBzStybjipURRP.jpg",
+      "genre_ids": [
+        80,
+        18,
+        9648
+      ],
+      "id": 4057,
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Criminal Minds",
+      "overview": "An elite team of FBI profilers analyze the country's most twisted criminal minds, anticipating their next moves before they strike again. The Behavioral Analysis Unit's most experienced agent is David Rossi, a founding member of the BAU who returns to help the team solve new cases.",
+      "popularity": 1719.582,
+      "poster_path": "/7TCwgX7oQKxcWYEhSPRmaHe6ULN.jpg",
+      "first_air_date": "2005-09-22",
+      "name": "Criminal Minds",
+      "vote_average": 8.3,
+      "vote_count": 3498
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/218ZehBKlH8efPRRccmB7bu0oLQ.jpg",
+      "genre_ids": [
+        35,
+        9648,
+        10766,
+        18
+      ],
+      "id": 219109,
+      "origin_country": [
+        "BR"
+      ],
+      "original_language": "pt",
+      "original_name": "Elas por Elas",
+      "overview": "Seven friends who met in their youth at an English course meet again 25 years later; Lara, Taís, Helena, Adriana, Renée, Natália and Carol, each of them has a different personality and origin, but they share a deep affection.",
+      "popularity": 1711.967,
+      "poster_path": "/m0cvvnhnRXdQhLARx7qt9lz7hTE.jpg",
+      "first_air_date": "2023-09-25",
+      "name": "Elas por Elas",
+      "vote_average": 5.544,
+      "vote_count": 34
+    }
+  ],
+  "total_pages": 8098,
+  "total_results": 161947
+}

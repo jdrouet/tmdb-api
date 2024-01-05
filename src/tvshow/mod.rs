@@ -5,6 +5,8 @@ pub mod images;
 #[cfg(feature = "commands")]
 pub mod latest;
 #[cfg(feature = "commands")]
+pub mod popular;
+#[cfg(feature = "commands")]
 pub mod search;
 #[cfg(feature = "commands")]
 pub mod similar;
