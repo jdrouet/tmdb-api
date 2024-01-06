@@ -136,7 +136,6 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use super::TVShowPopular;
-    use crate::common::PaginatedResult;
     use crate::prelude::Command;
     use crate::Client;
 
