@@ -1,4 +1,10 @@
-on: [push]
+on:
+  merge_group:
+  workflow_call:
+  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   tests:
