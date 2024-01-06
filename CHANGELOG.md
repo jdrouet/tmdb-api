@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.3](https://github.com/jdrouet/tmdb-api/compare/v0.5.2...v0.5.3) - 2024-01-06
+
+### Added
+- add popular for tv show
+
+### Other
+- fix the workflow to be triggered by PRs
+- remove unused import
+
 ## [0.5.2](https://github.com/jdrouet/tmdb-api/compare/v0.5.1...v0.5.2) - 2023-11-28
 
 ### Added
