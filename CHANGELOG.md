@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0](https://github.com/jdrouet/tmdb-api/compare/v0.5.3...v0.6.0) - 2024-01-21
+
+### Added
+- add collections
+
+### Other
+- lint
+- add quotes to the refresh script variables
+- *(collection)* add collection details to the refresh script
+- typo fix
+- add .env file to .gitignore
+- *(deps)* bump h2 from 0.3.20 to 0.3.24
+
 ## [0.5.3](https://github.com/jdrouet/tmdb-api/compare/v0.5.2...v0.5.3) - 2024-01-06
 
 ### Added
