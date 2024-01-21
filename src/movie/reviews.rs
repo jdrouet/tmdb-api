@@ -1,6 +1,6 @@
-use crate::common::PaginatedResult;
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
+
+use crate::common::PaginatedResult;
 
 /// Get the release date along with the certification for a movie.
 ///

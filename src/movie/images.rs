@@ -1,7 +1,5 @@
 use std::borrow::Cow;
 
-use serde::{Deserialize, Serialize};
-
 use crate::common::image::Image;
 
 /// Get the images that belong to a movie.

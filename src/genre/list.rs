@@ -1,7 +1,5 @@
 use std::borrow::Cow;
 
-use serde::{Deserialize, Serialize};
-
 use super::Genre;
 
 const TV_PATH: &str = "/genre/tv/list";

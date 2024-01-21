@@ -1,7 +1,7 @@
-use crate::common::PaginatedResult;
 use chrono::NaiveDate;
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
+
+use crate::common::PaginatedResult;
 
 /// Get a list of movies in theatres. This is a release type query that looks for
 /// all movies that have a release type of 2 or 3 within the specified date range.

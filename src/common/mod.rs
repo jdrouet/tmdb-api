@@ -8,8 +8,6 @@ pub mod status;
 pub mod video;
 pub mod watch_providers;
 
-use serde::{Deserialize, Serialize};
-
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct PaginatedResult<T> {
     pub page: u64,

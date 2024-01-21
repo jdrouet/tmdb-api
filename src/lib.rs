@@ -5,6 +5,11 @@
 #![warn(clippy::all, rust_2018_idioms)]
 #![forbid(unsafe_code)]
 
+#[macro_use]
+extern crate serde;
+#[macro_use]
+extern crate serde_repr;
+
 /// The used version of reqwest
 #[cfg(feature = "commands")]
 pub use reqwest;

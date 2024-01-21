@@ -19,7 +19,7 @@ where
 
 #[cfg(test)]
 mod tests {
-    #[derive(Debug, serde::Serialize, serde::Deserialize)]
+    #[derive(Debug, Serialize, Deserialize)]
     struct TestingStruct {
         #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
         value: Option<String>,

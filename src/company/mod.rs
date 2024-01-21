@@ -5,8 +5,6 @@ pub mod details;
 #[cfg(feature = "commands")]
 pub mod images;
 
-use serde::{Deserialize, Serialize};
-
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CompanyShort {
     pub id: u64,

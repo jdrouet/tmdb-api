@@ -1,5 +1,3 @@
-use serde::{Deserialize, Serialize};
-
 use crate::people::PersonShort;
 
 #[derive(Debug, Deserialize, Serialize)]
