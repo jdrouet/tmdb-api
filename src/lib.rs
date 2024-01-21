@@ -2,6 +2,9 @@
 //!
 //! It provides a support for async and implements each command using the Command pattern.
 
+#![warn(clippy::all, rust_2018_idioms)]
+#![forbid(unsafe_code)]
+
 /// The used version of reqwest
 #[cfg(feature = "commands")]
 pub use reqwest;
