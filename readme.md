@@ -1,6 +1,6 @@
 # Rust client for The Movie DB API
 
-This is yet another client for TMDB but it supports async functions.
+This is yet another client for TMDB, but it supports async functions.
 
 ## Installing
 
@@ -34,7 +34,7 @@ async fn main() {
 cargo test
 ```
 
-If you want to run some integration tests, just export a `TMDB_TOKEN_V3` environemnt variable and run
+If you want to run some integration tests, just export a `TMDB_TOKEN_V3` environment variable and run
 
 ```bash
 cargo test --features integration
