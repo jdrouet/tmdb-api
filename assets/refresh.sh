@@ -14,6 +14,9 @@ function call() {
 call /certification/movie/list certification-movie-list
 call /certification/tv/list certification-tv-list
 
+# collection
+call /collection/10 collection-details
+
 # changes
 call /movie/changes movie-all-changes
 call /tv/changes tv-all-changes
