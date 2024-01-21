@@ -6,7 +6,7 @@ use std::borrow::Cow;
 /// Get a list of movies in theatres. This is a release type query that looks for
 /// all movies that have a release type of 2 or 3 within the specified date range.
 ///
-/// You can optionally specify a region prameter which will narrow the search
+/// You can optionally specify a region parameter which will narrow the search
 /// to only look for theatrical release dates within the specified country.
 ///
 /// ```rust

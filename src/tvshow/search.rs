@@ -28,7 +28,7 @@ pub struct TVShowSearch {
     pub language: Option<String>,
     /// Which page to query.
     pub page: Option<u32>,
-    /// Whether to inlcude adult (pornography) content in the results.
+    /// Whether to include adult (pornography) content in the results.
     pub include_adult: bool,
     pub first_air_date_year: Option<u16>,
 }

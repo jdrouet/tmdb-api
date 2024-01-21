@@ -28,7 +28,7 @@ pub struct MovieSearch {
     pub language: Option<String>,
     /// Which page to query.
     pub page: Option<u32>,
-    /// Whether to inlcude adult (pornography) content in the results.
+    /// Whether to include adult (pornography) content in the results.
     pub include_adult: bool,
     /// ISO 3166-1 code to filter release region. Must be uppercase.
     pub region: Option<String>,
