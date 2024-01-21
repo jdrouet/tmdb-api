@@ -4,9 +4,9 @@ export API_KEY=$1
 
 function call() {
     if [ -z "$3" ]; then
-        curl "https://api.themoviedb.org/3$1?api_key=$API_KEY" | jq . > assets/$2.json
+        curl "https://api.themoviedb.org/3$1?api_key=$API_KEY" | jq . > assets/"$2".json
     else
-        curl "https://api.themoviedb.org/3$1?api_key=$API_KEY&$3" | jq . > assets/$2.json
+        curl "https://api.themoviedb.org/3$1?api_key=$API_KEY&$3" | jq . > assets/"$2".json
     fi
 }
 
