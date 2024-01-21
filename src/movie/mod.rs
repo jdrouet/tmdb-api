@@ -45,6 +45,7 @@ use crate::common::country::Country;
 use crate::common::language::Language;
 use crate::common::status::Status;
 use crate::company::CompanyShort;
+use crate::collection::CollectionBase;
 use crate::genre::Genre;
 use serde::{Deserialize, Serialize};
 
@@ -82,6 +83,7 @@ pub struct Movie {
     #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub homepage: Option<String>,
     pub imdb_id: Option<String>,
+    pub belongs_to_collection: Option<CollectionBase>,
     pub production_companies: Vec<CompanyShort>,
     pub production_countries: Vec<Country>,
     pub revenue: u64,

@@ -10,6 +10,7 @@ pub mod certification;
 pub mod changes;
 #[cfg(feature = "commands")]
 pub mod client;
+pub mod collection;
 pub mod company;
 pub mod error;
 pub mod genre;
