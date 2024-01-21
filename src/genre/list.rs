@@ -1,6 +1,8 @@
-use super::Genre;
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
+
+use serde::{Deserialize, Serialize};
+
+use super::Genre;
 
 const TV_PATH: &str = "/genre/tv/list";
 const MOVIE_PATH: &str = "/genre/movie/list";
@@ -60,10 +62,12 @@ impl crate::prelude::Command for GenreList {
 
 #[cfg(test)]
 mod tests {
-    use super::GenreList;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::GenreList;
 
     #[tokio::test]
     async fn movie_works() {
@@ -158,9 +162,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::GenreList;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::GenreList;
 
     #[tokio::test]
     async fn execute_tv() {

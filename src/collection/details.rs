@@ -10,13 +10,13 @@ use std::borrow::Cow;
 ///
 /// #[tokio::main]
 /// async fn main() {
-/// 	let client = Client::new("this-is-my-secret-token".into());
+///     let client = Client::new("this-is-my-secret-token".into());
 ///     let cmd = CollectionDetails::new(1);
 ///     let result = cmd.execute(&client).await;
-/// 	match result {
+///     match result {
 ///         Ok(res) => println!("found: {:#?}", res),
 ///         Err(err) => eprintln!("error: {:?}", err),
-/// 	};
+///     };
 /// }
 /// ```
 #[derive(Clone, Debug, Default)]
@@ -30,34 +30,34 @@ pub struct CollectionDetails {
 #[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "lowercase")]
 pub enum MediaType {
-	Movie,
+    Movie,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct CollectionDetailsResult {
-	#[serde(flatten)]
-	pub inner: super::CollectionBase,
+    #[serde(flatten)]
+    pub inner: super::CollectionBase,
     pub parts: Vec<Media>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Media {
-	pub id: u64,
-	pub media_type: MediaType,
+    pub id: u64,
+    pub media_type: MediaType,
     pub title: String,
     pub original_language: String,
     pub original_title: String,
     pub overview: String,
     pub poster_path: Option<String>,
-	pub backdrop_path: Option<String>,
+    pub backdrop_path: Option<String>,
     pub genre_ids: Vec<u32>,
     pub popularity: f64,
-	pub adult: bool,
+    pub adult: bool,
     pub video: bool,
     pub vote_average: f64,
     pub vote_count: u64,
-	#[serde(default, with = "crate::util::optional_date")]
-	pub release_date: Option<chrono::NaiveDate>,
+    #[serde(default, with = "crate::util::optional_date")]
+    pub release_date: Option<chrono::NaiveDate>,
 }
 
 impl CollectionDetails {
@@ -137,7 +137,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = CollectionDetails::new(0).execute(&client).await.unwrap_err();
+        let err = CollectionDetails::new(0)
+            .execute(&client)
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
     }
@@ -160,7 +163,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = CollectionDetails::new(0).execute(&client).await.unwrap_err();
+        let err = CollectionDetails::new(0)
+            .execute(&client)
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);
     }
@@ -183,4 +189,3 @@ mod integration_tests {
         }
     }
 }
-

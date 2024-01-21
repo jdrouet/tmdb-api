@@ -1,6 +1,8 @@
-use crate::common::PaginatedResult;
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
+
+use serde::{Deserialize, Serialize};
+
+use crate::common::PaginatedResult;
 
 /// Get a list of lists that this movie belongs to.
 ///
@@ -84,10 +86,12 @@ impl crate::prelude::Command for MovieLists {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieLists;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MovieLists;
 
     #[tokio::test]
     async fn it_works() {
@@ -161,9 +165,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieLists;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MovieLists;
 
     #[tokio::test]
     async fn execute() {
