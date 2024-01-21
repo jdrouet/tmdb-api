@@ -1,6 +1,8 @@
-use crate::common::image::Image;
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
+
+use serde::{Deserialize, Serialize};
+
+use crate::common::image::Image;
 
 /// Get the images that belong to a movie.
 ///
@@ -68,10 +70,12 @@ impl crate::prelude::Command for MovieImages {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieImages;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MovieImages;
 
     #[tokio::test]
     async fn it_works() {
@@ -147,9 +151,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieImages;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MovieImages;
 
     #[tokio::test]
     async fn execute() {

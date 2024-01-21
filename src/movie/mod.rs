@@ -41,11 +41,11 @@ pub mod videos;
 #[cfg(feature = "commands")]
 pub mod watch_providers;
 
+use crate::collection::CollectionBase;
 use crate::common::country::Country;
 use crate::common::language::Language;
 use crate::common::status::Status;
 use crate::company::CompanyShort;
-use crate::collection::CollectionBase;
 use crate::genre::Genre;
 use serde::{Deserialize, Serialize};
 
