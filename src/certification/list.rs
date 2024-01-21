@@ -1,7 +1,7 @@
-use super::Certification;
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 use std::collections::HashMap;
+
+use super::Certification;
 
 const TV_PATH: &str = "/certification/tv/list";
 const MOVIE_PATH: &str = "/certification/movie/list";

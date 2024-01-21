@@ -1,5 +1,4 @@
 use chrono::NaiveDate;
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
 /// Command to get changes for a movie

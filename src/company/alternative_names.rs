@@ -1,4 +1,3 @@
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
 /// Command to get details of a company

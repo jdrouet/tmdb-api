@@ -1,6 +1,6 @@
-use crate::common::image::Image;
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
+
+use crate::common::image::Image;
 
 /// Get the images that belong to a show.
 ///

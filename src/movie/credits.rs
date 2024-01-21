@@ -1,4 +1,3 @@
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
 use crate::common::credits::{Cast, Crew};

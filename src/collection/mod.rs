@@ -1,5 +1,3 @@
-use serde::{Deserialize, Serialize};
-
 #[cfg(feature = "commands")]
 pub mod details;
 

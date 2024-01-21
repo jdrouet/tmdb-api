@@ -1,4 +1,4 @@
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Image {
     pub aspect_ratio: f64,
     pub file_path: String,

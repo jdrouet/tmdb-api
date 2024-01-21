@@ -1,7 +1,5 @@
 use std::borrow::Cow;
 
-use serde::{Deserialize, Serialize};
-
 use crate::common::PaginatedResult;
 
 /// Get a list of lists that this movie belongs to.

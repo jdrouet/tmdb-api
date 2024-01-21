@@ -33,7 +33,7 @@ where
 mod tests {
     use chrono::NaiveDate;
 
-    #[derive(Debug, serde::Serialize, serde::Deserialize)]
+    #[derive(Debug, Serialize, Deserialize)]
     struct TestingStruct {
         #[serde(deserialize_with = "crate::util::empty_date::deserialize")]
         value: Option<NaiveDate>,

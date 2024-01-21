@@ -1,15 +1,15 @@
-#[derive(Debug, serde::Deserialize, serde::Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct ServerOtherBodyError {
     pub status_code: u16,
     pub status_message: String,
 }
 
-#[derive(Debug, serde::Deserialize, serde::Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct ServerValidationBodyError {
     pub errors: Vec<String>,
 }
 
-#[derive(Debug, serde::Deserialize, serde::Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum ServerBodyError {
     Other(ServerOtherBodyError),

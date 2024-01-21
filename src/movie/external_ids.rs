@@ -1,4 +1,3 @@
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
 /// Command to get similar movies to a movie

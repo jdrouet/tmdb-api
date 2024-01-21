@@ -1,6 +1,6 @@
-use crate::common::keyword::Keyword;
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
+
+use crate::common::keyword::Keyword;
 
 /// Get the keywords that have been added to a movie.
 ///

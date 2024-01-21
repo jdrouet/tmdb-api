@@ -1,6 +1,6 @@
-use crate::common::release_date::LocatedReleaseDates;
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
+
+use crate::common::release_date::LocatedReleaseDates;
 
 /// Get the release date along with the certification for a movie.
 ///

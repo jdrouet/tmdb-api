@@ -1,4 +1,3 @@
-use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
 /// Get a list of translations that have been created for a movie.

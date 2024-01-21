@@ -32,7 +32,7 @@ where
 
 #[cfg(test)]
 mod tests {
-    #[derive(Debug, serde::Serialize, serde::Deserialize)]
+    #[derive(Debug, Serialize, Deserialize)]
     struct TestingStruct {
         #[serde(with = "crate::util::date")]
         value: chrono::NaiveDate,

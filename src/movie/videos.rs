@@ -41,7 +41,7 @@ impl MovieVideos {
     }
 }
 
-#[derive(Debug, serde::Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct MovieVideosResult {
     pub id: u64,
     pub results: Vec<Video>,

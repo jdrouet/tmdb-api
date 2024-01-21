@@ -21,7 +21,6 @@ use crate::common::language::Language;
 use crate::company::CompanyShort;
 use crate::genre::Genre;
 use crate::people::PersonShort;
-use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TVShowBase {
