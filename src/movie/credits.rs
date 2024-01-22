@@ -24,20 +24,20 @@ use crate::common::credits::{Cast, Crew};
 pub struct MovieCredits {
     /// ID of the Movie
     pub movie_id: u64,
-    /// The country to filter the alternative titles
-    pub country: Option<String>,
+    /// ISO 639-1 value to display translated data for the fields that support it.
+    pub language: Option<String>,
 }
 
 impl MovieCredits {
     pub fn new(movie_id: u64) -> Self {
         Self {
             movie_id,
-            country: None,
+            language: None,
         }
     }
 
-    pub fn with_country(mut self, value: Option<String>) -> Self {
-        self.country = value;
+    pub fn with_language(mut self, value: Option<String>) -> Self {
+        self.language = value;
         self
     }
 }
@@ -57,7 +57,7 @@ impl crate::prelude::Command for MovieCredits {
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        if let Some(ref country) = self.country {
+        if let Some(ref country) = self.language {
             vec![("country", Cow::Borrowed(country))]
         } else {
             Vec::new()
@@ -162,7 +162,7 @@ mod integration_tests {
         let client = Client::new(secret);
 
         let result = MovieCredits::new(550)
-            .with_country(Some("fr-FR".into()))
+            .with_language(Some("fr-FR".into()))
             .execute(&client)
             .await
             .unwrap();
