@@ -1,3 +1,4 @@
+use crate::common::MediaType;
 use std::borrow::Cow;
 
 /// Command to get the details of a collection
@@ -24,12 +25,6 @@ pub struct CollectionDetails {
     pub collection_id: u64,
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<String>,
-}
-
-#[derive(Debug, Deserialize, Serialize)]
-#[serde(rename_all = "lowercase")]
-pub enum MediaType {
-    Movie,
 }
 
 #[derive(Debug, Deserialize, Serialize)]

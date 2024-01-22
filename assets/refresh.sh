@@ -68,3 +68,7 @@ call /tv/1399 tv-details
 call /tv/1399/similar tv-similar
 call /tv/1399/season/1 tv-season-details
 call /tv/1399/season/1/episode/1 tv-episode-details
+
+# watch providers
+call /watch/providers/movie watch-provider-movie-list
+call /watch/providers/tv watch-provider-tv-list
