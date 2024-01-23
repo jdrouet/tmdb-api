@@ -27,7 +27,7 @@ pub mod people;
 #[cfg(feature = "commands")]
 pub mod prelude;
 pub mod tvshow;
-pub mod watch_providers;
+pub mod watch_provider;
 
 pub mod common;
 mod util;
