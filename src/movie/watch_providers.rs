@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-use crate::watch_providers::WatchProviderResult;
+use crate::watch_provider::WatchProviderResult;
 
 /// Get a list of watch providers for a movie.
 ///
