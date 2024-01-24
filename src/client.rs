@@ -92,12 +92,11 @@ impl ClientBuilder {
             api_key,
 	        #[cfg(feature = "tokio-rate-limit")]
             // Subtract the request interval to ensure that the first request is sent immediately.
-	         start_timestamp: Instant::now().sub(request_interval),
+	        start_timestamp: Instant::now().sub(request_interval),
 	        #[cfg(feature = "tokio-rate-limit")]
 	        last_request_timestamp_ms: RwLock::new(0),
 	        #[cfg(feature = "tokio-rate-limit")]
 	        request_interval_ms: request_interval.as_millis() as u64,
-
         })
     }
 }
