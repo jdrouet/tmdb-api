@@ -11,7 +11,7 @@ use tokio::{
 
 const BASE_URL: &str = "https://api.themoviedb.org/3";
 #[cfg(feature = "tokio-rate-limit")]
-const REQUESTS_PER_SECOND: u64 = 50;
+const REQUESTS_PER_SECOND: u64 = 49;
 
 #[derive(Debug)]
 pub enum ClientBuilderError {
