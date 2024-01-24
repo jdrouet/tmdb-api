@@ -81,6 +81,7 @@ pub struct Movie {
     pub genres: Vec<Genre>,
     #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub homepage: Option<String>,
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub imdb_id: Option<String>,
     pub belongs_to_collection: Option<CollectionBase>,
     pub production_companies: Vec<CompanyShort>,

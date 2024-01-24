@@ -33,7 +33,9 @@ impl MovieExternalIds {
 #[derive(Debug, Deserialize, Serialize)]
 pub struct MovieExternalIdsResult {
     pub id: u64,
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub imdb_id: Option<String>,
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub facebook_id: Option<String>,
     pub instagram_id: Option<String>,
     pub twitter_id: Option<String>,
