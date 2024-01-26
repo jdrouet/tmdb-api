@@ -177,7 +177,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
 
-        for i in &[10] {
+        for i in &[10, 1196769] {
             let result = CollectionDetails::new(*i).execute(&client).await.unwrap();
             assert_eq!(result.inner.id, *i);
         }
