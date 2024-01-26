@@ -6,6 +6,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0](https://github.com/jdrouet/tmdb-api/compare/v0.6.0...v0.7.0) - 2024-01-26
+
+### Added
+- *(tokio-rate-limit)* add a rate limit feature using the tokio runtime
+- *(watch-provider)* add watch provider list
+
+### Fixed
+- *(tokio-rate-limit)* lower default rate limit
+- *(movies)* deserialize empty string as None
+- *(collection)* nullable overview field
+- *(tokio-rate-limit)* missing feature macro
+- *(collection)* missing overview field
+- *(movies)* credits `country` url param corrected to `language`
+- serde global macro use
+- clippy and forbid unsafe code enforcement
+
+### Other
+- disable non working endpoint for /tv/latest
+- lint
+- empty rustfmt file
+- *(watch-provider)* typo fix
+
 ## [0.6.0](https://github.com/jdrouet/tmdb-api/compare/v0.5.3...v0.6.0) - 2024-01-21
 
 ### Added
