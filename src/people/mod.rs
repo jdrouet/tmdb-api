@@ -23,7 +23,7 @@ pub struct Person {
     pub deathday: Option<chrono::NaiveDate>,
     pub homepage: Option<String>,
     pub imdb_id: String,
-    pub known_for_department: String,
+    pub known_for_department: Option<String>,
     pub popularity: f64,
     pub place_of_birth: Option<String>,
     pub profile_path: Option<String>,
