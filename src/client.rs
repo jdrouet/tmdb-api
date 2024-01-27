@@ -1,11 +1,11 @@
 use std::borrow::Cow;
 #[cfg(feature = "tokio-rate-limit")]
-use std::{ops::Sub, time::Duration};
+use std::{ops::Sub, sync::Arc, time::Duration};
 
 use reqwest::StatusCode;
 #[cfg(feature = "tokio-rate-limit")]
 use tokio::{
-    sync::RwLock,
+    sync::Mutex,
     time::{sleep, Instant},
 };
 
@@ -92,11 +92,9 @@ impl ClientBuilder {
             api_key,
 	        #[cfg(feature = "tokio-rate-limit")]
             // Subtract the request interval to ensure that the first request is sent immediately.
-	        start_timestamp: Instant::now().sub(request_interval),
-	        #[cfg(feature = "tokio-rate-limit")]
-	        last_request_timestamp_ms: RwLock::new(0),
-	        #[cfg(feature = "tokio-rate-limit")]
-	        request_interval_ms: request_interval.as_millis() as u64,
+            last_request_timestamp: Arc::new(Mutex::new(Instant::now().sub(request_interval))),
+            #[cfg(feature = "tokio-rate-limit")]
+            request_interval_ms: request_interval.as_millis() as u64,
         })
     }
 }
@@ -113,11 +111,8 @@ pub struct Client {
     base_url: Cow<'static, str>,
     api_key: String,
     #[cfg(feature = "tokio-rate-limit")]
-    /// The timestamp of reference for the rate limit.
-    start_timestamp: Instant,
-    #[cfg(feature = "tokio-rate-limit")]
     /// The timestamp at which the last request was sent.
-    last_request_timestamp_ms: RwLock<u64>,
+    last_request_timestamp: Arc<Mutex<Instant>>,
     #[cfg(feature = "tokio-rate-limit")]
     request_interval_ms: u64,
 }
@@ -136,10 +131,8 @@ impl Client {
             base_url: Cow::Borrowed(BASE_URL),
             api_key,
 	        #[cfg(feature = "tokio-rate-limit")]
-            // Subtract the request interval to ensure that the first request is sent immediately.
-            start_timestamp: Instant::now().sub(request_interval),
-	        #[cfg(feature = "tokio-rate-limit")]
-            last_request_timestamp_ms: RwLock::new(0),
+	        // Subtract the request interval to ensure that the first request is sent immediately.
+            last_request_timestamp: Arc::new(Mutex::new(Instant::now().sub(request_interval))),
 	        #[cfg(feature = "tokio-rate-limit")]
             request_interval_ms: request_interval.as_millis() as u64,
         }
@@ -163,20 +156,14 @@ impl Client {
         #[cfg(feature = "tokio-rate-limit")]
         {
             // Ensure that the order of the requests is respected.
-            let mut last_request_timestamp_ms = self.last_request_timestamp_ms.write().await;
+            let mut last_request_timestamp = self.last_request_timestamp.lock().await;
 
-            let now_ms = Instant::now()
-                .duration_since(self.start_timestamp)
-                .as_millis() as u64;
-            let elapsed_ms = now_ms - *last_request_timestamp_ms;
+            let elapsed_ms = last_request_timestamp.elapsed().as_millis() as u64;
 
             if elapsed_ms < self.request_interval_ms {
                 sleep(Duration::from_millis(self.request_interval_ms - elapsed_ms)).await;
             }
-
-            *last_request_timestamp_ms = Instant::now()
-                .duration_since(self.start_timestamp)
-                .as_millis() as u64;
+            *last_request_timestamp = Instant::now();
         }
 
         params.push(("api_key", Cow::Borrowed(self.api_key.as_str())));

@@ -143,7 +143,9 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
 
-        let result = PersonDetails::new(287).execute(&client).await.unwrap();
-        assert_eq!(result.inner.id, 287);
+        for id in &[287, 4017570] {
+            let result = PersonDetails::new(*id).execute(&client).await.unwrap();
+            assert_eq!(result.inner.id, *id);
+        }
     }
 }

@@ -85,10 +85,10 @@ mod tests {
             .build()
             .unwrap();
 
-        let cmd = GetSimilarTVShows::new(42);
+        let cmd = GetSimilarTVShows::new(1399);
 
         let _m = server
-            .mock("GET", "/tv/42/similar")
+            .mock("GET", "/tv/1399/similar")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
@@ -98,10 +98,10 @@ mod tests {
         let result = cmd.execute(&client).await.unwrap();
         assert_eq!(result.page, 1);
         assert_eq!(result.results.len(), 20);
-        assert_eq!(result.total_pages, 500);
-        assert_eq!(result.total_results, 10000);
+        assert_eq!(result.total_pages, 2074);
+        assert_eq!(result.total_results, 41463);
         let item = result.results.first().unwrap();
-        assert_eq!(item.inner.name, "The Great Queen Seondeok");
+        assert_eq!(item.inner.name, "Sunset Vibes");
     }
 
     #[tokio::test]
@@ -113,10 +113,10 @@ mod tests {
             .build()
             .unwrap();
 
-        let cmd = GetSimilarTVShows::new(42);
+        let cmd = GetSimilarTVShows::new(1399);
 
         let _m = server
-            .mock("GET", "/tv/42/similar")
+            .mock("GET", "/tv/1399/similar")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
@@ -137,10 +137,10 @@ mod tests {
             .build()
             .unwrap();
 
-        let cmd = GetSimilarTVShows::new(42);
+        let cmd = GetSimilarTVShows::new(1399);
 
         let _m = server
-            .mock("GET", "/tv/42/similar")
+            .mock("GET", "/tv/1399/similar")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
