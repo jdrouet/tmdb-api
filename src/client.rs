@@ -1,7 +1,6 @@
 use std::borrow::Cow;
-use std::sync::Arc;
 #[cfg(feature = "tokio-rate-limit")]
-use std::{ops::Sub, time::Duration};
+use std::{ops::Sub, sync::Arc, time::Duration};
 
 use reqwest::StatusCode;
 #[cfg(feature = "tokio-rate-limit")]
