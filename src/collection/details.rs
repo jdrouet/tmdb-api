@@ -44,13 +44,19 @@ pub struct Media {
     pub overview: String,
     pub poster_path: Option<String>,
     pub backdrop_path: Option<String>,
-    pub genre_ids: Vec<u32>,
+    #[serde(default)]
+    pub genre_ids: Vec<u64>,
+    #[serde(default)]
     pub popularity: f64,
+    #[serde(default)]
     pub adult: bool,
+    #[serde(default)]
     pub video: bool,
+    #[serde(default)]
     pub vote_average: f64,
+    #[serde(default)]
     pub vote_count: u64,
-    #[serde(default, with = "crate::util::optional_date")]
+    #[serde(default, deserialize_with = "crate::util::empty_string::deserialize")]
     pub release_date: Option<chrono::NaiveDate>,
 }
 

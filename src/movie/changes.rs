@@ -118,7 +118,7 @@ mod tests {
             .await;
 
         let result = MovieChanges::new(3).execute(&client).await.unwrap();
-        assert!(!result.changes.is_empty());
+        assert_eq!(result.changes.len(), 1);
     }
 
     #[tokio::test]
