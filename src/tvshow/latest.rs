@@ -129,6 +129,7 @@ mod integration_tests {
     use crate::Client;
 
     #[tokio::test]
+    #[ignore = "The API doesn't work as expected. For history: https://www.themoviedb.org/talk/65b3e54e5541fa0164b18674"]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
