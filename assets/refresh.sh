@@ -37,7 +37,7 @@ call /genre/tv/list genre-tv-list
 # movies
 call /movie/550 movie-details
 call /movie/550/alternative_titles movie-alternative-titles
-call /movie/980173/changes movie-single-changes start_date=2022-12-14
+call /movie/550/changes movie-single-changes start_date=2022-10-10
 call /movie/550/credits movie-credits
 call /movie/550/external_ids movie-external-ids
 call /movie/550/images movie-images
