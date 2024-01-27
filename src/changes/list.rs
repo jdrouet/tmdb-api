@@ -1,4 +1,3 @@
-use crate::util::date::format_date;
 use chrono::NaiveDate;
 use std::borrow::Cow;
 
@@ -73,10 +72,10 @@ impl crate::prelude::Command for ChangeList {
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
         let mut res = Vec::with_capacity(3);
         if let Some(ref start_date) = self.start_date {
-            res.push(("start_date", Cow::Owned(format_date(start_date))));
+            res.push(("start_date", Cow::Owned(start_date.to_string())));
         }
         if let Some(ref end_date) = self.end_date {
-            res.push(("end_date", Cow::Owned(format_date(end_date))));
+            res.push(("end_date", Cow::Owned(end_date.to_string())));
         }
         if let Some(page) = self.page {
             res.push(("page", Cow::Owned(page.to_string())));

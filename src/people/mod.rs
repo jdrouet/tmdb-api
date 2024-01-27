@@ -16,13 +16,14 @@ pub struct Person {
     pub inner: PersonShort,
     pub adult: bool,
     pub also_known_as: Vec<String>,
-    pub biography: String,
-    #[serde(with = "crate::util::date")]
-    pub birthday: chrono::NaiveDate,
-    #[serde(with = "crate::util::optional_date")]
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    pub biography: Option<String>,
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
+    pub birthday: Option<chrono::NaiveDate>,
+    #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub deathday: Option<chrono::NaiveDate>,
     pub homepage: Option<String>,
-    pub imdb_id: String,
+    pub imdb_id: Option<String>,
     pub known_for_department: Option<String>,
     pub popularity: f64,
     pub place_of_birth: Option<String>,
