@@ -50,7 +50,7 @@ pub struct Media {
     pub video: bool,
     pub vote_average: f64,
     pub vote_count: u64,
-    #[serde(default, with = "crate::util::optional_date")]
+    #[serde(default, with = "crate::util::empty_string")]
     pub release_date: Option<chrono::NaiveDate>,
 }
 
