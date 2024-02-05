@@ -1,7 +1,8 @@
 //! Deserializes empty strings as [None] into whatever type implementing [FromStr].
 
-use serde::{Deserialize, Deserializer, Serializer};
 use std::str::FromStr;
+
+use serde::{Deserialize, Deserializer, Serializer};
 
 #[allow(dead_code)]
 pub(crate) fn serialize<S, T>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>

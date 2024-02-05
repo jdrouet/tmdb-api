@@ -1,5 +1,6 @@
-use crate::common::MediaType;
 use std::borrow::Cow;
+
+use crate::common::MediaType;
 
 /// Command to get the details of a collection
 ///

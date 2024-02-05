@@ -1,6 +1,7 @@
-use crate::common::MediaType;
 use std::borrow::Cow;
 use std::collections::HashMap;
+
+use crate::common::MediaType;
 
 use super::WatchProvider;
 
