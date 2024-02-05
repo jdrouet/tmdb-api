@@ -1,5 +1,6 @@
-use crate::common::PaginatedResult;
 use std::borrow::Cow;
+
+use crate::common::PaginatedResult;
 
 /// Get a list of recommended movies for a movie.
 ///

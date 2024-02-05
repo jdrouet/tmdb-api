@@ -1,5 +1,6 @@
-use chrono::NaiveDate;
 use std::borrow::Cow;
+
+use chrono::NaiveDate;
 
 const TV_PATH: &str = "/tv/changes";
 const MOVIE_PATH: &str = "/movie/changes";
