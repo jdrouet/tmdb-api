@@ -152,8 +152,10 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
 
-        let result = MovieCredits::new(550).execute(&client).await.unwrap();
-        assert_eq!(result.id, 550);
+        for i in &[550, 299641] {
+            let result = MovieCredits::new(*i).execute(&client).await.unwrap();
+            assert_eq!(result.id, *i);
+        }
     }
 
     #[tokio::test]
