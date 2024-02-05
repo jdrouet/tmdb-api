@@ -74,7 +74,7 @@ mod tests {
             .await;
 
         let result = MovieLatest::default().execute(&client).await.unwrap();
-        assert_eq!(result.inner.id, 1061997);
+        assert_eq!(result.inner.id, 1236474);
     }
 
     #[tokio::test]

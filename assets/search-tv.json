@@ -2,80 +2,89 @@
   "page": 1,
   "results": [
     {
-      "backdrop_path": "/2OMB0ynKlyIenMJWI2Dy9IWT4c.jpg",
-      "first_air_date": "2011-04-17",
+      "adult": false,
+      "backdrop_path": "/nQSaUQzYnSE9v4CXZiOkSNndaYu.jpg",
       "genre_ids": [
         10765,
         18,
         10759
       ],
       "id": 1399,
-      "name": "Game of Thrones",
       "origin_country": [
         "US"
       ],
       "original_language": "en",
       "original_name": "Game of Thrones",
       "overview": "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
-      "popularity": 381.75,
-      "poster_path": "/7WUHnWGx5OO145IRxPDUkQSh4C7.jpg",
-      "vote_average": 8.4,
-      "vote_count": 19973
+      "popularity": 639.898,
+      "poster_path": "/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg",
+      "first_air_date": "2011-04-17",
+      "name": "Game of Thrones",
+      "vote_average": 8.443,
+      "vote_count": 22527
     },
     {
-      "backdrop_path": null,
-      "first_air_date": "2021-04-05",
+      "adult": false,
+      "backdrop_path": "/q0EfVHIIxCyCqUKNEvtGqx4iZig.jpg",
       "genre_ids": [
         10767
       ],
       "id": 206584,
-      "name": "Game of Thrones: The Iron Anniversary",
       "origin_country": [
         "US"
       ],
       "original_language": "en",
       "original_name": "Game of Thrones: The Iron Anniversary",
       "overview": "A two-part reunion show with cast members from the final season including Kit Harington, Emilia Clarke, Sophie Turner and more, as well as previously departed fan-favorites like Sean Bean, Jason Momoa, Mark Addy and others.",
-      "popularity": 13.121,
-      "poster_path": "/ArXiKVTmyZYrxbWLsy2XU1Jkcr9.jpg",
-      "vote_average": 6,
-      "vote_count": 2
+      "popularity": 7.925,
+      "poster_path": "/xwq2TALKkuCujBnUTpr57wDO61y.jpg",
+      "first_air_date": "2021-04-05",
+      "name": "Game of Thrones: The Iron Anniversary",
+      "vote_average": 7.833,
+      "vote_count": 6
     },
     {
-      "backdrop_path": null,
-      "first_air_date": "2020-04-14",
-      "genre_ids": [],
-      "id": 138757,
-      "name": "Autópsia Game Of Thrones",
-      "origin_country": [],
-      "original_language": "pt",
-      "original_name": "Autópsia Game Of Thrones",
-      "overview": "",
-      "popularity": 1.202,
-      "poster_path": null,
-      "vote_average": 0,
-      "vote_count": 0
-    },
-    {
-      "backdrop_path": "/etj8E2o0Bud0HkONVQPjyCkIvpv.jpg",
-      "first_air_date": "2022-08-21",
+      "adult": false,
+      "backdrop_path": "/vXpeJJs1z8OKC88CNJX9O9QOhtr.jpg",
       "genre_ids": [
         10765,
         18,
         10759
       ],
       "id": 94997,
-      "name": "House of the Dragon",
       "origin_country": [
         "US"
       ],
       "original_language": "en",
       "original_name": "House of the Dragon",
       "overview": "The Targaryen dynasty is at the absolute apex of its power, with more than 15 dragons under their yoke. Most empires crumble from such heights. In the case of the Targaryens, their slow fall begins when King Viserys breaks with a century of tradition by naming his daughter Rhaenyra heir to the Iron Throne. But when Viserys later fathers a son, the court is shocked when Rhaenyra retains her status as his heir, and seeds of division sow friction across the realm.",
-      "popularity": 503.07,
-      "poster_path": "/1X4h40fcB4WWUmIBK0auT4zRBAV.jpg",
-      "vote_average": 8.5,
-      "vote_count": 2591
+      "popularity": 314.225,
+      "poster_path": "/m7ta0kNg2ONvnBFF76miVvbWK1V.jpg",
+      "first_air_date": "2022-08-21",
+      "name": "House of the Dragon",
+      "vote_average": 8.423,
+      "vote_count": 3658
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/oGXuxNzrZ9QNuYYd7N4Zb9V6YKl.jpg",
+      "genre_ids": [
+        18,
+        10765
+      ],
+      "id": 224372,
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "A Knight of the Seven Kingdoms: The Hedge Knight",
+      "overview": "A century before the events of \"Game of Thrones\", two unlikely heroes wandered Westeros… a young, naïve but courageous knight, Ser Duncan the Tall, and his diminutive squire, Egg. Set in an age when the Targaryen line still holds the Iron Throne and the memory of the last dragon has not yet passed from living memory, great destinies, powerful foes, and dangerous exploits all await these improbable and incomparable friends.",
+      "popularity": 10.921,
+      "poster_path": null,
+      "first_air_date": "",
+      "name": "A Knight of the Seven Kingdoms: The Hedge Knight",
+      "vote_average": 0,
+      "vote_count": 0
     }
   ],
   "total_pages": 1,
