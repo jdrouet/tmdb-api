@@ -55,7 +55,7 @@ pub struct MovieBase {
     pub original_title: String,
     pub original_language: String,
     pub overview: String,
-    #[serde(default, with = "crate::util::optional_date")]
+    #[serde(default, deserialize_with = "crate::util::empty_string::deserialize")]
     pub release_date: Option<chrono::NaiveDate>,
     pub poster_path: Option<String>,
     pub backdrop_path: Option<String>,
