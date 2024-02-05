@@ -1,5 +1,6 @@
-use crate::common::video::Video;
 use std::borrow::Cow;
+
+use crate::common::video::Video;
 
 /// Get a list of recommended movies for a movie.
 ///

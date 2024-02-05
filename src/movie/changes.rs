@@ -1,5 +1,6 @@
-use chrono::NaiveDate;
 use std::borrow::Cow;
+
+use chrono::NaiveDate;
 
 /// Command to get changes for a movie
 ///
