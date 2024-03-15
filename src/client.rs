@@ -90,7 +90,7 @@ impl ClientBuilder {
             client,
             base_url,
             api_key,
-	        #[cfg(feature = "tokio-rate-limit")]
+            #[cfg(feature = "tokio-rate-limit")]
             // Subtract the request interval to ensure that the first request is sent immediately.
             last_request_timestamp: Arc::new(Mutex::new(Instant::now().sub(request_interval))),
             #[cfg(feature = "tokio-rate-limit")]
@@ -130,10 +130,10 @@ impl Client {
             client: reqwest::Client::default(),
             base_url: Cow::Borrowed(BASE_URL),
             api_key,
-	        #[cfg(feature = "tokio-rate-limit")]
-	        // Subtract the request interval to ensure that the first request is sent immediately.
+            #[cfg(feature = "tokio-rate-limit")]
+            // Subtract the request interval to ensure that the first request is sent immediately.
             last_request_timestamp: Arc::new(Mutex::new(Instant::now().sub(request_interval))),
-	        #[cfg(feature = "tokio-rate-limit")]
+            #[cfg(feature = "tokio-rate-limit")]
             request_interval_ms: request_interval.as_millis() as u64,
         }
     }

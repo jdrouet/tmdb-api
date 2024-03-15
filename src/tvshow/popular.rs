@@ -60,10 +60,12 @@ impl crate::prelude::Command for TVShowPopular {
 
 #[cfg(test)]
 mod tests {
-    use super::TVShowPopular;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::TVShowPopular;
 
     #[tokio::test]
     async fn it_works() {
@@ -136,9 +138,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::TVShowPopular;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::TVShowPopular;
 
     #[tokio::test]
     async fn execute() {

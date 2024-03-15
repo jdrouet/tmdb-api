@@ -65,10 +65,12 @@ impl crate::prelude::Command for MovieReviews {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieReviews;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MovieReviews;
 
     #[tokio::test]
     async fn it_works() {
@@ -142,9 +144,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieReviews;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MovieReviews;
 
     #[tokio::test]
     async fn execute() {

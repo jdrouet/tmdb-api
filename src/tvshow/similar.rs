@@ -71,10 +71,12 @@ impl crate::prelude::Command for GetSimilarTVShows {
 
 #[cfg(test)]
 mod tests {
-    use super::GetSimilarTVShows;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::GetSimilarTVShows;
 
     #[tokio::test]
     async fn it_works() {
@@ -155,9 +157,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::GetSimilarTVShows;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::GetSimilarTVShows;
 
     #[tokio::test]
     async fn execute() {

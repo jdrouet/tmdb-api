@@ -44,10 +44,12 @@ impl crate::prelude::Command for CompanyDetails {
 
 #[cfg(test)]
 mod tests {
-    use super::CompanyDetails;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::CompanyDetails;
 
     #[tokio::test]
     async fn it_works() {
@@ -120,9 +122,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::CompanyDetails;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::CompanyDetails;
 
     #[tokio::test]
     async fn execute() {

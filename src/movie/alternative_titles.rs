@@ -71,10 +71,12 @@ impl crate::prelude::Command for MovieAlternativeTitles {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieAlternativeTitles;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MovieAlternativeTitles;
 
     #[tokio::test]
     async fn it_works() {
@@ -156,9 +158,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieAlternativeTitles;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MovieAlternativeTitles;
 
     #[tokio::test]
     async fn execute() {

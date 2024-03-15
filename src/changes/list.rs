@@ -91,11 +91,13 @@ impl crate::prelude::Command for ChangeList {
 
 #[cfg(test)]
 mod tests {
-    use super::ChangeList;
-    use crate::prelude::Command;
-    use crate::Client;
     use chrono::NaiveDate;
     use mockito::Matcher;
+
+    use crate::prelude::Command;
+    use crate::Client;
+
+    use super::ChangeList;
 
     #[tokio::test]
     async fn tv_works() {
@@ -246,9 +248,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::ChangeList;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::ChangeList;
 
     #[tokio::test]
     async fn execute_tv() {

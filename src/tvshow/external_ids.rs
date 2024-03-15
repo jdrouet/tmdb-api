@@ -47,14 +47,14 @@ impl crate::prelude::Command for TVShowExternalIds {
 
 #[cfg(test)]
 mod tests {
-	use mockito::Matcher;
+    use mockito::Matcher;
 
-	use crate::Client;
-	use crate::prelude::Command;
+    use crate::prelude::Command;
+    use crate::Client;
 
-	use super::TVShowExternalIds;
+    use super::TVShowExternalIds;
 
-	#[tokio::test]
+    #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
         let client = Client::builder()
@@ -154,12 +154,12 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-	use crate::Client;
-	use crate::prelude::Command;
+    use crate::prelude::Command;
+    use crate::Client;
 
-	use super::TVShowExternalIds;
+    use super::TVShowExternalIds;
 
-	#[tokio::test]
+    #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);

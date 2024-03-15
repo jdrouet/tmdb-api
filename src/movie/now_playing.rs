@@ -1,5 +1,6 @@
-use chrono::NaiveDate;
 use std::borrow::Cow;
+
+use chrono::NaiveDate;
 
 use crate::common::PaginatedResult;
 
@@ -90,10 +91,12 @@ impl crate::prelude::Command for MovieNowPlaying {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieNowPlaying;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MovieNowPlaying;
 
     #[tokio::test]
     async fn it_works() {
@@ -172,9 +175,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieNowPlaying;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MovieNowPlaying;
 
     #[tokio::test]
     async fn execute() {

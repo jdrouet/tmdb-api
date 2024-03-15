@@ -52,10 +52,12 @@ impl crate::prelude::Command for MovieReleaseDates {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieReleaseDates;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MovieReleaseDates;
 
     #[tokio::test]
     async fn it_works() {
@@ -135,9 +137,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieReleaseDates;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MovieReleaseDates;
 
     #[tokio::test]
     async fn execute() {

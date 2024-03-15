@@ -62,10 +62,12 @@ impl crate::prelude::Command for CompanyImages {
 
 #[cfg(test)]
 mod tests {
-    use super::CompanyImages;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::CompanyImages;
 
     #[tokio::test]
     async fn it_works() {
@@ -138,9 +140,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::CompanyImages;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::CompanyImages;
 
     #[tokio::test]
     async fn execute() {

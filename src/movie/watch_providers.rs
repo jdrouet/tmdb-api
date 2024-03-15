@@ -46,10 +46,12 @@ impl crate::prelude::Command for MovieWatchProviders {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieWatchProviders;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MovieWatchProviders;
 
     #[tokio::test]
     async fn it_works() {
@@ -132,9 +134,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieWatchProviders;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MovieWatchProviders;
 
     #[tokio::test]
     async fn execute() {

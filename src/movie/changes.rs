@@ -95,10 +95,12 @@ impl crate::prelude::Command for MovieChanges {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieChanges;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MovieChanges;
 
     #[tokio::test]
     async fn it_works() {
@@ -171,9 +173,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieChanges;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MovieChanges;
 
     #[tokio::test]
     async fn execute() {

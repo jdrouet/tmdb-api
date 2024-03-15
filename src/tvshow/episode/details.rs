@@ -67,10 +67,12 @@ impl crate::prelude::Command for TVShowEpisodeDetails {
 
 #[cfg(test)]
 mod tests {
-    use super::TVShowEpisodeDetails;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::TVShowEpisodeDetails;
 
     #[tokio::test]
     async fn it_works() {
@@ -152,9 +154,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::TVShowEpisodeDetails;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::TVShowEpisodeDetails;
 
     #[tokio::test]
     async fn execute() {

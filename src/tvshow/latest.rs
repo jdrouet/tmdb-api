@@ -48,10 +48,12 @@ impl crate::prelude::Command for TVShowLatest {
 
 #[cfg(test)]
 mod tests {
-    use super::TVShowLatest;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::TVShowLatest;
 
     #[tokio::test]
     async fn it_works() {
@@ -124,9 +126,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::TVShowLatest;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::TVShowLatest;
 
     #[tokio::test]
     #[ignore = "The API doesn't work as expected. For history: https://www.themoviedb.org/talk/65b3e54e5541fa0164b18674"]

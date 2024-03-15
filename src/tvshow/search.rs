@@ -97,10 +97,12 @@ impl crate::prelude::Command for TVShowSearch {
 
 #[cfg(test)]
 mod tests {
-    use super::TVShowSearch;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::TVShowSearch;
 
     #[tokio::test]
     async fn it_works() {
@@ -221,9 +223,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::TVShowSearch;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::TVShowSearch;
 
     #[tokio::test]
     async fn search_simpsons() {

@@ -118,10 +118,12 @@ impl crate::prelude::Command for MovieSearch {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieSearch;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MovieSearch;
 
     #[tokio::test]
     async fn it_works() {
@@ -262,9 +264,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieSearch;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MovieSearch;
 
     #[tokio::test]
     async fn search_rrrrrrr() {

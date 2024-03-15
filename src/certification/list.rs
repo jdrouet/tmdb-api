@@ -49,10 +49,12 @@ impl crate::prelude::Command for CertificationList {
 
 #[cfg(test)]
 mod tests {
-    use super::CertificationList;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::CertificationList;
 
     #[tokio::test]
     async fn tv_works() {
@@ -145,9 +147,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::CertificationList;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::CertificationList;
 
     #[tokio::test]
     async fn execute_tv() {

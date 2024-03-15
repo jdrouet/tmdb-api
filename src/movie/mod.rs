@@ -1,3 +1,10 @@
+use crate::collection::CollectionBase;
+use crate::common::country::Country;
+use crate::common::language::Language;
+use crate::common::status::Status;
+use crate::company::CompanyShort;
+use crate::genre::Genre;
+
 #[cfg(feature = "commands")]
 pub mod alternative_titles;
 #[cfg(feature = "commands")]
@@ -40,13 +47,6 @@ pub mod upcoming;
 pub mod videos;
 #[cfg(feature = "commands")]
 pub mod watch_providers;
-
-use crate::collection::CollectionBase;
-use crate::common::country::Country;
-use crate::common::language::Language;
-use crate::common::status::Status;
-use crate::company::CompanyShort;
-use crate::genre::Genre;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct MovieBase {
@@ -95,7 +95,6 @@ pub struct Movie {
 
 #[cfg(test)]
 mod tests {
-
     #[test]
     fn serialize() {
         let origin = include_str!("../../assets/movie-details.json");

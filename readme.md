@@ -17,13 +17,13 @@ use tmdb_api::Client;
 
 #[tokio::main]
 async fn main() {
-    let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-    let client = Client::new(secret);
-    let cmd = TVShowSearch::new("simpsons".into());
+	let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
+	let client = Client::new(secret);
+	let cmd = TVShowSearch::new("simpsons".into());
 
-    let result = cmd.execute(&client).await.unwrap();
-    let item = result.results.first().unwrap();
-    println!("TVShow found: {}", item.inner.name);
+	let result = cmd.execute(&client).await.unwrap();
+	let item = result.results.first().unwrap();
+	println!("TVShow found: {}", item.inner.name);
 }
 
 ```
@@ -40,7 +40,8 @@ This feature enables a simple rate limiter without burst based on the `tokio` cr
 cargo test
 ```
 
-If you want to run some integration tests, just export a `TMDB_TOKEN_V3` environment variable and run
+If you want to run some integration tests, just export a `TMDB_TOKEN_V3` environment variable and
+run
 
 ```bash
 cargo test --features integration

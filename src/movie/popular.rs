@@ -70,10 +70,12 @@ impl crate::prelude::Command for MoviePopular {
 
 #[cfg(test)]
 mod tests {
-    use super::MoviePopular;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MoviePopular;
 
     #[tokio::test]
     async fn it_works() {
@@ -146,9 +148,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MoviePopular;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MoviePopular;
 
     #[tokio::test]
     async fn execute() {

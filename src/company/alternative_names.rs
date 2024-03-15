@@ -60,10 +60,12 @@ impl crate::prelude::Command for CompanyAlternativeNames {
 
 #[cfg(test)]
 mod tests {
-    use super::CompanyAlternativeNames;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::CompanyAlternativeNames;
 
     #[tokio::test]
     async fn it_works() {
@@ -145,9 +147,10 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::CompanyAlternativeNames;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::CompanyAlternativeNames;
 
     #[tokio::test]
     async fn execute() {
