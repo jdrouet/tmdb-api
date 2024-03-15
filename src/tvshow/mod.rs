@@ -107,7 +107,6 @@ pub struct Season {
 pub struct TVShow {
     #[serde(flatten)]
     pub inner: TVShowBase,
-    //
     pub created_by: Vec<PersonShort>,
     pub episode_run_time: Vec<u64>,
     pub genres: Vec<Genre>,

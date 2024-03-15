@@ -61,10 +61,12 @@ impl crate::prelude::Command for TVShowSeasonDetails {
 
 #[cfg(test)]
 mod tests {
-    use super::TVShowSeasonDetails;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::TVShowSeasonDetails;
 
     #[tokio::test]
     async fn it_works() {
@@ -146,21 +148,22 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::TVShowSeasonDetails;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::TVShowSeasonDetails;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
 
-        for (tv_id, season_id) in &[(1, 2328126u64)] {
-            let result = TVShowSeasonDetails::new(*tv_id, 1)
+        for (tv_id, season_id) in [(1, 2328126u64)] {
+            let result = TVShowSeasonDetails::new(tv_id, 1)
                 .execute(&client)
                 .await
                 .unwrap();
-            assert_eq!(result.inner.id, *season_id);
+            assert_eq!(result.inner.id, season_id);
         }
     }
 }
