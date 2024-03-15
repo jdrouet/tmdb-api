@@ -58,10 +58,12 @@ impl crate::prelude::Command for MovieDetails {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieDetails;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::MovieDetails;
 
     #[tokio::test]
     async fn it_works() {
@@ -134,18 +136,19 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieDetails;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::MovieDetails;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
 
-        for i in &[2, 3, 5, 6, 8, 9, 11] {
-            let result = MovieDetails::new(*i).execute(&client).await.unwrap();
-            assert_eq!(result.inner.id, *i);
+        for i in [2, 3, 5, 6, 8, 9, 11] {
+            let result = MovieDetails::new(i).execute(&client).await.unwrap();
+            assert_eq!(result.inner.id, i);
         }
     }
 }
