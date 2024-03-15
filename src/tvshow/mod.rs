@@ -1,3 +1,9 @@
+use crate::common::country::Country;
+use crate::common::language::Language;
+use crate::company::CompanyShort;
+use crate::genre::Genre;
+use crate::people::PersonShort;
+
 #[cfg(feature = "commands")]
 pub mod details;
 #[cfg(feature = "commands")]
@@ -14,13 +20,8 @@ pub mod similar;
 pub mod watch_providers;
 
 pub mod episode;
+pub mod external_ids;
 pub mod season;
-
-use crate::common::country::Country;
-use crate::common::language::Language;
-use crate::company::CompanyShort;
-use crate::genre::Genre;
-use crate::people::PersonShort;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TVShowBase {

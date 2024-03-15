@@ -2,6 +2,7 @@ use std::fmt::Display;
 
 pub mod country;
 pub mod credits;
+pub mod external_ids;
 pub mod image;
 pub mod keyword;
 pub mod language;
