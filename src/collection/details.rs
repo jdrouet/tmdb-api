@@ -93,10 +93,12 @@ impl crate::prelude::Command for CollectionDetails {
 
 #[cfg(test)]
 mod tests {
-    use super::CollectionDetails;
+    use mockito::Matcher;
+
     use crate::prelude::Command;
     use crate::Client;
-    use mockito::Matcher;
+
+    use super::CollectionDetails;
 
     #[tokio::test]
     async fn it_works() {
@@ -175,18 +177,19 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::CollectionDetails;
     use crate::prelude::Command;
     use crate::Client;
+
+    use super::CollectionDetails;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
 
-        for i in &[10, 1196769] {
-            let result = CollectionDetails::new(*i).execute(&client).await.unwrap();
-            assert_eq!(result.inner.id, *i);
+        for i in [10, 1196769] {
+            let result = CollectionDetails::new(i).execute(&client).await.unwrap();
+            assert_eq!(result.inner.id, i);
         }
     }
 }
