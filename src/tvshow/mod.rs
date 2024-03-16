@@ -57,13 +57,14 @@ pub struct TVShowShort {
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct EpisodeShort {
-    pub air_date: chrono::NaiveDate,
-    pub episode_number: u64,
     pub id: u64,
+    pub episode_number: u64,
     pub name: String,
+    pub air_date: Option<chrono::NaiveDate>,
     #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub overview: Option<String>,
     pub production_code: String,
+    pub runtime: Option<u64>,
     pub season_number: u64,
     pub still_path: Option<String>,
     pub vote_average: f64,
@@ -74,9 +75,15 @@ pub struct EpisodeShort {
 pub struct Episode {
     #[serde(flatten)]
     pub inner: EpisodeShort,
-    //
-    pub crew: Vec<PersonShort>,
-    pub guest_stars: Vec<PersonShort>,
+    pub crew: Vec<TVShowPersonShort>,
+    pub guest_stars: Vec<TVShowPersonShort>,
+}
+
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+pub struct TVShowPersonShort {
+    #[serde(flatten)]
+    pub inner: PersonShort,
+    pub episode_count: Option<u64>,
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
@@ -95,7 +102,6 @@ pub struct SeasonBase {
 pub struct SeasonShort {
     #[serde(flatten)]
     pub inner: SeasonBase,
-    //
     pub episode_count: u64,
 }
 

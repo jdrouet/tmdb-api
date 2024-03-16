@@ -69,8 +69,8 @@ impl crate::prelude::Command for TVShowEpisodeDetails {
 mod tests {
     use mockito::Matcher;
 
-    use crate::prelude::Command;
     use crate::Client;
+    use crate::prelude::Command;
 
     use super::TVShowEpisodeDetails;
 
@@ -154,8 +154,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::prelude::Command;
     use crate::Client;
+    use crate::prelude::Command;
 
     use super::TVShowEpisodeDetails;
 
@@ -164,7 +164,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
 
-        for (tv_id, season_id) in [(1, 1130462u64)] {
+        for (tv_id, season_id) in [(1, 1130462)] {
             let result = TVShowEpisodeDetails::new(tv_id, 1, 1)
                 .execute(&client)
                 .await
