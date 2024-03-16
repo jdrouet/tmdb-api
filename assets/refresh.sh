@@ -66,6 +66,7 @@ call /search/tv search-tv query=game+of+thrones
 # tvshows
 call /tv/1399 tv-details
 call /tv/1399/similar tv-similar
+call /tv/1399/keywords tv-keywords
 call /tv/1399/external_ids tv-external-ids
 call /tv/1399/season/1 tv-season-details
 call /tv/1399/season/1/episode/1 tv-episode-details
