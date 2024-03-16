@@ -22,7 +22,7 @@ use std::borrow::Cow;
 /// ```
 #[derive(Clone, Debug, Default)]
 pub struct TVShowAggregateCredits {
-    pub tv_show_id: u64,
+    pub id: u64,
     pub language: Option<String>,
 }
 
@@ -80,7 +80,7 @@ pub struct Job {
 impl TVShowAggregateCredits {
     pub fn new(tv_show_id: u64) -> Self {
         Self {
-            tv_show_id,
+            id: tv_show_id,
             language: None,
         }
     }
@@ -95,7 +95,7 @@ impl crate::prelude::Command for TVShowAggregateCredits {
     type Output = TVShowAggregateCreditsResult;
 
     fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/tv/{}/aggregate_credits", self.tv_show_id))
+        Cow::Owned(format!("/tv/{}/aggregate_credits", self.id))
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
