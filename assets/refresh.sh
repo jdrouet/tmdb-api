@@ -72,6 +72,7 @@ call /search/tv search-tv query=game+of+thrones
 call /tv/1399 tv-details
 call /tv/1399/similar tv-similar
 call /tv/1399/aggregate_credits tv-aggregate-credits
+call /tv/1399/content_ratings tv-content-ratings
 call /tv/1399/season/1 tv-season-details
 call /tv/1399/season/1/episode/1 tv-episode-details
 
