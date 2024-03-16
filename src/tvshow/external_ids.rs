@@ -17,8 +17,8 @@ use crate::common::external_ids::TVShowExternalIdsResult;
 ///     let cmd = TVShowExternalIds::new(1399);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
 ///     };
 /// }
 /// ```

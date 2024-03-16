@@ -20,8 +20,8 @@ use crate::common::PaginatedResult;
 ///     let client = Client::new("this-is-my-secret-token".into());
 ///     let result = MovieNowPlaying::default().execute(&client).await;
 ///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
 ///     };
 /// }
 /// ```

@@ -26,8 +26,8 @@ pub struct GenreResult {
 ///     let cmd = GenreList::tv();
 ///     let result = cmd.execute(&client).await;
 ///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
 ///     };
 /// }
 /// ```

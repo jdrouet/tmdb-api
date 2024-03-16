@@ -19,8 +19,8 @@ const PERSON_PATH: &str = "/person/changes";
 ///     let cmd = ChangeList::tv();
 ///     let result = cmd.execute(&client).await;
 ///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
 ///     };
 /// }
 /// ```

@@ -22,8 +22,8 @@ const MOVIE_PATH: &str = "/certification/movie/list";
 ///     let cmd = CertificationList::tv();
 ///     let result = cmd.execute(&client).await;
 ///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
 ///     };
 /// }
 /// ```

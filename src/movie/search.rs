@@ -15,8 +15,8 @@ const PATH: &str = "/search/movie";
 ///     let cmd = MovieSearch::new("die hard".into());
 ///     let result = cmd.execute(&client).await;
 ///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
 ///     };
 /// }
 /// ```

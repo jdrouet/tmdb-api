@@ -13,8 +13,8 @@ use std::borrow::Cow;
 ///     let cmd = MovieAlternativeTitles::new(1);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
 ///     };
 /// }
 /// ```
@@ -45,8 +45,8 @@ pub struct MovieAlternativeTitle {
     pub iso_3166_1: String,
     pub title: String,
     #[serde(
-        deserialize_with = "crate::util::empty_string::deserialize",
-        rename = "type"
+    deserialize_with = "crate::util::empty_string::deserialize",
+    rename = "type"
     )]
     pub kind: Option<String>,
 }
