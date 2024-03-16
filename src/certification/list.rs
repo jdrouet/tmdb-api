@@ -1,3 +1,6 @@
+//! https://developer.themoviedb.org/reference/certification-movie-list
+//! https://developer.themoviedb.org/reference/certifications-tv-list
+
 use std::borrow::Cow;
 use std::collections::HashMap;
 
@@ -51,8 +54,8 @@ impl crate::prelude::Command for CertificationList {
 mod tests {
     use mockito::Matcher;
 
-    use crate::prelude::Command;
     use crate::Client;
+    use crate::prelude::Command;
 
     use super::CertificationList;
 
@@ -147,8 +150,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::prelude::Command;
     use crate::Client;
+    use crate::prelude::Command;
 
     use super::CertificationList;
 
