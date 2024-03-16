@@ -7,6 +7,23 @@ const MOVIE_PATH: &str = "/movie/changes";
 const PERSON_PATH: &str = "/person/changes";
 
 /// Command to list changes
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::changes::list::ChangeList;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = ChangeList::tv();
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct ChangeList {
     path: &'static str,
@@ -94,8 +111,8 @@ mod tests {
     use chrono::NaiveDate;
     use mockito::Matcher;
 
-    use crate::prelude::Command;
     use crate::Client;
+    use crate::prelude::Command;
 
     use super::ChangeList;
 
@@ -248,8 +265,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::prelude::Command;
     use crate::Client;
+    use crate::prelude::Command;
 
     use super::ChangeList;
 
