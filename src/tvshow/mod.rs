@@ -20,6 +20,7 @@ pub mod similar;
 pub mod watch_providers;
 
 pub mod aggregate_credits;
+pub mod content_rating;
 pub mod episode;
 pub mod external_ids;
 pub mod keywords;
