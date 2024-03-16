@@ -168,7 +168,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::new(secret);
 
-        for i in 1..5 {
+        for i in [1, 2, 3, 4, 5, 81040] {
             let result = TVShowDetails::new(i).execute(&client).await.unwrap();
             assert_eq!(result.inner.id, i);
         }
