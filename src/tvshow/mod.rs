@@ -56,7 +56,7 @@ pub struct TVShowShort {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
-pub struct EpisodeShort {
+pub struct EpisodeBase {
     pub id: u64,
     pub episode_number: u64,
     pub name: String,
@@ -72,9 +72,27 @@ pub struct EpisodeShort {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+pub struct EpisodeShort {
+    #[serde(flatten)]
+    pub inner: EpisodeBase,
+    pub show_id: u64,
+    pub episode_type: Option<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+pub struct EpisodeDetails {
+    #[serde(flatten)]
+    pub inner: EpisodeBase,
+    pub crew: Vec<TVShowPersonShort>,
+    pub guest_stars: Vec<TVShowPersonShort>,
+}
+
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct Episode {
     #[serde(flatten)]
-    pub inner: EpisodeShort,
+    pub inner: EpisodeBase,
+    pub show_id: u64,
+    pub episode_type: String,
     pub crew: Vec<TVShowPersonShort>,
     pub guest_stars: Vec<TVShowPersonShort>,
 }

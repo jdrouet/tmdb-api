@@ -47,7 +47,7 @@ impl TVShowEpisodeDetails {
 }
 
 impl crate::prelude::Command for TVShowEpisodeDetails {
-    type Output = crate::tvshow::Episode;
+    type Output = crate::tvshow::EpisodeDetails;
 
     fn path(&self) -> Cow<'static, str> {
         Cow::Owned(format!(

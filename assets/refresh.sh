@@ -70,6 +70,7 @@ call /search/tv search-tv query=game+of+thrones
 
 # TV shows
 call /tv/1399 tv-details
+call /tv/2 tv-details-complex
 call /tv/1399/similar tv-similar
 call /tv/1399/keywords tv-keywords
 call /tv/1399/content_ratings tv-content-ratings

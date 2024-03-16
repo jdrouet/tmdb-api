@@ -1,146 +1,155 @@
 {
-    "adult": false,
-    "backdrop_path": "/w0eG4lpAigocIZzJYrYp3cCmyUx.jpg",
-    "created_by": [
-        {
-            "id": 19303,
-            "credit_id": "52532e3219c29579400013ab",
-            "name": "Kevin Smith",
-            "gender": 2,
-            "profile_path": "/uxDQ0NTZMnOuAaPa0tQzMFV9dx4.jpg"
-        },
-        {
-            "id": 20503,
-            "credit_id": "52532e3219c29579400013a5",
-            "name": "Scott Mosier",
-            "gender": 2,
-            "profile_path": "/kTp9aQtbonYPy4LnfnuXP7Slbs0.jpg"
-        },
-        {
-            "id": 57407,
-            "credit_id": "52532e3219c295794000136f",
-            "name": "David Mandel",
-            "gender": 2,
-            "profile_path": null
-        }
-    ],
-    "episode_run_time": [
-        132
-    ],
-    "first_air_date": "2002-12-14",
-    "genres": [
-        {
-            "id": 16,
-            "name": "Animation"
-        },
-        {
-            "id": 35,
-            "name": "Comedy"
-        }
-    ],
-    "homepage": "",
-    "id": 2,
-    "in_production": false,
-    "languages": [
-        "en"
-    ],
-    "last_air_date": "2002-12-14",
-    "last_episode_to_air": {
-        "air_date": "2002-12-14",
-        "episode_number": 6,
-        "id": 1130478,
-        "name": "The Last Episode Ever",
-        "overview": "The guys' day slacking off at the Quick Stop is derailed by a spoof of \"The Matrix,\" a carnival riot and a trip through the minds of their illustrators.",
-        "production_code": "",
-        "runtime": null,
-        "season_number": 1,
-        "show_id": 2,
-        "still_path": "/xhbjqZWbMaHKGdvm9M46JN0crRV.jpg",
-        "vote_average": 6.5,
-        "vote_count": 2
+  "adult": false,
+  "backdrop_path": "/7M0huD4pLqe15c3VSxBMCqzFMSW.jpg",
+  "created_by": [
+    {
+      "id": 19303,
+      "credit_id": "52532e3219c29579400013ab",
+      "name": "Kevin Smith",
+      "gender": 2,
+      "profile_path": "/uxDQ0NTZMnOuAaPa0tQzMFV9dx4.jpg"
     },
-    "name": "Clerks: The Animated Series",
-    "next_episode_to_air": null,
-    "networks": [
-        {
-            "id": 2,
-            "name": "ABC",
-            "logo_path": "/2uy2ZWcplrSObIyt4x0Y9rkG6qO.png",
-            "origin_country": "US"
-        }
-    ],
-    "number_of_episodes": 6,
-    "number_of_seasons": 1,
-    "origin_country": [
-        "US"
-    ],
-    "original_language": "en",
-    "original_name": "Clerks: The Animated Series",
-    "overview": "The continuing adventures of store clerks Dante and Randal, who try to make the best of their menial labor, with no help from Jay and Silent Bob.",
-    "popularity": 6.506,
-    "poster_path": "/xunXvzFlkf1GGgMkCySA9CCFumB.jpg",
-    "production_companies": [
-        {
-            "id": 14,
-            "logo_path": "/m6AHu84oZQxvq7n1rsvMNJIAsMu.png",
-            "name": "Miramax",
-            "origin_country": "US"
-        },
-        {
-            "id": 1558,
-            "logo_path": "/wwaKUcOENHix2jxLfFBfNkCtOEQ.png",
-            "name": "Touchstone Television",
-            "origin_country": "US"
-        },
-        {
-            "id": 16934,
-            "logo_path": "/7HEUbdTlFQWf4SKidP8S29yFgoW.png",
-            "name": "View Askew Productions",
-            "origin_country": "US"
-        },
-        {
-            "id": 90044,
-            "logo_path": null,
-            "name": "Woltz International Pictures Corporation",
-            "origin_country": ""
-        }
-    ],
-    "production_countries": [
-        {
-            "iso_3166_1": "US",
-            "name": "United States of America"
-        }
-    ],
-    "seasons": [
-        {
-            "air_date": null,
-            "episode_count": 7,
-            "id": 2328128,
-            "name": "Specials",
-            "overview": "",
-            "poster_path": null,
-            "season_number": 0
-        },
-        {
-            "air_date": "2002-12-14",
-            "episode_count": 6,
-            "id": 2328127,
-            "name": "Season 1",
-            "overview": "",
-            "poster_path": "/q6kbF0RRx2A6moz48WjTYzyirOY.jpg",
-            "season_number": 1
-        }
-    ],
-    "spoken_languages": [
-        {
-            "english_name": "English",
-            "iso_639_1": "en",
-            "name": "English"
-        }
-    ],
-    "status": "Ended",
-    "tagline": "",
-    "type": "Miniseries",
-    "vote_average": 6.903,
-    "vote_count": 72
+    {
+      "id": 20503,
+      "credit_id": "52532e3219c29579400013a5",
+      "name": "Scott Mosier",
+      "gender": 2,
+      "profile_path": "/oEQcuNy9uYGMNq3e49VSJ7oPsJw.jpg"
+    },
+    {
+      "id": 57407,
+      "credit_id": "52532e3219c295794000136f",
+      "name": "David Mandel",
+      "gender": 2,
+      "profile_path": "/beom0HmSu1sP5YWo6JHETDFtTj0.jpg"
+    }
+  ],
+  "episode_run_time": [
+    22
+  ],
+  "first_air_date": "2000-05-31",
+  "genres": [
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 35,
+      "name": "Comedy"
+    }
+  ],
+  "homepage": "",
+  "id": 2,
+  "in_production": false,
+  "languages": [
+    "en"
+  ],
+  "last_air_date": "2002-12-22",
+  "last_episode_to_air": {
+    "id": 1130478,
+    "name": "The Last Episode Ever!",
+    "overview": "The guys' day slacking off at the Quick Stop is derailed by a spoof of \"The Matrix,\" a carnival riot and a trip through the minds of their illustrators.",
+    "vote_average": 6.667,
+    "vote_count": 6,
+    "air_date": "2002-12-22",
+    "episode_number": 6,
+    "episode_type": "finale",
+    "production_code": "",
+    "runtime": 22,
+    "season_number": 1,
+    "show_id": 2,
+    "still_path": "/xhbjqZWbMaHKGdvm9M46JN0crRV.jpg"
+  },
+  "name": "Clerks",
+  "next_episode_to_air": null,
+  "networks": [
+    {
+      "id": 2,
+      "logo_path": "/2uy2ZWcplrSObIyt4x0Y9rkG6qO.png",
+      "name": "ABC",
+      "origin_country": "US"
+    },
+    {
+      "id": 47,
+      "logo_path": "/6ooPjtXufjsoskdJqj6pxuvHEno.png",
+      "name": "Comedy Central",
+      "origin_country": "US"
+    }
+  ],
+  "number_of_episodes": 6,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "US"
+  ],
+  "original_language": "en",
+  "original_name": "Clerks",
+  "overview": "The continuing adventures of store clerks Dante and Randal, who try to make the best of their menial labor, with no help from Jay and Silent Bob.",
+  "popularity": 41.671,
+  "poster_path": "/xunXvzFlkf1GGgMkCySA9CCFumB.jpg",
+  "production_companies": [
+    {
+      "id": 1558,
+      "logo_path": "/wwaKUcOENHix2jxLfFBfNkCtOEQ.png",
+      "name": "Touchstone Television",
+      "origin_country": "US"
+    },
+    {
+      "id": 16934,
+      "logo_path": "/we7afRGM67vr7oMSBYh4xZ9yNWC.png",
+      "name": "View Askew Productions",
+      "origin_country": "US"
+    },
+    {
+      "id": 90044,
+      "logo_path": null,
+      "name": "Woltz International Pictures Corporation",
+      "origin_country": ""
+    },
+    {
+      "id": 14,
+      "logo_path": "/m6AHu84oZQxvq7n1rsvMNJIAsMu.png",
+      "name": "Miramax",
+      "origin_country": "US"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": null,
+      "episode_count": 7,
+      "id": 2328128,
+      "name": "Specials",
+      "overview": "",
+      "poster_path": null,
+      "season_number": 0,
+      "vote_average": 0
+    },
+    {
+      "air_date": "2000-05-31",
+      "episode_count": 6,
+      "id": 2328127,
+      "name": "Season 1",
+      "overview": "",
+      "poster_path": "/qhKzJcAz9AhxZstTAsLu2lulbVY.jpg",
+      "season_number": 1,
+      "vote_average": 7
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "English",
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Canceled",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 7.101,
+  "vote_count": 94
 }
