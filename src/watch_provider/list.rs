@@ -5,7 +5,25 @@ use crate::common::MediaType;
 
 use super::WatchProvider;
 
-/// Command to list watch providers
+/// Command to get the details of a collection
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::watch_provider::list::WatchProviderList;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     use tmdb_api::common::MediaType;
+/// let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = WatchProviderList::new(MediaType::Tv);
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug)]
 pub struct WatchProviderList {
     pub media_type: MediaType,
@@ -80,9 +98,9 @@ impl crate::prelude::Command for WatchProviderList {
 mod tests {
     use mockito::Matcher;
 
+    use crate::Client;
     use crate::common::MediaType;
     use crate::prelude::Command;
-    use crate::Client;
 
     use super::WatchProviderList;
 
@@ -179,9 +197,9 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
+    use crate::Client;
     use crate::common::MediaType;
     use crate::prelude::Command;
-    use crate::Client;
 
     use super::WatchProviderList;
 
