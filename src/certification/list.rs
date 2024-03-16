@@ -9,8 +9,26 @@ use super::Certification;
 const TV_PATH: &str = "/certification/tv/list";
 const MOVIE_PATH: &str = "/certification/movie/list";
 
+/// Command to list genres
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::certification::list::CertificationList;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = CertificationList::tv();
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub(crate) struct CertificationResult {
+pub struct CertificationResult {
     pub certifications: HashMap<String, Vec<Certification>>,
 }
 
