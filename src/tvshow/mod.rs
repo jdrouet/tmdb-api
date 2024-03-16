@@ -19,10 +19,14 @@ pub mod similar;
 #[cfg(feature = "commands")]
 pub mod watch_providers;
 
+#[cfg(feature = "commands")]
 pub mod aggregate_credits;
+#[cfg(feature = "commands")]
 pub mod content_rating;
 pub mod episode;
+#[cfg(feature = "commands")]
 pub mod external_ids;
+#[cfg(feature = "commands")]
 pub mod keywords;
 pub mod season;
 
