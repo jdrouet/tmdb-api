@@ -13,6 +13,8 @@ pub mod search;
 #[cfg(feature = "commands")]
 pub mod similar;
 #[cfg(feature = "commands")]
+pub mod content_rating;
+#[cfg(feature = "commands")]
 pub mod watch_providers;
 
 pub mod episode;
