@@ -33,5 +33,5 @@ pub mod tvshow;
 pub mod watch_provider;
 
 pub mod common;
-mod util;
 pub mod configuration;
+mod util;

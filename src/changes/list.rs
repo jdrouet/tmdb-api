@@ -111,8 +111,8 @@ mod tests {
     use chrono::NaiveDate;
     use mockito::Matcher;
 
-    use crate::Client;
     use crate::prelude::Command;
+    use crate::Client;
 
     use super::ChangeList;
 
@@ -265,8 +265,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::Client;
     use crate::prelude::Command;
+    use crate::Client;
 
     use super::ChangeList;
 

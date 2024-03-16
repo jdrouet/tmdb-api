@@ -34,8 +34,8 @@ impl CompanyAlternativeNames {
 pub struct CompanyAlternativeName {
     pub name: String,
     #[serde(
-    deserialize_with = "crate::util::empty_string::deserialize",
-    rename = "type"
+        deserialize_with = "crate::util::empty_string::deserialize",
+        rename = "type"
     )]
     pub kind: Option<String>,
 }
