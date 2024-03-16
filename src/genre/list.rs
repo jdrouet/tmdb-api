@@ -1,3 +1,6 @@
+//! https://developer.themoviedb.org/reference/genre-movie-list
+//! https://developer.themoviedb.org/reference/genre-tv-list
+
 use std::borrow::Cow;
 
 use super::Genre;
@@ -6,11 +9,28 @@ const TV_PATH: &str = "/genre/tv/list";
 const MOVIE_PATH: &str = "/genre/movie/list";
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub(crate) struct GenreResult {
+pub struct GenreResult {
     pub genres: Vec<Genre>,
 }
 
 /// Command to list genres
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::genre::list::GenreList;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = GenreList::tv();
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct GenreList {
     path: &'static str,
@@ -62,8 +82,8 @@ impl crate::prelude::Command for GenreList {
 mod tests {
     use mockito::Matcher;
 
-    use crate::prelude::Command;
     use crate::Client;
+    use crate::prelude::Command;
 
     use super::GenreList;
 
@@ -160,8 +180,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::prelude::Command;
     use crate::Client;
+    use crate::prelude::Command;
 
     use super::GenreList;
 
