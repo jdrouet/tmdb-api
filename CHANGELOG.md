@@ -70,8 +70,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update triggers and cancel duplicates
 - apply cargo fmt
 - change invalid id in tests
-- flaky tvshow search
-- update github action to be triggered by external PRs
+- flaky TV show search
+- update GitHub action to be triggered by external PRs
 
 ## [0.5.1](https://github.com/jdrouet/tmdb-api/compare/v0.5.0...v0.5.1) - 2023-10-24
 
@@ -87,7 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Other
 
-- update github action config
+- update GitHub action config
 - add release-plz
 - *(deps)* bump rustls-webpki from 0.101.1 to 0.101.4
 - use non deprecated fields

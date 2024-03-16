@@ -21,8 +21,8 @@ pub mod watch_providers;
 
 pub mod episode;
 pub mod external_ids;
-pub mod season;
 pub mod keywords;
+pub mod season;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TVShowBase {

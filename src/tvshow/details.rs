@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-/// Command to get the details of a tvshow
+/// Command to get the details of a TV show.
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;

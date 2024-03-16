@@ -4,7 +4,7 @@ use std::borrow::Cow;
 
 use crate::common::keyword::Keyword;
 
-/// Command to get the keywords of a tvshow.
+/// Command to get the keywords of a TV show.
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;
@@ -55,8 +55,8 @@ impl crate::prelude::Command for TVShowKeywords {
 mod tests {
     use mockito::Matcher;
 
-    use crate::Client;
     use crate::prelude::Command;
+    use crate::Client;
 
     use super::TVShowKeywords;
 
@@ -82,7 +82,6 @@ mod tests {
         assert_eq!(result.id, 1399);
     }
 
-
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
@@ -101,7 +100,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowKeywords::new(1399).execute(&client).await.unwrap_err();
+        let err = TVShowKeywords::new(1399)
+            .execute(&client)
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
     }
@@ -124,7 +126,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowKeywords::new(1399).execute(&client).await.unwrap_err();
+        let err = TVShowKeywords::new(1399)
+            .execute(&client)
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);
     }
@@ -132,8 +137,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::Client;
     use crate::prelude::Command;
+    use crate::Client;
 
     use super::TVShowKeywords;
 

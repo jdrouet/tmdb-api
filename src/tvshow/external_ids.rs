@@ -4,7 +4,7 @@ use std::borrow::Cow;
 
 use crate::common::external_ids::TVShowExternalIdsResult;
 
-/// Get the external ids of a tvshow.
+/// Get the external ids of a TV show.
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;

@@ -63,7 +63,7 @@ call /person/287 person-details
 call /search/movie search-movie query=RRRrrrr
 call /search/tv search-tv query=game+of+thrones
 
-# tvshows
+# TV shows
 call /tv/1399 tv-details
 call /tv/1399/similar tv-similar
 call /tv/1399/keywords tv-keywords

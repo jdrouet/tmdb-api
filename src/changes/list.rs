@@ -12,7 +12,7 @@ pub struct ChangeList {
     path: &'static str,
     /// Filter the results with a start date.
     pub start_date: Option<NaiveDate>,
-    /// Filter the results with a end date.
+    /// Filter the results with an end date.
     pub end_date: Option<NaiveDate>,
     /// Which page to query.
     pub page: Option<u32>,

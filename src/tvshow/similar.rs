@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-/// Command to get similar tvshows
+/// Command to get similar TV shows.
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;
@@ -20,7 +20,7 @@ use std::borrow::Cow;
 /// ```
 #[derive(Clone, Debug, Default)]
 pub struct GetSimilarTVShows {
-    /// ID of the tvshow
+    /// ID of the TV show
     pub tvshow_id: u64,
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<String>,

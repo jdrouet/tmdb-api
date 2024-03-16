@@ -2,7 +2,7 @@ use std::borrow::Cow;
 
 const PATH: &str = "/search/tv";
 
-/// Command to search for tvshows
+/// Command to search for TV shows.
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;
@@ -135,7 +135,7 @@ mod tests {
         assert_eq!(item.inner.name, "Game of Thrones");
     }
 
-    /// Refering to issue https://github.com/jdrouet/tmdb-api/issues/25
+    /// Referring to issue https://github.com/jdrouet/tmdb-api/issues/25
     #[tokio::test]
     async fn fix_issue_25() {
         let mut server = mockito::Server::new_async().await;
