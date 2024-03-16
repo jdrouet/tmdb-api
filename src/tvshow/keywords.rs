@@ -4,6 +4,24 @@ use std::borrow::Cow;
 
 use crate::common::keyword::Keyword;
 
+/// Command to get the keywords of a tvshow.
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::tvshow::keywords::TVShowKeywords;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = TVShowKeywords::new(1);
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct TVShowKeywords {
     pub tv_show_id: u64,
