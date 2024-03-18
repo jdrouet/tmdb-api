@@ -111,6 +111,7 @@ pub struct SeasonBase {
     pub overview: Option<String>,
     pub poster_path: Option<String>,
     pub season_number: u64,
+    pub vote_average: f64,
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
