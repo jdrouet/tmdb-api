@@ -12,7 +12,7 @@ readme = "readme.md"
 
 [features]
 default = ["commands"]
-commands = ["dep:async-trait", "dep:reqwest"]
+commands = ["dep:async-trait", "dep:reqwest", "dep:thiserror"]
 
 # only used for testing
 integration = []
@@ -30,6 +30,7 @@ reqwest = { version = "0.11", default-features = false, features = [
 ], optional = true }
 serde = { version = "1.0", features = ["derive"] }
 serde_repr = { version = "0.1" }
+thiserror = { version = "1.0.58", optional = true }
 
 [dev-dependencies]
 mockito = { version = "1.0" }
