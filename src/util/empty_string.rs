@@ -113,7 +113,7 @@ mod tests {
     }
 
     mod date_time {
-        use chrono::NaiveDateTime;
+        use chrono::{DateTime, NaiveDateTime};
 
         use super::TestingStruct;
 
@@ -131,7 +131,7 @@ mod tests {
                 serde_json::from_str(r#"{"value":"1970-01-01T00:00:00"}"#).unwrap();
             assert_eq!(
                 result.value,
-                Some(NaiveDateTime::from_timestamp_opt(0, 0).unwrap())
+                DateTime::from_timestamp(0, 0).map(|date| date.naive_utc())
             );
         }
 
@@ -142,7 +142,7 @@ mod tests {
             assert_eq!(result, r#"{"value":null}"#);
 
             let result = serde_json::to_string(&TestingStruct::<NaiveDateTime> {
-                value: Some(NaiveDateTime::from_timestamp_opt(0, 0).unwrap()),
+                value: DateTime::from_timestamp(0, 0).map(|date| date.naive_utc()),
             })
             .unwrap();
 
