@@ -10,10 +10,16 @@ jobs:
   tests:
     name: Test on stable
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain: [stable, beta, nightly]
     concurrency:
-      group: ${{ github.ref }}-tests
+      group: ${{ github.ref }}-tests-${{ matrix.toolchain }}
       cancel-in-progress: true
     steps:
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.toolchain }}
       - uses: actions/checkout@v2
       - run: cargo test
 
