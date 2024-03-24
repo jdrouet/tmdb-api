@@ -13,7 +13,6 @@ readme = "readme.md"
 [features]
 default = ["commands"]
 commands = ["dep:async-trait", "dep:reqwest"]
-tokio-rate-limit = ["dep:tokio"]
 
 # only used for testing
 integration = []
@@ -24,7 +23,6 @@ chrono = { version = "0.4", default-features = false, features = [
     "serde",
     "std",
 ] }
-tokio = { version = "1.35.1", default-features = false, optional = true }
 reqwest = { version = "0.11", default-features = false, features = [
     "json",
     "rustls-tls",
