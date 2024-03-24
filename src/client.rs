@@ -4,18 +4,11 @@ use reqwest::StatusCode;
 
 const BASE_URL: &str = "https://api.themoviedb.org/3";
 
-#[derive(Debug)]
+#[derive(Debug, thiserror::Error)]
 pub enum ClientBuilderError {
+    #[error("missing api key")]
     MissingApiKey,
 }
-
-impl std::fmt::Display for ClientBuilderError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "missing api key")
-    }
-}
-
-impl std::error::Error for ClientBuilderError {}
 
 #[derive(Default)]
 pub struct ClientBuilder {
