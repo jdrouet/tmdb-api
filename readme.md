@@ -31,10 +31,6 @@ async fn main() {
 
 ## Features
 
-### tokio-rate-limit
-
-This feature enables a simple rate limiter without burst based on the `tokio` crate.
-
 ## Running the tests
 
 ```bash
