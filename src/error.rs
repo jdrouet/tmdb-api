@@ -74,46 +74,40 @@ impl std::error::Error for ServerError {
     }
 }
 
-#[cfg(feature = "commands")]
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
+    #[error("couldn't execute request")]
+    Request {
+        #[source]
+        source: Box<dyn std::error::Error + Send>,
+    },
+    #[error("couldn't read response")]
+    Response {
+        #[source]
+        source: Box<dyn std::error::Error + Send>,
+    },
     #[error(transparent)]
-    Reqwest(#[from] reqwest::Error),
-    #[error(transparent)]
-    Server(#[from] ServerError),
+    Validation(ServerValidationBodyError),
+    #[error("internal server error with code {code}")]
+    Server {
+        code: u16,
+        #[source]
+        content: ServerOtherBodyError,
+    },
 }
 
-#[cfg(feature = "commands")]
 impl Error {
-    pub fn as_reqwest_error(&self) -> Option<&reqwest::Error> {
+    pub fn as_validation_error(&self) -> Option<&ServerValidationBodyError> {
         match self {
-            Self::Reqwest(inner) => Some(inner),
+            Self::Validation(inner) => Some(inner),
             _ => None,
         }
     }
 
-    pub fn is_reqwest_error(&self) -> bool {
-        matches!(self, Self::Reqwest(_))
-    }
-
-    pub fn as_server_error(&self) -> Option<&ServerError> {
+    pub fn as_server_error(&self) -> Option<&ServerOtherBodyError> {
         match self {
-            Self::Server(inner) => Some(inner),
+            Self::Server { code: _, content } => Some(content),
             _ => None,
         }
-    }
-
-    pub fn is_server_error(&self) -> bool {
-        matches!(self, Self::Server(_))
-    }
-}
-
-#[cfg(feature = "commands")]
-impl From<(reqwest::StatusCode, ServerBodyError)> for Error {
-    fn from((code, body): (reqwest::StatusCode, ServerBodyError)) -> Self {
-        Self::Server(ServerError {
-            code: code.as_u16(),
-            body,
-        })
     }
 }

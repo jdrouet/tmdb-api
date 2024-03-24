@@ -1,6 +1,10 @@
+pub mod prelude;
+pub mod reqwest;
+
 use std::borrow::Cow;
 
-use reqwest::StatusCode;
+pub use self::prelude::Executor;
+pub type ReqwestClient = Client<reqwest::ReqwestExecutor>;
 
 const BASE_URL: &str = "https://api.themoviedb.org/3";
 
@@ -11,13 +15,13 @@ pub enum ClientBuilderError {
 }
 
 #[derive(Default)]
-pub struct ClientBuilder {
+pub struct ClientBuilder<E: prelude::Executor> {
     base_url: Cow<'static, str>,
-    client: Option<reqwest::Client>,
+    executor: Option<E>,
     api_key: Option<String>,
 }
 
-impl ClientBuilder {
+impl<E: prelude::Executor> ClientBuilder<E> {
     pub fn with_base_url<U: Into<Cow<'static, str>>>(mut self, value: U) -> Self {
         self.base_url = value.into();
         self
@@ -27,13 +31,13 @@ impl ClientBuilder {
         self.base_url = value.into();
     }
 
-    pub fn with_reqwest_client(mut self, client: reqwest::Client) -> Self {
-        self.client = Some(client);
+    pub fn with_executor(mut self, executor: E) -> Self {
+        self.executor = Some(executor);
         self
     }
 
-    pub fn set_reqwest_client(mut self, client: reqwest::Client) {
-        self.client = Some(client);
+    pub fn set_executor(mut self, executor: E) {
+        self.executor = Some(executor);
     }
 
     pub fn with_api_key(mut self, value: String) -> Self {
@@ -45,13 +49,13 @@ impl ClientBuilder {
         self.api_key = Some(value);
     }
 
-    pub fn build(self) -> Result<Client, ClientBuilderError> {
+    pub fn build(self) -> Result<Client<E>, ClientBuilderError> {
         let base_url = self.base_url;
-        let client = self.client.unwrap_or_default();
+        let executor = self.executor.unwrap_or_default();
         let api_key = self.api_key.ok_or(ClientBuilderError::MissingApiKey)?;
 
         Ok(Client {
-            client,
+            executor,
             base_url,
             api_key,
         })
@@ -61,24 +65,25 @@ impl ClientBuilder {
 /// HTTP client for TMDB
 ///
 /// ```rust
-/// use tmdb_api::Client;
+/// use tmdb_api::client::Client;
+/// use tmdb_api::client::reqwest::ReqwestExecutor;
 ///
-/// let client = Client::new("this-is-my-secret-token".into());
+/// let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
 /// ```
-pub struct Client {
-    client: reqwest::Client,
+pub struct Client<E> {
+    executor: E,
     base_url: Cow<'static, str>,
     api_key: String,
 }
 
-impl Client {
-    pub fn builder() -> ClientBuilder {
+impl<E: Executor> Client<E> {
+    pub fn builder() -> ClientBuilder<E> {
         ClientBuilder::default()
     }
 
     pub fn new(api_key: String) -> Self {
         Self {
-            client: reqwest::Client::default(),
+            executor: E::default(),
             base_url: Cow::Borrowed(BASE_URL),
             api_key,
         }
@@ -102,17 +107,6 @@ impl Client {
         params.push(("api_key", Cow::Borrowed(self.api_key.as_str())));
 
         let url = format!("{}{}", self.base_url, path);
-        let res = self.client.get(url).query(&params).send().await?;
-
-        let status_code = res.status();
-        if status_code.is_success() {
-            Ok(res.json::<T>().await?)
-        } else if status_code == StatusCode::UNPROCESSABLE_ENTITY {
-            let payload: crate::error::ServerValidationBodyError = res.json().await?;
-            Err(crate::error::Error::from((status_code, payload.into())))
-        } else {
-            let payload: crate::error::ServerOtherBodyError = res.json().await?;
-            Err(crate::error::Error::from((status_code, payload.into())))
-        }
+        self.executor.execute(&url, params).await
     }
 }

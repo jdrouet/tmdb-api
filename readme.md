@@ -13,12 +13,13 @@ cargo add tmdb-api
 ```rust
 use tmdb_api::tvshow::search::TVShowSearch;
 use tmdb_api::prelude::Command;
-use tmdb_api::Client;
+use tmdb_api::client::Client;
+use tmdb_api::client::reqwest::ReqwestExecutor;
 
 #[tokio::main]
 async fn main() {
     let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-    let client = Client::new(secret);
+    let client = Client::<ReqwestExecutor>::new(secret);
     let cmd = TVShowSearch::new("simpsons".into());
 
     let result = cmd.execute(&client).await.unwrap();
