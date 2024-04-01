@@ -112,11 +112,11 @@ impl crate::prelude::Command for TVShowAggregateCredits {
 mod tests {
     use mockito::Matcher;
 
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
     use crate::Client;
-	use crate::client::reqwest::ReqwestExecutor;
 
-	use super::TVShowAggregateCredits;
+    use super::TVShowAggregateCredits;
 
     #[tokio::test]
     async fn it_works() {
@@ -200,11 +200,11 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
     use crate::Client;
-	use crate::client::reqwest::ReqwestExecutor;
 
-	use super::TVShowAggregateCredits;
+    use super::TVShowAggregateCredits;
 
     #[tokio::test]
     async fn execute() {
