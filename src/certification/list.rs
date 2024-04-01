@@ -31,7 +31,7 @@ const MOVIE_PATH: &str = "/certification/movie/list";
 /// }
 /// ```
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub(crate) struct CertificationResult {
+pub struct CertificationResult {
     pub certifications: HashMap<String, Vec<Certification>>,
 }
 
