@@ -7,11 +7,12 @@ use std::borrow::Cow;
 /// ```rust
 /// use tmdb_api::prelude::Command;
 /// use tmdb_api::Client;
+/// use tmdb_api::client::reqwest::ReqwestExecutor;
 /// use tmdb_api::tvshow::content_rating::TVShowContentRating;
 ///
 /// #[tokio::main]
 /// async fn main() {
-///     let client = Client::new("this-is-my-secret-token".into());
+/// 	let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
 ///     let cmd = TVShowContentRating::new(1);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
@@ -148,6 +149,7 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use crate::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     use super::TVShowContentRating;
@@ -155,7 +157,7 @@ mod integration_tests {
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-        let client = Client::new(secret);
+        let client = Client::<ReqwestExecutor>::new(secret);
 
         let result = TVShowContentRating::new(1399)
             .execute(&client)
