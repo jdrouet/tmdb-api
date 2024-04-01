@@ -10,22 +10,23 @@ jobs:
   tests:
     name: Test on stable
     runs-on: ubuntu-latest
-    concurrency: 
-      group: ${{ github.ref }}-tests
+    strategy:
+      matrix:
+        toolchain: [stable, beta, nightly]
+    concurrency:
+      group: ${{ github.ref }}-tests-${{ matrix.toolchain }}
       cancel-in-progress: true
     steps:
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.toolchain }}
       - uses: actions/checkout@v2
-      - run: cargo test --features integration
-        if: github.repository == 'jdrouet/tmdb-api'
-        env:
-          TMDB_TOKEN_V3: "${{ secrets.TMDB_TOKEN_V3 }}"
       - run: cargo test
-        if: github.repository != 'jdrouet/tmdb-api'
 
   check-features:
     name: Ensure all features are building correctly
     runs-on: ubuntu-latest
-    concurrency: 
+    concurrency:
       group: ${{ github.ref }}-check-features
       cancel-in-progress: true
     steps:
@@ -36,7 +37,7 @@ jobs:
   clippy:
     name: Check clippy suggestions
     runs-on: ubuntu-latest
-    concurrency: 
+    concurrency:
       group: ${{ github.ref }}-clippy
       cancel-in-progress: true
     steps:
@@ -49,7 +50,7 @@ jobs:
           clippy_flags: -- -Dwarnings
           fail_on_error: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: 'github-pr-review'
+          reporter: "github-pr-review"
 
       - name: run code check with clippy
         if: github.event_name != 'pull_request'
@@ -58,7 +59,7 @@ jobs:
   lint:
     name: Check all linting
     runs-on: ubuntu-latest
-    concurrency: 
+    concurrency:
       group: ${{ github.ref }}-lint
       cancel-in-progress: true
     steps:
