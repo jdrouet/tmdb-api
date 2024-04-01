@@ -2,26 +2,44 @@
 
 use std::borrow::Cow;
 
+/// Command to get the content ratings of a TV show.
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::tvshow::content_rating::TVShowContentRating;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::new("this-is-my-secret-token".into());
+///     let cmd = TVShowContentRating::new(1);
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
-pub(crate) struct TVShowContentRating {
-    pub(crate) id: u64,
+pub struct TVShowContentRating {
+    pub id: u64,
 }
 
 #[derive(Clone, Debug, Default, Deserialize)]
-pub(crate) struct ContentRatingResult {
-    pub(crate) id: u64,
-    pub(crate) results: Vec<ContentRatingBase>,
+pub struct ContentRatingResult {
+    pub id: u64,
+    pub results: Vec<ContentRatingBase>,
 }
 
 #[derive(Clone, Debug, Default, Deserialize)]
-pub(crate) struct ContentRatingBase {
-    pub(crate) descriptors: Vec<String>,
-    pub(crate) iso_3166_1: String,
-    pub(crate) rating: String,
+pub struct ContentRatingBase {
+    pub descriptors: Vec<String>,
+    pub iso_3166_1: String,
+    pub rating: String,
 }
 
 impl TVShowContentRating {
-    pub(crate) fn new(tv_show_id: u64) -> Self {
+    pub fn new(tv_show_id: u64) -> Self {
         Self { id: tv_show_id }
     }
 }
@@ -42,8 +60,8 @@ impl crate::prelude::Command for TVShowContentRating {
 mod tests {
     use mockito::Matcher;
 
-    use crate::Client;
     use crate::prelude::Command;
+    use crate::Client;
 
     use super::TVShowContentRating;
 
@@ -128,8 +146,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::Client;
     use crate::prelude::Command;
+    use crate::Client;
 
     use super::TVShowContentRating;
 
