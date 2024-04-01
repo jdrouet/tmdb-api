@@ -2,7 +2,7 @@
 name = "tmdb-api"
 description = "Yet another TMDB client. This one is using async methods."
 authors = ["Jeremie Drouet <jeremie.drouet@gmail.com>"]
-version = "0.7.0"
+version = "0.8.0"
 edition = "2021"
 repository = "https://github.com/jdrouet/tmdb-api"
 license = "MIT"
@@ -13,27 +13,25 @@ readme = "readme.md"
 [features]
 default = ["commands"]
 commands = ["dep:async-trait", "dep:reqwest"]
-tokio-rate-limit = ["dep:tokio"]
 
 # only used for testing
 integration = []
 
 [dependencies]
-async-trait = { version = "0.1", optional = true }
-chrono = { version = "0.4", default-features = false, features = [
+async-trait = { version = "0.1.79", optional = true }
+chrono = { version = "0.4.35", default-features = false, features = [
     "serde",
     "std",
 ] }
-tokio = { version = "1.35.1", default-features = false, optional = true }
-reqwest = { version = "0.11", default-features = false, features = [
+reqwest = { version = "0.12.1", default-features = false, features = [
     "json",
     "rustls-tls",
-    "tokio-rustls",
 ], optional = true }
-serde = { version = "1.0", features = ["derive"] }
-serde_repr = { version = "0.1" }
+serde = { version = "1.0.197", features = ["derive"] }
+serde_repr = { version = "0.1.18" }
+thiserror = { version = "1.0.58" }
 
 [dev-dependencies]
-mockito = { version = "1.0" }
-serde_json = { version = "1.0" }
-tokio = { version = "1.21", features = ["full"] }
+mockito = { version = "1.4.0" }
+serde_json = { version = "1.0.114" }
+tokio = { version = "1.36.0", features = ["full"] }
