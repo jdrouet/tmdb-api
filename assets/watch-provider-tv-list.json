@@ -22,7 +22,7 @@
         "EE": 3,
         "EG": 2,
         "ES": 5,
-        "FI": 11,
+        "FI": 10,
         "FR": 4,
         "GB": 4,
         "GR": 2,
@@ -73,7 +73,7 @@
         "UA": 2
       },
       "display_priority": 1,
-      "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+      "logo_path": "/9ghgSC0MA082EL6HLCW3GalykFD.jpg",
       "provider_name": "Apple TV",
       "provider_id": 2
     },
@@ -98,7 +98,7 @@
         "EE": 4,
         "EG": 4,
         "ES": 14,
-        "FI": 12,
+        "FI": 11,
         "FR": 8,
         "GB": 13,
         "GR": 3,
@@ -152,7 +152,7 @@
         "ZW": 1
       },
       "display_priority": 3,
-      "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+      "logo_path": "/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg",
       "provider_name": "Google Play Movies",
       "provider_id": 3
     },
@@ -161,7 +161,7 @@
         "US": 42
       },
       "display_priority": 42,
-      "logo_path": "/21dEscfO8n1tL35k4DANixhffsR.jpg",
+      "logo_path": "/nVzxU8EPk0aXqQkBZniVA2kat1I.jpg",
       "provider_name": "Vudu",
       "provider_id": 7
     },
@@ -245,7 +245,7 @@
         "MZ": 0,
         "NE": 0,
         "NG": 0,
-        "NL": 2,
+        "NL": 3,
         "NO": 1,
         "NZ": 1,
         "OM": 0,
@@ -300,7 +300,7 @@
         "NI": 12
       },
       "display_priority": 0,
-      "logo_path": "/t2yyOv40HZeVlLjYsCsPHnWLk4W.jpg",
+      "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
       "provider_name": "Netflix",
       "provider_id": 8
     },
@@ -313,13 +313,13 @@
         "US": 1
       },
       "display_priority": 1,
-      "logo_path": "/emthp39XA2YScoYL1p0sdbAH2WA.jpg",
+      "logo_path": "/dQeAar5H991VYporEjUspolDarG.jpg",
       "provider_name": "Amazon Prime Video",
       "provider_id": 9
     },
     {
       "display_priorities": {
-        "CA": 58,
+        "CA": 56,
         "AT": 3,
         "AU": 12,
         "BR": 15,
@@ -338,7 +338,7 @@
         "SE": 47
       },
       "display_priority": 15,
-      "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+      "logo_path": "/seGSXajazLMCKGB5hnRCidtjay1.jpg",
       "provider_name": "Amazon Video",
       "provider_id": 10
     },
@@ -369,7 +369,7 @@
         "CU": 4,
         "CV": 4,
         "CZ": 6,
-        "DE": 29,
+        "DE": 28,
         "DK": 11,
         "DO": 4,
         "DZ": 4,
@@ -377,7 +377,7 @@
         "EE": 5,
         "EG": 6,
         "ES": 16,
-        "FI": 14,
+        "FI": 13,
         "FJ": 4,
         "FR": 24,
         "GB": 12,
@@ -456,7 +456,7 @@
         "TW": 19,
         "TZ": 4,
         "UG": 4,
-        "US": 78,
+        "US": 76,
         "UY": 6,
         "VA": 3,
         "VE": 9,
@@ -483,16 +483,16 @@
         "ZW": 3
       },
       "display_priority": 4,
-      "logo_path": "/bVR4Z1LCHY7gidXAJF5pMa4QrDS.jpg",
+      "logo_path": "/fj9Y8iIMFUC6952HwxbGixTQPb7.jpg",
       "provider_name": "MUBI",
       "provider_id": 11
     },
     {
       "display_priorities": {
-        "US": 58
+        "US": 57
       },
-      "display_priority": 58,
-      "logo_path": "/7P2JHkfv4AmU2MgSPGaJ0z6nNLG.jpg",
+      "display_priority": 57,
+      "logo_path": "/iCHCSuraj6zUKmMYgQhsm8jmoqi.jpg",
       "provider_name": "Crackle",
       "provider_id": 12
     },
@@ -502,7 +502,7 @@
         "US": 5
       },
       "display_priority": 5,
-      "logo_path": "/zxrVdFjIjLqkfnwyghnfywTn3Lh.jpg",
+      "logo_path": "/bxBlRPEPpMVDc4jMhSrTf2339DW.jpg",
       "provider_name": "Hulu",
       "provider_id": 15
     },
@@ -511,7 +511,7 @@
         "BR": 18
       },
       "display_priority": 18,
-      "logo_path": "/rll0yTCjrSY6hcJqIyMatv9B2iR.jpg",
+      "logo_path": "/jlyafDbXLyNXNNFZbIgB9VrlScW.jpg",
       "provider_name": "NetMovies",
       "provider_id": 19
     },
@@ -521,7 +521,7 @@
         "DE": 17
       },
       "display_priority": 17,
-      "logo_path": "/2PTFxgrswnEuK0szl87iSd8Yszz.jpg",
+      "logo_path": "/9lFSDdj10l7QAXyTZPDWuwkKJT3.jpg",
       "provider_name": "maxdome Store",
       "provider_id": 20
     },
@@ -530,14 +530,14 @@
         "AU": 9
       },
       "display_priority": 9,
-      "logo_path": "/rDd7IEBnJB0gPagFvagP1kK3pDu.jpg",
+      "logo_path": "/sSfxJXq7s8oHf3XWd0FtqagPDsF.jpg",
       "provider_name": "Stan",
       "provider_id": 21
     },
     {
       "display_priorities": {},
       "display_priority": 23,
-      "logo_path": "/3LQzaSBH1kjQB9oKc4n72dKj8oY.jpg",
+      "logo_path": "/vHtttUWMQcVWE01z1yAbEQahc5M.jpg",
       "provider_name": "HBO Now",
       "provider_id": 27
     },
@@ -550,7 +550,7 @@
         "IT": 8
       },
       "display_priority": 8,
-      "logo_path": "/fBHHXKC34ffxAsQvDe0ZJbvmTEQ.jpg",
+      "logo_path": "/1UrT2H9x6DuQ9ytNhsSCUFtTUwS.jpg",
       "provider_name": "Sky Go",
       "provider_id": 29
     },
@@ -559,7 +559,7 @@
         "DE": 5
       },
       "display_priority": 5,
-      "logo_path": "/1WESsDFMs3cJc2TeT3nnzwIffGv.jpg",
+      "logo_path": "/9r5zFWuYnwjzO1JrNjSbLQwUc3P.jpg",
       "provider_name": "WOW",
       "provider_id": 30
     },
@@ -573,7 +573,7 @@
         "VE": 21
       },
       "display_priority": 21,
-      "logo_path": "/bmU37kpSMbcTgwwUrbxByk7x8h3.jpg",
+      "logo_path": "/dOja2CfAryoADxw3culkSKPkn0q.jpg",
       "provider_name": "HBO Go",
       "provider_id": 31
     },
@@ -582,7 +582,7 @@
         "US": 64
       },
       "display_priority": 64,
-      "logo_path": "/6A1gRIJqLfFHOoTvbTxDAbuU2nQ.jpg",
+      "logo_path": "/ctiRpS16dlaTXQBSsiFncMrgWmh.jpg",
       "provider_name": "MGM Plus",
       "provider_id": 34
     },
@@ -596,7 +596,7 @@
         "DE": 15,
         "DK": 17,
         "ES": 12,
-        "FI": 17,
+        "FI": 16,
         "FR": 23,
         "GB": 30,
         "IE": 12,
@@ -615,7 +615,7 @@
         "UA": 4
       },
       "display_priority": 9,
-      "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+      "logo_path": "/bZvc9dXrXNly7cA0V4D9pR8yJwm.jpg",
       "provider_name": "Rakuten TV",
       "provider_id": 35
     },
@@ -624,7 +624,7 @@
         "US": 45
       },
       "display_priority": 45,
-      "logo_path": "/4kL33LoKd99YFIaSOoOPMQOSw1A.jpg",
+      "logo_path": "/kOI9M2PeWKFbfQ7m9VvTU0OdIe1.jpg",
       "provider_name": "Showtime",
       "provider_id": 37
     },
@@ -633,7 +633,7 @@
         "GB": 11
       },
       "display_priority": 11,
-      "logo_path": "/zY5SmHyAy1CoA3AfQpf58QnShnw.jpg",
+      "logo_path": "/nc8Tpsr8SqCbsTUogPDD06gGzB3.jpg",
       "provider_name": "BBC iPlayer",
       "provider_id": 38
     },
@@ -644,21 +644,21 @@
         "IT": 9
       },
       "display_priority": 9,
-      "logo_path": "/y7mZSw1FV99yfawxOISBQTvtJxM.jpg",
+      "logo_path": "/g0E9h3JAeIwmdvxlT73jiEuxdNj.jpg",
       "provider_name": "Now TV",
       "provider_id": 39
     },
     {
       "display_priorities": {
         "AT": 9,
-        "DE": 28,
+        "DE": 27,
         "GB": 16,
         "IT": 11,
         "PL": 11,
         "ES": 61
       },
       "display_priority": 11,
-      "logo_path": "/cksgBjTHV3rzAVaO2zUyS1mH4Ke.jpg",
+      "logo_path": "/rVEXDsaHzpwK1YhXEZrsmvfpdOR.jpg",
       "provider_name": "Chili",
       "provider_id": 40
     },
@@ -667,7 +667,7 @@
         "GB": 21
       },
       "display_priority": 21,
-      "logo_path": "/clC87JljoZKeAHIwdlxd1AUn6cn.jpg",
+      "logo_path": "/1LuvKw01c2KQCt6DqgAgR06H2pT.jpg",
       "provider_name": "ITVX",
       "provider_id": 41
     },
@@ -685,10 +685,10 @@
         "IT": 40,
         "MX": 40,
         "NL": 40,
-        "US": 44
+        "US": 43
       },
-      "display_priority": 44,
-      "logo_path": "/eWp5LdR4p4uKL0wACBBXapDV2lB.jpg",
+      "display_priority": 43,
+      "logo_path": "/yIKwylTLP1u8gl84Is7FItpYLGL.jpg",
       "provider_name": "Starz",
       "provider_id": 43
     },
@@ -697,7 +697,7 @@
         "BR": 5
       },
       "display_priority": 5,
-      "logo_path": "/mPDlxHokGsEc84OOhp9qjeynq2U.jpg",
+      "logo_path": "/9HhIlyFlilVtx0sMTcPbhs5qR31.jpg",
       "provider_name": "Looke",
       "provider_id": 47
     },
@@ -726,7 +726,7 @@
         "ZW": 0
       },
       "display_priority": 0,
-      "logo_path": "/okiQZMXnqwv0aD3QDYmu5DBNLce.jpg",
+      "logo_path": "/guv81FtHO7GmnFwwmJA7QmfkSnZ.jpg",
       "provider_name": "ShowMax",
       "provider_id": 55
     },
@@ -735,7 +735,7 @@
         "FR": 7
       },
       "display_priority": 7,
-      "logo_path": "/riPZYc1ILIbubFaxYSdVfc7K6bm.jpg",
+      "logo_path": "/z64xZ5CIT6k4VyI5ThKtxJARDOZ.jpg",
       "provider_name": "OCS Go",
       "provider_id": 56
     },
@@ -744,7 +744,7 @@
         "FR": 19
       },
       "display_priority": 19,
-      "logo_path": "/knpqBvBQjyHnFrYPJ9bbtUCv6uo.jpg",
+      "logo_path": "/cAUTwxqoI7zc9XtYr1SMtWZEsXg.jpg",
       "provider_name": "Canal VOD",
       "provider_id": 58
     },
@@ -753,7 +753,7 @@
         "FR": 21
       },
       "display_priority": 21,
-      "logo_path": "/ulTa4e9ysKwMwNpg7EfhYnvAj8q.jpg",
+      "logo_path": "/s7mg9n4UHrcdJQL78JmaU6oAdHt.jpg",
       "provider_name": "Bbox VOD",
       "provider_id": 59
     },
@@ -762,7 +762,7 @@
         "FR": 11
       },
       "display_priority": 11,
-      "logo_path": "/ddWcbe8fYAfcQMjighzWGLjjyip.jpg",
+      "logo_path": "/9Fyo6njYvroAIxAzTBbLgnjgYga.jpg",
       "provider_name": "Orange VOD",
       "provider_id": 61
     },
@@ -771,7 +771,7 @@
         "ES": 13
       },
       "display_priority": 13,
-      "logo_path": "/9dielJNGTSKO7Lp6NKAuNOLw2jP.jpg",
+      "logo_path": "/oN6g8QorcoYo3mx4BulU22ghKq4.jpg",
       "provider_name": "Atres Player",
       "provider_id": 62
     },
@@ -781,7 +781,7 @@
         "PT": 24
       },
       "display_priority": 24,
-      "logo_path": "/gqdajHmtr6qtutL7kkmEgleGfV9.jpg",
+      "logo_path": "/kO2SWXvDCHAquaUuTJBuZkTBAuU.jpg",
       "provider_name": "Filmin",
       "provider_id": 63
     },
@@ -790,7 +790,7 @@
         "MX": 14
       },
       "display_priority": 14,
-      "logo_path": "/xVsZYrrmmqFJh3MkH98aFjMHnSf.jpg",
+      "logo_path": "/ivrHpNeP8kIMlYNQ7IzKIigVwc1.jpg",
       "provider_name": "Filmin Latino",
       "provider_id": 66
     },
@@ -801,10 +801,10 @@
         "AU": 18,
         "BR": 17,
         "CH": 6,
-        "DE": 33,
+        "DE": 32,
         "DK": 10,
         "ES": 15,
-        "FI": 13,
+        "FI": 12,
         "FR": 15,
         "GB": 17,
         "IE": 14,
@@ -818,7 +818,7 @@
         "US": 53
       },
       "display_priority": 53,
-      "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+      "logo_path": "/5vfrJQgNe9UnHVgVNAwZTy0Jo9o.jpg",
       "provider_name": "Microsoft Store",
       "provider_id": 68
     },
@@ -827,7 +827,7 @@
         "NL": 7
       },
       "display_priority": 7,
-      "logo_path": "/klcjoULUsj7MBZJW8vMSgQgAcvM.jpg",
+      "logo_path": "/qN7uDYanT47WI0MmbwOr5HFFot.jpg",
       "provider_name": "Videoland",
       "provider_id": 72
     },
@@ -840,7 +840,7 @@
         "US": 50
       },
       "display_priority": 50,
-      "logo_path": "/w2TDH9TRI7pltf5LjN3vXzs7QbN.jpg",
+      "logo_path": "/o4JMLTkDfjei1XrsVk1vSjXfdBk.jpg",
       "provider_name": "Tubi TV",
       "provider_id": 73
     },
@@ -857,11 +857,11 @@
         "PL": 25,
         "SE": 8,
         "GB": 108,
-        "US": 228,
-        "CA": 128
+        "US": 222,
+        "CA": 125
       },
-      "display_priority": 228,
-      "logo_path": "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+      "display_priority": 222,
+      "logo_path": "/bnoTnLzz2MAhK3Yc6P9KXe5drIz.jpg",
       "provider_name": "Viaplay",
       "provider_id": 76
     },
@@ -872,26 +872,17 @@
         "NO": 6,
         "SE": 5
       },
-      "display_priority": 9,
-      "logo_path": "/lkNmk9pxwyz3FgWKsAjm10emmY1.jpg",
+      "display_priority": 5,
+      "logo_path": "/965vgyydtZwcL2ts9eyCuCPSLU.jpg",
       "provider_name": "TV4",
       "provider_id": 77
-    },
-    {
-      "display_priorities": {
-        "CA": 43
-      },
-      "display_priority": 43,
-      "logo_path": "/2BPU00vSfCZ4XI2CnQCBv8rZk2f.jpg",
-      "provider_name": "CBS",
-      "provider_id": 78
     },
     {
       "display_priorities": {
         "US": 63
       },
       "display_priority": 63,
-      "logo_path": "/wSAxtofaArEuTOsqBmghVuJx7eP.jpg",
+      "logo_path": "/6hFf3sIdmXSAczy3i6tLSmy6gwK.jpg",
       "provider_name": "NBC",
       "provider_id": 79
     },
@@ -900,7 +891,7 @@
         "US": 59
       },
       "display_priority": 59,
-      "logo_path": "/dTKs9JkJl06hnbnqUXHAxUwZrUS.jpg",
+      "logo_path": "/92Kx25Od0habmgRBTqT6XWgwgKt.jpg",
       "provider_name": "AMC",
       "provider_id": 80
     },
@@ -909,7 +900,7 @@
         "AU": 23
       },
       "display_priority": 23,
-      "logo_path": "/n0A2DUp7BPrz5mBoTN9cYV8oGhG.jpg",
+      "logo_path": "/68wIIGfS8iE1Vk06mAftEnBiFjJ.jpg",
       "provider_name": "tenplay",
       "provider_id": 82
     },
@@ -918,7 +909,7 @@
         "US": 39
       },
       "display_priority": 39,
-      "logo_path": "/6Y6w3F5mYoRHCcNAG0ZD2AndLJ2.jpg",
+      "logo_path": "/spcwROYevucLluqZZ8Fv75UuTBt.jpg",
       "provider_name": "The CW",
       "provider_id": 83
     },
@@ -927,7 +918,7 @@
         "JP": 4
       },
       "display_priority": 4,
-      "logo_path": "/npg1OiBidQSndMsBZwgEPOYU6Jq.jpg",
+      "logo_path": "/a5T7vNaGvoeckYO6rQkHolvyYf4.jpg",
       "provider_name": "U-NEXT",
       "provider_id": 84
     },
@@ -941,13 +932,13 @@
         "NO": 14,
         "NZ": 15,
         "SE": 16,
-        "US": 72,
+        "US": 71,
         "ZA": 9,
         "AR": 66,
         "CO": 41
       },
-      "display_priority": 72,
-      "logo_path": "/5P99DkK1jVs95KcE8bYG9MBtGQ.jpg",
+      "display_priority": 71,
+      "logo_path": "/doCc555FPPgGtuaZJxf9QZVpIp5.jpg",
       "provider_name": "Acorn TV",
       "provider_id": 87
     },
@@ -956,7 +947,7 @@
         "KR": 6
       },
       "display_priority": 6,
-      "logo_path": "/a4ciTQc27FsgdUp7PCrToHPygcw.jpg",
+      "logo_path": "/crFbxg6jkiKc14gpIGMkre9Y3mu.jpg",
       "provider_name": "Naver Store",
       "provider_id": 96
     },
@@ -965,7 +956,7 @@
         "KR": 4
       },
       "display_priority": 4,
-      "logo_path": "/vXXZx0aWQtDv2klvObNugm4dQMN.jpg",
+      "logo_path": "/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg",
       "provider_name": "Watcha",
       "provider_id": 97
     },
@@ -978,10 +969,10 @@
         "GB": 24,
         "IE": 13,
         "NZ": 19,
-        "US": 71
+        "US": 69
       },
-      "display_priority": 71,
-      "logo_path": "/pheENW1BxlexXX1CKJ4GyWudyMA.jpg",
+      "display_priority": 69,
+      "logo_path": "/vEtdiYRPRbDCp1Tcn3BEPF1Ni76.jpg",
       "provider_name": "Shudder",
       "provider_id": 99
     },
@@ -991,7 +982,7 @@
         "IE": 18
       },
       "display_priority": 18,
-      "logo_path": "/3dOOQK1CHa7XqA68gcIw9u9ejcd.jpg",
+      "logo_path": "/uMWCgjsGnO5IoQtqxXOjnQA5gt9.jpg",
       "provider_name": "Channel 4",
       "provider_id": 103
     },
@@ -1000,7 +991,7 @@
         "IT": 13
       },
       "display_priority": 13,
-      "logo_path": "/ftxHS1anAWTYgtDtIDv8VLXoepH.jpg",
+      "logo_path": "/aoztacWnLA4UiGRJEFoMUJFvhVq.jpg",
       "provider_name": "Timvision",
       "provider_id": 109
     },
@@ -1009,7 +1000,7 @@
         "IT": 14
       },
       "display_priority": 14,
-      "logo_path": "/lYAFW2CjeOOxCGQo69zKzlhbK0U.jpg",
+      "logo_path": "/8f3y3JSDc6z8t5EV0iTKchAz6QH.jpg",
       "provider_name": "Infinity+",
       "provider_id": 110
     },
@@ -1022,7 +1013,7 @@
         "TW": 5
       },
       "display_priority": 5,
-      "logo_path": "/o9ExgOSLF3OTwR6T3DJOuwOKJgq.jpg",
+      "logo_path": "/4smEkH3vlf5V3vo2vwrOQ6Chb35.jpg",
       "provider_name": "Ivi",
       "provider_id": 113
     },
@@ -1031,7 +1022,7 @@
         "RU": 0
       },
       "display_priority": 0,
-      "logo_path": "/w1T8s7FqakcfucR8cgOvbe6UeXN.jpg",
+      "logo_path": "/5z8dpQN27kybhn21EVLZcJPpMEo.jpg",
       "provider_name": "Okko",
       "provider_id": 115
     },
@@ -1040,7 +1031,7 @@
         "RU": 1
       },
       "display_priority": 1,
-      "logo_path": "/nlgoXBQCMSnGZrhAnyIZ7vSQ3vs.jpg",
+      "logo_path": "/dNaqCdDy4wsIzjZoYwvLRiOK4Tx.jpg",
       "provider_name": "Amediateka",
       "provider_id": 116
     },
@@ -1049,14 +1040,14 @@
         "RU": 23
       },
       "display_priority": 23,
-      "logo_path": "/1KAux0lBEHpLnQcvaf1Qf1uKcIP.jpg",
+      "logo_path": "/51wuCkUdkEQTUtB8TrtZzzxp3Tj.jpg",
       "provider_name": "Kinopoisk",
       "provider_id": 117
     },
     {
       "display_priorities": {},
       "display_priority": 36,
-      "logo_path": "/fWqVPYArdFwBc6vYqoyQB6XUl85.jpg",
+      "logo_path": "/3OiNfnN31Q655Yq1sEnnd4ipynE.jpg",
       "provider_name": "HBO",
       "provider_id": 118
     },
@@ -1135,7 +1126,7 @@
         "MZ": 1,
         "NE": 1,
         "NG": 1,
-        "NL": 3,
+        "NL": 1,
         "NO": 2,
         "NZ": 2,
         "OM": 1,
@@ -1191,7 +1182,7 @@
         "ZW": 2
       },
       "display_priority": 12,
-      "logo_path": "/emthp39XA2YScoYL1p0sdbAH2WA.jpg",
+      "logo_path": "/dQeAar5H991VYporEjUspolDarG.jpg",
       "provider_name": "Amazon Prime Video",
       "provider_id": 119
     },
@@ -1200,7 +1191,7 @@
         "IN": 6
       },
       "display_priority": 6,
-      "logo_path": "/2u1uElmpm4lProS7C9RYcaYLYt1.jpg",
+      "logo_path": "/1uQBlkLRe04k58L8q1IrYOYvGfk.jpg",
       "provider_name": "Voot",
       "provider_id": 121
     },
@@ -1213,16 +1204,16 @@
         "TH": 0
       },
       "display_priority": 0,
-      "logo_path": "/7Fl8ylPDclt3ZYgNbW2t7rbZE9I.jpg",
+      "logo_path": "/zdTSUEVZFXp3E0EkOMGN99QPVJp.jpg",
       "provider_name": "Hotstar",
       "provider_id": 122
     },
     {
       "display_priorities": {
-        "US": 48
+        "US": 49
       },
-      "display_priority": 48,
-      "logo_path": "/twV9iQPYeaoBzwsfRFGMGoMIUg8.jpg",
+      "display_priority": 49,
+      "logo_path": "/m4KUe3UoTnLgN4g6txYMnBqeUI5.jpg",
       "provider_name": "FXNow",
       "provider_id": 123
     },
@@ -1235,7 +1226,7 @@
         "IE": 9
       },
       "display_priority": 9,
-      "logo_path": "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+      "logo_path": "/6AKbY2ayaEuH4zKg2prqoVQ9iaY.jpg",
       "provider_name": "Sky Store",
       "provider_id": 130
     },
@@ -1244,7 +1235,7 @@
         "AU": 21
       },
       "display_priority": 21,
-      "logo_path": "/yv10kiDftxh4LPuGhfH9H8LUXFr.jpg",
+      "logo_path": "/cR4okiAS0zcXb4ufs3mi4PImXPB.jpg",
       "provider_name": "SBS On Demand",
       "provider_id": 132
     },
@@ -1255,7 +1246,7 @@
         "DE": 18
       },
       "display_priority": 18,
-      "logo_path": "/goKrzBxDNYxKgeeT2yoHtLXuIol.jpg",
+      "logo_path": "/82hFfWsPYtyskBrnkL8Y36vHcVf.jpg",
       "provider_name": "Videobuster",
       "provider_id": 133
     },
@@ -1264,7 +1255,7 @@
         "AU": 7
       },
       "display_priority": 7,
-      "logo_path": "/3WZ89RECN5CVhbfYATBNuQCOZVH.jpg",
+      "logo_path": "/fejdSG7TwNQ5E0p6u7A6LVs280R.jpg",
       "provider_name": "Foxtel Now",
       "provider_id": 134
     },
@@ -1273,7 +1264,7 @@
         "AU": 20
       },
       "display_priority": 20,
-      "logo_path": "/vFjk9B5bZ1ranNLnjE6Z4RY3VxM.jpg",
+      "logo_path": "/zR1TJmEwssf0ZThB2iByNtZi2Oo.jpg",
       "provider_name": "ABC iview",
       "provider_id": 135
     },
@@ -1282,7 +1273,7 @@
         "GB": 28
       },
       "display_priority": 28,
-      "logo_path": "/qlnjCr0p0STKB0cmg4DbhzhtXb7.jpg",
+      "logo_path": "/kVX0ojiLKWz31VJFwzxzy95qHQT.jpg",
       "provider_name": "UKTV Play",
       "provider_id": 137
     },
@@ -1291,17 +1282,17 @@
         "CA": 14
       },
       "display_priority": 14,
-      "logo_path": "/yNr05VQlKK4dI0Ncwf9InIVGKs9.jpg",
+      "logo_path": "/d1mUAhpJpxy0YMjwVOZ4lxAAbeT.jpg",
       "provider_name": "Cineplex",
       "provider_id": 140
     },
     {
       "display_priorities": {
         "CA": 29,
-        "US": 74
+        "US": 72
       },
-      "display_priority": 74,
-      "logo_path": "/pZ9TSk3wlRYwiwwRxTsQJ7t2but.jpg",
+      "display_priority": 72,
+      "logo_path": "/1Edma9SrJnqkQW3BqFd2rJNHZvX.jpg",
       "provider_name": "Sundance Now",
       "provider_id": 143
     },
@@ -1310,7 +1301,7 @@
         "CA": 13
       },
       "display_priority": 13,
-      "logo_path": "/366UvWIQMqvKI6SyinCmvQx2B2j.jpg",
+      "logo_path": "/7rJJlPpuGz0DV5OLjVW1HzYaFj9.jpg",
       "provider_name": "iciTouTV",
       "provider_id": 146
     },
@@ -1319,7 +1310,7 @@
         "FR": 10
       },
       "display_priority": 10,
-      "logo_path": "/ppycrWdkR3pefMYYK79e481PULm.jpg",
+      "logo_path": "/95XT3uBPpodnXNMqIVYYOsEUrhw.jpg",
       "provider_name": "Sixplay",
       "provider_id": 147
     },
@@ -1328,7 +1319,7 @@
         "US": 56
       },
       "display_priority": 56,
-      "logo_path": "/l9BRdAgQ3MkooOalsuu3yFQv2XP.jpg",
+      "logo_path": "/aEp5AORtajnh2rc7O33ui8pj2um.jpg",
       "provider_name": "ABC",
       "provider_id": 148
     },
@@ -1337,7 +1328,7 @@
         "ES": 11
       },
       "display_priority": 11,
-      "logo_path": "/4ywRQTLYJk8CjroNX4FbCBDQZTr.jpg",
+      "logo_path": "/7K6rVbpWXB6ByDI0PRzGGRXRBSY.jpg",
       "provider_name": "Movistar Plus",
       "provider_id": 149
     },
@@ -1346,7 +1337,7 @@
         "CH": 3
       },
       "display_priority": 3,
-      "logo_path": "/rVOOhp6V8FheEAKtFAJMLMbnaMZ.jpg",
+      "logo_path": "/47klot430ytIqldQUUx2avN45Sr.jpg",
       "provider_name": "blue TV",
       "provider_id": 150
     },
@@ -1355,14 +1346,14 @@
         "CA": 37,
         "AU": 8,
         "DK": 37,
-        "FI": 39,
+        "FI": 38,
         "NO": 37,
         "SE": 40,
-        "US": 77,
+        "US": 75,
         "ZA": 22
       },
       "display_priority": 22,
-      "logo_path": "/aGIS8maihUm60A3moKYD9gfYHYT.jpg",
+      "logo_path": "/1pDWY6EKtfclVbZTPVWc7WPwy8Q.jpg",
       "provider_name": "BritBox",
       "provider_id": 151
     },
@@ -1371,25 +1362,25 @@
         "US": 66
       },
       "display_priority": 66,
-      "logo_path": "/m6pLJ0l6MQJiKg1yxEs1holRSiq.jpg",
+      "logo_path": "/xqZSzhIcq8qaAU13rMhVhzDi4T8.jpg",
       "provider_name": "History",
       "provider_id": 155
+    },
+    {
+      "display_priorities": {
+        "US": 67
+      },
+      "display_priority": 67,
+      "logo_path": "/pA4qJFsD4lUFxJzwOE7U4FAxK7v.jpg",
+      "provider_name": "A&E",
+      "provider_id": 156
     },
     {
       "display_priorities": {
         "US": 68
       },
       "display_priority": 68,
-      "logo_path": "/ujE7L9z0Ceu1T74RcahVn1FMbbK.jpg",
-      "provider_name": "A&E",
-      "provider_id": 156
-    },
-    {
-      "display_priorities": {
-        "US": 69
-      },
-      "display_priority": 69,
-      "logo_path": "/3wJNOOCbvqi7fJAdgf1QpL7Wwe2.jpg",
+      "logo_path": "/tWq6XvHqPjBW1BZTpf4Nziy8CDD.jpg",
       "provider_name": "Lifetime",
       "provider_id": 157
     },
@@ -1402,7 +1393,7 @@
         "TH": 23
       },
       "display_priority": 23,
-      "logo_path": "/kIbbhgfOWTHNp0xpcFC5uJUAwHj.jpg",
+      "logo_path": "/o7WsYI2r1llIf9h6JTGVX9yTHPx.jpg",
       "provider_name": "Viu",
       "provider_id": 158
     },
@@ -1414,7 +1405,7 @@
         "TW": 15
       },
       "display_priority": 15,
-      "logo_path": "/45eTLxznKGY9xq50NBWjN4adVng.jpg",
+      "logo_path": "/9qSVItdgkVHH3Rrl9db2yRWsgBq.jpg",
       "provider_name": "Catchplay",
       "provider_id": 159
     },
@@ -1426,7 +1417,7 @@
         "TH": 2
       },
       "display_priority": 2,
-      "logo_path": "/fyZObCfyY6mNVZOaBqgm7UMlHt.jpg",
+      "logo_path": "/vCTY2WtY1oJ8EKpp0UCz4SRpE4S.jpg",
       "provider_name": "iflix",
       "provider_id": 160
     },
@@ -1441,7 +1432,7 @@
         "PE": 10
       },
       "display_priority": 10,
-      "logo_path": "/lJT7r1nprk1Z8t1ywiIa8h9d3rc.jpg",
+      "logo_path": "/21M5CpiOYGOhHj2sVPXqwt6yeTO.jpg",
       "provider_name": "Claro video",
       "provider_id": 167
     },
@@ -1451,7 +1442,7 @@
         "CH": 15
       },
       "display_priority": 15,
-      "logo_path": "/dqlwg963xlz7jLN5Akdg6gbJ5To.jpg",
+      "logo_path": "/krduN1ScpvEt0dTaqmAZWOK89RZ.jpg",
       "provider_name": "Watchbox",
       "provider_id": 171
     },
@@ -1461,7 +1452,7 @@
         "AT": 17,
         "AU": 25,
         "CH": 20,
-        "DE": 31,
+        "DE": 30,
         "DK": 14,
         "EE": 7,
         "GB": 33,
@@ -1478,37 +1469,37 @@
         "SE": 13,
         "SG": 9,
         "TH": 8,
-        "US": 79,
+        "US": 77,
         "ZA": 8
       },
       "display_priority": 8,
-      "logo_path": "/j2OLGxyy0gKbPVI0DYFI2hJxP6y.jpg",
+      "logo_path": "/kwVegvKCinXTPuzZmYT1J3i1HJz.jpg",
       "provider_name": "Netflix Kids",
       "provider_id": 175
     },
     {
       "display_priorities": {
-        "CA": 44,
+        "CA": 42,
         "AT": 25,
         "AU": 30,
         "CH": 10,
-        "DE": 34,
+        "DE": 33,
         "FR": 22,
         "GB": 22,
-        "US": 49
+        "US": 48
       },
-      "display_priority": 49,
-      "logo_path": "/2tAjxjo1n3H7fsXqMsxWFMeFUWp.jpg",
+      "display_priority": 48,
+      "logo_path": "/zR3ae8RpBIlmqAWv4lePcXGbrU8.jpg",
       "provider_name": "Pantaflix",
       "provider_id": 177
     },
     {
       "display_priorities": {
-        "DE": 24,
+        "DE": 25,
         "AT": 7
       },
-      "display_priority": 24,
-      "logo_path": "/uULoezj2skPc6amfwru72UPjYXV.jpg",
+      "display_priority": 25,
+      "logo_path": "/lrEigPPAhggq02q53uM8vdWAIUX.jpg",
       "provider_name": "MagentaTV",
       "provider_id": 178
     },
@@ -1517,16 +1508,16 @@
         "CA": 25
       },
       "display_priority": 25,
-      "logo_path": "/8jzbtiXz0eZ6aPjxdmGW3ceqjon.jpg",
+      "logo_path": "/dg4Kj9s7N5pZcvJDW6vt5d9j7Uf.jpg",
       "provider_name": "Hollywood Suite",
       "provider_id": 182
     },
     {
       "display_priorities": {
-        "US": 73
+        "US": 70
       },
-      "display_priority": 73,
-      "logo_path": "/c2Ey5Q3uUjZgfWWQQIdVIjVfxE4.jpg",
+      "display_priority": 70,
+      "logo_path": "/x2w49qSgz7bU3o3rENO9Yc11OmC.jpg",
       "provider_name": "Screambox",
       "provider_id": 185
     },
@@ -1540,14 +1531,14 @@
         "DE": 19,
         "DK": 15,
         "ES": 18,
-        "FI": 10,
+        "FI": 9,
         "FR": 17,
         "GB": 34,
         "HK": 31,
         "HU": 7,
         "IE": 20,
         "IT": 21,
-        "MX": 11,
+        "MX": 10,
         "NO": 13,
         "NZ": 8,
         "PT": 6,
@@ -1558,13 +1549,13 @@
         "US": 37
       },
       "display_priority": 37,
-      "logo_path": "/6IPjvnYl6WWkIwN158qBFXCr2Ne.jpg",
+      "logo_path": "/rMb93u1tBeErSYLv79zSTR07UdO.jpg",
       "provider_name": "YouTube Premium",
       "provider_id": 188
     },
     {
       "display_priorities": {
-        "CA": 52,
+        "CA": 50,
         "AD": 9,
         "AL": 10,
         "AR": 13,
@@ -1585,7 +1576,7 @@
         "CO": 12,
         "CR": 8,
         "CZ": 8,
-        "DE": 49,
+        "DE": 48,
         "DK": 21,
         "DO": 6,
         "DZ": 6,
@@ -1593,7 +1584,7 @@
         "EE": 10,
         "EG": 9,
         "ES": 20,
-        "FI": 20,
+        "FI": 19,
         "FR": 28,
         "GB": 45,
         "GF": 6,
@@ -1664,7 +1655,7 @@
         "TZ": 22
       },
       "display_priority": 10,
-      "logo_path": "/67Ee4E6qOkQGHeUTArdJ1qRxzR2.jpg",
+      "logo_path": "/oR1aNm1Qu9jQBkW4VrGPWhqbC3P.jpg",
       "provider_name": "Curiosity Stream",
       "provider_id": 190
     },
@@ -1673,7 +1664,7 @@
         "US": 52
       },
       "display_priority": 52,
-      "logo_path": "/wbCleYwRFpUtWcNi7BLP3E1f6VI.jpg",
+      "logo_path": "/rcBwnERpNfPfWB5DaSTyEMCZbCA.jpg",
       "provider_name": "Kanopy",
       "provider_id": 191
     },
@@ -1690,7 +1681,7 @@
         "US": 17
       },
       "display_priority": 17,
-      "logo_path": "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+      "logo_path": "/pTnn5JwWr4p3pG8H6VrpiQo7Vs0.jpg",
       "provider_name": "YouTube",
       "provider_id": 192
     },
@@ -1699,15 +1690,15 @@
         "FR": 9
       },
       "display_priority": 9,
-      "logo_path": "/qOLzLcOnngiTBeYXa8zquWRDtsB.jpg",
+      "logo_path": "/vo4tm5HBLpctihoSX6bTIG0VB9d.jpg",
       "provider_name": "SFR Play",
       "provider_id": 193
     },
     {
       "display_priorities": {
-        "CA": 67,
+        "CA": 65,
         "BR": 31,
-        "DE": 35,
+        "DE": 34,
         "ES": 25,
         "FR": 32,
         "GB": 29,
@@ -1720,16 +1711,16 @@
         "AT": 56
       },
       "display_priority": 25,
-      "logo_path": "/x36C6aseF5l4uX99Kpse9dbPwBo.jpg",
+      "logo_path": "/esiLBRzDUwodjfN8gA4qj7l3ZF7.jpg",
       "provider_name": "Starz Play Amazon Channel",
       "provider_id": 194
     },
     {
       "display_priorities": {
-        "DE": 41
+        "DE": 40
       },
-      "display_priority": 41,
-      "logo_path": "/9TteoCidgcwT28Zs9yeAX7HdkwO.jpg",
+      "display_priority": 40,
+      "logo_path": "/wAFMYLGjdb20SaX0KZ0OrhjKQbn.jpg",
       "provider_name": "Animax Plus Amazon Channel",
       "provider_id": 195
     },
@@ -1740,11 +1731,11 @@
         "GB": 61,
         "IN": 52,
         "MX": 42,
-        "US": 121,
+        "US": 117,
         "AU": 29
       },
-      "display_priority": 121,
-      "logo_path": "/8WWD7t5Irwq9kAH4rufQ4Pe1Dog.jpg",
+      "display_priority": 117,
+      "logo_path": "/1wYmvbAuVZz2JnKvYfYN8Qolnb.jpg",
       "provider_name": "AcornTV Amazon Channel",
       "provider_id": 196
     },
@@ -1752,43 +1743,43 @@
       "display_priorities": {
         "CA": 21,
         "GB": 41,
-        "US": 120
+        "US": 116
       },
-      "display_priority": 120,
-      "logo_path": "/xTfyFZqWv8c8sxlFooUzemi6WRM.jpg",
+      "display_priority": 116,
+      "logo_path": "/tLBLABfFYYETf9Zk8gKEWnjhMai.jpg",
       "provider_name": "BritBox Amazon Channel",
       "provider_id": 197
     },
     {
       "display_priorities": {
         "GB": 71,
-        "US": 122
+        "US": 118
       },
-      "display_priority": 122,
-      "logo_path": "/8vBJZkwkrUDYMSfmw5R0ZENd7yw.jpg",
+      "display_priority": 118,
+      "logo_path": "/3eVIcUeRXji5SBV7gEv4f5U4CqV.jpg",
       "provider_name": "Fandor Amazon Channel",
       "provider_id": 199
     },
     {
       "display_priorities": {
-        "DE": 38,
+        "DE": 37,
         "ES": 41,
         "FR": 52,
         "GB": 42,
         "IT": 53,
-        "US": 119
+        "US": 115
       },
-      "display_priority": 119,
-      "logo_path": "/aJUiN18NZFbpSkHZQV1C1cTpz8H.jpg",
+      "display_priority": 115,
+      "logo_path": "/a4IDLKjvP5gvq7tNlg2Xw5YyEkI.jpg",
       "provider_name": "MUBI Amazon Channel",
       "provider_id": 201
     },
     {
       "display_priorities": {
-        "US": 123
+        "US": 119
       },
-      "display_priority": 123,
-      "logo_path": "/naqM14qSfg2q0S2zDylM5zQQ3jn.jpg",
+      "display_priority": 119,
+      "logo_path": "/vmXC3D9Kqtt9TEohDEmcaxnLYA5.jpg",
       "provider_name": "Screambox Amazon Channel",
       "provider_id": 202
     },
@@ -1797,20 +1788,20 @@
         "US": 34
       },
       "display_priority": 34,
-      "logo_path": "/zoL69abPHiVC1Qzd4kM6hwLSo0j.jpg",
+      "logo_path": "/palbLJjkRhNAccU32ycThJNcbI5.jpg",
       "provider_name": "Showtime Amazon Channel",
       "provider_id": 203
     },
     {
       "display_priorities": {
         "CA": 23,
-        "DE": 39,
+        "DE": 38,
         "GB": 77,
-        "US": 118,
+        "US": 113,
         "AU": 37
       },
-      "display_priority": 118,
-      "logo_path": "/sc5pTTCFbx7GQyOst5SG4U7nkPH.jpg",
+      "display_priority": 113,
+      "logo_path": "/qb6Lj5BhNJavdmRVDzAqAjd4Tj3.jpg",
       "provider_name": "Shudder Amazon Channel",
       "provider_id": 204
     },
@@ -1818,10 +1809,10 @@
       "display_priorities": {
         "CA": 19,
         "GB": 97,
-        "US": 124
+        "US": 120
       },
-      "display_priority": 124,
-      "logo_path": "/xImSZRKRYzIMPr4COgJNsEHdd2T.jpg",
+      "display_priority": 120,
+      "logo_path": "/i8PzzzOVJfXWLE1v5Up7nGTWWhp.jpg",
       "provider_name": "Sundance Now Amazon Channel",
       "provider_id": 205
     },
@@ -1830,7 +1821,7 @@
         "US": 41
       },
       "display_priority": 41,
-      "logo_path": "/7UpZTaQFcdISOzDOBMx6RavcaR.jpg",
+      "logo_path": "/ex5ANtyJPlugmAoEMFhBGvsDEw3.jpg",
       "provider_name": "CW Seed",
       "provider_id": 206
     },
@@ -1839,7 +1830,7 @@
         "US": 29
       },
       "display_priority": 29,
-      "logo_path": "/z0h7mBHwm5KfMB2MKeoQDD2ngEZ.jpg",
+      "logo_path": "/wQzSN83BnWVgO7xEh0SeTVqtrFv.jpg",
       "provider_name": "The Roku Channel",
       "provider_id": 207
     },
@@ -1848,7 +1839,7 @@
         "US": 47
       },
       "display_priority": 47,
-      "logo_path": "/bbxgdl6B5T75wJE713BiTCIBXyS.jpg",
+      "logo_path": "/iLjStQKQwzyxXJb3jyNpvDmW9mx.jpg",
       "provider_name": "PBS",
       "provider_id": 209
     },
@@ -1857,7 +1848,7 @@
         "CH": 7
       },
       "display_priority": 7,
-      "logo_path": "/sHP8XLo4Ac4WMbziRyAdRQdb76q.jpg",
+      "logo_path": "/ytApMa9fThUQUFTn696AeNBrB8f.jpg",
       "provider_name": "Sky",
       "provider_id": 210
     },
@@ -1866,7 +1857,7 @@
         "US": 65
       },
       "display_priority": 65,
-      "logo_path": "/rgpmwMkXqFYch9cway9qWMw0uXu.jpg",
+      "logo_path": "/4cHGd32hhEHmFjDGJcjVEAwFQg0.jpg",
       "provider_name": "Freeform",
       "provider_id": 211
     },
@@ -1876,35 +1867,26 @@
         "US": 40
       },
       "display_priority": 40,
-      "logo_path": "/aJ0b9BLU1Cvv5hIz9fEhKKc1x1D.jpg",
+      "logo_path": "/j7D006Uy3UWwZ6G0xH6BMgIWTzH.jpg",
       "provider_name": "Hoopla",
       "provider_id": 212
     },
     {
       "display_priorities": {
-        "US": 67
-      },
-      "display_priority": 67,
-      "logo_path": "/f7iqKjWYdVoYVIvKP3nboULcrM2.jpg",
-      "provider_name": "Syfy",
-      "provider_id": 215
-    },
-    {
-      "display_priorities": {
         "IN": 9,
-        "US": 85
+        "US": 82
       },
-      "display_priority": 85,
-      "logo_path": "/4XYI2rzRm34skcvamytegQx7Dmu.jpg",
+      "display_priority": 82,
+      "logo_path": "/ouJUBLjxevh4UaEGV4ZUjsSWdRq.jpg",
       "provider_name": "Eros Now",
       "provider_id": 218
     },
     {
       "display_priorities": {
-        "DE": 27
+        "DE": 26
       },
-      "display_priority": 27,
-      "logo_path": "/1xwpQKq4n21twwhDkupGsto2c8k.jpg",
+      "display_priority": 26,
+      "logo_path": "/avItehPq07h5nKCJgwNTxl6OD0y.jpg",
       "provider_name": "ARD Mediathek",
       "provider_id": 219
     },
@@ -1913,7 +1895,7 @@
         "IN": 7
       },
       "display_priority": 7,
-      "logo_path": "/jRpQbuHbGR0MzSIBxJjxZxpXhqC.jpg",
+      "logo_path": "/AsPkPqjTut1gV4OhWW3hChwTOXE.jpg",
       "provider_name": "Jio Cinema",
       "provider_id": 220
     },
@@ -1922,7 +1904,7 @@
         "IT": 17
       },
       "display_priority": 17,
-      "logo_path": "/s1QWuiBbZhLGSFzYOglPTVye7td.jpg",
+      "logo_path": "/cmURKKdS72Ckr52615xvc2JPsJm.jpg",
       "provider_name": "Rai Play",
       "provider_id": 222
     },
@@ -1949,7 +1931,7 @@
         "LU": 4
       },
       "display_priority": 3,
-      "logo_path": "/sRMvdhqC7o4BugHKOdgi6IIRRzP.jpg",
+      "logo_path": "/jxIBXlxRbCcy7Y4GvOZKszCd0dv.jpg",
       "provider_name": "Hayu",
       "provider_id": 223
     },
@@ -1958,7 +1940,7 @@
         "CA": 4
       },
       "display_priority": 4,
-      "logo_path": "/gJ3yVMWouaVj6iHd59TISJ1TlM5.jpg",
+      "logo_path": "/ewOptMVIYcOadMGGJz8DJueH2bH.jpg",
       "provider_name": "Crave",
       "provider_id": 230
     },
@@ -2041,7 +2023,7 @@
         "ZM": 2
       },
       "display_priority": 5,
-      "logo_path": "/ajbCmwvZ8HiePHZaOVEgm9MzyuA.jpg",
+      "logo_path": "/vPIW5b0ebTLj9bFCZypoBbF8wSl.jpg",
       "provider_name": "Zee5",
       "provider_id": 232
     },
@@ -2051,7 +2033,7 @@
         "FR": 13
       },
       "display_priority": 13,
-      "logo_path": "/8T2jS3TdKCAsCrH0Kvl2NCwQ0ym.jpg",
+      "logo_path": "/vPZrjHe7wvALuwJEXT2kwYLi0gV.jpg",
       "provider_name": "Arte",
       "provider_id": 234
     },
@@ -2060,7 +2042,7 @@
         "FR": 12
       },
       "display_priority": 12,
-      "logo_path": "/tSayx1KHEaZG9iyFLMnDpXAFBzh.jpg",
+      "logo_path": "/maeiT4ORBxykOVlaW9gCsLuFPnS.jpg",
       "provider_name": "France TV",
       "provider_id": 236
     },
@@ -2069,16 +2051,16 @@
         "IN": 12
       },
       "display_priority": 12,
-      "logo_path": "/odTur9CmVtzsRUAZ9910tPM4XwL.jpg",
+      "logo_path": "/3973zlBbBXdXxaWqRWzGG2GYxbT.jpg",
       "provider_name": "Sony Liv",
       "provider_id": 237
     },
     {
       "display_priorities": {
-        "US": 75
+        "US": 73
       },
-      "display_priority": 75,
-      "logo_path": "/olvOut34aWUFf1YoOqiqtjidiTK.jpg",
+      "display_priority": 73,
+      "logo_path": "/41gE6Mv0BCfZGNTwPkYIXLVsDMD.jpg",
       "provider_name": "Popcornflix",
       "provider_id": 241
     },
@@ -2087,7 +2069,7 @@
         "US": 51
       },
       "display_priority": 51,
-      "logo_path": "/gmU9aPV3XUFusVs4kK1rcICUKqL.jpg",
+      "logo_path": "/c2ZJdxr5Ex2MU1nGqyCacjWCqxx.jpg",
       "provider_name": "Comedy Central",
       "provider_id": 243
     },
@@ -2096,7 +2078,7 @@
         "PL": 6
       },
       "display_priority": 6,
-      "logo_path": "/kplaFNfZXsdyqsz4TAK8xaKU9Qa.jpg",
+      "logo_path": "/j6fAlCfbL22p5EitBREFMkc0bpn.jpg",
       "provider_name": "VOD Poland",
       "provider_id": 245
     },
@@ -2105,16 +2087,16 @@
         "AU": 19
       },
       "display_priority": 19,
-      "logo_path": "/dSAEkpy0IhZpTLixrMq9z24oEPC.jpg",
+      "logo_path": "/uU4gqmoX0koF8L5yJSlfaaFd9Tz.jpg",
       "provider_name": "7plus",
       "provider_id": 246
     },
     {
       "display_priorities": {
-        "US": 80
+        "US": 78
       },
-      "display_priority": 80,
-      "logo_path": "/oRXiHzPl2HJMXXFR4eebsb8F5Oc.jpg",
+      "display_priority": 78,
+      "logo_path": "/mH5wvu4raXvVdnrOXg367xieZXa.jpg",
       "provider_name": "Boomerang",
       "provider_id": 248
     },
@@ -2124,43 +2106,33 @@
         "PL": 8
       },
       "display_priority": 8,
-      "logo_path": "/l5Wxbsgral716BOtZsGyPVNn8GC.jpg",
+      "logo_path": "/eoWlEQTQDeEutDyfADhAQ0HKogI.jpg",
       "provider_name": "Horizon",
       "provider_id": 250
     },
     {
       "display_priorities": {
-        "US": 81
+        "US": 79
       },
-      "display_priority": 81,
-      "logo_path": "/5uTsmZnDQmIOjZPEv8TNTy7GRJB.jpg",
+      "display_priority": 79,
+      "logo_path": "/dgO7LfzsczUIW2h7xS66yla22ne.jpg",
       "provider_name": "Urban Movie Channel",
       "provider_id": 251
     },
     {
       "display_priorities": {
-        "CA": 38,
-        "US": 82
-      },
-      "display_priority": 82,
-      "logo_path": "/cBCzPOX6ir5L8hCoJlfIWycxauh.jpg",
-      "provider_name": "Dove Channel",
-      "provider_id": 254
-    },
-    {
-      "display_priorities": {
         "GB": 89,
         "IN": 17,
-        "US": 84,
-        "DE": 138,
+        "US": 81,
+        "DE": 137,
         "ES": 87,
         "FR": 103,
         "IT": 92,
         "NL": 77,
         "PT": 51
       },
-      "display_priority": 84,
-      "logo_path": "/8qNJcPBHZ4qewHrDJ7C7s2DBQ3V.jpg",
+      "display_priority": 81,
+      "logo_path": "/6msAJGK2yF39S2PGrinWiVCNmJn.jpg",
       "provider_name": "Yupp TV",
       "provider_id": 255
     },
@@ -2168,28 +2140,28 @@
       "display_priorities": {
         "ES": 4,
         "US": 7,
-        "CA": 108
+        "CA": 105
       },
       "display_priority": 7,
-      "logo_path": "/jPXksae158ukMLFhhlNvzsvaEyt.jpg",
+      "logo_path": "/rugttVJKzDAwVbM99gAV6i3g59Q.jpg",
       "provider_name": "fuboTV",
       "provider_id": 257
     },
     {
       "display_priorities": {
-        "US": 87
+        "US": 83
       },
-      "display_priority": 87,
-      "logo_path": "/foT1TtL67MgEOWR6Cib8dKyCvJI.jpg",
+      "display_priority": 83,
+      "logo_path": "/co1g56yEIiwnwiuL6q4BYJjCplh.jpg",
       "provider_name": "Magnolia Selects",
       "provider_id": 259
     },
     {
       "display_priorities": {
-        "US": 88
+        "US": 85
       },
-      "display_priority": 88,
-      "logo_path": "/rDYZ9v3Y09fuFyan51tHKE1mFId.jpg",
+      "display_priority": 85,
+      "logo_path": "/7Wo1H7YMmRy7S56sz6HJAMYRdGq.jpg",
       "provider_name": "WWE Network",
       "provider_id": 260
     },
@@ -2199,39 +2171,30 @@
         "ES": 44,
         "FR": 51,
         "MX": 44,
-        "US": 89
+        "US": 86
       },
-      "display_priority": 89,
-      "logo_path": "/yxBUPUBFzHE72uFXvFr1l0fnMJA.jpg",
+      "display_priority": 86,
+      "logo_path": "/uXFEctwGkorVz163dVSZeZkBEQU.jpg",
       "provider_name": "Noggin Amazon Channel",
       "provider_id": 262
     },
     {
       "display_priorities": {
-        "US": 158
+        "US": 153
       },
-      "display_priority": 158,
-      "logo_path": "/1Vzd0eRyJJ7djh0GuZczx4ap8PK.jpg",
+      "display_priority": 153,
+      "logo_path": "/hDoYXuGJtGwpvgPjmgx4jQFil01.jpg",
       "provider_name": "DreamWorksTV Amazon Channel",
       "provider_id": 263
     },
     {
       "display_priorities": {
-        "US": 86
+        "US": 84
       },
-      "display_priority": 86,
-      "logo_path": "/tTLB4xkjrKXxdtiWTeeS6qQB1v9.jpg",
+      "display_priority": 84,
+      "logo_path": "/bSmoVepHvK0ijBAWGx3QlIeTtsu.jpg",
       "provider_name": "MyOutdoorTV",
       "provider_id": 264
-    },
-    {
-      "display_priorities": {
-        "US": 91
-      },
-      "display_priority": 91,
-      "logo_path": "/gYC72bT1nz4NvOFe7pPuCsNdKch.jpg",
-      "provider_name": "Hopster TV",
-      "provider_id": 267
     },
     {
       "display_priorities": {
@@ -2247,7 +2210,7 @@
         "US": 28
       },
       "display_priority": 28,
-      "logo_path": "/fWq61Fy4onav0wZJTA3c2fs0G66.jpg",
+      "logo_path": "/cm4NDOpuuslZq68VHHCPlGoAD2D.jpg",
       "provider_name": "Funimation Now",
       "provider_id": 269
     },
@@ -2256,34 +2219,34 @@
         "NZ": 3
       },
       "display_priority": 3,
-      "logo_path": "/cWKF6ZydzDVCmmxlIFKgjwoqohf.jpg",
+      "logo_path": "/iscLKFDwQlr0BAgVDBcuRapLiwC.jpg",
       "provider_name": "Neon TV",
       "provider_id": 273
     },
     {
       "display_priorities": {
-        "US": 92
+        "US": 88
       },
-      "display_priority": 92,
-      "logo_path": "/w4GTJ1EDrgJku49XKSnRag9kKCT.jpg",
+      "display_priority": 88,
+      "logo_path": "/pNNWgwfYenkTfddAO4fqHEIrnXv.jpg",
       "provider_name": "Laugh Out Loud",
       "provider_id": 275
     },
     {
       "display_priorities": {
-        "US": 90
+        "US": 87
       },
-      "display_priority": 90,
-      "logo_path": "/UAZ2lJBWszijybQD4frqw2jxRO.jpg",
+      "display_priority": 87,
+      "logo_path": "/zUiU5rjc2HGUW1XpXCpZEL8M0MH.jpg",
       "provider_name": "Smithsonian Channel",
       "provider_id": 276
     },
     {
       "display_priorities": {
-        "US": 93
+        "US": 89
       },
-      "display_priority": 93,
-      "logo_path": "/orsVBNvPWxJNOVSEHMOk2h8R1wA.jpg",
+      "display_priority": 89,
+      "logo_path": "/7L4eXQD0yFVDKZ2qwYtxcV5gm6n.jpg",
       "provider_name": "Pure Flix",
       "provider_id": 278
     },
@@ -2292,13 +2255,13 @@
         "US": 54
       },
       "display_priority": 54,
-      "logo_path": "/gbyLHzl4eYP0oP9oJZ2oKbpkhND.jpg",
+      "logo_path": "/xHwgUa7XzU43Ia6tnrt0zjW1wf9.jpg",
       "provider_name": "Redbox",
       "provider_id": 279
     },
     {
       "display_priorities": {
-        "CA": 130,
+        "CA": 127,
         "AE": 28,
         "AR": 52,
         "AT": 63,
@@ -2325,7 +2288,7 @@
         "EE": 28,
         "EG": 44,
         "ES": 78,
-        "FI": 44,
+        "FI": 43,
         "FR": 5,
         "GB": 5,
         "GF": 32,
@@ -2430,89 +2393,89 @@
         "UA": 7
       },
       "display_priority": 28,
-      "logo_path": "/8Gt1iClBlzTeQs8WQm8UrCoIxnQ.jpg",
+      "logo_path": "/mXeC4TrcgdU6ltE9bCBCEORwSQR.jpg",
       "provider_name": "Crunchyroll",
       "provider_id": 283
-    },
-    {
-      "display_priorities": {
-        "DE": 37
-      },
-      "display_priority": 37,
-      "logo_path": "/wUe8sI0PyRNNaWTSIDUoRADytvR.jpg",
-      "provider_name": "BBC Player Amazon Channel",
-      "provider_id": 285
     },
     {
       "display_priorities": {
         "DE": 36
       },
       "display_priority": 36,
-      "logo_path": "/7cXdK4ExORmhkJl9wX1q3Yqs8lV.jpg",
+      "logo_path": "/jhhFTFVWjKVi2JjDYoqoI4dHsmL.jpg",
+      "provider_name": "BBC Player Amazon Channel",
+      "provider_id": 285
+    },
+    {
+      "display_priorities": {
+        "DE": 35
+      },
+      "display_priority": 35,
+      "logo_path": "/FtIkEXYkqTxKwCwLK79yKJW8i7.jpg",
       "provider_name": "ZDF Herzkino Amazon Channel",
       "provider_id": 286
+    },
+    {
+      "display_priorities": {
+        "US": 91
+      },
+      "display_priority": 91,
+      "logo_path": "/3CPBjF6tQQONCEvqC6KIIkiUG81.jpg",
+      "provider_name": "Boomerang Amazon Channel",
+      "provider_id": 288
+    },
+    {
+      "display_priorities": {
+        "US": 93
+      },
+      "display_priority": 93,
+      "logo_path": "/ohcwolMl8E743CkS8MnhmJKOlRj.jpg",
+      "provider_name": "Cinemax Amazon Channel",
+      "provider_id": 289
+    },
+    {
+      "display_priorities": {
+        "US": 94
+      },
+      "display_priority": 94,
+      "logo_path": "/614YTzAiVrSIm7bIVcwg4lIMQr7.jpg",
+      "provider_name": "Hallmark Movies Now Amazon Channel",
+      "provider_id": 290
     },
     {
       "display_priorities": {
         "US": 96
       },
       "display_priority": 96,
-      "logo_path": "/1zfRJQc14uEzZThdwNvxtxeWJw6.jpg",
-      "provider_name": "Boomerang Amazon Channel",
-      "provider_id": 288
-    },
-    {
-      "display_priorities": {
-        "US": 97
-      },
-      "display_priority": 97,
-      "logo_path": "/kEnyHRflZPNWEOIXroZPhfdGi46.jpg",
-      "provider_name": "Cinemax Amazon Channel",
-      "provider_id": 289
-    },
-    {
-      "display_priorities": {
-        "US": 98
-      },
-      "display_priority": 98,
-      "logo_path": "/6L2wLiZz3IG2X4MRbdRlGLgftMK.jpg",
-      "provider_name": "Hallmark Movies Now Amazon Channel",
-      "provider_id": 290
-    },
-    {
-      "display_priorities": {
-        "US": 101
-      },
-      "display_priority": 101,
-      "logo_path": "/72tiOIjZQPqm7MGhqoqyjyTJzSv.jpg",
+      "logo_path": "/hTAIgvUnmu1Yv0wFVJRu9KKAPtJ.jpg",
       "provider_name": "MZ Choice Amazon Channel",
       "provider_id": 291
     },
     {
       "display_priorities": {
-        "US": 95
+        "US": 92
       },
-      "display_priority": 95,
-      "logo_path": "/tU4tamrqRjbg3Lbmkryp3EiLPQJ.jpg",
+      "display_priority": 92,
+      "logo_path": "/lIXDKV7LrZfF3SR2m8EQrMVRI5C.jpg",
       "provider_name": "PBS Kids Amazon Channel",
       "provider_id": 293
     },
     {
       "display_priorities": {
         "CA": 18,
-        "US": 99
+        "US": 95
       },
-      "display_priority": 99,
-      "logo_path": "/mMALQK52OFGoYUKOSCZILZkfGWs.jpg",
+      "display_priority": 95,
+      "logo_path": "/xN1vKpcypShJrWmf1t3dyGJM7sO.jpg",
       "provider_name": "PBS Masterpiece Amazon Channel",
       "provider_id": 294
     },
     {
       "display_priorities": {
-        "US": 100
+        "US": 97
       },
-      "display_priority": 100,
-      "logo_path": "/mlH42JbZMrapSF6zc8iTYURcZlH.jpg",
+      "display_priority": 97,
+      "logo_path": "/769jLV69ZSa0x4sy9BZZQbizvuk.jpg",
       "provider_name": "Viewster Amazon Channel",
       "provider_id": 295
     },
@@ -2525,7 +2488,7 @@
         "IT": 55
       },
       "display_priority": 55,
-      "logo_path": "/7RJrotCrvD0oUjG0udv9on6CDKX.jpg",
+      "logo_path": "/2eyS8KsZF9Or7z4248Ktq36Pr8v.jpg",
       "provider_name": "Hayu Amazon Channel",
       "provider_id": 296
     },
@@ -2534,7 +2497,7 @@
         "NL": 6
       },
       "display_priority": 6,
-      "logo_path": "/8ARqfv7c3eD48NxHfjdNdoop1b0.jpg",
+      "logo_path": "/ozUfbWZXVdymn8iC3zze0cQPeUi.jpg",
       "provider_name": "Ziggo TV",
       "provider_id": 297
     },
@@ -2544,7 +2507,7 @@
         "AT": 59
       },
       "display_priority": 16,
-      "logo_path": "/3hI22hp7YDZXyrmXVqDGnVivNTI.jpg",
+      "logo_path": "/jmR0t1kjzHcyV7raynzMbF87J9d.jpg",
       "provider_name": "RTL+",
       "provider_id": 298
     },
@@ -2559,7 +2522,7 @@
         "CO": 27,
         "CR": 25,
         "CZ": 19,
-        "DE": 73,
+        "DE": 72,
         "DK": 38,
         "DO": 22,
         "EC": 26,
@@ -2576,14 +2539,14 @@
         "PY": 25,
         "SE": 41,
         "SV": 23,
-        "US": 104,
+        "US": 100,
         "UY": 27,
         "VE": 24,
-        "CA": 125,
+        "CA": 122,
         "NI": 3
       },
       "display_priority": 24,
-      "logo_path": "/t6N57S17sdXRXmZDAkaGP0NHNG0.jpg",
+      "logo_path": "/2EM2eg5bqP0ZetycBlihwgnsedx.jpg",
       "provider_name": "Pluto TV",
       "provider_id": 300
     },
@@ -2592,7 +2555,7 @@
         "DE": 11
       },
       "display_priority": 11,
-      "logo_path": "/z92Jr1VMw77L5YysSV12H6qNEjJ.jpg",
+      "logo_path": "/tDnDBkSLLLQgFb03J9ttQhZQxZs.jpg",
       "provider_name": "Joyn",
       "provider_id": 304
     },
@@ -2601,7 +2564,7 @@
         "CA": 5
       },
       "display_priority": 5,
-      "logo_path": "/sB5vHrmYmliwUvBwZe8HpXo9r8m.jpg",
+      "logo_path": "/csPQMbeJWY7bjwWruZjtc27xf2l.jpg",
       "provider_name": "Crave Starz",
       "provider_id": 305
     },
@@ -2610,7 +2573,7 @@
         "BR": 10
       },
       "display_priority": 10,
-      "logo_path": "/oBoWstXQFHAlPApyxIQ31CIbNQk.jpg",
+      "logo_path": "/7Cg8esVVXOijXAm1f1vrS7jVjcN.jpg",
       "provider_name": "Globoplay",
       "provider_id": 307
     },
@@ -2619,13 +2582,13 @@
         "CZ": 3
       },
       "display_priority": 3,
-      "logo_path": "/wTF37o4jOkQfjnWe41gmeuASYZA.jpg",
+      "logo_path": "/27yD8cEx7qC1lSzaDvFlW4avXyu.jpg",
       "provider_name": "O2 TV",
       "provider_id": 308
     },
     {
       "display_priorities": {
-        "CA": 45,
+        "CA": 43,
         "AD": 4,
         "AE": 6,
         "AG": 3,
@@ -2713,10 +2676,10 @@
         "CO": 33,
         "CZ": 27,
         "DK": 41,
-        "DE": 110,
+        "DE": 109,
         "EE": 26,
         "EC": 31,
-        "FI": 42,
+        "FI": 41,
         "ES": 65,
         "FR": 77,
         "GB": 107,
@@ -2747,7 +2710,7 @@
         "VE": 29
       },
       "display_priority": 6,
-      "logo_path": "/uW4dPCcbXaaFTyfL5HwhuDt5akK.jpg",
+      "logo_path": "/6KEQzITx2RrCAQt5Nw9WrL1OI8z.jpg",
       "provider_name": "Sun Nxt",
       "provider_id": 309
     },
@@ -2756,7 +2719,7 @@
         "BE": 4
       },
       "display_priority": 4,
-      "logo_path": "/pq8p1umEnJjdFAP1nFvNArTR61X.jpg",
+      "logo_path": "/acANFKCTLQuvDPjJAb5SnmzJaT6.jpg",
       "provider_name": "Be TV Go",
       "provider_id": 311
     },
@@ -2765,7 +2728,7 @@
         "BE": 5
       },
       "display_priority": 5,
-      "logo_path": "/5HnddgKqiSLyEBriPB7T1BpdFaC.jpg",
+      "logo_path": "/gqxv8W54I95K3hNS6UT6sDRe2Az.jpg",
       "provider_name": "VRT MAX",
       "provider_id": 312
     },
@@ -2774,22 +2737,22 @@
         "BE": 12
       },
       "display_priority": 12,
-      "logo_path": "/vjsvYNPgq6BpUoubXR1wNkokoBb.jpg",
+      "logo_path": "/cuSP7S0NfzasRwKbWPEVl61WBL3.jpg",
       "provider_name": "Yelo Play",
       "provider_id": 313
     },
     {
       "display_priorities": {
-        "CA": 39
+        "CA": 38
       },
-      "display_priority": 39,
-      "logo_path": "/nVly1ywNU2hMYLaieL6ixhEFTWh.jpg",
+      "display_priority": 38,
+      "logo_path": "/2fkcDlmwbRkApLWicbysPGcFpji.jpg",
       "provider_name": "CBC Gem",
       "provider_id": 314
     },
     {
       "display_priorities": {
-        "CA": 73,
+        "CA": 71,
         "AD": 22,
         "AL": 24,
         "AR": 31,
@@ -2809,7 +2772,7 @@
         "CO": 26,
         "CR": 19,
         "CZ": 18,
-        "DE": 72,
+        "DE": 71,
         "DK": 31,
         "DO": 18,
         "DZ": 18,
@@ -2817,7 +2780,7 @@
         "EE": 20,
         "EG": 19,
         "ES": 35,
-        "FI": 33,
+        "FI": 32,
         "FR": 45,
         "GB": 65,
         "GF": 20,
@@ -2880,7 +2843,7 @@
         "TN": 18,
         "TR": 20,
         "TW": 18,
-        "US": 187,
+        "US": 182,
         "UY": 23,
         "VE": 23,
         "YE": 20,
@@ -2888,25 +2851,16 @@
         "TZ": 32
       },
       "display_priority": 24,
-      "logo_path": "/d4vHcXY9rwnr763wQns2XJThclt.jpg",
+      "logo_path": "/u7dwMceEbjxd1N3TLEUBILSK2x6.jpg",
       "provider_name": "Hoichoi",
       "provider_id": 315
     },
     {
       "display_priorities": {
-        "US": 125
+        "US": 121
       },
-      "display_priority": 125,
-      "logo_path": "/A5vrIl7YqlmNrOHZikrtO41V0sY.jpg",
-      "provider_name": "Cartoon Network",
-      "provider_id": 317
-    },
-    {
-      "display_priorities": {
-        "US": 126
-      },
-      "display_priority": 126,
-      "logo_path": "/sPlIWhBAcoyw2IWuQ2PDdToNXld.jpg",
+      "display_priority": 121,
+      "logo_path": "/da2dkyeFe4GCRaKxpsW4mzt2UPl.jpg",
       "provider_name": "Adult Swim",
       "provider_id": 318
     },
@@ -2915,7 +2869,7 @@
         "IN": 21
       },
       "display_priority": 21,
-      "logo_path": "/xiqTOBxOnlMy1nvppZcFhCDsP0f.jpg",
+      "logo_path": "/i7knsL0QgDJyuts5FbfjREUqHvu.jpg",
       "provider_name": "Alt Balaji",
       "provider_id": 319
     },
@@ -2924,16 +2878,16 @@
         "AT": 21
       },
       "display_priority": 21,
-      "logo_path": "/y0kyIFElN5sJAsmW8Txj69wzrD2.jpg",
+      "logo_path": "/67FAj8KvIiV5iZMJuPUdMrqMftw.jpg",
       "provider_name": "Sky X",
       "provider_id": 321
     },
     {
       "display_priorities": {
-        "US": 127
+        "US": 122
       },
-      "display_priority": 127,
-      "logo_path": "/ldU2RCgdvkcSEBWWbttCpVO450z.jpg",
+      "display_priority": 122,
+      "logo_path": "/A95qgiMz6ulV2SxeKcJ5Gc9pqGS.jpg",
       "provider_name": "USA Network",
       "provider_id": 322
     },
@@ -2942,44 +2896,44 @@
         "FI": 7
       },
       "display_priority": 7,
-      "logo_path": "/jH5dm7aqU9DxS4yPfprz6e3jmHU.jpg",
+      "logo_path": "/nrORhu39C2YjBhx9v8rU8oFlulj.jpg",
       "provider_name": "Yle Areena",
       "provider_id": 323
     },
     {
       "display_priorities": {
-        "CA": 40
+        "CA": 39
       },
-      "display_priority": 40,
-      "logo_path": "/hNO6rEpZ9l2LQEkjacrpeoocKbX.jpg",
+      "display_priority": 39,
+      "logo_path": "/xoFyQOXR3qINRsdnCQyd7jGx8Wo.jpg",
       "provider_name": "CTV",
       "provider_id": 326
     },
     {
       "display_priorities": {
-        "US": 128
+        "US": 123
       },
-      "display_priority": 128,
-      "logo_path": "/rbCRT408gY44bZH0KdtmKzoituI.jpg",
+      "display_priority": 123,
+      "logo_path": "/fpLJgEK68o2ATtz2gEdYkevUYIF.jpg",
       "provider_name": "Fox",
       "provider_id": 328
     },
     {
       "display_priorities": {
         "CA": 26,
-        "US": 130
+        "US": 124
       },
-      "display_priority": 130,
-      "logo_path": "/4U02VrbgLfUKJAUCHKzxWFtnPx4.jpg",
+      "display_priority": 124,
+      "logo_path": "/yFGu4sSzwUMfhwmSsZgez8QhaVl.jpg",
       "provider_name": "FlixFling",
       "provider_id": 331
     },
     {
       "display_priorities": {
-        "US": 43
+        "US": 44
       },
-      "display_priority": 43,
-      "logo_path": "/xzfVRl1CgJPYa9dOoyVI3TDSQo2.jpg",
+      "display_priority": 44,
+      "logo_path": "/6By0jm0Gr2WMOqUeHWhzRWaMdOo.jpg",
       "provider_name": "VUDU Free",
       "provider_id": 332
     },
@@ -2988,16 +2942,16 @@
         "GB": 38
       },
       "display_priority": 38,
-      "logo_path": "/xM2A6jTb4895MIuqPa6W6ooEcJS.jpg",
+      "logo_path": "/5qLpN8ah2FZC8NpYFwRFwxlNjRn.jpg",
       "provider_name": "My5",
       "provider_id": 333
     },
     {
       "display_priorities": {
-        "DE": 42
+        "DE": 41
       },
-      "display_priority": 42,
-      "logo_path": "/gmXeSpaYVJcb49SAzYcVHgQKQWM.jpg",
+      "display_priority": 41,
+      "logo_path": "/ni0t0Bj4HRAQ9f6zSv1Bl9MDjLK.jpg",
       "provider_name": "Filmtastic Amazon Channel",
       "provider_id": 334
     },
@@ -3045,7 +2999,7 @@
         "MK": 7,
         "MT": 7,
         "MX": 0,
-        "NL": 1,
+        "NL": 2,
         "NO": 0,
         "NZ": 0,
         "PE": 0,
@@ -3075,7 +3029,7 @@
         "EG": 49
       },
       "display_priority": 7,
-      "logo_path": "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+      "logo_path": "/7YPdUs60C9qQQQfOFCgxpnF07D9.jpg",
       "provider_name": "Disney Plus",
       "provider_id": 337
     },
@@ -3084,7 +3038,7 @@
         "FI": 8
       },
       "display_priority": 8,
-      "logo_path": "/cZkT6PrmJs5mfVscQf2PNF7xrF.jpg",
+      "logo_path": "/c7SqVo4DFrbK3RwhGbxvQ9SRco2.jpg",
       "provider_name": "Ruutu",
       "provider_id": 338
     },
@@ -3098,17 +3052,17 @@
         "PE": 9
       },
       "display_priority": 9,
-      "logo_path": "/z9WPD8IN9nijhPhi6UWYZ5n9Gx7.jpg",
+      "logo_path": "/tRNA2CRgA4XHvd7Mx9dH3sFtDVb.jpg",
       "provider_name": "MovistarTV",
       "provider_id": 339
     },
     {
       "display_priorities": {
-        "DE": 44,
+        "DE": 43,
         "TR": 2
       },
       "display_priority": 2,
-      "logo_path": "/z3XAGCCbDD3KTZFvc96Ytr3XR56.jpg",
+      "logo_path": "/dqRpKX6vcos334v9huMpNPKHlD8.jpg",
       "provider_name": "blutv",
       "provider_id": 341
     },
@@ -3117,22 +3071,22 @@
         "TR": 3
       },
       "display_priority": 3,
-      "logo_path": "/3namPdisFuyTbB8BX2PxT3OdVCG.jpg",
+      "logo_path": "/ffvIywFtojPQnVwHVmTSZEdemdt.jpg",
       "provider_name": "puhutv",
       "provider_id": 342
     },
     {
       "display_priorities": {
-        "US": 129
+        "US": 125
       },
-      "display_priority": 129,
-      "logo_path": "/obBJU4ak4XvAOUM5iVmSUxDvqC3.jpg",
+      "display_priority": 125,
+      "logo_path": "/2AvUqoIHAq2lLxRy2IxOBUgCYef.jpg",
       "provider_name": "Bet+ Amazon Channel",
       "provider_id": 343
     },
     {
       "display_priorities": {
-        "CA": 98,
+        "CA": 95,
         "AD": 21,
         "AL": 23,
         "BA": 22,
@@ -3141,7 +3095,7 @@
         "BM": 23,
         "BS": 22,
         "CI": 18,
-        "DE": 46,
+        "DE": 45,
         "DO": 21,
         "DZ": 21,
         "EG": 22,
@@ -3177,13 +3131,13 @@
         "SV": 22,
         "TN": 21,
         "TW": 8,
-        "US": 131,
+        "US": 126,
         "UY": 26,
         "YE": 23,
         "TZ": 16
       },
       "display_priority": 23,
-      "logo_path": "/qjtOUIUnk4kRpcZmaddjqDHM0dR.jpg",
+      "logo_path": "/5L2bwr9DhUg28oSMEPRCNwB2y7B.jpg",
       "provider_name": "Rakuten Viki",
       "provider_id": 344
     },
@@ -3192,16 +3146,16 @@
         "FR": 110
       },
       "display_priority": 110,
-      "logo_path": "/pbhaYgvH94ZI2G4r7duAUBqcP2e.jpg",
+      "logo_path": "/nBrPDnOWhullZrtcYM0qWpm4xNH.jpg",
       "provider_name": "Canal+ Séries",
       "provider_id": 345
     },
     {
       "display_priorities": {
-        "CA": 41
+        "CA": 40
       },
-      "display_priority": 41,
-      "logo_path": "/rA4QQGYokC8KZECGqqTC3a3QnMb.jpg",
+      "display_priority": 40,
+      "logo_path": "/cgJA1LqVK6Rv4DyCJebJ7mBl9ap.jpg",
       "provider_name": "FXNow Canada",
       "provider_id": 348
     },
@@ -3227,7 +3181,7 @@
         "EE": 8,
         "EG": 3,
         "ES": 6,
-        "FI": 15,
+        "FI": 14,
         "FR": 3,
         "GB": 3,
         "GR": 5,
@@ -3280,17 +3234,17 @@
         "UA": 1
       },
       "display_priority": 2,
-      "logo_path": "/6uhKBfmtzFqOcLousHwZuzcrScK.jpg",
+      "logo_path": "/2E03IAZsX4ZaUqM7tXlctEPMGWS.jpg",
       "provider_name": "Apple TV Plus",
       "provider_id": 350
     },
     {
       "display_priorities": {
-        "CA": 42,
-        "US": 132
+        "CA": 41,
+        "US": 127
       },
-      "display_priority": 132,
-      "logo_path": "/x4AFz5koB2R8BRn8WNh6EqXUGHc.jpg",
+      "display_priority": 127,
+      "logo_path": "/pmHszqqm55p228vRgFeujRiPdYU.jpg",
       "provider_name": "Darkmatter TV",
       "provider_id": 355
     },
@@ -3299,7 +3253,7 @@
         "KR": 3
       },
       "display_priority": 3,
-      "logo_path": "/2ioan5BX5L9tz4fIGU93blTeFhv.jpg",
+      "logo_path": "/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg",
       "provider_name": "wavve",
       "provider_id": 356
     },
@@ -3309,16 +3263,16 @@
         "NZ": 9
       },
       "display_priority": 9,
-      "logo_path": "/jNdDSUCyzk2wOwct9vXAaoX4Ypx.jpg",
+      "logo_path": "/pVoZH9ZMGfrr1Ajk1UD29weO6iA.jpg",
       "provider_name": "DocPlay",
       "provider_id": 357
     },
     {
       "display_priorities": {
-        "US": 57
+        "US": 58
       },
-      "display_priority": 57,
-      "logo_path": "/xL9SUR63qrEjFZAhtsipskeAMR7.jpg",
+      "display_priority": 58,
+      "logo_path": "/vg3nIjHVhLXnMKjQkNhQaSlsPub.jpg",
       "provider_name": "DIRECTV",
       "provider_id": 358
     },
@@ -3327,7 +3281,7 @@
         "IT": 10
       },
       "display_priority": 10,
-      "logo_path": "/momeaLkz4UT49Z7hUs8dppzn6rP.jpg",
+      "logo_path": "/xQcUBhEQTOuuauMT72ohFy7nR5g.jpg",
       "provider_name": "Mediaset Infinity",
       "provider_id": 359
     },
@@ -3336,43 +3290,43 @@
         "NL": 20
       },
       "display_priority": 20,
-      "logo_path": "/73igBrpTdAhEGwuYxhmnhTK5Srs.jpg",
+      "logo_path": "/jPNvTunAw7309LeRMT6m3yZy1Lm.jpg",
       "provider_name": "NPO Start",
       "provider_id": 360
     },
     {
       "display_priorities": {
-        "US": 136
+        "US": 130
       },
-      "display_priority": 136,
-      "logo_path": "/gJnQ40Z6T7HyY6fbmmI6qKE0zmK.jpg",
+      "display_priority": 130,
+      "logo_path": "/76CvnJAKAPbJuiXYwQGN7PFqOci.jpg",
       "provider_name": "TNT",
       "provider_id": 363
     },
     {
       "display_priorities": {
-        "US": 135
+        "US": 131
       },
-      "display_priority": 135,
-      "logo_path": "/cezAIHmsUVvgAahfCR7J0z30y1N.jpg",
+      "display_priority": 131,
+      "logo_path": "/uGOba5AB0URrJd5gelWGinaVR2h.jpg",
       "provider_name": "Bravo TV",
       "provider_id": 365
     },
     {
       "display_priorities": {
-        "US": 137
+        "US": 132
       },
-      "display_priority": 137,
-      "logo_path": "/auXCWejtQmZL7DplgokLXYq73Ed.jpg",
+      "display_priority": 132,
+      "logo_path": "/b5umeBN4kFf5KJ6FZiBkftA4q5q.jpg",
       "provider_name": "Food Network",
       "provider_id": 366
     },
     {
       "display_priorities": {
-        "US": 139
+        "US": 134
       },
-      "display_priority": 139,
-      "logo_path": "/2NRn6OApVKfDTKLuHDRN8UadLRw.jpg",
+      "display_priority": 134,
+      "logo_path": "/mjsNfr0lswbRx9hbEFkgqJkBjFt.jpg",
       "provider_name": "IndieFlix",
       "provider_id": 368
     },
@@ -3383,7 +3337,7 @@
         "LV": 9
       },
       "display_priority": 9,
-      "logo_path": "/jgD3gxzW39UhJ7wZsxst75bN8Ck.jpg",
+      "logo_path": "/1y6ds7KDN5Q33Jb0ZxnroEJ58Gd.jpg",
       "provider_name": "Go3",
       "provider_id": 373
     },
@@ -3392,7 +3346,7 @@
         "AU": 16
       },
       "display_priority": 16,
-      "logo_path": "/eniTWVEhUi5h4lqwnOD2fkvTbAQ.jpg",
+      "logo_path": "/xoId9luelz6lXMQkzLyJf3ssXTL.jpg",
       "provider_name": "9Now",
       "provider_id": 378
     },
@@ -3401,7 +3355,7 @@
         "GB": 40
       },
       "display_priority": 40,
-      "logo_path": "/dtU2zKZvtdKgSKjyKekp8t0Ryd1.jpg",
+      "logo_path": "/3TOx3XY1hqMz5e1i76fck5PPx7I.jpg",
       "provider_name": "BritBox",
       "provider_id": 380
     },
@@ -3415,7 +3369,7 @@
         "NL": 89
       },
       "display_priority": 43,
-      "logo_path": "/jHLq7Nu0cUQYshXuBNhzvrln1vL.jpg",
+      "logo_path": "/eBXzkFEupZjKaIKY7zBUaSdCY8I.jpg",
       "provider_name": "Canal+",
       "provider_id": 381
     },
@@ -3424,7 +3378,7 @@
         "DK": 9
       },
       "display_priority": 9,
-      "logo_path": "/yBrCoCGMIiHPHuoyh1mg82Pwlhx.jpg",
+      "logo_path": "/fewcYbfwWEZksgE4o3WbXEsISE4.jpg",
       "provider_name": "TV 2",
       "provider_id": 383
     },
@@ -3453,7 +3407,7 @@
         "HU": 22,
         "JM": 26,
         "MD": 25,
-        "MX": 10,
+        "MX": 11,
         "NL": 0,
         "NO": 5,
         "PA": 27,
@@ -3478,7 +3432,7 @@
         "AD": 29
       },
       "display_priority": 8,
-      "logo_path": "/Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg",
+      "logo_path": "/b8edpTaLCHFrUnhpGQIZJUpFX7T.jpg",
       "provider_name": "HBO Max",
       "provider_id": 384
     },
@@ -3487,7 +3441,7 @@
         "AU": 3
       },
       "display_priority": 3,
-      "logo_path": "/d3ixI1no0EpTj2i7u0Sd2DBXVlG.jpg",
+      "logo_path": "/7QX5OdsQZrXGNBKq9SPzoPV9OYQ.jpg",
       "provider_name": "BINGE",
       "provider_id": 385
     },
@@ -3496,7 +3450,7 @@
         "US": 12
       },
       "display_priority": 12,
-      "logo_path": "/8VCV78prwd9QzZnEm0ReO6bERDa.jpg",
+      "logo_path": "/2aGrp1xw3qhwCYvNGAJZPdjfeeX.jpg",
       "provider_name": "Peacock",
       "provider_id": 386
     },
@@ -3505,7 +3459,7 @@
         "US": 13
       },
       "display_priority": 13,
-      "logo_path": "/xTHltMrZPAJFLQ6qyCBjAnXSmZt.jpg",
+      "logo_path": "/drPlq5beqXtBaP7MNs8W616YRhm.jpg",
       "provider_name": "Peacock Premium",
       "provider_id": 387
     },
@@ -3517,7 +3471,7 @@
         "NL": 11
       },
       "display_priority": 11,
-      "logo_path": "/zEG5OsS8ZJHJ6RTuAtLUyCSb6De.jpg",
+      "logo_path": "/40E7MDsIj1f0M64j1rtbr23u0jj.jpg",
       "provider_name": "Sooner",
       "provider_id": 389
     },
@@ -3525,10 +3479,10 @@
       "display_priorities": {
         "AT": 24,
         "CH": 22,
-        "DE": 43
+        "DE": 42
       },
-      "display_priority": 43,
-      "logo_path": "/stlPdMKeVA4xb4eQGab3bIN2Qib.jpg",
+      "display_priority": 42,
+      "logo_path": "/jAwT86Q0H9U8RESR3zR2FVKe83D.jpg",
       "provider_name": "wedotv",
       "provider_id": 392
     },
@@ -3582,7 +3536,7 @@
         "TZ": 21
       },
       "display_priority": 2,
-      "logo_path": "/9mmdMwWkDh12sIeSbEvsFWzmDX2.jpg",
+      "logo_path": "/ozMgkAAoi6aDI5ce8KKA2k8TGvB.jpg",
       "provider_name": "FlixOlé",
       "provider_id": 393
     },
@@ -3591,133 +3545,133 @@
         "NZ": 13
       },
       "display_priority": 13,
-      "logo_path": "/eCRNttY7Zd75L5syA52AF8rCEuq.jpg",
+      "logo_path": "/wbqJss5NNebssp5RBkAdxIHecv2.jpg",
       "provider_name": "TVNZ",
       "provider_id": 395
     },
     {
       "display_priorities": {
-        "US": 138
+        "US": 133
       },
-      "display_priority": 138,
-      "logo_path": "/ukSXbR5qFjO2qCHpc6ZhcGPSjTJ.jpg",
+      "display_priority": 133,
+      "logo_path": "/jfXLhMzHHmBYrtE9ZaW7as2RA98.jpg",
       "provider_name": "BBC America",
       "provider_id": 397
     },
     {
       "display_priorities": {
-        "US": 141
+        "US": 136
       },
-      "display_priority": 141,
-      "logo_path": "/gxCvG3STez0PrDqi05LSYyWjLPk.jpg",
+      "display_priority": 136,
+      "logo_path": "/yoGiYLNZXhJKOeNKBvDj0EfJlJk.jpg",
       "provider_name": "AHCTV",
       "provider_id": 398
-    },
-    {
-      "display_priorities": {
-        "US": 148
-      },
-      "display_priority": 148,
-      "logo_path": "/fXcLPLz67yG0JzLWXIsNJrdwRzr.jpg",
-      "provider_name": "Animal Planet",
-      "provider_id": 399
-    },
-    {
-      "display_priorities": {
-        "US": 152
-      },
-      "display_priority": 152,
-      "logo_path": "/aTiukuAuttjE2OdGv1eUhk3xsi0.jpg",
-      "provider_name": "Cooking Channel",
-      "provider_id": 400
-    },
-    {
-      "display_priorities": {
-        "US": 146
-      },
-      "display_priority": 146,
-      "logo_path": "/xZMxO6tGdeMmKxIvT4QjPz59ujm.jpg",
-      "provider_name": "Destination America",
-      "provider_id": 402
-    },
-    {
-      "display_priorities": {
-        "US": 149
-      },
-      "display_priority": 149,
-      "logo_path": "/dfz7hQm0icTUdXJrScZXPMeO963.jpg",
-      "provider_name": "Discovery",
-      "provider_id": 403
-    },
-    {
-      "display_priorities": {
-        "US": 147
-      },
-      "display_priority": 147,
-      "logo_path": "/3LGhdwqMB0iuEwidFusc0I38Omm.jpg",
-      "provider_name": "Discovery Life",
-      "provider_id": 404
     },
     {
       "display_priorities": {
         "US": 142
       },
       "display_priority": 142,
-      "logo_path": "/odh8CexN7yXa7IX4aIYtsUc0vHY.jpg",
-      "provider_name": "DIY Network",
-      "provider_id": 405
+      "logo_path": "/uW87WpK4Zfz4zCf224vvFhn3ZJc.jpg",
+      "provider_name": "Animal Planet",
+      "provider_id": 399
     },
     {
       "display_priorities": {
-        "US": 143
+        "US": 146
       },
-      "display_priority": 143,
-      "logo_path": "/bwTpY8DTKUjoi6YfuiMenahGrTj.jpg",
-      "provider_name": "HGTV",
-      "provider_id": 406
+      "display_priority": 146,
+      "logo_path": "/70xl0Uq8t9cActZX2wbVIxFDmPS.jpg",
+      "provider_name": "Cooking Channel",
+      "provider_id": 400
+    },
+    {
+      "display_priorities": {
+        "US": 141
+      },
+      "display_priority": 141,
+      "logo_path": "/dhOggSQWjuXRZ7kVqpBCGLvuS54.jpg",
+      "provider_name": "Destination America",
+      "provider_id": 402
     },
     {
       "display_priorities": {
         "US": 144
       },
       "display_priority": 144,
-      "logo_path": "/gMV6YwrWO9YpLiUQ5dAxnxJiWWj.jpg",
-      "provider_name": "Investigation Discovery",
-      "provider_id": 408
+      "logo_path": "/w8uX5FHY01CmODT0QvGv5CBGbPS.jpg",
+      "provider_name": "Discovery",
+      "provider_id": 403
     },
     {
       "display_priorities": {
-        "US": 150
+        "US": 143
       },
-      "display_priority": 150,
-      "logo_path": "/st6VcNMu18MKbiTFhaWnxU9rBat.jpg",
-      "provider_name": "Motor Trend",
-      "provider_id": 410
+      "display_priority": 143,
+      "logo_path": "/rF3EkpKEIwnN1buk0EpscYIWEhk.jpg",
+      "provider_name": "Discovery Life",
+      "provider_id": 404
+    },
+    {
+      "display_priorities": {
+        "US": 138
+      },
+      "display_priority": 138,
+      "logo_path": "/935BBJuVTnjTiFd5yMzxF6A9ASi.jpg",
+      "provider_name": "DIY Network",
+      "provider_id": 405
+    },
+    {
+      "display_priorities": {
+        "US": 137
+      },
+      "display_priority": 137,
+      "logo_path": "/5Vp8QzvrVsWDIBWgoTm0cNdeSgc.jpg",
+      "provider_name": "HGTV",
+      "provider_id": 406
+    },
+    {
+      "display_priorities": {
+        "US": 139
+      },
+      "display_priority": 139,
+      "logo_path": "/1oxTHsIcxJwVcubHLnHwl0g60EI.jpg",
+      "provider_name": "Investigation Discovery",
+      "provider_id": 408
     },
     {
       "display_priorities": {
         "US": 145
       },
       "display_priority": 145,
-      "logo_path": "/3bRK8VOvIfWIhOLGGwNA67kphXC.jpg",
-      "provider_name": "Science Channel",
-      "provider_id": 411
+      "logo_path": "/tVrXDzVZxx8koCOA7OLw28yZFMX.jpg",
+      "provider_name": "Motor Trend",
+      "provider_id": 410
     },
     {
       "display_priorities": {
         "US": 140
       },
       "display_priority": 140,
-      "logo_path": "/eZK2W0v3yA2Dq7cFzifK0v9FN1b.jpg",
+      "logo_path": "/28cQ8Ux0pauEHyeZ7J9MTNF4RBP.jpg",
+      "provider_name": "Science Channel",
+      "provider_id": 411
+    },
+    {
+      "display_priorities": {
+        "US": 135
+      },
+      "display_priority": 135,
+      "logo_path": "/veArLGnRXZEGkjpkJrhfMeasODk.jpg",
       "provider_name": "TLC",
       "provider_id": 412
     },
     {
       "display_priorities": {
-        "US": 151
+        "US": 147
       },
-      "display_priority": 151,
-      "logo_path": "/7pkbHGkSYh6MKMTojJ80bT0KtPY.jpg",
+      "display_priority": 147,
+      "logo_path": "/8NwVgZlX4Nh3WCebkaKtbSmdDn1.jpg",
       "provider_name": "Travel Channel",
       "provider_id": 413
     },
@@ -3726,7 +3680,7 @@
         "IT": 25
       },
       "display_priority": 25,
-      "logo_path": "/rpwa6Tjghh1DF4iNfP5g4Rn6MGQ.jpg",
+      "logo_path": "/Z2up2zbp5sdLWagSQmaPozkIKM.jpg",
       "provider_name": "VVVVID",
       "provider_id": 414
     },
@@ -3735,73 +3689,73 @@
         "FR": 27
       },
       "display_priority": 27,
-      "logo_path": "/x8m1Cv6iy4n0Fi9tBa9TAXEuoO4.jpg",
+      "logo_path": "/w86FOwg0bbgUSHWWnjOTuEjsUvq.jpg",
       "provider_name": "Anime Digital Networks",
       "provider_id": 415
     },
     {
       "display_priorities": {
-        "US": 154
+        "US": 149
       },
-      "display_priority": 154,
-      "logo_path": "/sa10pK4Jwr5aA7rvafFP2zyLFjh.jpg",
+      "display_priority": 149,
+      "logo_path": "/kiNWL1wGBg3z2FBXJcd8R8MaZrV.jpg",
       "provider_name": "Here TV",
       "provider_id": 417
     },
     {
       "display_priorities": {
-        "US": 153
+        "US": 148
       },
-      "display_priority": 153,
-      "logo_path": "/hG3NOo8CJJTq7CQMj44kLFHoWOi.jpg",
+      "display_priority": 148,
+      "logo_path": "/3rwH1VGE9rM0PDkhmjq3UcLn7c.jpg",
       "provider_name": "Paramount Network",
       "provider_id": 418
     },
     {
       "display_priorities": {
-        "US": 155
+        "US": 150
       },
-      "display_priority": 155,
-      "logo_path": "/zU4b7cGYV6kRDOI6s8dgZqUvwFI.jpg",
+      "display_priority": 150,
+      "logo_path": "/w0EuVWj3e22gQhYpVZPryUevFV6.jpg",
       "provider_name": "TV Land",
       "provider_id": 419
     },
     {
       "display_priorities": {
-        "US": 156
+        "US": 151
       },
-      "display_priority": 156,
-      "logo_path": "/eWm07gxivsHwDx8CZRzVQIfVO4h.jpg",
+      "display_priority": 151,
+      "logo_path": "/dg6b527j4TrDr1vtucCTbZCjs3T.jpg",
       "provider_name": "Logo TV",
       "provider_id": 420
     },
     {
       "display_priorities": {
-        "DE": 47
+        "DE": 46
       },
-      "display_priority": 47,
-      "logo_path": "/2joD3S2goOB6lmepX35A8dmaqgM.jpg",
+      "display_priority": 46,
+      "logo_path": "/5aHLriu21FRDGlxY5zbzyEuoSvA.jpg",
       "provider_name": "Joyn Plus",
       "provider_id": 421
     },
     {
       "display_priorities": {
-        "US": 157
+        "US": 152
       },
-      "display_priority": 157,
-      "logo_path": "/jJUUb3clz84u347JWx7RUFMdjwP.jpg",
+      "display_priority": 152,
+      "logo_path": "/zH8mZ7YV2WHuVuLyOjtnIjar3Zn.jpg",
       "provider_name": "VH1",
       "provider_id": 422
     },
     {
       "display_priorities": {
         "DK": 19,
-        "FI": 18,
+        "FI": 17,
         "NO": 17,
         "SE": 18
       },
       "display_priority": 18,
-      "logo_path": "/3QsJbibv5dFW2IYuXbTjxDmGGRZ.jpg",
+      "logo_path": "/auWzottqpExOHUlJwDZ4DvdHGoL.jpg",
       "provider_name": "Blockbuster",
       "provider_id": 423
     },
@@ -3816,29 +3770,29 @@
         "TW": 39
       },
       "display_priority": 39,
-      "logo_path": "/bxdNcDbk1ohVeOMmM3eusAAiTLw.jpg",
+      "logo_path": "/f7z2izTDn3zyYtDymYHqhjEqFuj.jpg",
       "provider_name": "HBO Go",
       "provider_id": 425
     },
     {
       "display_priorities": {
         "DK": 20,
-        "FI": 19,
+        "FI": 18,
         "NO": 18,
         "SE": 19
       },
       "display_priority": 19,
-      "logo_path": "/dNcz2AZHPEgt4BIKJe56r4visuK.jpg",
+      "logo_path": "/sNmIwrniZZORvNJOmEuWGhwBJNf.jpg",
       "provider_name": "SF Anytime",
       "provider_id": 426
     },
     {
       "display_priorities": {
-        "CA": 46,
-        "US": 116
+        "CA": 44,
+        "US": 112
       },
-      "display_priority": 116,
-      "logo_path": "/vuS4VlY50SJVHbCU3vGxQehcsAg.jpg",
+      "display_priority": 112,
+      "logo_path": "/tnxLjN2lLYpkTIX8NPSId6bgqh8.jpg",
       "provider_name": "Mhz Choice",
       "provider_id": 427
     },
@@ -3852,7 +3806,7 @@
         "BM": 8,
         "BS": 8,
         "CI": 7,
-        "DE": 48,
+        "DE": 47,
         "DO": 8,
         "DZ": 8,
         "EG": 12,
@@ -3894,7 +3848,7 @@
         "TZ": 33
       },
       "display_priority": 8,
-      "logo_path": "/m6p38R4AlEo1ub7QnZtirXDIUF5.jpg",
+      "logo_path": "/RnSjeA2dgmKNLlFV3JE8cmPyLS.jpg",
       "provider_name": "CONtv",
       "provider_id": 428
     },
@@ -3903,17 +3857,17 @@
         "AU": 32
       },
       "display_priority": 32,
-      "logo_path": "/zXDDsD9M5vO7lqoqlBQCOcZtKBS.jpg",
+      "logo_path": "/n8STI6Hi6GCzLXHiibl9nIJdnaP.jpg",
       "provider_name": "Telstra TV",
       "provider_id": 429
     },
     {
       "display_priorities": {
-        "CA": 89,
-        "US": 105
+        "CA": 86,
+        "US": 101
       },
-      "display_priority": 105,
-      "logo_path": "/9baY98ZKyDaNArp1H9fAWqiR3Zi.jpg",
+      "display_priority": 101,
+      "logo_path": "/iCV9oPBeoLDC5okFRZEgQkx7je0.jpg",
       "provider_name": "HiDive",
       "provider_id": 430
     },
@@ -3922,7 +3876,7 @@
         "NO": 19
       },
       "display_priority": 19,
-      "logo_path": "/5nECaP8nhtrzZfx7oG0yoFMfqiA.jpg",
+      "logo_path": "/tpfmd22xEapb1aW2gzjSM5104rx.jpg",
       "provider_name": "TV 2 Play",
       "provider_id": 431
     },
@@ -3931,7 +3885,7 @@
         "AU": 33
       },
       "display_priority": 33,
-      "logo_path": "/z4vfN7KoOn6zruoCDRITnDZTdAx.jpg",
+      "logo_path": "/hP3ymMLPyvxUCA1ODfIHJ4pu3c2.jpg",
       "provider_name": "OzFlix",
       "provider_id": 434
     },
@@ -3941,7 +3895,7 @@
         "HK": 0
       },
       "display_priority": 0,
-      "logo_path": "/bKy2YjC0QxViRnd8ayd2pv2ugJZ.jpg",
+      "logo_path": "/9B7l9ZSos54kFrZbliVExt2z9C9.jpg",
       "provider_name": "Fetch TV",
       "provider_id": 436
     },
@@ -3950,25 +3904,25 @@
         "IN": 19
       },
       "display_priority": 19,
-      "logo_path": "/4QEQsvCBnORNIg9EDnrRSiEw61D.jpg",
+      "logo_path": "/pMTVKAUyjMb0xdMnHqfNj73MGH6.jpg",
       "provider_name": "Hungama Play",
       "provider_id": 437
     },
     {
       "display_priorities": {
-        "US": 114
+        "US": 111
       },
-      "display_priority": 114,
-      "logo_path": "/3tCqvc5hPm5nl8Hm8o2koDRZlPo.jpg",
+      "display_priority": 111,
+      "logo_path": "/qesugDq8sUCixmOOsqDM1xAnBYz.jpg",
       "provider_name": "Chai Flicks",
       "provider_id": 438
     },
     {
       "display_priorities": {
-        "US": 113
+        "US": 109
       },
-      "display_priority": 113,
-      "logo_path": "/ju3T8MFGNIoPiYpwHFpNlrYNyG7.jpg",
+      "display_priority": 109,
+      "logo_path": "/y9jFndski0fRO4MHh3yg5PIL9ZI.jpg",
       "provider_name": "Shout! Factory TV",
       "provider_id": 439
     },
@@ -3977,7 +3931,7 @@
         "NZ": 20
       },
       "display_priority": 20,
-      "logo_path": "/zJKmYhZ5jn8nfQ36Dtk6MgQnoy6.jpg",
+      "logo_path": "/vcsLhyNRm528LzfVqQJDddusP27.jpg",
       "provider_name": "ThreeNow",
       "provider_id": 440
     },
@@ -3986,7 +3940,7 @@
         "NO": 16
       },
       "display_priority": 16,
-      "logo_path": "/y1PDXoEMqReA1uX1aF8rnVgSYBS.jpg",
+      "logo_path": "/teyfWuW8nS8wsk6rVXIbynrxIX6.jpg",
       "provider_name": "NRK TV",
       "provider_id": 442
     },
@@ -3995,13 +3949,13 @@
         "DK": 18
       },
       "display_priority": 18,
-      "logo_path": "/vqybB1exnaQ3UOlKaw4t6OgzFIu.jpg",
+      "logo_path": "/eRRc8n7fzQewjh15d2fao45Xxvi.jpg",
       "provider_name": "Filmstriben",
       "provider_id": 443
     },
     {
       "display_priorities": {
-        "CA": 68,
+        "CA": 66,
         "AD": 18,
         "AL": 20,
         "AR": 27,
@@ -4022,14 +3976,14 @@
         "CO": 22,
         "CR": 12,
         "CZ": 15,
-        "DE": 68,
+        "DE": 67,
         "DK": 28,
         "DO": 14,
         "DZ": 15,
         "EC": 21,
         "EE": 17,
         "ES": 32,
-        "FI": 30,
+        "FI": 29,
         "FR": 39,
         "GB": 62,
         "GF": 16,
@@ -4091,7 +4045,7 @@
         "TN": 15,
         "TR": 17,
         "TW": 22,
-        "US": 112,
+        "US": 108,
         "UY": 19,
         "VE": 19,
         "YE": 16,
@@ -4099,7 +4053,7 @@
         "TZ": 23
       },
       "display_priority": 20,
-      "logo_path": "/u2H29LCxRzjZVUoZUQAHKm5P8Zc.jpg",
+      "logo_path": "/x6nRFzF32hCzMHaVM4RHRo7lsgS.jpg",
       "provider_name": "Dekkoo",
       "provider_id": 444
     },
@@ -4168,7 +4122,7 @@
         "TW": 24,
         "TZ": 5,
         "UG": 5,
-        "US": 111,
+        "US": 107,
         "UY": 24,
         "XK": 2,
         "VA": 4,
@@ -4181,17 +4135,17 @@
         "BO": 32,
         "BG": 21,
         "BR": 58,
-        "CA": 113,
+        "CA": 110,
         "CH": 47,
         "CR": 32,
         "CL": 35,
         "CO": 35,
         "CZ": 28,
         "DK": 42,
-        "DE": 111,
+        "DE": 110,
         "EE": 27,
         "EC": 33,
-        "FI": 43,
+        "FI": 42,
         "ES": 66,
         "FR": 78,
         "GT": 32,
@@ -4226,26 +4180,26 @@
         "ZA": 29
       },
       "display_priority": 9,
-      "logo_path": "/iaMw6nOyxUzXSacrLQ0Au6CfZkc.jpg",
+      "logo_path": "/uFjAjvrKMII0H766QzyHDNkZdKX.jpg",
       "provider_name": "Classix",
       "provider_id": 445
     },
     {
       "display_priorities": {
-        "CA": 51,
-        "US": 110
+        "CA": 49,
+        "US": 106
       },
-      "display_priority": 110,
-      "logo_path": "/9ONs8SMAXtkiyaEIKATTpbwckx8.jpg",
+      "display_priority": 106,
+      "logo_path": "/5zUnCq0pvixEtQafzOBBWqxNRvX.jpg",
       "provider_name": "Retrocrush",
       "provider_id": 446
     },
     {
       "display_priorities": {
-        "CA": 47
+        "CA": 45
       },
-      "display_priority": 47,
-      "logo_path": "/awgDmkHSfGEcoIVpeQKwaE2OgLM.jpg",
+      "display_priority": 45,
+      "logo_path": "/o2qiZykonJuLglxwBbtUbHu4wIO.jpg",
       "provider_name": "Global TV",
       "provider_id": 449
     },
@@ -4254,26 +4208,26 @@
         "PT": 12
       },
       "display_priority": 12,
-      "logo_path": "/oSJqnUUeoHfUj86Wsu2oq6VXLXE.jpg",
+      "logo_path": "/9HQD7iNLyJQYhEq3Z9blyn7P4Vk.jpg",
       "provider_name": "RTPplay",
       "provider_id": 452
     },
     {
       "display_priorities": {
-        "US": 109
+        "US": 105
       },
-      "display_priority": 109,
-      "logo_path": "/ttCYMg3dbKYeGCgCxzsNvT3L4qF.jpg",
+      "display_priority": 105,
+      "logo_path": "/j7a3ifpBlOpyGN7k8NzK4JOp1br.jpg",
       "provider_name": "MTV",
       "provider_id": 453
     },
     {
       "display_priorities": {
-        "CA": 48,
-        "US": 108
+        "CA": 46,
+        "US": 103
       },
-      "display_priority": 108,
-      "logo_path": "/ubWucXFn34TrVlJBaJFgPaC4tOP.jpg",
+      "display_priority": 103,
+      "logo_path": "/peZq5Zo0ZO0RyZsSQGLrWEaVNhr.jpg",
       "provider_name": "Topic",
       "provider_id": 454
     },
@@ -4282,7 +4236,7 @@
         "ES": 21
       },
       "display_priority": 21,
-      "logo_path": "/47iDHK3CykgXuZ20FN6QRAEcFBY.jpg",
+      "logo_path": "/273VHxSrDdEwLTXJrsnE6yJMqNZ.jpg",
       "provider_name": "Mitele ",
       "provider_id": 456
     },
@@ -4335,7 +4289,7 @@
         "SV": 11,
         "TN": 11,
         "TW": 8,
-        "US": 106,
+        "US": 102,
         "UY": 14,
         "VE": 11,
         "YE": 11,
@@ -4343,16 +4297,16 @@
         "NI": 13
       },
       "display_priority": 11,
-      "logo_path": "/ijHUSuVY0PLfTBMfRwH2PrzTD7G.jpg",
+      "logo_path": "/jwRPknT20dfU1GeVqbcDXFyvtdG.jpg",
       "provider_name": "VIX ",
       "provider_id": 457
     },
     {
       "display_priorities": {
-        "US": 117
+        "US": 114
       },
-      "display_priority": 117,
-      "logo_path": "/oYpUb0xkRfEE5iccELlumPGubt4.jpg",
+      "display_priority": 114,
+      "logo_path": "/zU75skIWNQ06SeFkmbFoaqhg069.jpg",
       "provider_name": "Vice TV ",
       "provider_id": 458
     },
@@ -4361,23 +4315,23 @@
         "BE": 14
       },
       "display_priority": 14,
-      "logo_path": "/qw1BwnbWKs7AXLVR05eRpi3YdD9.jpg",
+      "logo_path": "/5lDbFEGk2OwLdPZJLNk1Z6iyuoL.jpg",
       "provider_name": "RTBF",
       "provider_id": 461
     },
     {
       "display_priorities": {
-        "FI": 21
+        "FI": 20
       },
-      "display_priority": 21,
-      "logo_path": "/mMb0rksAc7Cmom5pEYaLNDkbitE.jpg",
+      "display_priority": 20,
+      "logo_path": "/27Zotk8HAfHk7qPz9x6DWWhOpb7.jpg",
       "provider_name": "Kirjastokino",
       "provider_id": 463
     },
     {
       "display_priorities": {
         "CA": 24,
-        "AR": 17,
+        "AR": 16,
         "BR": 14,
         "CL": 14,
         "CO": 15,
@@ -4388,13 +4342,13 @@
         "VE": 13
       },
       "display_priority": 13,
-      "logo_path": "/xfAAOAERZCnPB5jW5lhboAcXk8L.jpg",
+      "logo_path": "/hwsU65QW7A4dbMEWkDpgHyCNcfS.jpg",
       "provider_name": "Kocowa",
       "provider_id": 464
     },
     {
       "display_priorities": {
-        "AR": 16,
+        "AR": 17,
         "CL": 15,
         "CO": 14,
         "MX": 23,
@@ -4402,7 +4356,7 @@
         "UY": 9
       },
       "display_priority": 9,
-      "logo_path": "/kV8XFGI5OLJKl72dI8DtnKplfFr.jpg",
+      "logo_path": "/nr5UBW4IGKgBwmhpTMOfcvnX2vX.jpg",
       "provider_name": "DIRECTV GO",
       "provider_id": 467
     },
@@ -4411,26 +4365,26 @@
         "ID": 16
       },
       "display_priority": 16,
-      "logo_path": "/9xKAZFyhkZVewWxJJhR41AJO0D3.jpg",
+      "logo_path": "/o506FcbahVPxvVcsSA5dFLj9drV.jpg",
       "provider_name": "genflix",
       "provider_id": 468
     },
     {
       "display_priorities": {
-        "CA": 53
+        "CA": 51
       },
-      "display_priority": 53,
-      "logo_path": "/6FWwq6rayak6g6rvzVVP1NnX9gf.jpg",
+      "display_priority": 51,
+      "logo_path": "/cQjWvOiKRPeSuWRNGegcBjyqVbR.jpg",
       "provider_name": "Club Illico",
       "provider_id": 469
     },
     {
       "display_priorities": {
         "IN": 30,
-        "US": 162
+        "US": 157
       },
-      "display_priority": 162,
-      "logo_path": "/mEiBVz62M9j3TCebmOspMfqkIn.jpg",
+      "display_priority": 157,
+      "logo_path": "/iS5NCgmSqTnkNoTQY8nBvSZsEnF.jpg",
       "provider_name": "FILMRISE",
       "provider_id": 471
     },
@@ -4439,26 +4393,26 @@
         "NL": 24
       },
       "display_priority": 24,
-      "logo_path": "/m8wib2YFVWHaY0SvnExvXZFusz9.jpg",
+      "logo_path": "/88ssxWDyhabjrwSrbSf87nCDK2y.jpg",
       "provider_name": "NLZIET",
       "provider_id": 472
     },
     {
       "display_priorities": {
-        "BR": 25,
+        "BR": 24,
         "GB": 48,
         "MX": 24,
-        "US": 163
+        "US": 158
       },
-      "display_priority": 163,
-      "logo_path": "/r1UgUKmt83FSDOIHBdRWKooZPNx.jpg",
+      "display_priority": 158,
+      "logo_path": "/llQ8zV50Wqh4gYCYfr52R1b9gfD.jpg",
       "provider_name": "Revry",
       "provider_id": 473
     },
     {
       "display_priorities": {
-        "CA": 54,
-        "AR": 20,
+        "CA": 52,
+        "AR": 21,
         "AT": 28,
         "AU": 38,
         "BE": 15,
@@ -4473,14 +4427,14 @@
         "CO": 16,
         "CR": 13,
         "CZ": 10,
-        "DE": 51,
+        "DE": 49,
         "DK": 22,
         "DO": 10,
         "DZ": 10,
         "EC": 15,
         "EE": 12,
         "ES": 22,
-        "FI": 22,
+        "FI": 21,
         "FR": 30,
         "GB": 49,
         "GF": 10,
@@ -4530,7 +4484,7 @@
         "TN": 10,
         "TR": 12,
         "TW": 31,
-        "US": 165,
+        "US": 160,
         "UY": 13,
         "VE": 14,
         "YE": 10,
@@ -4538,7 +4492,7 @@
         "TZ": 24
       },
       "display_priority": 13,
-      "logo_path": "/bvcdVO7SDHKEa6D40g1jntXKNj.jpg",
+      "logo_path": "/5zqbck5mo8PuVbGu2ngBUdn5Yga.jpg",
       "provider_name": "DOCSVILLE",
       "provider_id": 475
     },
@@ -4547,17 +4501,17 @@
         "IN": 23
       },
       "display_priority": 23,
-      "logo_path": "/q03pok7xSxYJaENuYs547qa6upY.jpg",
+      "logo_path": "/ymlo2k6RlX0zF5Te1AYwXRQ7Pra.jpg",
       "provider_name": "EPIC ON",
       "provider_id": 476
     },
     {
       "display_priorities": {
-        "AR": 19,
-        "BR": 28
+        "AR": 20,
+        "BR": 29
       },
-      "display_priority": 28,
-      "logo_path": "/73ms51HSpkD0OOXwj2EeiZeSqSt.jpg",
+      "display_priority": 29,
+      "logo_path": "/sYVlH6nNSaR2syC0sjkxErwOOjx.jpg",
       "provider_name": "History Play",
       "provider_id": 478
     },
@@ -4566,16 +4520,16 @@
         "DE": 50
       },
       "display_priority": 50,
-      "logo_path": "/3xIBSZdL2pZCJR2saHwDPhKW2aZ.jpg",
+      "logo_path": "/ntvIffmJe7ZO1SSobwSx8ABAZFG.jpg",
       "provider_name": "Home of Horror",
       "provider_id": 479
     },
     {
       "display_priorities": {
-        "DE": 52
+        "DE": 51
       },
-      "display_priority": 52,
-      "logo_path": "/u04LR9vGEhc8B1ml4HSj1RCbqTG.jpg",
+      "display_priority": 51,
+      "logo_path": "/eptSSZPhXJllBI8QywFDmgOMNkU.jpg",
       "provider_name": "Filmtastic",
       "provider_id": 480
     },
@@ -4584,7 +4538,7 @@
         "IN": 28
       },
       "display_priority": 28,
-      "logo_path": "/iRv3wbUEPuwYYPSKwUxPaMPKGM4.jpg",
+      "logo_path": "/tFkqZYsDhNe6hJCx50Aw6oma24w.jpg",
       "provider_name": "ManoramaMax",
       "provider_id": 482
     },
@@ -4593,7 +4547,7 @@
         "ID": 20
       },
       "display_priority": 20,
-      "logo_path": "/eDFIGvn1PImm9kmZ83ugaqdWapy.jpg",
+      "logo_path": "/zDSJn28xTG4f6h2yxZ6UmCPvZ8j.jpg",
       "provider_name": "MAX Stream",
       "provider_id": 483
     },
@@ -4602,7 +4556,7 @@
         "BR": 27
       },
       "display_priority": 27,
-      "logo_path": "/cQQYtdaCg7vDo28JPru4v8Ypi8x.jpg",
+      "logo_path": "/xzN54gRvHqG9CkJPYPeS6DmJokS.jpg",
       "provider_name": "NOW",
       "provider_id": 484
     },
@@ -4672,7 +4626,7 @@
         "TW": 6,
         "TZ": 6,
         "UG": 6,
-        "US": 164,
+        "US": 159,
         "UY": 25,
         "XK": 3,
         "VA": 5,
@@ -4680,34 +4634,34 @@
         "ZM": 6
       },
       "display_priority": 8,
-      "logo_path": "/3MflXNopMv3EFKbVgJGoEkJEnnF.jpg",
+      "logo_path": "/iEt3NLdI7FeVMxj61FEYv9FQUVd.jpg",
       "provider_name": "Rooster Teeth",
       "provider_id": 485
     },
     {
       "display_priorities": {
-        "US": 167
+        "US": 162
       },
-      "display_priority": 167,
-      "logo_path": "/1tLCqSH5xiViDxMiTVWl6DmE8hd.jpg",
+      "display_priority": 162,
+      "logo_path": "/aAb9CUHjFe9Y3O57qnrJH0KOF1B.jpg",
       "provider_name": "Spectrum On Demand",
       "provider_id": 486
     },
     {
       "display_priorities": {
-        "US": 166
+        "US": 161
       },
-      "display_priority": 166,
-      "logo_path": "/lrZQdxtEHMbDZDnDo92KBkEHxSl.jpg",
+      "display_priority": 161,
+      "logo_path": "/9BcTvaS8RhQ58LoEbiuoCNghbcz.jpg",
       "provider_name": "OXYGEN",
       "provider_id": 487
     },
     {
       "display_priorities": {
-        "CA": 55
+        "CA": 53
       },
-      "display_priority": 55,
-      "logo_path": "/dCO5ge3nDm4LdnWSPe6jHPciE7U.jpg",
+      "display_priority": 53,
+      "logo_path": "/yQhSfwOzTF9EATdq47LlRFghmiO.jpg",
       "provider_name": "tvo",
       "provider_id": 488
     },
@@ -4716,16 +4670,16 @@
         "ID": 18
       },
       "display_priority": 18,
-      "logo_path": "/6IdiH2yMRYCtB7XoIQ36wZig9gZ.jpg",
+      "logo_path": "/l2ZNwMC37iK0fquVuYWfcgIJJdF.jpg",
       "provider_name": "Vidio",
       "provider_id": 489
     },
     {
       "display_priorities": {
-        "AR": 21
+        "AR": 19
       },
-      "display_priority": 21,
-      "logo_path": "/9nyK6XeCSe1fmK9B9H2xHgOYDlj.jpg",
+      "display_priority": 19,
+      "logo_path": "/21uSo4VQUdEmeA6RJ6gPSRwusbt.jpg",
       "provider_name": "CINE",
       "provider_id": 491
     },
@@ -4734,7 +4688,7 @@
         "CA": 57
       },
       "display_priority": 57,
-      "logo_path": "/pGk6V35szQnJVq2OoJLnRpjifb3.jpg",
+      "logo_path": "/lHkRQTbuBINAcyqztVCLV8reHCX.jpg",
       "provider_name": "ILLICO",
       "provider_id": 492
     },
@@ -4743,7 +4697,7 @@
         "SE": 22
       },
       "display_priority": 22,
-      "logo_path": "/jblaJCpe4cDnaFNZg90qGF1UkZF.jpg",
+      "logo_path": "/oBdaG066fB5O7XYrYKQflOZvd89.jpg",
       "provider_name": "SVT",
       "provider_id": 493
     },
@@ -4752,7 +4706,7 @@
         "SE": 26
       },
       "display_priority": 26,
-      "logo_path": "/thucdaw2gnOE0g478AHVZw5UeYm.jpg",
+      "logo_path": "/k35BlS63LM7D0Q8e0jktRyEsnTq.jpg",
       "provider_name": "Cineasterna",
       "provider_id": 496
     },
@@ -4761,14 +4715,14 @@
         "SE": 24
       },
       "display_priority": 24,
-      "logo_path": "/vuAxCPW4tlZ7Dg9EshAdPoHZFBo.jpg",
+      "logo_path": "/jy4yvY3szonb0p6rtMXvF5stuX9.jpg",
       "provider_name": "Tele2 Play",
       "provider_id": 497
     },
     {
       "display_priorities": {
         "BA": 27,
-        "DE": 55,
+        "DE": 54,
         "EG": 21,
         "IL": 26,
         "NG": 24,
@@ -4776,14 +4730,14 @@
         "TW": 32
       },
       "display_priority": 32,
-      "logo_path": "/f8vwR4T8SO6cUouVQaPDY71TSgB.jpg",
+      "logo_path": "/9kxo34bWuDJcGvNQBlSY4o6OujZ.jpg",
       "provider_name": "South Park",
       "provider_id": 498
     },
     {
       "display_priorities": {},
       "display_priority": 12,
-      "logo_path": "/zLM7f1w2L8TU2Fspzns72m6h3yY.jpg",
+      "logo_path": "/mLWYMZMqIKtuMpdtiGRK8G47AVH.jpg",
       "provider_name": "Wink",
       "provider_id": 501
     },
@@ -4792,7 +4746,7 @@
         "IN": 26
       },
       "display_priority": 26,
-      "logo_path": "/qLR6qzB1IcANZUqMEkLf6Sh8Y8s.jpg",
+      "logo_path": "/5VLMQDq6LWfftQCl7sYrtTseXRA.jpg",
       "provider_name": "Tata Play",
       "provider_id": 502
     },
@@ -4801,43 +4755,43 @@
         "PL": 13
       },
       "display_priority": 13,
-      "logo_path": "/uXc2fJqhtXfuNq6ha8tTLL9VnXj.jpg",
+      "logo_path": "/jhMNVBV2UocEGepRkr9oFPD7Gpb.jpg",
       "provider_name": "Player",
       "provider_id": 505
     },
     {
       "display_priorities": {
-        "US": 160
+        "US": 155
       },
-      "display_priority": 160,
-      "logo_path": "/rcebVnRvZvPXauK4353Jgiu4DWI.jpg",
+      "display_priority": 155,
+      "logo_path": "/cZvP3XsDKlHFhNIyHYCVPStXT5l.jpg",
       "provider_name": "TBS",
       "provider_id": 506
     },
     {
       "display_priorities": {
-        "US": 169
+        "US": 164
       },
-      "display_priority": 169,
-      "logo_path": "/pg4bIFyUsSIhFChqOz5Up1BxuIU.jpg",
+      "display_priority": 164,
+      "logo_path": "/mMJ6AQUpHDsD5s2Q2dnbpX1NFwp.jpg",
       "provider_name": "tru TV",
       "provider_id": 507
     },
     {
       "display_priorities": {
-        "US": 170
+        "US": 165
       },
-      "display_priority": 170,
-      "logo_path": "/pu5I5Fis0r7ReAOswcJzOKmdLrK.jpg",
+      "display_priority": 165,
+      "logo_path": "/d8HzRaIa5aGE5mJB1SsIA9hODdx.jpg",
       "provider_name": "DisneyNOW",
       "provider_id": 508
     },
     {
       "display_priorities": {
-        "US": 171
+        "US": 166
       },
-      "display_priority": 171,
-      "logo_path": "/qiwHTuSh91SgVMtY9lP7y5tH6kN.jpg",
+      "display_priority": 166,
+      "logo_path": "/9abwIEW9wZ12RavyKnInlK684xm.jpg",
       "provider_name": "WeTV",
       "provider_id": 509
     },
@@ -4846,7 +4800,7 @@
         "IN": 27
       },
       "display_priority": 27,
-      "logo_path": "/wYRiUqIgWcfUvO6OPcXuUNd4tc2.jpg",
+      "logo_path": "/eMTnWwNVtThkjvQA6zwxaoJG9NE.jpg",
       "provider_name": "Discovery+",
       "provider_id": 510
     },
@@ -4868,26 +4822,26 @@
         "TZ": 25
       },
       "display_priority": 25,
-      "logo_path": "/zEuYa2328KQlbpOr4W0tVNpCGtZ.jpg",
+      "logo_path": "/nHxedyutqerk1yWBsc17mF8gteZ.jpg",
       "provider_name": "iWantTFC",
       "provider_id": 511
     },
     {
       "display_priorities": {
-        "BR": 29
+        "BR": 28
       },
-      "display_priority": 29,
-      "logo_path": "/dUokaRky9vs1u2PFRzFDV4iIx6A.jpg",
+      "display_priority": 28,
+      "logo_path": "/3A46LAupJwaNhzvE6bFW4ZUO7Pw.jpg",
       "provider_name": "TNTGo",
       "provider_id": 512
     },
     {
       "display_priorities": {
-        "CA": 57,
-        "US": 161
+        "CA": 55,
+        "US": 156
       },
-      "display_priority": 161,
-      "logo_path": "/3VxDqUk25KU5860XxHKwV9cy3L8.jpg",
+      "display_priority": 156,
+      "logo_path": "/jCgWMxqGaq0h0VOxyJPfQdTqmii.jpg",
       "provider_name": "AsianCrush",
       "provider_id": 514
     },
@@ -4896,88 +4850,88 @@
         "IN": 31
       },
       "display_priority": 31,
-      "logo_path": "/dH4BZucVyb5lW97TEbZ7RTAugjg.jpg",
+      "logo_path": "/ayHY6wKxvCKj2PU8eRPFxnPc6B0.jpg",
       "provider_name": "MX Player",
       "provider_id": 515
     },
     {
       "display_priorities": {
-        "CA": 59
+        "CA": 57
       },
-      "display_priority": 59,
-      "logo_path": "/3ISpW4LBSKAaCyIZI3cxHiox8dI.jpg",
+      "display_priority": 57,
+      "logo_path": "/ss6JfWLwwrIjO1AfEsBy8GYM1EU.jpg",
       "provider_name": "Noovo",
       "provider_id": 516
     },
     {
       "display_priorities": {
-        "US": 245
+        "US": 239
       },
-      "display_priority": 245,
-      "logo_path": "/wYRiUqIgWcfUvO6OPcXuUNd4tc2.jpg",
+      "display_priority": 239,
+      "logo_path": "/eMTnWwNVtThkjvQA6zwxaoJG9NE.jpg",
       "provider_name": "Discovery+",
       "provider_id": 520
     },
     {
       "display_priorities": {
         "ES": 38,
-        "FI": 35,
+        "FI": 34,
         "GB": 84,
         "IT": 23,
         "NL": 42,
         "NO": 33,
         "SE": 36,
         "AT": 61,
-        "DE": 123,
+        "DE": 122,
         "IE": 41
       },
       "display_priority": 36,
-      "logo_path": "/mAehaBHcatpbaYgZ0G6Z1czkXax.jpg",
+      "logo_path": "/bPW3J8KlLrot95sLzadnpzVe61f.jpg",
       "provider_name": "Discovery+",
       "provider_id": 524
     },
     {
       "display_priorities": {
-        "CA": 56
+        "CA": 54
       },
-      "display_priority": 56,
-      "logo_path": "/iPK2kpaKnGYvSdEcRerIbkqWVPh.jpg",
+      "display_priority": 54,
+      "logo_path": "/7wADjxAylhGGqWYNz86jGOQSoZG.jpg",
       "provider_name": "Knowledge Network",
       "provider_id": 525
     },
     {
       "display_priorities": {
-        "CA": 95,
+        "CA": 92,
         "US": 35,
         "AU": 58,
         "NZ": 36
       },
       "display_priority": 35,
-      "logo_path": "/xlonQMSmhtA2HHwK3JKF9ghx7M8.jpg",
+      "logo_path": "/ovmu6uot1XVvsemM2dDySXLiX57.jpg",
       "provider_name": "AMC+",
       "provider_id": 526
     },
     {
       "display_priorities": {
-        "CA": 94,
+        "CA": 91,
         "IN": 51,
         "US": 27,
         "AU": 59,
         "ES": 79
       },
       "display_priority": 27,
-      "logo_path": "/9edKQczyuMmQM1yS520hgmJbcaC.jpg",
+      "logo_path": "/2ino0WmHA4GROB7NYKzT6PGqLcb.jpg",
       "provider_name": "AMC+ Amazon Channel",
       "provider_id": 528
     },
     {
       "display_priorities": {
-        "CA": 61,
+        "CA": 59,
         "GB": 25,
-        "US": 173
+        "US": 168
       },
-      "display_priority": 173,
-      "logo_path": "/4UfmxLzph9Aso9pr9bXohp0V3sr.jpg",
+      "display_priority": 168,
+      "logo_path": "/wAuMUrRTVaJ2CZ4ZpyQbayZx0iU.jpg",
       "provider_name": "ARROW",
       "provider_id": 529
     },
@@ -5017,13 +4971,13 @@
         "PA": 38
       },
       "display_priority": 7,
-      "logo_path": "/xbhHHa1YgtpwhC8lb1NQ3ACVcLd.jpg",
+      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
       "provider_name": "Paramount Plus",
       "provider_id": 531
     },
     {
       "display_priorities": {
-        "CA": 97,
+        "CA": 94,
         "AD": 14,
         "AL": 16,
         "BA": 15,
@@ -5065,23 +5019,23 @@
         "SV": 12,
         "TN": 11,
         "TW": 23,
-        "US": 197,
+        "US": 191,
         "UY": 15,
         "YE": 11,
         "TZ": 34
       },
       "display_priority": 16,
-      "logo_path": "/m3NWxxR23l1w1e156fyTuw931gx.jpg",
+      "logo_path": "/8WerMI8XcZXqPpkHTZNtzMzousF.jpg",
       "provider_name": "aha",
       "provider_id": 532
     },
     {
       "display_priorities": {
         "AT": 31,
-        "DE": 59
+        "DE": 57
       },
-      "display_priority": 59,
-      "logo_path": "/1h8etYGesCuldkQGoUDyDJr92EB.jpg",
+      "display_priority": 57,
+      "logo_path": "/9MABvFilVMUAV86vLUgBgeM5LQQ.jpg",
       "provider_name": "Amazon Arthaus Channel",
       "provider_id": 533
     },
@@ -5089,37 +5043,37 @@
       "display_priorities": {
         "AT": 32,
         "CH": 28,
-        "DE": 60
+        "DE": 59
       },
-      "display_priority": 60,
-      "logo_path": "/dKH9TB94EIbnaWnjO6vX0snaNVP.jpg",
+      "display_priority": 59,
+      "logo_path": "/ugus0p8BGGhE8sxhwAjJz2o8jyy.jpg",
       "provider_name": "ZDF",
       "provider_id": 537
     },
     {
       "display_priorities": {
-        "CA": 90,
+        "CA": 87,
         "AU": 50,
-        "DE": 61,
+        "DE": 60,
         "ES": 27,
         "FR": 33,
         "GB": 54,
         "IN": 35,
         "IT": 31,
         "KR": 15,
-        "US": 174
+        "US": 169
       },
-      "display_priority": 174,
-      "logo_path": "/swMyOSh6p3ZOTr76yPV6EyQFTik.jpg",
+      "display_priority": 169,
+      "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
       "provider_name": "Plex",
       "provider_id": 538
     },
     {
       "display_priorities": {
-        "FI": 25
+        "FI": 24
       },
-      "display_priority": 25,
-      "logo_path": "/ihE8Z4jZcGsmQsGRj6q06oxD2Wd.jpg",
+      "display_priority": 24,
+      "logo_path": "/eglAxQEXSO13p6gNf3HKymrIu7y.jpg",
       "provider_name": "Elisa Viihde",
       "provider_id": 540
     },
@@ -5128,13 +5082,13 @@
         "ES": 26
       },
       "display_priority": 26,
-      "logo_path": "/f3RCRmZWiUzg2CjxUqWJ881WmcS.jpg",
+      "logo_path": "/3QQKYFUDt13Q2Zm6JM2cOjlbd27.jpg",
       "provider_name": "rtve",
       "provider_id": 541
     },
     {
       "display_priorities": {
-        "DE": 63,
+        "DE": 62,
         "AT": 67,
         "BE": 58,
         "CH": 51,
@@ -5143,7 +5097,7 @@
         "LU": 10
       },
       "display_priority": 10,
-      "logo_path": "/q6hCkmhpK5cDUURb4i6yWXNfpZz.jpg",
+      "logo_path": "/zXu75uIAMgdblYvFFPzoIHmQhxa.jpg",
       "provider_name": "filmfriend",
       "provider_id": 542
     },
@@ -5152,7 +5106,7 @@
         "AR": 22
       },
       "display_priority": 22,
-      "logo_path": "/xKUlNQjy7dpfI8Nj8BjgSTdYnqH.jpg",
+      "logo_path": "/zbpPadcBhRpVREGiyWOCM6ioBaf.jpg",
       "provider_name": "CONTAR",
       "provider_id": 543
     },
@@ -5161,13 +5115,13 @@
         "BR": 32
       },
       "display_priority": 32,
-      "logo_path": "/n3BIqc0mojP85bJSKjsIwZUOVya.jpg",
+      "logo_path": "/3MsEoFiBy9eaUdKo5Cx1iR9BPQy.jpg",
       "provider_name": "Libreflix",
       "provider_id": 544
     },
     {
       "display_priorities": {
-        "CA": 62,
+        "CA": 60,
         "AD": 17,
         "AL": 19,
         "AR": 24,
@@ -5184,12 +5138,12 @@
         "CO": 18,
         "CR": 15,
         "CZ": 11,
-        "DE": 62,
+        "DE": 61,
         "DK": 24,
         "EC": 17,
         "EE": 13,
         "ES": 28,
-        "FI": 26,
+        "FI": 25,
         "FR": 34,
         "GB": 55,
         "GF": 12,
@@ -5237,13 +5191,13 @@
         "TH": 15,
         "TN": 12,
         "TR": 13,
-        "US": 176,
+        "US": 171,
         "VE": 15,
         "YE": 12,
         "ZA": 14
       },
       "display_priority": 19,
-      "logo_path": "/mgD0T960hnYU4gBxbPPBrcDfgWg.jpg",
+      "logo_path": "/6dET59jNU0ADysghEjl8Unuc7Ca.jpg",
       "provider_name": "WOW Presents Plus",
       "provider_id": 546
     },
@@ -5252,13 +5206,13 @@
         "PL": 17
       },
       "display_priority": 17,
-      "logo_path": "/bZNXgd8fwVTD68aAGlElkpAtu7b.jpg",
+      "logo_path": "/7jnt49RwicQ4Vs2v1MgfERfVuDS.jpg",
       "provider_name": "IPLA",
       "provider_id": 549
     },
     {
       "display_priorities": {
-        "CA": 64,
+        "CA": 62,
         "AD": 15,
         "AL": 17,
         "AR": 23,
@@ -5277,7 +5231,7 @@
         "CO": 19,
         "CR": 16,
         "CZ": 12,
-        "DE": 64,
+        "DE": 63,
         "DK": 25,
         "DO": 12,
         "DZ": 13,
@@ -5285,7 +5239,7 @@
         "EE": 14,
         "EG": 14,
         "ES": 29,
-        "FI": 27,
+        "FI": 26,
         "FR": 36,
         "GB": 56,
         "GF": 14,
@@ -5347,7 +5301,7 @@
         "TN": 13,
         "TR": 14,
         "TW": 21,
-        "US": 177,
+        "US": 172,
         "UY": 17,
         "VE": 16,
         "YE": 14,
@@ -5355,23 +5309,23 @@
         "TZ": 29
       },
       "display_priority": 17,
-      "logo_path": "/gekkP93StjYdiMAInViVmrnldNY.jpg",
+      "logo_path": "/mSH24WQcRDJ2fsL5iucXqqRnSRb.jpg",
       "provider_name": "Magellan TV",
       "provider_id": 551
     },
     {
       "display_priorities": {
-        "FI": 34,
+        "FI": 33,
         "LT": 15
       },
       "display_priority": 15,
-      "logo_path": "/xTVM8uXT9QocigQ07LE7Irc65W2.jpg",
+      "logo_path": "/7QzLA6rsML2rKxhuagWlDl7Zxlm.jpg",
       "provider_name": "Telia Play",
       "provider_id": 553
     },
     {
       "display_priorities": {
-        "CA": 65,
+        "CA": 63,
         "AD": 16,
         "AL": 18,
         "AR": 25,
@@ -5392,7 +5346,7 @@
         "CO": 20,
         "CR": 14,
         "CZ": 13,
-        "DE": 65,
+        "DE": 64,
         "DK": 26,
         "DO": 13,
         "DZ": 14,
@@ -5400,7 +5354,7 @@
         "EE": 15,
         "EG": 15,
         "ES": 30,
-        "FI": 28,
+        "FI": 27,
         "FR": 37,
         "GB": 57,
         "GF": 15,
@@ -5463,7 +5417,7 @@
         "TN": 14,
         "TR": 15,
         "TW": 26,
-        "US": 178,
+        "US": 173,
         "UY": 18,
         "VE": 17,
         "YE": 15,
@@ -5471,16 +5425,16 @@
         "TZ": 30
       },
       "display_priority": 18,
-      "logo_path": "/xLu1rkZNOKuNnRNr70wySosfTBf.jpg",
+      "logo_path": "/6IYZ4NjwPikxN7J9cfSmuyeHeMm.jpg",
       "provider_name": "BroadwayHD",
       "provider_id": 554
     },
     {
       "display_priorities": {
-        "US": 179
+        "US": 174
       },
-      "display_priority": 179,
-      "logo_path": "/jbcfM4YaulkzcPRIpiPZWIfcA67.jpg",
+      "display_priority": 174,
+      "logo_path": "/z4MqXgpzqxVy7GF8mlPOe8VOx82.jpg",
       "provider_name": "The Oprah Winfrey Network",
       "provider_id": 555
     },
@@ -5489,7 +5443,7 @@
         "RU": 15
       },
       "display_priority": 15,
-      "logo_path": "/krABGbxTRmPtUA10fkwhwUdCd4I.jpg",
+      "logo_path": "/wygGzgXDEiSvF6TEEZcayaLWqTC.jpg",
       "provider_name": "tvzavr",
       "provider_id": 556
     },
@@ -5498,7 +5452,7 @@
         "RU": 16
       },
       "display_priority": 16,
-      "logo_path": "/Aduyz3yAGMXTmd2N6NiIOYCmWF3.jpg",
+      "logo_path": "/yyMxS08v80D96O7NtL9supa5sn7.jpg",
       "provider_name": "More TV",
       "provider_id": 557
     },
@@ -5509,7 +5463,7 @@
         "MY": 32
       },
       "display_priority": 32,
-      "logo_path": "/vrFpju3t7kplDbFsN5GLJpG0obj.jpg",
+      "logo_path": "/4P963etfZGzeJqqd6E8fj2OIUht.jpg",
       "provider_name": "Lionsgate Play",
       "provider_id": 561
     },
@@ -5518,7 +5472,7 @@
         "NL": 35
       },
       "display_priority": 35,
-      "logo_path": "/bVClgB5bpaTRM3sVPlboaxkFD0U.jpg",
+      "logo_path": "/nzjqsR28PVVp5GJAlHtbBArNKqN.jpg",
       "provider_name": "KPN",
       "provider_id": 563
     },
@@ -5527,7 +5481,7 @@
         "RU": 20
       },
       "display_priority": 20,
-      "logo_path": "/dUGPd8eg651seqculYtaM3AE9O9.jpg",
+      "logo_path": "/r7cgAhlSLI4r80P1Si9P0jOevrr.jpg",
       "provider_name": "Premier",
       "provider_id": 570
     },
@@ -5537,7 +5491,7 @@
         "HR": 29
       },
       "display_priority": 29,
-      "logo_path": "/wxqUatILVcYLhpK8eHwu74pl4IF.jpg",
+      "logo_path": "/3KaY2AQFkPHlc6QgGQmRbYxnsQa.jpg",
       "provider_name": "RTL Play",
       "provider_id": 572
     },
@@ -5546,7 +5500,7 @@
         "BR": 42
       },
       "display_priority": 42,
-      "logo_path": "/gzHzhgt6cVSn4yy6UnJvLGbOSwL.jpg",
+      "logo_path": "/prbT74SL6obBAywv50qi5gnoBj5.jpg",
       "provider_name": "KinoPop",
       "provider_id": 573
     },
@@ -5555,13 +5509,13 @@
         "BR": 43
       },
       "display_priority": 43,
-      "logo_path": "/xbdgLcQ6kRrcVe1uJAG9lzlkSbY.jpg",
+      "logo_path": "/FFBHmEWA05CsqsKO272fNMWBvU.jpg",
       "provider_name": "Oi Play",
       "provider_id": 574
     },
     {
       "display_priorities": {
-        "CA": 72,
+        "CA": 70,
         "AR": 30,
         "BR": 44,
         "CL": 25,
@@ -5569,11 +5523,11 @@
         "EC": 24,
         "MX": 36,
         "PE": 25,
-        "US": 186,
+        "US": 181,
         "VE": 22
       },
       "display_priority": 22,
-      "logo_path": "/uHv6Y4YSsr4cj7q4cBbAg7WXKEI.jpg",
+      "logo_path": "/273ohemep46c1r93V1rHOG7hraZ.jpg",
       "provider_name": "KoreaOnDemand",
       "provider_id": 575
     },
@@ -5582,7 +5536,7 @@
         "RU": 21
       },
       "display_priority": 21,
-      "logo_path": "/3jJtMOIwtvcrCyeRMUvv4wsfhJk.jpg",
+      "logo_path": "/3EJQtj4m83kRh7bV9BF6KWmPiKp.jpg",
       "provider_name": "TvIgle",
       "provider_id": 577
     },
@@ -5591,7 +5545,7 @@
         "NO": 31
       },
       "display_priority": 31,
-      "logo_path": "/gKno1uvHwHyhQTKMflDvEqj5oGJ.jpg",
+      "logo_path": "/3ZigBD8WTEPcEHAvMWiJGUsv5u4.jpg",
       "provider_name": "Strim",
       "provider_id": 578
     },
@@ -5600,13 +5554,13 @@
         "BG": 12
       },
       "display_priority": 12,
-      "logo_path": "/ApALy1g1c9piZkivc9yrb30BGfn.jpg",
+      "logo_path": "/ApcuSS6VOCV7slF4GBRARfy31bg.jpg",
       "provider_name": "Nova Play",
       "provider_id": 580
     },
     {
       "display_priorities": {
-        "CA": 76,
+        "CA": 73,
         "AD": 25,
         "AL": 27,
         "BA": 26,
@@ -5643,20 +5597,20 @@
         "PS": 26,
         "QA": 23,
         "RS": 27,
-        "SA": 26,
+        "SA": 25,
         "SI": 27,
         "SK": 30,
         "SM": 24,
         "SV": 24,
         "TN": 22,
         "TW": 16,
-        "US": 189,
+        "US": 183,
         "UY": 28,
         "YE": 24,
         "TZ": 17
       },
       "display_priority": 27,
-      "logo_path": "/8MXYXzZGoPAEQU13GWk1GVvKNUS.jpg",
+      "logo_path": "/fi3a86qRzJ4xwO2bFCCmfOhllFc.jpg",
       "provider_name": "iQIYI",
       "provider_id": 581
     },
@@ -5670,11 +5624,11 @@
         "US": 24,
         "IT": 61,
         "AT": 58,
-        "DE": 119,
+        "DE": 118,
         "FR": 85
       },
       "display_priority": 24,
-      "logo_path": "/3E0RkIEQrrGYazs63NMsn3XONT6.jpg",
+      "logo_path": "/hExO4PtimLIYn3kBOrzsejNv7cT.jpg",
       "provider_name": "Paramount+ Amazon Channel",
       "provider_id": 582
     },
@@ -5683,7 +5637,7 @@
         "US": 10
       },
       "display_priority": 10,
-      "logo_path": "/hoqk74y8HTJTMWcVes1ZVwohCue.jpg",
+      "logo_path": "/efu1Cqc63XrPBoreYnf2mn0Nizj.jpg",
       "provider_name": "MGM Plus Amazon Channel",
       "provider_id": 583
     },
@@ -5692,18 +5646,18 @@
         "GB": 69,
         "IT": 24,
         "US": 26,
-        "DE": 117
+        "DE": 116
       },
       "display_priority": 26,
-      "logo_path": "/a2OcajC4bM5ItniQdjyOV7tgthW.jpg",
+      "logo_path": "/lgudHqEtTOzkMWlpTjU1oUyoUSZ.jpg",
       "provider_name": "Discovery+ Amazon Channel",
       "provider_id": 584
     },
     {
       "display_priorities": {
-        "CA": 79,
+        "CA": 76,
         "BR": 51,
-        "DE": 93,
+        "DE": 91,
         "ES": 45,
         "FR": 50,
         "GB": 74,
@@ -5720,16 +5674,16 @@
         "SE": 50
       },
       "display_priority": 50,
-      "logo_path": "/fUUgfrOfvvPKx9vhFBd6IMdkfLy.jpg",
+      "logo_path": "/8U0SUpB5Jq6dW1N5cSo8EmJJtjL.jpg",
       "provider_name": "MGM Amazon Channel",
       "provider_id": 588
     },
     {
       "display_priorities": {
-        "CA": 78
+        "CA": 75
       },
-      "display_priority": 78,
-      "logo_path": "/3zOyRHCQuesGyoc7ZuzUMSCZh7k.jpg",
+      "display_priority": 75,
+      "logo_path": "/4KZlGfHQEza2dBf3HVk4oWmh611.jpg",
       "provider_name": "TELETOON+ Amazon Channel",
       "provider_id": 589
     },
@@ -5738,7 +5692,7 @@
         "GB": 44
       },
       "display_priority": 44,
-      "logo_path": "/v3PhM1pr6omrcffUoBBZkiVeApH.jpg",
+      "logo_path": "/aG4lXRDfHl3qgQCgpWI6KEJV0i7.jpg",
       "provider_name": "STV Player",
       "provider_id": 593
     },
@@ -5747,7 +5701,7 @@
         "GB": 66
       },
       "display_priority": 66,
-      "logo_path": "/o6li3XZrBKXSqyNRS39UQEfPTCH.jpg",
+      "logo_path": "/m8rpPax1tjN9VlxNLRM5Ok4pTTI.jpg",
       "provider_name": "Virgin TV Go",
       "provider_id": 594
     },
@@ -5756,7 +5710,7 @@
         "GB": 78
       },
       "display_priority": 78,
-      "logo_path": "/1K9ZUrerCHALa0dyZ1OxidsJ28u.jpg",
+      "logo_path": "/6xQrNQoTmXWhaJj4O8u2FRsXBXs.jpg",
       "provider_name": "Eros Now Amazon Channel",
       "provider_id": 595
     },
@@ -5765,7 +5719,7 @@
         "GB": 26
       },
       "display_priority": 26,
-      "logo_path": "/4iegia9VpdceQpbUNqZ5ZP9jdgh.jpg",
+      "logo_path": "/u4OSH6NN7bdHRJJVLwozPa0jDUj.jpg",
       "provider_name": "Arrow Video Amazon Channel",
       "provider_id": 596
     },
@@ -5774,7 +5728,7 @@
         "GB": 73
       },
       "display_priority": 73,
-      "logo_path": "/optcwmeouull1Yyiu9Q0wPEceVM.jpg",
+      "logo_path": "/kt7M4N8FnyCUHSWZd2pyeJxge5b.jpg",
       "provider_name": "ITV Amazon Channel",
       "provider_id": 598
     },
@@ -5783,7 +5737,7 @@
         "GB": 75
       },
       "display_priority": 75,
-      "logo_path": "/itokSbqrAKttZajeuUQlwDOy3zS.jpg",
+      "logo_path": "/l4h4b2esfTb7evLRiLrMjk6rsHj.jpg",
       "provider_name": "Pokémon Amazon Channel",
       "provider_id": 599
     },
@@ -5792,7 +5746,7 @@
         "GB": 76
       },
       "display_priority": 76,
-      "logo_path": "/6qlN4ra7T69JynYVbs9SXVUlkLk.jpg",
+      "logo_path": "/ivRp15loTWoVy3eEHALoYEyXI8J.jpg",
       "provider_name": "Shout! Factory Amazon Channel",
       "provider_id": 600
     },
@@ -5801,7 +5755,7 @@
         "GB": 80
       },
       "display_priority": 80,
-      "logo_path": "/ihCOKHIsNdqzhftgiJld6YVwr1G.jpg",
+      "logo_path": "/dVOlUPVN7x4wYaGtujczWEDrxOU.jpg",
       "provider_name": "MotorTrend Amazon Channel",
       "provider_id": 601
     },
@@ -5810,7 +5764,7 @@
         "GB": 79
       },
       "display_priority": 79,
-      "logo_path": "/kgyeCy524FHBpL0oWWKnjGArt9h.jpg",
+      "logo_path": "/xJ3B83btVmp4wyRGRRRgWCibTLI.jpg",
       "provider_name": "FilmBox Live Amazon Channel",
       "provider_id": 602
     },
@@ -5819,7 +5773,7 @@
         "GB": 67
       },
       "display_priority": 67,
-      "logo_path": "/aNvHP7E7X4hEGW7aT5tyo1xfnFN.jpg",
+      "logo_path": "/tLbUhvK1RcA5I4JHndxf5dprkE7.jpg",
       "provider_name": "CuriosityStream Amazon Channel",
       "provider_id": 603
     },
@@ -5828,97 +5782,97 @@
         "GB": 68
       },
       "display_priority": 68,
-      "logo_path": "/jdQu3zBkbZCKnVUZwm63jBxAATk.jpg",
+      "logo_path": "/91oRDZySWtw60ei006uQ45gmjXD.jpg",
       "provider_name": "DocuBay Amazon Channel",
       "provider_id": 604
     },
     {
       "display_priorities": {
-        "CA": 81
+        "CA": 78
       },
-      "display_priority": 81,
-      "logo_path": "/jqByg3hw9LsuKTxgpAQPbO9b1ZQ.jpg",
+      "display_priority": 78,
+      "logo_path": "/5W6vTKE684EhdITeMUjdcTIBGdh.jpg",
       "provider_name": "Super Channel Amazon Channel",
       "provider_id": 605
+    },
+    {
+      "display_priorities": {
+        "CA": 79
+      },
+      "display_priority": 79,
+      "logo_path": "/djTJ7pAkIhmPaN3eTA6wTUrphNG.jpg",
+      "provider_name": "StackTV Amazon Channel",
+      "provider_id": 606
+    },
+    {
+      "display_priorities": {
+        "CA": 80,
+        "ES": 42,
+        "DE": 130,
+        "GB": 121
+      },
+      "display_priority": 121,
+      "logo_path": "/d0KmcInHpiF44ahOLrXCQATEFmD.jpg",
+      "provider_name": "OUTtv Amazon Channel",
+      "provider_id": 607
+    },
+    {
+      "display_priorities": {
+        "CA": 81,
+        "BR": 52,
+        "MX": 41,
+        "ES": 80
+      },
+      "display_priority": 41,
+      "logo_path": "/bSy9zFiZtbKBHIyOu0H2Fs5cJmx.jpg",
+      "provider_name": "Love Nature Amazon Channel",
+      "provider_id": 608
     },
     {
       "display_priorities": {
         "CA": 82
       },
       "display_priority": 82,
-      "logo_path": "/h8sud4kBfHnTni7G7pTnOGcArco.jpg",
-      "provider_name": "StackTV Amazon Channel",
-      "provider_id": 606
+      "logo_path": "/bEgGGEDgBczZcZRJ6x1MtTym2LV.jpg",
+      "provider_name": "Smithsonian Channel Amazon Channel",
+      "provider_id": 609
     },
     {
       "display_priorities": {
-        "CA": 83,
-        "ES": 42,
-        "DE": 131,
-        "GB": 121
+        "CA": 83
       },
-      "display_priority": 121,
-      "logo_path": "/bCQVIO5iEjfstObco3fuhFB7sbs.jpg",
-      "provider_name": "OUTtv Amazon Channel",
-      "provider_id": 607
+      "display_priority": 83,
+      "logo_path": "/2WEzLLWbvMLHSNkAjYrIeDOmLJM.jpg",
+      "provider_name": "BBC Earth Amazon Channel",
+      "provider_id": 610
     },
     {
       "display_priorities": {
-        "CA": 84,
-        "BR": 52,
-        "MX": 41,
-        "ES": 80
+        "CA": 84
       },
-      "display_priority": 41,
-      "logo_path": "/tQL30UKe7OykrtkYQCmYEFrdIMC.jpg",
-      "provider_name": "Love Nature Amazon Channel",
-      "provider_id": 608
+      "display_priority": 84,
+      "logo_path": "/nLyqqlMpgSQanUrKCacY3NQeHQG.jpg",
+      "provider_name": "The Great Courses Signature Collection Amazon Channel",
+      "provider_id": 611
     },
     {
       "display_priorities": {
         "CA": 85
       },
       "display_priority": 85,
-      "logo_path": "/rZALpU2NvloNDBuUWX7BVBPFLDG.jpg",
-      "provider_name": "Smithsonian Channel Amazon Channel",
-      "provider_id": 609
-    },
-    {
-      "display_priorities": {
-        "CA": 86
-      },
-      "display_priority": 86,
-      "logo_path": "/xGUwoyO5LlHKEQGGYSMoLxo7c6D.jpg",
-      "provider_name": "BBC Earth Amazon Channel",
-      "provider_id": 610
-    },
-    {
-      "display_priorities": {
-        "CA": 87
-      },
-      "display_priority": 87,
-      "logo_path": "/4dFbTZSJqSi89LkNrFoP02jPMt7.jpg",
-      "provider_name": "The Great Courses Signature Collection Amazon Channel",
-      "provider_id": 611
-    },
-    {
-      "display_priorities": {
-        "CA": 88
-      },
-      "display_priority": 88,
-      "logo_path": "/e07gcWq5OWhJ8MxZncJrDuoJAp2.jpg",
+      "logo_path": "/r9JMtkJn6eE0i8Vi9ONLVci7Hnv.jpg",
       "provider_name": "UMC Amazon Channel",
       "provider_id": 612
     },
     {
       "display_priorities": {
-        "DE": 100,
+        "DE": 99,
         "GB": 18,
-        "US": 191,
+        "US": 185,
         "AT": 64
       },
-      "display_priority": 191,
-      "logo_path": "/uBE4RMH15mrkuz6vXzuJc7ZLXp1.jpg",
+      "display_priority": 185,
+      "logo_path": "/4VOCKZGiAtXMtoDyOrvHAN33uc2.jpg",
       "provider_name": "Freevee",
       "provider_id": 613
     },
@@ -5927,7 +5881,7 @@
         "IN": 45
       },
       "display_priority": 45,
-      "logo_path": "/h1PNHFp50cceDZ8jXUMnuVVMIw2.jpg",
+      "logo_path": "/1tCAM3WVOl0xknuwVc0v1LBWZNV.jpg",
       "provider_name": "VI movies and tv",
       "provider_id": 614
     },
@@ -5936,7 +5890,7 @@
         "GB": 81
       },
       "display_priority": 81,
-      "logo_path": "/hTXE4J8fB7KDYkhY6KbwJIfHMtM.jpg",
+      "logo_path": "/sSMxh3tIOAi3QBoSXdagDxb3OKp.jpg",
       "provider_name": "W4free",
       "provider_id": 615
     },
@@ -5984,7 +5938,7 @@
         "SE": 7
       },
       "display_priority": 30,
-      "logo_path": "/rIvQ4zuxvVirsNNVarYmOTunBD2.jpg",
+      "logo_path": "/oScZixdKdYI4XvSRVEX7Gspg6Dd.jpg",
       "provider_name": "HBO Max Free",
       "provider_id": 616
     },
@@ -6010,7 +5964,7 @@
         "NI": 15
       },
       "display_priority": 6,
-      "logo_path": "/hR9vWd8hWEVQKD6eOnBneKRFEW3.jpg",
+      "logo_path": "/cv5S44vHpNoGj7wby6390AyhEkH.jpg",
       "provider_name": "Star Plus",
       "provider_id": 619
     },
@@ -6019,7 +5973,7 @@
         "DK": 33
       },
       "display_priority": 33,
-      "logo_path": "/dpqap8iY6bsSqQf4xrkAG2j43gS.jpg",
+      "logo_path": "/dnD5cUeAPruAcYwwKKxYbMcfccq.jpg",
       "provider_name": "DRTV",
       "provider_id": 620
     },
@@ -6029,7 +5983,7 @@
         "CH": 37
       },
       "display_priority": 37,
-      "logo_path": "/5OtaT8STJ8ZMkKt994C5XxrEAaP.jpg",
+      "logo_path": "/l5SFTF3l9l1KSgZJM7foAppUenz.jpg",
       "provider_name": "UPC TV",
       "provider_id": 622
     },
@@ -6039,7 +5993,7 @@
         "TW": 33
       },
       "display_priority": 33,
-      "logo_path": "/fDZtWPwSiKjVbbuZOVtlZAiH0rE.jpg",
+      "logo_path": "/r3tmJFjecQGAfHjWOafhr1pux6b.jpg",
       "provider_name": "WeTV",
       "provider_id": 623
     },
@@ -6049,7 +6003,7 @@
         "TW": 35
       },
       "display_priority": 35,
-      "logo_path": "/iGDZ6zPbVcngc0BQEsZX13Z7I07.jpg",
+      "logo_path": "/r9rEesXJjzY8sH3NLqNdkPdZ714.jpg",
       "provider_name": "KKTV",
       "provider_id": 624
     },
@@ -6059,7 +6013,7 @@
         "TW": 36
       },
       "display_priority": 36,
-      "logo_path": "/wLZCjEAlCKjEkQQM75bITfqL7D0.jpg",
+      "logo_path": "/j35eayHG7RC9Ll0ehtbOuek0TZL.jpg",
       "provider_name": "LINE TV",
       "provider_id": 625
     },
@@ -6068,7 +6022,7 @@
         "SK": 33
       },
       "display_priority": 33,
-      "logo_path": "/9CHdbyMXYgFk9oM7H4t1FlrULHs.jpg",
+      "logo_path": "/z7IYTxUHSrk1VPYgsc5RDe1E3tA.jpg",
       "provider_name": "Otta",
       "provider_id": 626
     },
@@ -6078,7 +6032,7 @@
         "CZ": 31
       },
       "display_priority": 31,
-      "logo_path": "/8G4Is7L0sxig8VxTLecfeDCMnBi.jpg",
+      "logo_path": "/iTzW2q9e1Kk10l2s934SDgPSJNm.jpg",
       "provider_name": "Voyo",
       "provider_id": 627
     },
@@ -6090,11 +6044,11 @@
         "IQ": 12,
         "LB": 13,
         "PS": 12,
-        "SA": 25,
+        "SA": 24,
         "TD": 1
       },
       "display_priority": 10,
-      "logo_path": "/xEPXbwbfABzPrUTWbgtDFH1NOa.jpg",
+      "logo_path": "/kC6JTo59Gj6I4vJPyBAYGh0sKAE.jpg",
       "provider_name": "OSN",
       "provider_id": 629
     },
@@ -6102,7 +6056,7 @@
       "display_priorities": {
         "AE": 11,
         "EG": 27,
-        "SA": 24,
+        "SA": 26,
         "BH": 31,
         "IQ": 31,
         "KW": 32,
@@ -6111,7 +6065,7 @@
         "QA": 31
       },
       "display_priority": 11,
-      "logo_path": "/uOTEObCZtolNGDA7A4Wrb47cxNn.jpg",
+      "logo_path": "/pDroY6RxYdVw63eAepag4b116Ub.jpg",
       "provider_name": "STARZPLAY",
       "provider_id": 630
     },
@@ -6120,7 +6074,7 @@
         "HR": 28
       },
       "display_priority": 28,
-      "logo_path": "/h9vCGR4GF42HjXNvGQoBcuiZAvG.jpg",
+      "logo_path": "/yHqa57jOQqhBarOh9lw2noJno00.jpg",
       "provider_name": "HRTi",
       "provider_id": 631
     },
@@ -6129,7 +6083,7 @@
         "US": 30
       },
       "display_priority": 30,
-      "logo_path": "/qMf2zirM2w0sO0mdAIIoP5XnQn8.jpg",
+      "logo_path": "/12hpEMyph4xWZP7SKM6aAqmcBnZ.jpg",
       "provider_name": "Showtime Roku Premium Channel",
       "provider_id": 632
     },
@@ -6138,7 +6092,7 @@
         "US": 31
       },
       "display_priority": 31,
-      "logo_path": "/qlVSrZgfXlFw0Jj6hsYq2zi70JD.jpg",
+      "logo_path": "/ywIoxSjoYJGUIbR6BfxUiCHdPi3.jpg",
       "provider_name": "Paramount+ Roku Premium Channel",
       "provider_id": 633
     },
@@ -6147,7 +6101,7 @@
         "US": 32
       },
       "display_priority": 32,
-      "logo_path": "/5OAb2w7D9C2VHa0k5PaoAYeFYFE.jpg",
+      "logo_path": "/9laPF1MAiUxlqM8T98F3Gj0bhzd.jpg",
       "provider_name": "Starz Roku Premium Channel",
       "provider_id": 634
     },
@@ -6156,7 +6110,7 @@
         "US": 33
       },
       "display_priority": 33,
-      "logo_path": "/ni2NgPmIqqJRXeiA8Zdj4UhBZnU.jpg",
+      "logo_path": "/gAGrSQCTAisxy2CsWbijVvJEnRo.jpg",
       "provider_name": "AMC+ Roku Premium Channel",
       "provider_id": 635
     },
@@ -6165,7 +6119,7 @@
         "US": 36
       },
       "display_priority": 36,
-      "logo_path": "/3sE2JNYZJRD9Le1P8B6oVEqarad.jpg",
+      "logo_path": "/lD7HKUmXDvUya58DceiTA809Zbf.jpg",
       "provider_name": "MGM Plus Roku Premium Channel",
       "provider_id": 636
     },
@@ -6174,7 +6128,7 @@
         "HR": 30
       },
       "display_priority": 30,
-      "logo_path": "/kHx8k4ixfSZdj45FAYP2P9r4FUO.jpg",
+      "logo_path": "/p6hKVngF1iWciIyxYmrl3UUitg7.jpg",
       "provider_name": "Pickbox NOW",
       "provider_id": 637
     },
@@ -6183,35 +6137,35 @@
         "GB": 43
       },
       "display_priority": 43,
-      "logo_path": "/75mU4aWHPnMxSl95VT5O4lCR64U.jpg",
+      "logo_path": "/vO4CtY03UT7hAC3e4SuQH7Ix3sb.jpg",
       "provider_name": "STUDIOCANAL PRESENTS Apple TV Channel",
       "provider_id": 642
     },
     {
       "display_priorities": {
-        "DE": 77
+        "DE": 76
       },
-      "display_priority": 77,
-      "logo_path": "/u0x5jHjdhvlNtFrfb63XDJvFwFu.jpg",
+      "display_priority": 76,
+      "logo_path": "/coWnECpOyKLWMTSlXkfT2PhLs9E.jpg",
       "provider_name": "Cinema of Hearts Amazon Channel",
       "provider_id": 679
     },
     {
       "display_priorities": {
-        "DE": 79
+        "DE": 78
       },
-      "display_priority": 79,
-      "logo_path": "/97AOkkJyYajWLHgKGpK5NZOQ22O.jpg",
+      "display_priority": 78,
+      "logo_path": "/jG5tKt6JoHsYRoUq6Wg8i9QuHt2.jpg",
       "provider_name": "Bloody Movies Amazon Channel",
       "provider_id": 680
     },
     {
       "display_priorities": {
-        "DE": 80,
+        "DE": 79,
         "PL": 37
       },
       "display_priority": 37,
-      "logo_path": "/4Q3nrYFVeOaSB76JlH2Ep08AQxA.jpg",
+      "logo_path": "/3fhcb4cThixkfNpOudnpLcosTCA.jpg",
       "provider_name": "Film Total Amazon Channel",
       "provider_id": 681
     },
@@ -6220,7 +6174,7 @@
         "BR": 48
       },
       "display_priority": 48,
-      "logo_path": "/3gTVbIj15Amgz5Qqg5dPDpgMW9V.jpg",
+      "logo_path": "/xht0G3uRLcTgjxRz3cDHuf8KKUw.jpg",
       "provider_name": "Looke Amazon Channel",
       "provider_id": 683
     },
@@ -6229,7 +6183,7 @@
         "ES": 46
       },
       "display_priority": 46,
-      "logo_path": "/yJflQpWbgaiqYEVsFrE18lIEbaG.jpg",
+      "logo_path": "/2GQVxfaiWA4n93I7sJDJf1b6NqS.jpg",
       "provider_name": "FlixOlé Amazon Channel",
       "provider_id": 684
     },
@@ -6238,16 +6192,16 @@
         "FR": 49
       },
       "display_priority": 49,
-      "logo_path": "/42Cj5KNEteBRpfWnGWQbTJpJDGV.jpg",
+      "logo_path": "/oYsPBkqP7QjliFT758DrR9i2mpl.jpg",
       "provider_name": "OCS Amazon Channel ",
       "provider_id": 685
     },
     {
       "display_priorities": {
-        "DE": 78
+        "DE": 77
       },
-      "display_priority": 78,
-      "logo_path": "/jTvkFUHvHsUoOzZRZ8WpmkiZD1v.jpg",
+      "display_priority": 77,
+      "logo_path": "/7Zy6GqC8lQEvfBlWC1bJcaJzPRd.jpg",
       "provider_name": "Home of Horror Amazon Channel",
       "provider_id": 686
     },
@@ -6256,7 +6210,7 @@
         "MX": 46
       },
       "display_priority": 46,
-      "logo_path": "/l6boVLijqAZLYXlZpkzzeNC4mvg.jpg",
+      "logo_path": "/t7I2Tx6Q7Nz96KexIPjkzUJOCbt.jpg",
       "provider_name": "Pongalo Amazon Channel  ",
       "provider_id": 690
     },
@@ -6265,13 +6219,13 @@
         "CH": 13
       },
       "display_priority": 13,
-      "logo_path": "/wKAPdeGjoejE3pPZp3RdElIbfl7.jpg",
+      "logo_path": "/c1Nj8YGitlXbvvv0taHLkBeyTaK.jpg",
       "provider_name": "Play Suisse",
       "provider_id": 691
     },
     {
       "display_priorities": {
-        "CA": 92,
+        "CA": 89,
         "AD": 24,
         "AE": 14,
         "AG": 10,
@@ -6296,7 +6250,7 @@
         "CU": 10,
         "CV": 10,
         "CZ": 21,
-        "DE": 82,
+        "DE": 81,
         "DK": 35,
         "DO": 25,
         "DZ": 25,
@@ -6304,7 +6258,7 @@
         "EE": 22,
         "EG": 29,
         "ES": 48,
-        "FI": 37,
+        "FI": 36,
         "FJ": 10,
         "FR": 54,
         "GB": 87,
@@ -6382,7 +6336,7 @@
         "TW": 38,
         "TZ": 11,
         "UG": 9,
-        "US": 195,
+        "US": 188,
         "UY": 32,
         "XK": 5,
         "VA": 8,
@@ -6393,17 +6347,17 @@
         "GG": 11
       },
       "display_priority": 14,
-      "logo_path": "/59azlQKUgFdYq6QI5QEAxIeecyL.jpg",
+      "logo_path": "/uauVx3dGWt0GICqdMCBYJObd3Mo.jpg",
       "provider_name": "Cultpix",
       "provider_id": 692
     },
     {
       "display_priorities": {
         "AT": 44,
-        "DE": 81
+        "DE": 80
       },
-      "display_priority": 81,
-      "logo_path": "/7BVWcGgkBBVpqg7RdoxlhIgb3s4.jpg",
+      "display_priority": 80,
+      "logo_path": "/9aLd9gAK6xHtWK2tXDYq1fOqzJA.jpg",
       "provider_name": "Turk On Video Amazon Channel",
       "provider_id": 693
     },
@@ -6412,13 +6366,13 @@
         "IT": 45
       },
       "display_priority": 45,
-      "logo_path": "/bWczrFt9FD6DchYLQMMj2ga2iRA.jpg",
+      "logo_path": "/911zAHHLswJYihv988hbHDKa5M4.jpg",
       "provider_name": "Serially",
       "provider_id": 696
     },
     {
       "display_priorities": {
-        "CA": 93,
+        "CA": 90,
         "AE": 15,
         "AG": 9,
         "AL": 28,
@@ -6441,7 +6395,7 @@
         "CU": 9,
         "CV": 9,
         "CZ": 25,
-        "DE": 83,
+        "DE": 82,
         "DK": 36,
         "DO": 28,
         "DZ": 27,
@@ -6449,7 +6403,7 @@
         "EE": 23,
         "EG": 30,
         "ES": 49,
-        "FI": 38,
+        "FI": 37,
         "FJ": 9,
         "FR": 55,
         "GB": 88,
@@ -6524,7 +6478,7 @@
         "TT": 9,
         "TW": 40,
         "UG": 11,
-        "US": 196,
+        "US": 190,
         "UY": 34,
         "VE": 27,
         "YE": 28,
@@ -6551,7 +6505,7 @@
         "ZW": 4
       },
       "display_priority": 15,
-      "logo_path": "/4FqTBYsUSZgS9z9UGKgxSDBbtc8.jpg",
+      "logo_path": "/fbveJTcro9Xw2KuPIIoPPePHiwy.jpg",
       "provider_name": "FilmBox+",
       "provider_id": 701
     },
@@ -6578,93 +6532,93 @@
         "ZM": 12
       },
       "display_priority": 12,
-      "logo_path": "/r4q36I2Xts1SqhLWd6XsnbSAQJ4.jpg",
+      "logo_path": "/4bsFc5AgxDNdDeS1NIjVRviARhB.jpg",
       "provider_name": "IROKOTV",
       "provider_id": 704
     },
     {
       "display_priorities": {
-        "CA": 96
+        "CA": 93
       },
-      "display_priority": 96,
-      "logo_path": "/fTc12wQdF3tOgKE16Eai4vjOFPg.jpg",
+      "display_priority": 93,
+      "logo_path": "/29VK28jsSjFWHdXl1lxPb2SGmAk.jpg",
       "provider_name": "Hollywood Suite Amazon Channel",
       "provider_id": 705
     },
     {
       "display_priorities": {
         "AT": 48,
-        "DE": 143
+        "DE": 142
       },
-      "display_priority": 143,
-      "logo_path": "/iB415dMHBjdTZOOZA06FA1sxDWN.jpg",
+      "display_priority": 142,
+      "logo_path": "/9NYihXY9biyXFJSZQq5HIGu1n8B.jpg",
       "provider_name": "Moviedome Plus Amazon Channel",
       "provider_id": 706
     },
     {
       "display_priorities": {
         "AT": 49,
-        "DE": 144
+        "DE": 143
       },
-      "display_priority": 144,
-      "logo_path": "/xB6NQNF0vlRlRh4KNPFE1Vlqn1Q.jpg",
+      "display_priority": 143,
+      "logo_path": "/a2wCZ9ultzAbjAaG6JMiCFJoy9s.jpg",
       "provider_name": "Aniverse Amazon Channel",
       "provider_id": 707
     },
     {
       "display_priorities": {
         "AT": 50,
-        "DE": 145
+        "DE": 144
       },
-      "display_priority": 145,
-      "logo_path": "/pHJhFw6XXRCTnIKK06MT0m1Vll4.jpg",
+      "display_priority": 144,
+      "logo_path": "/9T5H28SXBkzmnZYy2iRfI7GzwLL.jpg",
       "provider_name": "Superfresh Amazon Channel",
       "provider_id": 708
-    },
-    {
-      "display_priorities": {
-        "DE": 89
-      },
-      "display_priority": 89,
-      "logo_path": "/v6JyYgqVCb9rXvyTDQ091WaFtCD.jpg",
-      "provider_name": "Comedy Central Plus Amazon Channel",
-      "provider_id": 1706
     },
     {
       "display_priorities": {
         "DE": 88
       },
       "display_priority": 88,
-      "logo_path": "/1zYseT9ZlMt5sepAAYzRArMme1D.jpg",
-      "provider_name": "BluTV Amazon Channel",
-      "provider_id": 1707
+      "logo_path": "/eMoqH13BYzIC1wDlhONhHfDM3DN.jpg",
+      "provider_name": "Comedy Central Plus Amazon Channel",
+      "provider_id": 1706
     },
     {
       "display_priorities": {
         "DE": 87
       },
       "display_priority": 87,
-      "logo_path": "/OCuQsLYnjRCY1DWnUEOXnZiIQr.jpg",
+      "logo_path": "/AvUM6aAqYh7JxUokb5T5ERn3KMs.jpg",
+      "provider_name": "BluTV Amazon Channel",
+      "provider_id": 1707
+    },
+    {
+      "display_priorities": {
+        "DE": 86
+      },
+      "display_priority": 86,
+      "logo_path": "/yXGqtV8HiXTsMfneACNPmZdCBld.jpg",
       "provider_name": "Discovery Amazon Channel",
       "provider_id": 1708
     },
     {
       "display_priorities": {
-        "DE": 91
+        "DE": 90
       },
-      "display_priority": 91,
-      "logo_path": "/n8jt2T4IUa7lQE7k6xtLV5oQUa9.jpg",
+      "display_priority": 90,
+      "logo_path": "/cYzZyot2IuGUYUXLvw6BMBT6v9p.jpg",
       "provider_name": "GRJNGO Amazon Channel",
       "provider_id": 1709
     },
     {
       "display_priorities": {
-        "DE": 90,
+        "DE": 89,
         "IT": 56,
         "GB": 122
       },
       "display_priority": 56,
-      "logo_path": "/gHO264aR3zRJjPpKMZF8Svrhczo.jpg",
+      "logo_path": "/vd53k28L5ntW0FsarBsDGoMTCzH.jpg",
       "provider_name": "HistoryPlay Amazon Channel",
       "provider_id": 1710
     },
@@ -6673,25 +6627,25 @@
         "DE": 92
       },
       "display_priority": 92,
-      "logo_path": "/4YpUbpRqJELtahMRXZAYphl0o9S.jpg",
+      "logo_path": "/g06QZd5k4bjDEcZ3J97jb3rNlfB.jpg",
       "provider_name": "MTV Plus Amazon Channel",
       "provider_id": 1711
-    },
-    {
-      "display_priorities": {
-        "DE": 96
-      },
-      "display_priority": 96,
-      "logo_path": "/oGFzJgHj9IEc87l8aTRIa6OJMWk.jpg",
-      "provider_name": "RTL Passion Amazon Channel",
-      "provider_id": 1712
     },
     {
       "display_priorities": {
         "DE": 95
       },
       "display_priority": 95,
-      "logo_path": "/tr1ZL0LyNQjYBxQgAC0w8zW2GOC.jpg",
+      "logo_path": "/gHBdFYhxdeLHl8jimTDwA1bFv01.jpg",
+      "provider_name": "RTL Passion Amazon Channel",
+      "provider_id": 1712
+    },
+    {
+      "display_priorities": {
+        "DE": 94
+      },
+      "display_priority": 94,
+      "logo_path": "/7gkA2RRoHTdGf8KXBKkMbevqN1p.jpg",
       "provider_name": "Sony AXN Amazon Channel",
       "provider_id": 1714
     },
@@ -6728,18 +6682,18 @@
         "OM": 32,
         "QA": 32,
         "BR": 91,
-        "DE": 152,
+        "DE": 151,
         "FR": 106,
         "ES": 93,
         "GB": 133,
         "IN": 73,
         "IT": 98,
         "MX": 80,
-        "US": 259,
+        "US": 253,
         "AU": 64,
         "AR": 63,
-        "CA": 140,
-        "FI": 45,
+        "CA": 137,
+        "FI": 44,
         "ID": 37,
         "PH": 33,
         "PL": 38,
@@ -6747,7 +6701,7 @@
         "TR": 56
       },
       "display_priority": 17,
-      "logo_path": "/uurfHKuprPDeKfIs7FYd5lQzw0L.jpg",
+      "logo_path": "/7qZED0kLBtiV8mLRNBtW4PQCAqW.jpg",
       "provider_name": "Shahid VIP",
       "provider_id": 1715
     },
@@ -6756,7 +6710,7 @@
         "ES": 50
       },
       "display_priority": 50,
-      "logo_path": "/wdbbz8SsamximWXn0AR5f5U3fOw.jpg",
+      "logo_path": "/8vES2nJNwOF57muvqLByDLm6snp.jpg",
       "provider_name": "Acontra Plus",
       "provider_id": 1717
     },
@@ -6765,7 +6719,7 @@
         "IT": 48
       },
       "display_priority": 48,
-      "logo_path": "/tdJqKoJVBtYSQUe4zIADZOgqsH7.jpg",
+      "logo_path": "/q77DpszIupURiKGDeFdSHo7TsTF.jpg",
       "provider_name": "Infinity Selection Amazon Channel",
       "provider_id": 1726
     },
@@ -6774,7 +6728,7 @@
         "IT": 50
       },
       "display_priority": 50,
-      "logo_path": "/7rqYm9lEFgdK6UXCmUAQqmHOLow.jpg",
+      "logo_path": "/iZzlUo191ynXNpPNdcY8vvlYSf6.jpg",
       "provider_name": "iWonder Full Amazon channel",
       "provider_id": 1728
     },
@@ -6783,16 +6737,16 @@
         "IT": 51
       },
       "display_priority": 51,
-      "logo_path": "/8Dc9zjan5cNnNvbVdMY3CRjtdD6.jpg",
+      "logo_path": "/xdUXTl4ontqdKv9ZpSBZKiOTyWm.jpg",
       "provider_name": "Full Action Amazon Channel",
       "provider_id": 1729
     },
     {
       "display_priorities": {
-        "FR": 62
+        "FR": 61
       },
-      "display_priority": 62,
-      "logo_path": "/9FH7tewU23chp628XZcY66UOovi.jpg",
+      "display_priority": 61,
+      "logo_path": "/1PhTUiq01Z82nvuJlDNYtBnRRN0.jpg",
       "provider_name": "Action Max Amazon Channel",
       "provider_id": 1733
     },
@@ -6801,7 +6755,7 @@
         "FR": 63
       },
       "display_priority": 63,
-      "logo_path": "/ptn8fYXxAQrlMQAoESOo1dJ2TPV.jpg",
+      "logo_path": "/nJ43DUei5yK9wWG3g9YpYT4UfN4.jpg",
       "provider_name": "Insomnia Amazon Channel",
       "provider_id": 1735
     },
@@ -6810,7 +6764,7 @@
         "FR": 65
       },
       "display_priority": 65,
-      "logo_path": "/3QaRTn9zLUT3vVLTIomvk3XBFaP.jpg",
+      "logo_path": "/zg1uFDzIchkwrwOW6dq7LFxB4n6.jpg",
       "provider_name": "INA  madelen Amazon Channel",
       "provider_id": 1737
     },
@@ -6819,7 +6773,7 @@
         "FR": 66
       },
       "display_priority": 66,
-      "logo_path": "/bO7nSuzaFq3qRTHHQfvNuDCSOCc.jpg",
+      "logo_path": "/yXSOt0AKxG28wXhnBaogQGwF7Rq.jpg",
       "provider_name": "Benshi Amazon Channel",
       "provider_id": 1738
     },
@@ -6828,7 +6782,7 @@
         "ES": 54
       },
       "display_priority": 54,
-      "logo_path": "/zkoP6bG6zH15keymXl21z3pJMjG.jpg",
+      "logo_path": "/4s8njawy9i5sVseo5pO862bHKuM.jpg",
       "provider_name": "Pash Amazon Channel",
       "provider_id": 1739
     },
@@ -6837,7 +6791,7 @@
         "ES": 55
       },
       "display_priority": 55,
-      "logo_path": "/suchZNPjJggZlzSDEMHGGQQU0hc.jpg",
+      "logo_path": "/yISpVXhf6axqiHh6lBvJ8RRrZ8v.jpg",
       "provider_name": "Planet Horror Amazon Channel",
       "provider_id": 1740
     },
@@ -6846,7 +6800,7 @@
         "ES": 56
       },
       "display_priority": 56,
-      "logo_path": "/7xyx4YMqN34LLpjzlDJVj2IuNNl.jpg",
+      "logo_path": "/tM1HabyA45cnckBEhLS7hAVga5g.jpg",
       "provider_name": "Dizi Amazon Channel",
       "provider_id": 1741
     },
@@ -6855,7 +6809,7 @@
         "ES": 57
       },
       "display_priority": 57,
-      "logo_path": "/9Z8yJfc0peWhzeC9qQtrNGMBANE.jpg",
+      "logo_path": "/tGvAD4O9obFP3DfOrDn8NaRQ6eT.jpg",
       "provider_name": "Acontra Plus Amazon Channel",
       "provider_id": 1742
     },
@@ -6864,7 +6818,7 @@
         "ES": 58
       },
       "display_priority": 58,
-      "logo_path": "/taCDYXG8HUn7UHuBkU11O1yvIXd.jpg",
+      "logo_path": "/aJECXkHekrkuRZ7ABF5YR9DVDd8.jpg",
       "provider_name": "Historia y Actualidad Amazon Channel",
       "provider_id": 1743
     },
@@ -6873,7 +6827,7 @@
         "GB": 94
       },
       "display_priority": 94,
-      "logo_path": "/oiqAiGXWCdURPbkUphljiikGbCc.jpg",
+      "logo_path": "/jTtwvCgQxD8W7vljH5pH28PfYQD.jpg",
       "provider_name": "Icon Film Amazon Channel",
       "provider_id": 1744
     },
@@ -6882,7 +6836,7 @@
         "GB": 95
       },
       "display_priority": 95,
-      "logo_path": "/3jKNxpK1q6ogtoCcw0ud8fgwtym.jpg",
+      "logo_path": "/x2cjJAyU8CLwyYHaIxzzEjXJFU8.jpg",
       "provider_name": "Hallmark TV Amazon Channel",
       "provider_id": 1746
     },
@@ -6891,7 +6845,7 @@
         "GB": 96
       },
       "display_priority": 96,
-      "logo_path": "/1gQQZ1J88vksp0QxoFQ6PLnCHic.jpg",
+      "logo_path": "/mLif0L2p0M2AK4pbqHOBqLwB3bP.jpg",
       "provider_name": "Studiocanal Presents Amazon Channel",
       "provider_id": 1747
     },
@@ -6916,27 +6870,27 @@
         "TR": 35
       },
       "display_priority": 18,
-      "logo_path": "/eXxCDzaz4F7bkkgkZ8p6AbNQ8Dk.jpg",
+      "logo_path": "/bFxDjHDXP02u1dLPZfTsTC1L6EA.jpg",
       "provider_name": "TOD",
       "provider_id": 1750
     },
     {
       "display_priorities": {
         "AT": 51,
-        "DE": 101,
+        "DE": 100,
         "GB": 99
       },
       "display_priority": 99,
-      "logo_path": "/cyZ2scye65pYTHCG0azRpAlj2X.jpg",
+      "logo_path": "/rJxOLpuR70qDX0Z3cn7Ct0RRwqs.jpg",
       "provider_name": "Realeyz Amazon Channel",
       "provider_id": 1757
     },
     {
       "display_priorities": {
-        "US": 201
+        "US": 195
       },
-      "display_priority": 201,
-      "logo_path": "/eZVDDqlBHpuk8GELhQchRIkA6th.jpg",
+      "display_priority": 195,
+      "logo_path": "/biHGb84xAzYrNkdvX5XWQTmgzC8.jpg",
       "provider_name": "Bet+",
       "provider_id": 1759
     },
@@ -6945,14 +6899,14 @@
         "US": 19
       },
       "display_priority": 19,
-      "logo_path": "/cqizxemZmCDDOfaGCqALiCbrAoR.jpg",
+      "logo_path": "/kkUHFtdjasnnOknZN69TbZ2fCTh.jpg",
       "provider_name": "Paramount+ with Showtime",
       "provider_id": 1770
     },
     {
       "display_priorities": {
         "DK": 39,
-        "FI": 40,
+        "FI": 39,
         "NO": 39,
         "SE": 42,
         "NL": 50,
@@ -6974,7 +6928,7 @@
         "ES": 73
       },
       "display_priority": 30,
-      "logo_path": "/iieEQVJIEOSfDj477zG8sSTtr25.jpg",
+      "logo_path": "/gQbqEYd0C9uprYxEUqTM589qn8g.jpg",
       "provider_name": "SkyShowtime",
       "provider_id": 1773
     },
@@ -7000,25 +6954,25 @@
         "SC": 15
       },
       "display_priority": 38,
-      "logo_path": "/ytSbyHt45x7igOgC8GVzR7RLJVo.jpg",
+      "logo_path": "/cGkSLaXKxxcJY38qSCwdKxxSM1x.jpg",
       "provider_name": "Lionsgate Plus",
       "provider_id": 1790
     },
     {
       "display_priorities": {
-        "CA": 112,
-        "US": 216
+        "CA": 109,
+        "US": 210
       },
-      "display_priority": 216,
-      "logo_path": "/x36C6aseF5l4uX99Kpse9dbPwBo.jpg",
+      "display_priority": 210,
+      "logo_path": "/esiLBRzDUwodjfN8gA4qj7l3ZF7.jpg",
       "provider_name": "Starz Amazon Channel",
       "provider_id": 1794
     },
     {
       "display_priorities": {
         "AU": 57,
-        "CA": 115,
-        "DE": 113,
+        "CA": 112,
+        "DE": 112,
         "ES": 67,
         "FR": 79,
         "GB": 110,
@@ -7026,38 +6980,38 @@
         "IT": 68,
         "KR": 30,
         "MX": 53,
-        "US": 217,
+        "US": 211,
         "BR": 59
       },
-      "display_priority": 217,
-      "logo_path": "/mShqQVDhHoK7VUbfYG3Un6xE8Mv.jpg",
+      "display_priority": 211,
+      "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
       "provider_name": "Netflix basic with Ads",
       "provider_id": 1796
+    },
+    {
+      "display_priorities": {
+        "DE": 114
+      },
+      "display_priority": 114,
+      "logo_path": "/3VYyCBiG2WTCZ2tGzTkWvoXTeqi.jpg",
+      "provider_name": "Studiocanal Presents MOVIECULT Amazon Channel",
+      "provider_id": 1805
     },
     {
       "display_priorities": {
         "DE": 115
       },
       "display_priority": 115,
-      "logo_path": "/uSsVDJNPxQHVA1wrn0ecHmrBI9k.jpg",
-      "provider_name": "Studiocanal Presents MOVIECULT Amazon Channel",
-      "provider_id": 1805
-    },
-    {
-      "display_priorities": {
-        "DE": 116
-      },
-      "display_priority": 116,
-      "logo_path": "/SUjtDqbuBONrkI0SQYW7jC0JQa.jpg",
+      "logo_path": "/tHX1KI8VdAzKWMxSgPKqKfHcxFA.jpg",
       "provider_name": "Studiocanal Presents ALLSTARS Amazon Channel",
       "provider_id": 1806
     },
     {
       "display_priorities": {
-        "US": 222
+        "US": 216
       },
-      "display_priority": 222,
-      "logo_path": "/jV7sSPzUYYHHmoATkD9PhFoEZXb.jpg",
+      "display_priority": 216,
+      "logo_path": "/QAtDmj6XHlkPvw5xAjF08ZQARh.jpg",
       "provider_name": "Cohen Media Amazon Channel",
       "provider_id": 1811
     },
@@ -7074,16 +7028,16 @@
         "SE": 7
       },
       "display_priority": 9,
-      "logo_path": "/7TVfqxyWGqaJZM715IPHTwtgcXo.jpg",
+      "logo_path": "/erfmV26akboHUerxGjpl8pBwww3.jpg",
       "provider_name": "Max Amazon Channel",
       "provider_id": 1825
     },
     {
       "display_priorities": {
-        "US": 225
+        "US": 219
       },
-      "display_priority": 225,
-      "logo_path": "/wbKHI2d5417yAAY7QestC3qnXyo.jpg",
+      "display_priority": 219,
+      "logo_path": "/f5yNbaK23OSWV5IocAj8FZwIOQj.jpg",
       "provider_name": "Popflick",
       "provider_id": 1832
     },
@@ -7092,19 +7046,19 @@
         "ES": 72
       },
       "display_priority": 72,
-      "logo_path": "/1xXtux5qcjEcAgrLqvr62bJ2kea.jpg",
+      "logo_path": "/8VhN4PeHU7yfMNoWK0DnwdS1HlS.jpg",
       "provider_name": "Tivify",
       "provider_id": 1838
     },
     {
       "display_priorities": {
         "US": 23,
-        "CA": 122,
+        "CA": 119,
         "NO": 44,
         "AU": 63
       },
       "display_priority": 23,
-      "logo_path": "/cN85Wjk0FIFr3z6rbiimz10uWVo.jpg",
+      "logo_path": "/xp12VXTZfunk568CAPs2Xqknimq.jpg",
       "provider_name": "Britbox Apple TV Channel ",
       "provider_id": 1852
     },
@@ -7114,8 +7068,8 @@
         "AT": 62,
         "AU": 60,
         "BR": 68,
-        "CA": 121,
-        "DE": 127,
+        "CA": 118,
+        "DE": 126,
         "FR": 91,
         "GB": 116,
         "IT": 75,
@@ -7139,7 +7093,7 @@
         "NI": 11
       },
       "display_priority": 34,
-      "logo_path": "/9pdeflA0P1b8qlkeDA1oLfyvR06.jpg",
+      "logo_path": "/tJqmTmQ8jp9WfyaZfApHK8lSywA.jpg",
       "provider_name": "Paramount Plus Apple TV Channel ",
       "provider_id": 1853
     },
@@ -7147,11 +7101,11 @@
       "display_priorities": {
         "US": 22,
         "AU": 61,
-        "CA": 123,
+        "CA": 120,
         "IN": 55
       },
       "display_priority": 22,
-      "logo_path": "/yFgm7vxwKZ4jfXIlPizlgoba2yi.jpg",
+      "logo_path": "/oTQdXIqM9iewlN4MC2nhKB0gHw.jpg",
       "provider_name": "AMC Plus Apple TV Channel ",
       "provider_id": 1854
     },
@@ -7160,7 +7114,7 @@
         "US": 21
       },
       "display_priority": 21,
-      "logo_path": "/hB24bAA8Y2ei6pbEGuCNdKUOjxI.jpg",
+      "logo_path": "/1C5EVCWyQD798CE1DFfcm6oAbxP.jpg",
       "provider_name": "Starz Apple TV Channel",
       "provider_id": 1855
     },
@@ -7169,7 +7123,7 @@
         "BE": 34
       },
       "display_priority": 34,
-      "logo_path": "/dfkvd9l1xYWUMP5t4okULq5QbJt.jpg",
+      "logo_path": "/kwftIxtjuCAROIcdd53UEjzSmca.jpg",
       "provider_name": "Telenet",
       "provider_id": 1857
     },
@@ -7183,11 +7137,11 @@
         "MX": 82,
         "MZ": 18,
         "PT": 59,
-        "US": 270,
+        "US": 264,
         "ZA": 31
       },
       "display_priority": 31,
-      "logo_path": "/esfuWSTkFr39ETpD9xvb0sduZt7.jpg",
+      "logo_path": "/44E23wCM3WLsvAVRyk6fye76cZb.jpg",
       "provider_name": "Univer Video",
       "provider_id": 1860
     },
@@ -7196,7 +7150,7 @@
         "IT": 76
       },
       "display_priority": 76,
-      "logo_path": "/fvBFkNC2tdYC22uFVojzwC9le63.jpg",
+      "logo_path": "/9I6PdkTdLItbFdHRZQarD55vcVC.jpg",
       "provider_name": "UAM TV",
       "provider_id": 1862
     },
@@ -7205,7 +7159,7 @@
         "FR": 95
       },
       "display_priority": 95,
-      "logo_path": "/loOaayvNiLnD0zKl70TO2L5vlAL.jpg",
+      "logo_path": "/6XLxMoxqVCZRTkAavMwnsbpx3XU.jpg",
       "provider_name": "Pass Warner Amazon Channel",
       "provider_id": 1870
     },
@@ -7215,7 +7169,7 @@
         "BO": 33,
         "BR": 75,
         "CL": 36,
-        "CA": 129,
+        "CA": 126,
         "CO": 36,
         "CR": 33,
         "DO": 33,
@@ -7231,13 +7185,13 @@
         "PY": 32,
         "SV": 34,
         "UY": 36,
-        "US": 234,
+        "US": 228,
         "VE": 32,
         "BZ": 10,
         "NI": 9
       },
       "display_priority": 32,
-      "logo_path": "/nvCfpn94VKJN4ZpkDgoupJWlXqq.jpg",
+      "logo_path": "/oJRCAz1WKkKM9Ge7mX5KFnegTNY.jpg",
       "provider_name": "Runtime",
       "provider_id": 1875
     },
@@ -7246,7 +7200,7 @@
         "FR": 97
       },
       "display_priority": 97,
-      "logo_path": "/fFXwNCPKBwX8hi5EwnPBQKsJtBc.jpg",
+      "logo_path": "/2HsZxiwKi9Ym91r6WY9ojORvq79.jpg",
       "provider_name": "BrutX Amazon Channel",
       "provider_id": 1887
     },
@@ -7255,7 +7209,7 @@
         "FR": 98
       },
       "display_priority": 98,
-      "logo_path": "/3WYKTSwdEPMZKRmJ49Oqx6mxpa2.jpg",
+      "logo_path": "/9jmtFeqCWvTSYpMMUPNhk8JNJWS.jpg",
       "provider_name": "Animation Digital Network Amazon Channel",
       "provider_id": 1888
     },
@@ -7264,7 +7218,7 @@
         "FR": 99
       },
       "display_priority": 99,
-      "logo_path": "/hCfry9LLjkiP1psMmUPnk3oGDG.jpg",
+      "logo_path": "/4ABGBjAMtRrYUrr0w3QfanuiaoB.jpg",
       "provider_name": "Universal+ Amazon Channel",
       "provider_id": 1889
     },
@@ -7273,25 +7227,25 @@
         "ES": 81
       },
       "display_priority": 81,
-      "logo_path": "/cfqiQcsHZMEk2Cif2jvDWyKvtBI.jpg",
+      "logo_path": "/3EFwJrJalr0YEgN1ENwrYbIar3Q.jpg",
       "provider_name": "Hopster Amazon Channel",
       "provider_id": 1890
+    },
+    {
+      "display_priorities": {
+        "DE": 131
+      },
+      "display_priority": 131,
+      "logo_path": "/s7ZjSKXOtjKBb7hAzBm3b0iY0SG.jpg",
+      "provider_name": "alleskino Amazon Channel",
+      "provider_id": 1891
     },
     {
       "display_priorities": {
         "DE": 132
       },
       "display_priority": 132,
-      "logo_path": "/sdW7y7Q6O46dmq3kHyBcnjNwbR7.jpg",
-      "provider_name": "alleskino Amazon Channel",
-      "provider_id": 1891
-    },
-    {
-      "display_priorities": {
-        "DE": 133
-      },
-      "display_priority": 133,
-      "logo_path": "/puSs8j2SGEcG5PYkViwLpQahV2z.jpg",
+      "logo_path": "/5Qe65kN95Z0CytOaG3I8bytdW7A.jpg",
       "provider_name": "RTL Crime Amazon Channel",
       "provider_id": 1892
     },
@@ -7301,7 +7255,7 @@
         "IT": 81
       },
       "display_priority": 81,
-      "logo_path": "/fsej9R2aqP9MKBYWN3WN74FvMuB.jpg",
+      "logo_path": "/bAcfYRySJoSGfNQhmItALKqHYbJ.jpg",
       "provider_name": "Crime+ Investigation Play Amazon Channel",
       "provider_id": 1893
     },
@@ -7310,7 +7264,7 @@
         "IT": 83
       },
       "display_priority": 83,
-      "logo_path": "/4RG2VVVUHyTAXbz67QJaHnmsEvb.jpg",
+      "logo_path": "/xcXI50PQIBsRDAP6eEpv09Vz8SG.jpg",
       "provider_name": "Anime Generation Amazon Channel",
       "provider_id": 1895
     },
@@ -7319,7 +7273,7 @@
         "IN": 56
       },
       "display_priority": 56,
-      "logo_path": "/tcRSEeMnRxtKHqg7kqF8z5SvUpF.jpg",
+      "logo_path": "/oRfWFOG7XbNO1ZSICEnRzmUt7bT.jpg",
       "provider_name": "Amazon miniTV",
       "provider_id": 1898
     },
@@ -7328,16 +7282,16 @@
         "US": 8
       },
       "display_priority": 8,
-      "logo_path": "/6Q3ZYUNA9Hsgj6iWnVsw2gR5V6z.jpg",
+      "logo_path": "/fksCUZ9QDWZMUwL2LgMtLckROUN.jpg",
       "provider_name": "Max",
       "provider_id": 1899
     },
     {
       "display_priorities": {
-        "DE": 134
+        "DE": 133
       },
-      "display_priority": 134,
-      "logo_path": "/mUowTOqPrVCBnXmVcjKmbFaUdJn.jpg",
+      "display_priority": 133,
+      "logo_path": "/qTybjmHLNcXZExZLBnm4muVCDzP.jpg",
       "provider_name": "ARD Plus",
       "provider_id": 1902
     },
@@ -7346,7 +7300,7 @@
         "TR": 10
       },
       "display_priority": 10,
-      "logo_path": "/3ZYWokiwGi6qjbcbQtw1W90ZU2b.jpg",
+      "logo_path": "/c8ryDZroFQtuyRVPBwXq5PLpTWV.jpg",
       "provider_name": "TV+",
       "provider_id": 1904
     },
@@ -7355,7 +7309,7 @@
         "CZ": 34
       },
       "display_priority": 34,
-      "logo_path": "/dasMmFScGIx6DlyaFad6wPv85Uj.jpg",
+      "logo_path": "/vrefjVylvD4RkEjQguuXebCp9UQ.jpg",
       "provider_name": "Prima Plus",
       "provider_id": 1928
     },
@@ -7364,7 +7318,7 @@
         "AT": 66
       },
       "display_priority": 66,
-      "logo_path": "/bdr0sblETuPBdJJtRjs4ZY6wwth.jpg",
+      "logo_path": "/kP741xlbpymqjELaTcPiAet3SnV.jpg",
       "provider_name": "Filmtastic bei Canal+",
       "provider_id": 1929
     },
@@ -7373,7 +7327,7 @@
         "CZ": 35
       },
       "display_priority": 35,
-      "logo_path": "/ytzq58GBekNhwCx3VykPzkAplPC.jpg",
+      "logo_path": "/489t5n9o1KhH7voGNQkrXT7vBKV.jpg",
       "provider_name": "Lepsi TV",
       "provider_id": 1939
     },
@@ -7382,61 +7336,61 @@
         "SE": 48
       },
       "display_priority": 48,
-      "logo_path": "/exW6gjxbTr9zDusAazJ1mGhniZe.jpg",
+      "logo_path": "/5lKPs5yrjeKHFrXh9RIvzyJJzSd.jpg",
       "provider_name": "TV4 Play",
       "provider_id": 1944
     },
     {
       "display_priorities": {
-        "US": 175
+        "US": 170
       },
-      "display_priority": 175,
-      "logo_path": "/2qHTjqMoBxpa2gJPbbEDvqpLZJS.jpg",
+      "display_priority": 170,
+      "logo_path": "/ez70jk7n53zrBLI5eOhtUzrVRet.jpg",
       "provider_name": "Plex Player",
       "provider_id": 1945
     },
     {
       "display_priorities": {
-        "US": 247
+        "US": 241
       },
-      "display_priority": 247,
-      "logo_path": "/9X86vPeIfv7mNHW9DOf88n4g03x.jpg",
+      "display_priority": 241,
+      "logo_path": "/en3dbHAWzDpvDhsI0G8LphUhpBr.jpg",
       "provider_name": "Reveel",
       "provider_id": 1948
     },
     {
       "display_priorities": {
-        "US": 249
+        "US": 243
       },
-      "display_priority": 249,
-      "logo_path": "/ua5RmU2I9tkmpPR6IenXUPxnkzC.jpg",
+      "display_priority": 243,
+      "logo_path": "/wSvS4FbVGh81CnC51JqXA3xaj27.jpg",
       "provider_name": "Ovation TV",
       "provider_id": 1953
     },
     {
       "display_priorities": {
-        "US": 251
+        "US": 245
       },
-      "display_priority": 251,
-      "logo_path": "/c1H5A9BqqceTzZvLXmfh0fehNTY.jpg",
+      "display_priority": 245,
+      "logo_path": "/znTpq1dy5TYxm1QLoxORzuOuwYq.jpg",
       "provider_name": "Angel Studios",
       "provider_id": 1956
     },
     {
       "display_priorities": {
-        "CA": 138,
-        "US": 252
+        "CA": 135,
+        "US": 246
       },
-      "display_priority": 252,
-      "logo_path": "/pPLjA4eW9186YXMh48r7pmLoNYH.jpg",
+      "display_priority": 246,
+      "logo_path": "/jpEV1w3CnrpDQ1vRvGQIZF1S6vA.jpg",
       "provider_name": "Cineverse",
       "provider_id": 1957
     },
     {
       "display_priorities": {
         "AE": 34,
-        "DE": 149,
-        "US": 253,
+        "DE": 148,
+        "US": 247,
         "EG": 51,
         "IN": 71,
         "IQ": 44,
@@ -7445,17 +7399,17 @@
         "SA": 47
       },
       "display_priority": 34,
-      "logo_path": "/x6N4Sp4cwP9lYutveMruJcAKNQg.jpg",
+      "logo_path": "/mK8nfCXfwoAa6cAkHUSKCkLEIKK.jpg",
       "provider_name": "AD tv",
       "provider_id": 1958
     },
     {
       "display_priorities": {
-        "CA": 139,
-        "US": 254
+        "CA": 136,
+        "US": 248
       },
-      "display_priority": 254,
-      "logo_path": "/pHwuJc9HFgK229r4C3f1AajjGA2.jpg",
+      "display_priority": 248,
+      "logo_path": "/8s4adSGz4UmVOP5uegNkoikSFLV.jpg",
       "provider_name": "Midnight Pulp",
       "provider_id": 1960
     },
@@ -7464,34 +7418,34 @@
         "DK": 44
       },
       "display_priority": 44,
-      "logo_path": "/etc7ZYx1ekfpKj9Q4j5LHBvtEgG.jpg",
+      "logo_path": "/a6z85DKGuPOyTg03TlJ6ShzzFO6.jpg",
       "provider_name": "Allente",
       "provider_id": 1961
     },
     {
       "display_priorities": {
-        "US": 255
+        "US": 249
       },
-      "display_priority": 255,
-      "logo_path": "/nUXrIDIQzQuA3ZptGznUfHcAVHe.jpg",
+      "display_priority": 249,
+      "logo_path": "/mfNkTJi4a462s69AxANQQU6IA7n.jpg",
       "provider_name": "FYI Network",
       "provider_id": 1962
     },
     {
       "display_priorities": {
-        "US": 256
+        "US": 250
       },
-      "display_priority": 256,
-      "logo_path": "/6Mr2gYhkC1AxcRlcPFV1rnmMAjC.jpg",
+      "display_priority": 250,
+      "logo_path": "/xfKqqWYYIyvjECOFOaYtJdD7gl3.jpg",
       "provider_name": "Xumo Play",
       "provider_id": 1963
     },
     {
       "display_priorities": {
-        "US": 257
+        "US": 251
       },
-      "display_priority": 257,
-      "logo_path": "/d81hzdOMy560vJZMsbpYgnLbK4s.jpg",
+      "display_priority": 251,
+      "logo_path": "/nlOrX8YVYjxFkEpfvJHayNg9UAB.jpg",
       "provider_name": "National Geographic",
       "provider_id": 1964
     },
@@ -7500,7 +7454,7 @@
         "FR": 107
       },
       "display_priority": 107,
-      "logo_path": "/R7p7Bw4K6Cork8xUifHVQwkrjX.jpg",
+      "logo_path": "/8qSG9LtUhBQIWy2Fr6fzeW7gBdd.jpg",
       "provider_name": "Molotov TV",
       "provider_id": 1967
     },
@@ -7512,44 +7466,44 @@
         "US": 11
       },
       "display_priority": 11,
-      "logo_path": "/xQfBwtG1pLWhpejDoMFUxDS14eP.jpg",
+      "logo_path": "/j7wdfXtHKUpV9CNwnXUa68HImFx.jpg",
       "provider_name": "Crunchyroll Amazon Channel",
       "provider_id": 1968
     },
     {
       "display_priorities": {
-        "US": 260
+        "US": 254
       },
-      "display_priority": 260,
-      "logo_path": "/77HXTBLPXGYRx1xm4w0Qyj1S5DN.jpg",
+      "display_priority": 254,
+      "logo_path": "/6gdKp9OwHgDLloethSPxZbtovkl.jpg",
       "provider_name": "DistroTV",
       "provider_id": 1971
     },
     {
       "display_priorities": {
-        "CA": 141,
-        "US": 261
+        "CA": 138,
+        "US": 255
       },
-      "display_priority": 261,
-      "logo_path": "/u6RDPCBgkTpM5OIJ1LXO2KeekiX.jpg",
+      "display_priority": 255,
+      "logo_path": "/mWAOUnJY6hnQghUZpjuDB815efG.jpg",
       "provider_name": "myfilmfriend",
       "provider_id": 1972
     },
     {
       "display_priorities": {
-        "US": 263
+        "US": 257
       },
-      "display_priority": 263,
-      "logo_path": "/7N6w9Hz541qNhlHEHjHgEGCjKDh.jpg",
+      "display_priority": 257,
+      "logo_path": "/jLD5zHgsAhSWBRTnMUOLaXrUuVI.jpg",
       "provider_name": "Outside Watch",
       "provider_id": 1976
     },
     {
       "display_priorities": {
-        "US": 268
+        "US": 262
       },
-      "display_priority": 268,
-      "logo_path": "/piaX7JA1HEJ3qA4CKQ5LZyxxshm.jpg",
+      "display_priority": 262,
+      "logo_path": "/iaTUCUOMrwXYRsVH3Ttkino1VDH.jpg",
       "provider_name": "Citytv",
       "provider_id": 1985
     },
@@ -7558,7 +7512,7 @@
         "NL": 88
       },
       "display_priority": 88,
-      "logo_path": "/xZKwhND33O0TikDqpdZTLCePuXH.jpg",
+      "logo_path": "/cYyxWlMG0o1dKRvOdpMrVIFrY4F.jpg",
       "provider_name": "NPO Plus",
       "provider_id": 1986
     },
@@ -7567,34 +7521,34 @@
         "AU": 67
       },
       "display_priority": 67,
-      "logo_path": "/8DLQC6sBhpKBFQyfexLYgQ2oqFL.jpg",
+      "logo_path": "/zlOChFXWhfIqK2QCf6KPxu0nH2D.jpg",
       "provider_name": "Brollie",
       "provider_id": 1988
+    },
+    {
+      "display_priorities": {
+        "DE": 156
+      },
+      "display_priority": 156,
+      "logo_path": "/mmDWKHiDLmHDo2OWnduQuI1T4bh.jpg",
+      "provider_name": "ZDF Select Amazon Channel ",
+      "provider_id": 1989
     },
     {
       "display_priorities": {
         "DE": 157
       },
       "display_priority": 157,
-      "logo_path": "/2CfiCrBzxKnQL666yYzT30UuDfe.jpg",
-      "provider_name": "ZDF Select Amazon Channel ",
-      "provider_id": 1989
+      "logo_path": "/dKh2TJ9lTWV0UIcDQGMnMyQ8AIN.jpg",
+      "provider_name": "Videoload",
+      "provider_id": 1993
     },
     {
       "display_priorities": {
         "DE": 158
       },
       "display_priority": 158,
-      "logo_path": "/cL8EkeojrK7IkOLTk4htK89shgk.jpg",
-      "provider_name": "Videoload",
-      "provider_id": 1993
-    },
-    {
-      "display_priorities": {
-        "DE": 159
-      },
-      "display_priority": 159,
-      "logo_path": "/sjZXoHNeBh8BEA0xUGLIKrkBhq1.jpg",
+      "logo_path": "/a1zZJiOid4gG27xJtkcDaSVrQdb.jpg",
       "provider_name": "TELE 5",
       "provider_id": 1994
     }

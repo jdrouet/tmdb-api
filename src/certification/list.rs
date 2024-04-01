@@ -1,6 +1,8 @@
 use std::borrow::Cow;
 use std::collections::HashMap;
 
+use crate::client::Executor;
+
 use super::Certification;
 
 const TV_PATH: &str = "/certification/tv/list";
@@ -39,7 +41,10 @@ impl crate::prelude::Command for CertificationList {
         Vec::new()
     }
 
-    async fn execute(&self, client: &crate::Client) -> Result<Self::Output, crate::error::Error> {
+    async fn execute<E: Executor>(
+        &self,
+        client: &crate::Client<E>,
+    ) -> Result<Self::Output, crate::error::Error> {
         client
             .execute::<CertificationResult>(self.path().as_ref(), self.params())
             .await
@@ -50,14 +55,15 @@ impl crate::prelude::Command for CertificationList {
 #[cfg(test)]
 mod tests {
     use super::CertificationList;
+    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::Client;
     use crate::prelude::Command;
-    use crate::Client;
     use mockito::Matcher;
 
     #[tokio::test]
     async fn tv_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -78,7 +84,7 @@ mod tests {
     #[tokio::test]
     async fn movie_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -99,7 +105,7 @@ mod tests {
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -116,13 +122,13 @@ mod tests {
             .await;
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
+        assert_eq!(server_err.status_code, 7);
     }
 
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -139,20 +145,21 @@ mod tests {
             .await;
         let err = cmd.execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);
+        assert_eq!(server_err.status_code, 34);
     }
 }
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use super::CertificationList;
+    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::Client;
     use crate::prelude::Command;
-    use crate::Client;
 
     #[tokio::test]
     async fn execute_tv() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-        let client = Client::new(secret);
+        let client = Client::<ReqwestExecutor>::new(secret);
         let result = CertificationList::tv().execute(&client).await.unwrap();
         assert!(!result.is_empty());
     }
@@ -160,7 +167,7 @@ mod integration_tests {
     #[tokio::test]
     async fn execute_movie() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-        let client = Client::new(secret);
+        let client = Client::<ReqwestExecutor>::new(secret);
         let result = CertificationList::movie().execute(&client).await.unwrap();
         assert!(!result.is_empty());
     }

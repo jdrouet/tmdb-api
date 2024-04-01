@@ -4,6 +4,30 @@
     {
       "iso_639_1": "en",
       "iso_3166_1": "US",
+      "name": "20th Anniversary Trailer",
+      "key": "dfeUzm6KF4g",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Trailer",
+      "official": true,
+      "published_at": "2019-10-15T18:59:47.000Z",
+      "id": "64fb16fbdb4ed610343d72c3"
+    },
+    {
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "name": "Theatrical Trailer (HD Fan Remaster)",
+      "key": "6JnN1DmbqoU",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Trailer",
+      "official": false,
+      "published_at": "2015-02-26T03:19:25.000Z",
+      "id": "653b36ba5907de00c4953699"
+    },
+    {
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
       "name": "#TBT Trailer",
       "key": "BdJKm16Co6M",
       "site": "YouTube",
