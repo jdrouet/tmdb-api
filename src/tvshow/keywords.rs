@@ -14,7 +14,7 @@ use crate::common::keyword::Keyword;
 ///
 /// #[tokio::main]
 /// async fn main() {
-/// 	let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
 ///     let cmd = TVShowKeywords::new(1);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
