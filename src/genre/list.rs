@@ -25,8 +25,7 @@ pub struct GenreResult {
 ///
 /// #[tokio::main]
 /// async fn main() {
-///
-/// 	let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
 ///     let cmd = GenreList::tv();
 ///     let result = cmd.execute(&client).await;
 ///     match result {
