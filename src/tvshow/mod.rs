@@ -1,4 +1,6 @@
 #[cfg(feature = "commands")]
+pub mod aggregate_credits;
+#[cfg(feature = "commands")]
 pub mod details;
 #[cfg(feature = "commands")]
 pub mod images;
@@ -13,7 +15,6 @@ pub mod similar;
 #[cfg(feature = "commands")]
 pub mod watch_providers;
 
-pub mod aggregate_credits;
 pub mod episode;
 pub mod season;
 
