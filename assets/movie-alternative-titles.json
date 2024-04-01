@@ -2,14 +2,14 @@
   "id": 550,
   "titles": [
     {
-      "iso_3166_1": "RS",
-      "title": "Borilački klub",
-      "type": ""
-    },
-    {
       "iso_3166_1": "IL",
       "title": "Mo'adon Krav",
       "type": "romanization"
+    },
+    {
+      "iso_3166_1": "RS",
+      "title": "Borilački klub",
+      "type": ""
     },
     {
       "iso_3166_1": "RU",
@@ -22,13 +22,13 @@
       "type": ""
     },
     {
-      "iso_3166_1": "UA",
-      "title": "Biytsivsʹkyy klub",
+      "iso_3166_1": "GR",
+      "title": "Kláb máchis",
       "type": ""
     },
     {
-      "iso_3166_1": "GR",
-      "title": "Kláb máchis",
+      "iso_3166_1": "UA",
+      "title": "Biytsivsʹkyy klub",
       "type": ""
     },
     {
@@ -59,6 +59,36 @@
     {
       "iso_3166_1": "PL",
       "title": "Podziemny krąg",
+      "type": ""
+    },
+    {
+      "iso_3166_1": "BR",
+      "title": "Clube da Luta",
+      "type": ""
+    },
+    {
+      "iso_3166_1": "PT",
+      "title": "Clube de Combate",
+      "type": ""
+    },
+    {
+      "iso_3166_1": "JP",
+      "title": "ファイト・クラブ：1999",
+      "type": ""
+    },
+    {
+      "iso_3166_1": "ES",
+      "title": "El club de la lucha",
+      "type": "Castilian Spanish"
+    },
+    {
+      "iso_3166_1": "TW",
+      "title": "鬥陣俱樂部",
+      "type": ""
+    },
+    {
+      "iso_3166_1": "AZ",
+      "title": "Döyüş Klubu",
       "type": ""
     }
   ]

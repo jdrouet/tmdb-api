@@ -4,28 +4,40 @@ pub struct ServerOtherBodyError {
     pub status_message: String,
 }
 
+impl std::error::Error for ServerOtherBodyError {}
+impl std::fmt::Display for ServerOtherBodyError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "server body error with code {}: {}",
+            self.status_code, self.status_message
+        )
+    }
+}
+
 #[derive(Debug, Deserialize, Serialize)]
 pub struct ServerValidationBodyError {
     pub errors: Vec<String>,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+impl std::error::Error for ServerValidationBodyError {}
+impl std::fmt::Display for ServerValidationBodyError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "server validation body errors:")?;
+        for item in self.errors.iter() {
+            write!(f, ", {item}")?;
+        }
+        Ok(())
+    }
+}
+
+#[derive(Debug, Deserialize, Serialize, thiserror::Error)]
 #[serde(untagged)]
 pub enum ServerBodyError {
-    Other(ServerOtherBodyError),
-    Validation(ServerValidationBodyError),
-}
-
-impl From<ServerOtherBodyError> for ServerBodyError {
-    fn from(inner: ServerOtherBodyError) -> Self {
-        Self::Other(inner)
-    }
-}
-
-impl From<ServerValidationBodyError> for ServerBodyError {
-    fn from(inner: ServerValidationBodyError) -> Self {
-        Self::Validation(inner)
-    }
+    #[error(transparent)]
+    Other(#[from] ServerOtherBodyError),
+    #[error(transparent)]
+    Validation(#[from] ServerValidationBodyError),
 }
 
 impl ServerBodyError {
@@ -50,51 +62,52 @@ pub struct ServerError {
     pub body: ServerBodyError,
 }
 
-#[cfg(feature = "commands")]
-#[derive(Debug)]
+impl std::fmt::Display for ServerError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "server error with code {}: {}", self.code, self.body)
+    }
+}
+
+impl std::error::Error for ServerError {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        Some(&self.body)
+    }
+}
+
+#[derive(Debug, thiserror::Error)]
 pub enum Error {
-    Reqwest(reqwest::Error),
-    Server(ServerError),
+    #[error("couldn't execute request")]
+    Request {
+        #[source]
+        source: Box<dyn std::error::Error + Send>,
+    },
+    #[error("couldn't read response")]
+    Response {
+        #[source]
+        source: Box<dyn std::error::Error + Send>,
+    },
+    #[error(transparent)]
+    Validation(ServerValidationBodyError),
+    #[error("internal server error with code {code}")]
+    Server {
+        code: u16,
+        #[source]
+        content: ServerOtherBodyError,
+    },
 }
 
-#[cfg(feature = "commands")]
 impl Error {
-    pub fn as_reqwest_error(&self) -> Option<&reqwest::Error> {
+    pub fn as_validation_error(&self) -> Option<&ServerValidationBodyError> {
         match self {
-            Self::Reqwest(inner) => Some(inner),
+            Self::Validation(inner) => Some(inner),
             _ => None,
         }
     }
 
-    pub fn is_reqwest_error(&self) -> bool {
-        matches!(self, Self::Reqwest(_))
-    }
-
-    pub fn as_server_error(&self) -> Option<&ServerError> {
+    pub fn as_server_error(&self) -> Option<&ServerOtherBodyError> {
         match self {
-            Self::Server(inner) => Some(inner),
+            Self::Server { code: _, content } => Some(content),
             _ => None,
         }
-    }
-
-    pub fn is_server_error(&self) -> bool {
-        matches!(self, Self::Server(_))
-    }
-}
-
-#[cfg(feature = "commands")]
-impl From<reqwest::Error> for Error {
-    fn from(err: reqwest::Error) -> Self {
-        Self::Reqwest(err)
-    }
-}
-
-#[cfg(feature = "commands")]
-impl From<(reqwest::StatusCode, ServerBodyError)> for Error {
-    fn from((code, body): (reqwest::StatusCode, ServerBodyError)) -> Self {
-        Self::Server(ServerError {
-            code: code.as_u16(),
-            body,
-        })
     }
 }
