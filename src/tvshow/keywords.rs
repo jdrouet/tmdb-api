@@ -55,6 +55,7 @@ impl crate::prelude::Command for TVShowKeywords {
 mod tests {
     use mockito::Matcher;
 
+	use super::TVShowKeywords;
     use crate::prelude::Command;
     use crate::Client;
 
