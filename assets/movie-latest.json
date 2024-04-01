@@ -2,13 +2,13 @@
   "adult": false,
   "backdrop_path": null,
   "belongs_to_collection": null,
-  "budget": 0,
+  "budget": 5,
   "genres": [],
   "homepage": "",
-  "id": 1061997,
+  "id": 1236474,
   "imdb_id": null,
-  "original_language": "de",
-  "original_title": "Der stumme Schrei des Todes",
+  "original_language": "en",
+  "original_title": "Better Than Me",
   "overview": "",
   "popularity": 0,
   "poster_path": null,
@@ -17,16 +17,10 @@
   "release_date": "",
   "revenue": 0,
   "runtime": 0,
-  "spoken_languages": [
-    {
-      "english_name": "German",
-      "iso_639_1": "de",
-      "name": "Deutsch"
-    }
-  ],
+  "spoken_languages": [],
   "status": "Released",
   "tagline": "",
-  "title": "Der stumme Schrei des Todes",
+  "title": "Better Than Me",
   "video": false,
   "vote_average": 0,
   "vote_count": 0
