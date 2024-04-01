@@ -6,6 +6,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0](https://github.com/jdrouet/tmdb-api/compare/v0.7.0...v0.8.0) - 2024-03-24
+
+### Added
+- *(client)* move reqwest as an executor
+- *(error)* use thiserror to implement StdError
+- *(tokio-rate-limit)* remove feature
+
+### Fixed
+- many deserialization fixes
+- *(credits)* known for department is nullable
+
+### Other
+- remove mention of tokio rate limit feature
+- update test job to use several rust version
+- removed array deref
+- lint
+- update the use of NaiveDateTime
+- update dependencies
+- remove integration tests
+
 ## [0.7.0](https://github.com/jdrouet/tmdb-api/compare/v0.6.0...v0.7.0) - 2024-01-26
 
 ### Added

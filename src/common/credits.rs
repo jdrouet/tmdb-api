@@ -4,7 +4,7 @@ use crate::people::PersonShort;
 pub struct CreditCommon {
     pub credit_id: String,
     pub adult: bool,
-    pub known_for_department: String,
+    pub known_for_department: Option<String>,
     pub original_name: String,
     pub popularity: f64,
 }

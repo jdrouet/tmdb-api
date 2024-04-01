@@ -4,12 +4,13 @@ use std::borrow::Cow;
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;
-/// use tmdb_api::Client;
+/// use tmdb_api::client::Client;
+/// use tmdb_api::client::reqwest::ReqwestExecutor;
 /// use tmdb_api::people::details::PersonDetails;
 ///
 /// #[tokio::main]
 /// async fn main() {
-///     let client = Client::new("this-is-my-secret-token".into());
+///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
 ///     let cmd = PersonDetails::new(1);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
@@ -58,15 +59,18 @@ impl crate::prelude::Command for PersonDetails {
 
 #[cfg(test)]
 mod tests {
-    use super::PersonDetails;
-    use crate::prelude::Command;
-    use crate::Client;
     use mockito::Matcher;
+
+    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::Client;
+    use crate::prelude::Command;
+
+    use super::PersonDetails;
 
     #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -88,7 +92,7 @@ mod tests {
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -105,13 +109,13 @@ mod tests {
 
         let err = PersonDetails::new(287).execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
+        assert_eq!(server_err.status_code, 7);
     }
 
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -128,22 +132,26 @@ mod tests {
 
         let err = PersonDetails::new(287).execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);
+        assert_eq!(server_err.status_code, 34);
     }
 }
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::PersonDetails;
+    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::Client;
     use crate::prelude::Command;
-    use crate::Client;
+
+    use super::PersonDetails;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-        let client = Client::new(secret);
+        let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = PersonDetails::new(287).execute(&client).await.unwrap();
-        assert_eq!(result.inner.id, 287);
+        for id in [287, 4017570] {
+            let result = PersonDetails::new(id).execute(&client).await.unwrap();
+            assert_eq!(result.inner.id, id);
+        }
     }
 }

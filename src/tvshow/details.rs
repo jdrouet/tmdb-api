@@ -4,12 +4,13 @@ use std::borrow::Cow;
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;
-/// use tmdb_api::Client;
+/// use tmdb_api::client::Client;
+/// use tmdb_api::client::reqwest::ReqwestExecutor;
 /// use tmdb_api::tvshow::details::TVShowDetails;
 ///
 /// #[tokio::main]
 /// async fn main() {
-///     let client = Client::new("this-is-my-secret-token".into());
+///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
 ///     let cmd = TVShowDetails::new(1);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
@@ -59,14 +60,15 @@ impl crate::prelude::Command for TVShowDetails {
 #[cfg(test)]
 mod tests {
     use super::TVShowDetails;
+    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::Client;
     use crate::prelude::Command;
-    use crate::Client;
     use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -88,7 +90,7 @@ mod tests {
     #[tokio::test]
     async fn complex_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -110,7 +112,7 @@ mod tests {
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -127,13 +129,13 @@ mod tests {
 
         let err = TVShowDetails::new(1399).execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.body.as_other_error().unwrap().status_code, 7);
+        assert_eq!(server_err.status_code, 7);
     }
 
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::builder()
+        let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -150,20 +152,21 @@ mod tests {
 
         let err = TVShowDetails::new(1399).execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.body.as_other_error().unwrap().status_code, 34);
+        assert_eq!(server_err.status_code, 34);
     }
 }
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use super::TVShowDetails;
+    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::Client;
     use crate::prelude::Command;
-    use crate::Client;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-        let client = Client::new(secret);
+        let client = Client::<ReqwestExecutor>::new(secret);
 
         for i in 1..5 {
             let result = TVShowDetails::new(i).execute(&client).await.unwrap();
