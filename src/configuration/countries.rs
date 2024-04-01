@@ -12,7 +12,7 @@ use std::borrow::Cow;
 ///
 /// #[tokio::main]
 /// async fn main() {
-/// 	let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
 ///     let result = Countries::default().execute(&client).await;
 ///     match result {
 ///         Ok(res) => println!("found: {res:#?}"),
