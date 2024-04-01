@@ -20,11 +20,13 @@ pub struct GenreResult {
 /// ```rust
 /// use tmdb_api::prelude::Command;
 /// use tmdb_api::Client;
+/// use tmdb_api::client::reqwest::ReqwestExecutor;
 /// use tmdb_api::genre::list::GenreList;
 ///
 /// #[tokio::main]
 /// async fn main() {
-///     let client = Client::new("this-is-my-secret-token".into());
+///
+/// 	let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
 ///     let cmd = GenreList::tv();
 ///     let result = cmd.execute(&client).await;
 ///     match result {
