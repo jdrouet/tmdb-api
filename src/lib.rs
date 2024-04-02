@@ -14,6 +14,9 @@ extern crate serde_repr;
 #[cfg(feature = "commands")]
 pub use reqwest;
 
+#[cfg(feature = "commands")]
+pub use client::Client;
+
 pub mod certification;
 pub mod changes;
 #[cfg(feature = "commands")]
@@ -30,7 +33,5 @@ pub mod tvshow;
 pub mod watch_provider;
 
 pub mod common;
+pub mod configuration;
 mod util;
-
-#[cfg(feature = "commands")]
-pub use client::Client;
