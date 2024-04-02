@@ -11,7 +11,7 @@ const TV_PATH: &str = "/genre/tv/list";
 const MOVIE_PATH: &str = "/genre/movie/list";
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct GenreResult {
+pub(crate) struct GenreResult {
     pub genres: Vec<Genre>,
 }
 
