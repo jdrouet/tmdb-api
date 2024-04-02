@@ -1,3 +1,6 @@
+//! https://developer.themoviedb.org/reference/genre-movie-list
+//! https://developer.themoviedb.org/reference/genre-tv-list
+
 use std::borrow::Cow;
 
 use crate::client::Executor;
@@ -13,6 +16,24 @@ pub(crate) struct GenreResult {
 }
 
 /// Command to list genres
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::client::reqwest::ReqwestExecutor;
+/// use tmdb_api::genre::list::GenreList;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+///     let cmd = GenreList::tv();
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct GenreList {
     path: &'static str,
