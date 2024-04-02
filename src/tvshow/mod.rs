@@ -120,8 +120,10 @@ pub struct TVShow {
     pub last_episode_to_air: Option<EpisodeShort>,
     pub next_episode_to_air: Option<EpisodeShort>,
     pub networks: Vec<CompanyShort>,
-    #[serde(deserialize_with = "crate::util::default_on_null::deserialize")]
-    pub number_of_episodes: u64,
+    /// Very unlikely to be [None],
+    /// but in such cases the number of episodes could be computed
+    /// by summing the `episodes_count` of the `seasons` field.
+    pub number_of_episodes: Option<u64>,
     pub number_of_seasons: u64,
     pub production_companies: Vec<CompanyShort>,
     pub production_countries: Vec<Country>,
