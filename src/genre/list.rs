@@ -34,6 +34,11 @@ impl GenreList {
             language: None,
         }
     }
+
+    pub fn with_language(mut self, value: Option<String>) -> Self {
+        self.language = value;
+        self
+    }
 }
 
 #[async_trait::async_trait]
