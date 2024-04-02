@@ -47,7 +47,7 @@ impl crate::prelude::Command for Countries {
     type Output = Vec<CountriesResult>;
 
     fn path(&self) -> Cow<'static, str> {
-        Cow::Owned("/configuration/countries".to_owned())
+        Cow::Borrowed("/configuration/countries")
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {

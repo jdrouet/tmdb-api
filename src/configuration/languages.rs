@@ -41,7 +41,7 @@ impl crate::prelude::Command for Languages {
     type Output = Vec<LanguagesResult>;
 
     fn path(&self) -> Cow<'static, str> {
-        Cow::Owned("/configuration/languages".to_owned())
+        Cow::Borrowed("/configuration/languages")
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {

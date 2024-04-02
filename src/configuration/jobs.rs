@@ -39,7 +39,7 @@ impl crate::prelude::Command for Jobs {
     type Output = Vec<JobsResult>;
 
     fn path(&self) -> Cow<'static, str> {
-        Cow::Owned("/configuration/jobs".to_owned())
+        Cow::Borrowed("/configuration/jobs")
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
