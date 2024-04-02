@@ -11,6 +11,11 @@ use super::Certification;
 const TV_PATH: &str = "/certification/tv/list";
 const MOVIE_PATH: &str = "/certification/movie/list";
 
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub(crate) struct CertificationResult {
+    pub certifications: HashMap<String, Vec<Certification>>,
+}
+
 /// Command to list certifications
 ///
 /// ```rust
@@ -30,12 +35,6 @@ const MOVIE_PATH: &str = "/certification/movie/list";
 ///     };
 /// }
 /// ```
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct CertificationResult {
-    pub certifications: HashMap<String, Vec<Certification>>,
-}
-
-/// Command to list certifications
 #[derive(Clone, Debug, Default)]
 pub struct CertificationList {
     path: &'static str,
