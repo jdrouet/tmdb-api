@@ -36,21 +36,22 @@ pub struct TVShowAggregateCreditsResult {
 
 #[derive(Debug, Deserialize)]
 pub struct CastPerson {
-    pub id: u64,
-    pub adult: bool,
-    pub gender: u64,
-    pub known_for_department: String,
-    pub name: String,
-    pub original_name: String,
-    pub popularity: f64,
-    pub profile_path: Option<String>,
+    #[serde(flatten)]
+    pub inner: Person,
     pub roles: Vec<Role>,
-    pub total_episode_count: u64,
     pub order: u64,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct CrewPerson {
+    #[serde(flatten)]
+    pub inner: Person,
+    pub jobs: Vec<Job>,
+    pub department: String,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct Person {
     pub id: u64,
     pub adult: bool,
     pub gender: u64,
@@ -59,8 +60,6 @@ pub struct CrewPerson {
     pub original_name: String,
     pub popularity: f64,
     pub profile_path: Option<String>,
-    pub jobs: Vec<Job>,
-    pub department: String,
     pub total_episode_count: u64,
 }
 
