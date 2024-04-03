@@ -29,11 +29,11 @@ pub struct TVShowContentRating {
 #[derive(Clone, Debug, Default, Deserialize)]
 pub struct ContentRatingResult {
     pub id: u64,
-    pub results: Vec<ContentRatingBase>,
+    pub results: Vec<ContentRating>,
 }
 
 #[derive(Clone, Debug, Default, Deserialize)]
-pub struct ContentRatingBase {
+pub struct ContentRating {
     pub descriptors: Vec<String>,
     pub iso_3166_1: String,
     pub rating: String,
