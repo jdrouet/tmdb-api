@@ -6,6 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.1](https://github.com/jdrouet/tmdb-api/compare/v0.8.0...v0.8.1) - 2024-04-19
+
+### Added
+- *(genre)* add function to specify country when listing ([#79](https://github.com/jdrouet/tmdb-api/pull/79))
+- *(configuration)* implement commands ([#83](https://github.com/jdrouet/tmdb-api/pull/83))
+- *(genre)* add method to specify language ([#86](https://github.com/jdrouet/tmdb-api/pull/86))
+
+### Fixed
+- *(tvshow)* make episode number nullable ([#84](https://github.com/jdrouet/tmdb-api/pull/84))
+
+### Other
+- *(deps)* bump rustls from 0.22.2 to 0.22.4 ([#89](https://github.com/jdrouet/tmdb-api/pull/89))
+- *(deps)* bump h2 from 0.3.25 to 0.3.26 ([#88](https://github.com/jdrouet/tmdb-api/pull/88))
+- *(certification)* add some usage examples ([#82](https://github.com/jdrouet/tmdb-api/pull/82))
+
 ## [0.8.0](https://github.com/jdrouet/tmdb-api/compare/v0.7.0...v0.8.0) - 2024-03-24
 
 ### Added
