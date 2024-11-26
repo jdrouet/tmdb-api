@@ -79,12 +79,12 @@ pub enum Error {
     #[error("couldn't execute request")]
     Request {
         #[source]
-        source: Box<dyn std::error::Error + Send>,
+        source: Box<dyn std::error::Error + Send + Sync>,
     },
     #[error("couldn't read response")]
     Response {
         #[source]
-        source: Box<dyn std::error::Error + Send>,
+        source: Box<dyn std::error::Error + Send + Sync>,
     },
     #[error(transparent)]
     Validation(ServerValidationBodyError),
