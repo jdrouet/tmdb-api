@@ -23,7 +23,7 @@
 use std::borrow::Cow;
 
 #[async_trait::async_trait]
-pub trait Executor: Default + Send + Sync {
+pub trait Executor: Default + Send + Sync + Clone {
     async fn execute<T: serde::de::DeserializeOwned>(
         &self,
         url: &str,

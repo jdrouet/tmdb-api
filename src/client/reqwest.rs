@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Clone)]
 pub struct ReqwestExecutor {
     inner: reqwest::Client,
 }
