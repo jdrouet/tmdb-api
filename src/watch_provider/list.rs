@@ -16,7 +16,7 @@ use super::WatchProvider;
 /// #[tokio::main]
 /// async fn main() {
 ///     use tmdb_api::common::MediaType;
-/// let client = Client::new("this-is-my-secret-token".into());
+///     let client = Client::new("this-is-my-secret-token".into());
 ///     let cmd = WatchProviderList::new(MediaType::Tv);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
