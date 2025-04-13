@@ -44,7 +44,6 @@ pub struct WatchProviderListResult {
     pub inner: WatchProvider,
 }
 
-#[async_trait::async_trait]
 impl crate::prelude::Command for WatchProviderList {
     type Output = Vec<WatchProviderListResult>;
 
@@ -84,8 +83,8 @@ impl crate::prelude::Command for WatchProviderList {
 mod tests {
     use mockito::Matcher;
 
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::common::MediaType;
     use crate::prelude::Command;
 
@@ -184,8 +183,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::common::MediaType;
     use crate::prelude::Command;
 

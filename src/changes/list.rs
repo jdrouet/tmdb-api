@@ -64,7 +64,6 @@ impl ChangeList {
     }
 }
 
-#[async_trait::async_trait]
 impl crate::prelude::Command for ChangeList {
     type Output = crate::common::PaginatedResult<super::Change>;
 
@@ -97,8 +96,8 @@ impl crate::prelude::Command for ChangeList {
 #[cfg(test)]
 mod tests {
     use super::ChangeList;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
     use chrono::NaiveDate;
     use mockito::Matcher;
@@ -253,8 +252,8 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use super::ChangeList;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     #[tokio::test]

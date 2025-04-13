@@ -50,7 +50,6 @@ impl CertificationList {
     }
 }
 
-#[async_trait::async_trait]
 impl crate::prelude::Command for CertificationList {
     type Output = HashMap<String, Vec<Certification>>;
 
@@ -77,9 +76,9 @@ impl crate::prelude::Command for CertificationList {
 mod tests {
     use mockito::Matcher;
 
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
-    use crate::Client;
 
     use super::CertificationList;
 
@@ -174,8 +173,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     use super::CertificationList;

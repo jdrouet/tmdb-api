@@ -12,13 +12,12 @@ readme = "readme.md"
 
 [features]
 default = ["commands"]
-commands = ["dep:async-trait", "dep:reqwest"]
+commands = ["dep:reqwest"]
 
 # only used for testing
 integration = []
 
 [dependencies]
-async-trait = { version = "0.1", optional = true }
 chrono = { version = "0.4", default-features = false, features = [
     "serde",
     "std",
