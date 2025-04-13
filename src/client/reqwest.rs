@@ -63,7 +63,5 @@ impl super::prelude::Executor for ReqwestExecutor {
                 content,
             })
         }
-
-        // todo!()
     }
 }

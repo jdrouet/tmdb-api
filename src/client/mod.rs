@@ -76,6 +76,16 @@ pub struct Client<E> {
     api_key: String,
 }
 
+impl<E: std::fmt::Debug> std::fmt::Debug for Client<E> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct(stringify!(Client))
+            .field("executor", &self.executor)
+            .field("base_url", &self.base_url)
+            .field("api_key", &"REDACTED")
+            .finish()
+    }
+}
+
 impl<E: Executor> Client<E> {
     pub fn builder() -> ClientBuilder<E> {
         ClientBuilder::default()
