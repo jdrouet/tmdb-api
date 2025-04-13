@@ -1,30 +1,31 @@
+use crate::common::country::Country;
+use crate::common::language::Language;
+use crate::company::CompanyShort;
+use crate::genre::Genre;
+use crate::people::PersonShort;
+
 #[cfg(feature = "commands")]
 pub mod aggregate_credits;
 #[cfg(feature = "commands")]
 pub mod content_rating;
 #[cfg(feature = "commands")]
 pub mod details;
+pub mod episode;
 #[cfg(feature = "commands")]
 pub mod images;
+#[cfg(feature = "commands")]
+pub mod keywords;
 #[cfg(feature = "commands")]
 pub mod latest;
 #[cfg(feature = "commands")]
 pub mod popular;
 #[cfg(feature = "commands")]
 pub mod search;
+pub mod season;
 #[cfg(feature = "commands")]
 pub mod similar;
 #[cfg(feature = "commands")]
 pub mod watch_providers;
-
-pub mod episode;
-pub mod season;
-
-use crate::common::country::Country;
-use crate::common::language::Language;
-use crate::company::CompanyShort;
-use crate::genre::Genre;
-use crate::people::PersonShort;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct TVShowBase {
