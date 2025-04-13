@@ -18,20 +18,20 @@ commands = ["dep:async-trait", "dep:reqwest"]
 integration = []
 
 [dependencies]
-async-trait = { version = "0.1.79", optional = true }
-chrono = { version = "0.4.35", default-features = false, features = [
+async-trait = { version = "0.1", optional = true }
+chrono = { version = "0.4", default-features = false, features = [
     "serde",
     "std",
 ] }
-reqwest = { version = "0.12.1", default-features = false, features = [
+reqwest = { version = "0.12", default-features = false, features = [
     "json",
     "rustls-tls",
 ], optional = true }
-serde = { version = "1.0.197", features = ["derive"] }
-serde_repr = { version = "0.1.18" }
-thiserror = { version = "1.0.58" }
+serde = { version = "1.0", features = ["derive"] }
+serde_repr = { version = "0.1" }
+thiserror = { version = "1.0" }
 
 [dev-dependencies]
-mockito = { version = "1.4.0" }
-serde_json = { version = "1.0.114" }
-tokio = { version = "1.36.0", features = ["full"] }
+mockito = { version = "1.4" }
+serde_json = { version = "1.0" }
+tokio = { version = "1.36", features = ["full"] }
