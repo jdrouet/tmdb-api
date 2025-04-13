@@ -53,9 +53,9 @@ impl crate::prelude::Command for Languages {
 mod tests {
     use mockito::Matcher;
 
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
-    use crate::Client;
 
     use super::Languages;
 
@@ -130,9 +130,9 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
-    use crate::Client;
 
     use super::Languages;
 

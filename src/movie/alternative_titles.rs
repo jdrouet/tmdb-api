@@ -73,8 +73,8 @@ impl crate::prelude::Command for MovieAlternativeTitles {
 #[cfg(test)]
 mod tests {
     use super::MovieAlternativeTitles;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
     use mockito::Matcher;
 
@@ -159,8 +159,8 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use super::MovieAlternativeTitles;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     #[tokio::test]

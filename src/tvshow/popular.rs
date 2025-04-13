@@ -62,8 +62,8 @@ impl crate::prelude::Command for TVShowPopular {
 #[cfg(test)]
 mod tests {
     use super::TVShowPopular;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
     use mockito::Matcher;
 
@@ -139,8 +139,8 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use super::TVShowPopular;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     #[tokio::test]

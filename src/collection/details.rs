@@ -96,8 +96,8 @@ impl crate::prelude::Command for CollectionDetails {
 mod tests {
     use mockito::Matcher;
 
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     use super::CollectionDetails;
@@ -179,8 +179,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     use super::CollectionDetails;
