@@ -60,8 +60,8 @@ impl crate::prelude::Command for TVShowDetails {
 #[cfg(test)]
 mod tests {
     use super::TVShowDetails;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
     use mockito::Matcher;
 
@@ -159,8 +159,8 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use super::TVShowDetails;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     #[tokio::test]
@@ -168,7 +168,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        for i in 1..5 {
+        for i in [1, 2, 3, 4, 5, 81040] {
             let result = TVShowDetails::new(i).execute(&client).await.unwrap();
             assert_eq!(result.inner.id, i);
         }

@@ -27,6 +27,11 @@ call /company/1 company-details
 call /company/1/alternative_names company-alternative-names
 call /company/1/images company-images
 
+# configuration
+call /configuration/countries configuration-countries
+call /configuration/jobs configuration-jobs
+call /configuration/languages configuration-languages
+
 # credits
 call /credit/52542282760ee313280017f9 credit-details
 

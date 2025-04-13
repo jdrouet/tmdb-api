@@ -55,7 +55,7 @@ pub struct TVShowShort {
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct EpisodeShort {
-    pub air_date: chrono::NaiveDate,
+    pub air_date: Option<chrono::NaiveDate>,
     pub episode_number: u64,
     pub id: u64,
     pub name: String,
@@ -120,7 +120,9 @@ pub struct TVShow {
     pub last_episode_to_air: Option<EpisodeShort>,
     pub next_episode_to_air: Option<EpisodeShort>,
     pub networks: Vec<CompanyShort>,
-    pub number_of_episodes: u64,
+    /// Unlikely to be `None` but found with 81040.
+    /// In this case, could be computed by summing the `episodes_count` of the `seasons` field.
+    pub number_of_episodes: Option<u64>,
     pub number_of_seasons: u64,
     pub production_companies: Vec<CompanyShort>,
     pub production_countries: Vec<Country>,

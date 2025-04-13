@@ -19,7 +19,6 @@ impl From<reqwest::Error> for crate::error::Error {
     }
 }
 
-#[async_trait::async_trait]
 impl super::prelude::Executor for ReqwestExecutor {
     async fn execute<T: serde::de::DeserializeOwned>(
         &self,
@@ -63,7 +62,5 @@ impl super::prelude::Executor for ReqwestExecutor {
                 content,
             })
         }
-
-        // todo!()
     }
 }
