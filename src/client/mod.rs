@@ -99,12 +99,6 @@ impl<E: Executor> Client<E> {
         }
     }
 
-    #[deprecated = "Use client builder instead. This will get dropped in future versions."]
-    pub fn with_base_url(mut self, base_url: String) -> Self {
-        self.base_url = Cow::Owned(base_url);
-        self
-    }
-
     pub fn base_url(&self) -> &str {
         &self.base_url
     }
