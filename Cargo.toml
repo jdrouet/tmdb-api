@@ -33,4 +33,4 @@ thiserror = { version = "1.0" }
 [dev-dependencies]
 mockito = { version = "1.4" }
 serde_json = { version = "1.0" }
-tokio = { version = "1.36", features = ["full"] }
+tokio = { version = "1.38", features = ["full"] }
