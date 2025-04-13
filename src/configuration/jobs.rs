@@ -51,9 +51,9 @@ impl crate::prelude::Command for Jobs {
 mod tests {
     use mockito::Matcher;
 
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
-    use crate::Client;
 
     use super::Jobs;
 
@@ -128,9 +128,9 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
-    use crate::Client;
 
     use super::Jobs;
 

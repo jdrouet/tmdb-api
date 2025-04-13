@@ -76,6 +76,16 @@ pub struct Client<E> {
     api_key: String,
 }
 
+impl<E: std::fmt::Debug> std::fmt::Debug for Client<E> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct(stringify!(Client))
+            .field("executor", &self.executor)
+            .field("base_url", &self.base_url)
+            .field("api_key", &"REDACTED")
+            .finish()
+    }
+}
+
 impl<E: Executor> Client<E> {
     pub fn builder() -> ClientBuilder<E> {
         ClientBuilder::default()
@@ -87,12 +97,6 @@ impl<E: Executor> Client<E> {
             base_url: Cow::Borrowed(BASE_URL),
             api_key,
         }
-    }
-
-    #[deprecated = "Use client builder instead. This will get dropped in future versions."]
-    pub fn with_base_url(mut self, base_url: String) -> Self {
-        self.base_url = Cow::Owned(base_url);
-        self
     }
 
     pub fn base_url(&self) -> &str {

@@ -62,7 +62,6 @@ impl GenreList {
     }
 }
 
-#[async_trait::async_trait]
 impl crate::prelude::Command for GenreList {
     type Output = Vec<Genre>;
 
@@ -93,8 +92,8 @@ impl crate::prelude::Command for GenreList {
 mod tests {
     use mockito::Matcher;
 
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     use super::GenreList;
@@ -192,8 +191,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     use super::GenreList;
