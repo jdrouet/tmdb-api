@@ -11,12 +11,13 @@ use super::WatchProvider;
 /// ```rust
 /// use tmdb_api::prelude::Command;
 /// use tmdb_api::Client;
+/// use tmdb_api::client::reqwest::ReqwestExecutor;
 /// use tmdb_api::watch_provider::list::WatchProviderList;
 ///
 /// #[tokio::main]
 /// async fn main() {
 ///     use tmdb_api::common::MediaType;
-///     let client = Client::new("this-is-my-secret-token".into());
+///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
 ///     let cmd = WatchProviderList::new(MediaType::Tv);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
