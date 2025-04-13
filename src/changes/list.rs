@@ -9,12 +9,30 @@ const MOVIE_PATH: &str = "/movie/changes";
 const PERSON_PATH: &str = "/person/changes";
 
 /// Command to list changes
+///
+/// ```rust
+/// use tmdb_api::prelude::Command;
+/// use tmdb_api::Client;
+/// use tmdb_api::client::reqwest::ReqwestExecutor;
+/// use tmdb_api::changes::list::ChangeList;
+///
+/// #[tokio::main]
+/// async fn main() {
+///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+///     let cmd = ChangeList::tv();
+///     let result = cmd.execute(&client).await;
+///     match result {
+///         Ok(res) => println!("found: {:#?}", res),
+///         Err(err) => eprintln!("error: {:?}", err),
+///     };
+/// }
+/// ```
 #[derive(Clone, Debug, Default)]
 pub struct ChangeList {
     path: &'static str,
     /// Filter the results with a start date.
     pub start_date: Option<NaiveDate>,
-    /// Filter the results with a end date.
+    /// Filter the results with an end date.
     pub end_date: Option<NaiveDate>,
     /// Which page to query.
     pub page: Option<u32>,
