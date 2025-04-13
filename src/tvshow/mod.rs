@@ -1,4 +1,6 @@
 #[cfg(feature = "commands")]
+pub mod aggregate_credits;
+#[cfg(feature = "commands")]
 pub mod details;
 #[cfg(feature = "commands")]
 pub mod images;
