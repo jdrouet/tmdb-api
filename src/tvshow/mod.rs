@@ -53,7 +53,7 @@ pub struct TVShowShort {
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct EpisodeShort {
-    pub air_date: chrono::NaiveDate,
+    pub air_date: Option<chrono::NaiveDate>,
     pub episode_number: u64,
     pub id: u64,
     pub name: String,
