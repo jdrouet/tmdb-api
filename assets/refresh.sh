@@ -27,6 +27,11 @@ call /company/1 company-details
 call /company/1/alternative_names company-alternative-names
 call /company/1/images company-images
 
+# configuration
+call /configuration/countries configuration-countries
+call /configuration/jobs configuration-jobs
+call /configuration/languages configuration-languages
+
 # credits
 call /credit/52542282760ee313280017f9 credit-details
 
@@ -63,10 +68,12 @@ call /person/287 person-details
 call /search/movie search-movie query=RRRrrrr
 call /search/tv search-tv query=game+of+thrones
 
-# tvshows
+# TV shows
 call /tv/1399 tv-details
 call /tv/1399/similar tv-similar
 call /tv/1399/keywords tv-keywords
+call /tv/1399/aggregate_credits tv-aggregate-credits
+call /tv/1399/content_ratings tv-content-ratings
 call /tv/1399/season/1 tv-season-details
 call /tv/1399/season/1/episode/1 tv-episode-details
 

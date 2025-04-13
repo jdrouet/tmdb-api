@@ -73,8 +73,8 @@ impl crate::prelude::Command for GetSimilarTVShows {
 #[cfg(test)]
 mod tests {
     use super::GetSimilarTVShows;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
     use mockito::Matcher;
 
@@ -158,8 +158,8 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use super::GetSimilarTVShows;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     #[tokio::test]

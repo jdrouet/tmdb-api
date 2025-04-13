@@ -1,43 +1,55 @@
+//! https://developer.themoviedb.org/reference/tv-series-content-ratings
+
 use std::borrow::Cow;
 
-use crate::watch_provider::WatchProviderResult;
-
-/// Get a list of watch providers for a movie.
+/// Command to get the content ratings of a TV show.
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
+/// use tmdb_api::Client;
 /// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::watch_providers::MovieWatchProviders;
+/// use tmdb_api::tvshow::content_rating::TVShowContentRating;
 ///
 /// #[tokio::main]
 /// async fn main() {
 ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieWatchProviders::new(1);
+///     let cmd = TVShowContentRating::new(1);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
 ///     };
 /// }
 /// ```
 #[derive(Clone, Debug, Default)]
-pub struct MovieWatchProviders {
-    /// ID of the movie.
-    pub movie_id: u64,
+pub struct TVShowContentRating {
+    pub id: u64,
 }
 
-impl MovieWatchProviders {
-    pub fn new(movie_id: u64) -> Self {
-        Self { movie_id }
+#[derive(Clone, Debug, Default, Deserialize)]
+pub struct ContentRatingResult {
+    pub id: u64,
+    pub results: Vec<ContentRating>,
+}
+
+#[derive(Clone, Debug, Default, Deserialize)]
+pub struct ContentRating {
+    pub descriptors: Vec<String>,
+    pub iso_3166_1: String,
+    pub rating: String,
+}
+
+impl TVShowContentRating {
+    pub fn new(tv_show_id: u64) -> Self {
+        Self { id: tv_show_id }
     }
 }
 
-impl crate::prelude::Command for MovieWatchProviders {
-    type Output = WatchProviderResult;
+impl crate::prelude::Command for TVShowContentRating {
+    type Output = ContentRatingResult;
 
     fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/movie/{}/watch/providers", self.movie_id))
+        Cow::Owned(format!("/tv/{}/content_ratings", self.id))
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
@@ -47,11 +59,13 @@ impl crate::prelude::Command for MovieWatchProviders {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieWatchProviders;
-    use crate::client::Client;
+    use mockito::Matcher;
+
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
-    use mockito::Matcher;
+
+    use super::TVShowContentRating;
 
     #[tokio::test]
     async fn it_works() {
@@ -63,19 +77,19 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/watch/providers")
+            .mock("GET", "/tv/1399/content_ratings")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/movie-watch-providers.json"))
+            .with_body(include_str!("../../assets/tv-content-ratings.json"))
             .create_async()
             .await;
 
-        let result = MovieWatchProviders::new(550)
+        let result = TVShowContentRating::new(1399)
             .execute(&client)
             .await
             .unwrap();
-        assert_eq!(result.id, 550);
+        assert_eq!(result.id, 1399);
         assert!(!result.results.is_empty());
     }
 
@@ -89,7 +103,7 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/watch/providers")
+            .mock("GET", "/tv/1399/content_ratings")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
@@ -97,7 +111,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieWatchProviders::new(550)
+        let err = TVShowContentRating::new(1399)
             .execute(&client)
             .await
             .unwrap_err();
@@ -115,7 +129,7 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/watch/providers")
+            .mock("GET", "/tv/1399/content_ratings")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
@@ -123,7 +137,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieWatchProviders::new(550)
+        let err = TVShowContentRating::new(1399)
             .execute(&client)
             .await
             .unwrap_err();
@@ -134,20 +148,22 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieWatchProviders;
-    use crate::client::Client;
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
+
+    use super::TVShowContentRating;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = MovieWatchProviders::new(550)
+        let result = TVShowContentRating::new(1399)
             .execute(&client)
             .await
             .unwrap();
-        assert_eq!(result.id, 550);
+        assert_eq!(result.id, 1399);
+        assert!(!result.results.is_empty());
     }
 }

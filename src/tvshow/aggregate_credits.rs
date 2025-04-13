@@ -1,57 +1,121 @@
+//! https://developer.themoviedb.org/reference/tv-series-aggregate-credits
+
 use std::borrow::Cow;
 
-use crate::watch_provider::WatchProviderResult;
-
-/// Get a list of watch providers for a movie.
+/// Command to get the aggregate credits of a TV show.
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
+/// use tmdb_api::Client;
 /// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::watch_providers::MovieWatchProviders;
+/// use tmdb_api::tvshow::aggregate_credits::TVShowAggregateCredits;
 ///
 /// #[tokio::main]
 /// async fn main() {
 ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieWatchProviders::new(1);
+///     let cmd = TVShowAggregateCredits::new(1);
 ///     let result = cmd.execute(&client).await;
 ///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
 ///     };
 /// }
 /// ```
 #[derive(Clone, Debug, Default)]
-pub struct MovieWatchProviders {
-    /// ID of the movie.
-    pub movie_id: u64,
+pub struct TVShowAggregateCredits {
+    pub id: u64,
+    pub language: Option<String>,
 }
 
-impl MovieWatchProviders {
-    pub fn new(movie_id: u64) -> Self {
-        Self { movie_id }
+#[derive(Debug, Deserialize)]
+pub struct TVShowAggregateCreditsResult {
+    pub id: u64,
+    pub cast: Vec<CastPerson>,
+    pub crew: Vec<CrewPerson>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct CastPerson {
+    #[serde(flatten)]
+    pub inner: Person,
+    pub roles: Vec<Role>,
+    pub order: u64,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct CrewPerson {
+    #[serde(flatten)]
+    pub inner: Person,
+    pub jobs: Vec<Job>,
+    pub department: String,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct Person {
+    pub id: u64,
+    pub adult: bool,
+    pub gender: u64,
+    pub known_for_department: String,
+    pub name: String,
+    pub original_name: String,
+    pub popularity: f64,
+    pub profile_path: Option<String>,
+    pub total_episode_count: u64,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct Role {
+    pub credit_id: String,
+    pub character: String,
+    pub episode_count: u64,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct Job {
+    pub credit_id: String,
+    pub job: String,
+    pub episode_count: u64,
+}
+
+impl TVShowAggregateCredits {
+    pub fn new(tv_show_id: u64) -> Self {
+        Self {
+            id: tv_show_id,
+            language: None,
+        }
+    }
+
+    pub fn with_language(mut self, value: Option<String>) -> Self {
+        self.language = value;
+        self
     }
 }
 
-impl crate::prelude::Command for MovieWatchProviders {
-    type Output = WatchProviderResult;
+impl crate::prelude::Command for TVShowAggregateCredits {
+    type Output = TVShowAggregateCreditsResult;
 
     fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/movie/{}/watch/providers", self.movie_id))
+        Cow::Owned(format!("/tv/{}/aggregate_credits", self.id))
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        Vec::new()
+        if let Some(ref language) = self.language {
+            vec![("language", Cow::Borrowed(language))]
+        } else {
+            Vec::new()
+        }
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MovieWatchProviders;
-    use crate::client::Client;
+    use mockito::Matcher;
+
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
-    use mockito::Matcher;
+
+    use super::TVShowAggregateCredits;
 
     #[tokio::test]
     async fn it_works() {
@@ -63,20 +127,21 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/watch/providers")
+            .mock("GET", "/tv/1399/aggregate_credits")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/movie-watch-providers.json"))
+            .with_body(include_str!("../../assets/tv-aggregate-credits.json"))
             .create_async()
             .await;
 
-        let result = MovieWatchProviders::new(550)
+        let result = TVShowAggregateCredits::new(1399)
             .execute(&client)
             .await
             .unwrap();
-        assert_eq!(result.id, 550);
-        assert!(!result.results.is_empty());
+        assert_eq!(result.id, 1399);
+        assert!(!result.cast.is_empty());
+        assert!(!result.crew.is_empty());
     }
 
     #[tokio::test]
@@ -89,7 +154,7 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/watch/providers")
+            .mock("GET", "/tv/1399/aggregate_credits")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
@@ -97,7 +162,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieWatchProviders::new(550)
+        let err = TVShowAggregateCredits::new(1399)
             .execute(&client)
             .await
             .unwrap_err();
@@ -115,7 +180,7 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/watch/providers")
+            .mock("GET", "/tv/1399/aggregate_credits")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
@@ -123,7 +188,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieWatchProviders::new(550)
+        let err = TVShowAggregateCredits::new(1399)
             .execute(&client)
             .await
             .unwrap_err();
@@ -134,20 +199,23 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieWatchProviders;
-    use crate::client::Client;
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
+
+    use super::TVShowAggregateCredits;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = MovieWatchProviders::new(550)
+        let result = TVShowAggregateCredits::new(1399)
             .execute(&client)
             .await
             .unwrap();
-        assert_eq!(result.id, 550);
+        assert_eq!(result.id, 1399);
+        assert!(!result.cast.is_empty());
+        assert!(!result.crew.is_empty());
     }
 }

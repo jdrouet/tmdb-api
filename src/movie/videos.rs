@@ -68,8 +68,8 @@ impl crate::prelude::Command for MovieVideos {
 #[cfg(test)]
 mod tests {
     use super::MovieVideos;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
     use mockito::Matcher;
 
@@ -146,8 +146,8 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use super::MovieVideos;
-    use crate::client::reqwest::ReqwestExecutor;
     use crate::client::Client;
+    use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
 
     #[tokio::test]

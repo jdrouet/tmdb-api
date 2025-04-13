@@ -1,43 +1,47 @@
+//! https://developer.themoviedb.org/reference/configuration-languages
+
 use std::borrow::Cow;
 
-use crate::watch_provider::WatchProviderResult;
-
-/// Get a list of watch providers for a movie.
+/// Get a list of all languages
 ///
 /// ```rust
 /// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
+/// use tmdb_api::Client;
 /// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::watch_providers::MovieWatchProviders;
+/// use tmdb_api::configuration::languages::Languages;
 ///
 /// #[tokio::main]
 /// async fn main() {
 ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieWatchProviders::new(1);
-///     let result = cmd.execute(&client).await;
+///     let result = Languages::default().execute(&client).await;
 ///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
+///         Ok(res) => println!("found: {res:#?}"),
+///         Err(err) => eprintln!("error: {err:?}"),
 ///     };
 /// }
 /// ```
 #[derive(Clone, Debug, Default)]
-pub struct MovieWatchProviders {
-    /// ID of the movie.
-    pub movie_id: u64,
+pub struct Languages {}
+
+#[derive(Debug, Deserialize)]
+pub struct LanguagesResult {
+    pub iso_639_1: String,
+    pub english_name: String,
+    /// Can be an empty string
+    pub name: String,
 }
 
-impl MovieWatchProviders {
-    pub fn new(movie_id: u64) -> Self {
-        Self { movie_id }
+impl Languages {
+    pub fn new() -> Self {
+        Self {}
     }
 }
 
-impl crate::prelude::Command for MovieWatchProviders {
-    type Output = WatchProviderResult;
+impl crate::prelude::Command for Languages {
+    type Output = Vec<LanguagesResult>;
 
     fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/movie/{}/watch/providers", self.movie_id))
+        Cow::Borrowed("/configuration/languages")
     }
 
     fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
@@ -47,11 +51,13 @@ impl crate::prelude::Command for MovieWatchProviders {
 
 #[cfg(test)]
 mod tests {
-    use super::MovieWatchProviders;
-    use crate::client::Client;
+    use mockito::Matcher;
+
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
-    use mockito::Matcher;
+
+    use super::Languages;
 
     #[tokio::test]
     async fn it_works() {
@@ -63,20 +69,16 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/watch/providers")
+            .mock("GET", "/configuration/languages")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/movie-watch-providers.json"))
+            .with_body(include_str!("../../assets/configuration-languages.json"))
             .create_async()
             .await;
 
-        let result = MovieWatchProviders::new(550)
-            .execute(&client)
-            .await
-            .unwrap();
-        assert_eq!(result.id, 550);
-        assert!(!result.results.is_empty());
+        let result = Languages::default().execute(&client).await.unwrap();
+        assert!(!result.is_empty());
     }
 
     #[tokio::test]
@@ -89,7 +91,7 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/watch/providers")
+            .mock("GET", "/configuration/languages")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
@@ -97,10 +99,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieWatchProviders::new(550)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = Languages::default().execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -115,7 +114,7 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/watch/providers")
+            .mock("GET", "/configuration/languages")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
@@ -123,10 +122,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieWatchProviders::new(550)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = Languages::default().execute(&client).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -134,20 +130,18 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieWatchProviders;
-    use crate::client::Client;
+    use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use crate::prelude::Command;
+
+    use super::Languages;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = MovieWatchProviders::new(550)
-            .execute(&client)
-            .await
-            .unwrap();
-        assert_eq!(result.id, 550);
+        let result = Languages::default().execute(&client).await.unwrap();
+        assert!(!result.is_empty());
     }
 }
