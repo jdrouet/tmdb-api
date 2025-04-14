@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.1](https://github.com/jdrouet/tmdb-api/compare/v0.9.0...v0.9.1) - 2025-04-14
+
+### Fixed
+
+- set default base_url ([#97](https://github.com/jdrouet/tmdb-api/pull/97))
+
 ## [0.9.0](https://github.com/jdrouet/tmdb-api/compare/v0.8.0...v0.9.0) - 2025-04-13
 
 ### Added
