@@ -14,11 +14,20 @@ pub enum ClientBuilderError {
     MissingApiKey,
 }
 
-#[derive(Default)]
 pub struct ClientBuilder<E: prelude::Executor> {
     base_url: Cow<'static, str>,
     executor: Option<E>,
     api_key: Option<String>,
+}
+
+impl<E: prelude::Executor> Default for ClientBuilder<E> {
+    fn default() -> Self {
+        Self {
+            base_url: Cow::Borrowed(BASE_URL),
+            executor: None,
+            api_key: None,
+        }
+    }
 }
 
 impl<E: prelude::Executor> ClientBuilder<E> {
