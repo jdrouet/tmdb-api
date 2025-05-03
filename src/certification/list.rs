@@ -11,9 +11,9 @@ use super::Certification;
 const TV_PATH: &str = "/certification/tv/list";
 const MOVIE_PATH: &str = "/certification/movie/list";
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub(crate) struct CertificationResult {
-    pub certifications: HashMap<String, Vec<Certification>>,
+#[derive(Serialize, Deserialize)]
+struct CertificationResult {
+    certifications: HashMap<String, Vec<Certification>>,
 }
 
 /// Command to list certifications
@@ -72,6 +72,56 @@ impl crate::prelude::Command for CertificationList {
     }
 }
 
+impl<E: Executor> crate::Client<E> {
+    /// Get an up to date list of the officially supported movie certifications on TMDB
+    ///
+    /// ```rust
+    /// use tmdb_api::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    /// use tmdb_api::certification::list::CertificationList;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_movie_certifications().await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_movie_certifications(
+        &self,
+    ) -> Result<HashMap<String, Vec<Certification>>, crate::error::Error> {
+        self.execute::<CertificationResult>(MOVIE_PATH, Vec::default())
+            .await
+            .map(|res| res.certifications)
+    }
+
+    /// Get an up to date list of the officially supported tv show certifications on TMDB
+    ///
+    /// ```rust
+    /// use tmdb_api::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    /// use tmdb_api::certification::list::CertificationList;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_tvshow_certifications().await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_tvshow_certifications(
+        &self,
+    ) -> Result<HashMap<String, Vec<Certification>>, crate::error::Error> {
+        self.execute::<CertificationResult>(TV_PATH, Vec::default())
+            .await
+            .map(|res| res.certifications)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use mockito::Matcher;
@@ -91,16 +141,20 @@ mod tests {
             .build()
             .unwrap();
 
-        let _m = server
+        let m = server
             .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/certification-tv-list.json"))
+            .expect(2)
             .create_async()
             .await;
         let result = CertificationList::tv().execute(&client).await.unwrap();
         assert!(!result.is_empty());
+        let result = client.list_tvshow_certifications().await.unwrap();
+        assert!(!result.is_empty());
+        m.assert_async().await;
     }
 
     #[tokio::test]
@@ -112,16 +166,20 @@ mod tests {
             .build()
             .unwrap();
 
-        let _m = server
+        let m = server
             .mock("GET", super::MOVIE_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
             .with_body(include_str!("../../assets/certification-movie-list.json"))
+            .expect(2)
             .create_async()
             .await;
         let result = CertificationList::movie().execute(&client).await.unwrap();
         assert!(!result.is_empty());
+        let result = client.list_movie_certifications().await.unwrap();
+        assert!(!result.is_empty());
+        m.assert_async().await;
     }
 
     #[tokio::test]
@@ -183,7 +241,7 @@ mod integration_tests {
     async fn execute_tv() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let result = CertificationList::tv().execute(&client).await.unwrap();
+        let result = client.list_tvshow_certifications().await.unwrap();
         assert!(!result.is_empty());
     }
 
@@ -191,7 +249,7 @@ mod integration_tests {
     async fn execute_movie() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let result = CertificationList::movie().execute(&client).await.unwrap();
+        let result = client.list_movie_certifications().await.unwrap();
         assert!(!result.is_empty());
     }
 }
