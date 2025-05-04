@@ -1,23 +1,6 @@
-use std::borrow::Cow;
-
 use crate::common::{EntityResults, video::Video};
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Params<'a> {
-    /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<Cow<'a, str>>,
-}
-
-impl<'a> Params<'a> {
-    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
-        self.language = Some(value.into());
-    }
-
-    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
-        self.set_language(value);
-        self
-    }
-}
+pub type Params<'a> = crate::common::LanguageParams<'a>;
 
 pub type Response = EntityResults<Vec<Video>>;
 

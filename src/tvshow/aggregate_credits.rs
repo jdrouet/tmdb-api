@@ -1,7 +1,5 @@
 //! https://developer.themoviedb.org/reference/tv-series-aggregate-credits
 
-use std::borrow::Cow;
-
 #[derive(Debug, Deserialize)]
 pub struct TVShowAggregateCredits {
     pub id: u64,
@@ -52,22 +50,7 @@ pub struct Job {
     pub episode_count: u64,
 }
 
-#[derive(Clone, Debug, Default, Serialize)]
-pub struct Params<'a> {
-    /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<Cow<'a, str>>,
-}
-
-impl<'a> Params<'a> {
-    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
-        self.language = Some(value.into());
-    }
-
-    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
-        self.set_language(value);
-        self
-    }
-}
+pub type Params<'a> = crate::common::LanguageParams<'a>;
 
 impl<E: crate::client::Executor> crate::Client<E> {
     /// Get tvshow aggregate credits

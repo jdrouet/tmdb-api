@@ -1,24 +1,8 @@
 //! https://developer.themoviedb.org/reference/configuration-countries
 
-use std::borrow::Cow;
-
 use crate::client::Executor;
 
-#[derive(Debug, Default, serde::Serialize)]
-pub struct Params<'a> {
-    pub language: Option<Cow<'a, str>>,
-}
-
-impl<'a> Params<'a> {
-    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
-        self.language = Some(value.into());
-    }
-
-    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
-        self.set_language(value);
-        self
-    }
-}
+pub type Params<'a> = crate::common::LanguageParams<'a>;
 
 #[derive(Debug, Deserialize)]
 pub struct Country {
