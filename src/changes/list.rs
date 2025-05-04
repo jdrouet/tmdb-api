@@ -295,10 +295,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::ChangeList;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute_tv() {

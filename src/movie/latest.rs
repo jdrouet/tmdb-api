@@ -129,9 +129,6 @@ mod tests {
 mod integration_tests {
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::MovieLatest;
 
     #[tokio::test]
     async fn execute() {

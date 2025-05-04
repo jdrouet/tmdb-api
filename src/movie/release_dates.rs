@@ -112,6 +112,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let result = client.get_movie_release_dates(550).await.unwrap();
-        assert_eq!(result.id, 550);
+        assert!(!result.is_empty());
+        // assert_eq!(result.id, 550);
     }
 }

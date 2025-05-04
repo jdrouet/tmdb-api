@@ -105,16 +105,13 @@ mod tests {
 mod integration_tests {
     use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::TVShowKeywords;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = Tclient.get_tvshow_keywords(1399).await.unwrap();
-        assert_eq!(result.id, 1399);
+        let result = client.get_tvshow_keywords(1399).await.unwrap();
+        assert!(!result.is_empty());
     }
 }

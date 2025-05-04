@@ -147,16 +147,13 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::TVShowImages;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let cmd = TVShowImages::new(550);
 
         let result = client
             .get_tvshow_images(550, &Default::default())

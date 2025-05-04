@@ -117,16 +117,15 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::CompanyAlternativeNames;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let result = client.get_company_alternative_names(1).await.unwrap();
-        assert_eq!(result.id, 1);
+        assert!(!result.is_empty());
+        // assert_eq!(result.id, 1);
     }
 }

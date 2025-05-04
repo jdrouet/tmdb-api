@@ -123,10 +123,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieTranslations;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
@@ -134,6 +132,7 @@ mod integration_tests {
         let client = Client::<ReqwestExecutor>::new(secret);
 
         let result = client.get_movie_translations(550).await.unwrap();
-        assert_eq!(result.id, 550);
+        assert!(!result.is_empty());
+        // assert_eq!(result.id, 550);
     }
 }

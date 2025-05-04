@@ -186,9 +186,6 @@ mod tests {
 mod integration_tests {
     use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::TVShowAggregateCredits;
 
     #[tokio::test]
     async fn execute() {

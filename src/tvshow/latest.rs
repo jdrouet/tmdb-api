@@ -124,10 +124,8 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::TVShowLatest;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     #[ignore = "The API doesn't work as expected. For history: https://www.themoviedb.org/talk/65b3e54e5541fa0164b18674"]

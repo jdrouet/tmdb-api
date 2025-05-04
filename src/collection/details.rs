@@ -150,9 +150,6 @@ mod tests {
 mod integration_tests {
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::CollectionDetails;
 
     #[tokio::test]
     async fn execute() {

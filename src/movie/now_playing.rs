@@ -181,7 +181,6 @@ mod integration_tests {
 
         let _result = client
             .list_movies_now_playing(&Default::default())
-            .execute(&client)
             .await
             .unwrap();
     }

@@ -210,7 +210,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let params = ListWatchProviderParams::default().with_language("en-US");
-        let result = cmd.list_tvshow_watch_providers(&params).await.unwrap();
+        let result = client.list_tvshow_watch_providers(&params).await.unwrap();
         assert!(!result.is_empty());
     }
 
@@ -219,7 +219,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let params = ListWatchProviderParams::default().with_language("en-US");
-        let result = cmd.list_movie_watch_providers(&params).await.unwrap();
+        let result = client.list_movie_watch_providers(&params).await.unwrap();
         assert!(!result.is_empty());
     }
 }

@@ -118,6 +118,7 @@ mod integration_tests {
         let client = Client::<ReqwestExecutor>::new(secret);
 
         let result = client.get_movie_watch_providers(550).await.unwrap();
-        assert_eq!(result.id, 550);
+        // assert_eq!(result.id, 550);
+        assert!(!result.is_empty());
     }
 }

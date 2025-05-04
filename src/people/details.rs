@@ -138,8 +138,6 @@ mod integration_tests {
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
 
-    use super::PersonDetails;
-
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();

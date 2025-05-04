@@ -168,7 +168,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let params = super::GetMovieCreditsParams::default().with_language(Some("fr-FR".into()));
+        let params = super::GetMovieCreditsParams::default().with_language("fr-FR");
         let result = client.get_movie_credits(550, &params).await.unwrap();
         assert_eq!(result.id, 550);
     }

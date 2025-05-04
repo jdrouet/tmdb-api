@@ -190,8 +190,8 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let params = GetMovieChangesParams::default()
-            .with_start_date(Some(chrono::NaiveDate::from_ymd_opt(2015, 3, 14).unwrap()))
-            .with_end_date(Some(chrono::NaiveDate::from_ymd_opt(2019, 3, 14).unwrap()));
+            .with_start_date(chrono::NaiveDate::from_ymd_opt(2015, 3, 14).unwrap())
+            .with_end_date(chrono::NaiveDate::from_ymd_opt(2019, 3, 14).unwrap());
         let result = client.get_movie_changes(1, &params).await.unwrap();
         assert!(result.is_empty());
     }
