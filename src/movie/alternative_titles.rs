@@ -5,6 +5,7 @@ use crate::client::Executor;
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Params<'a> {
     /// The country to filter the alternative titles
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub country: Option<Cow<'a, str>>,
 }
 

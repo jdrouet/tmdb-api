@@ -5,10 +5,13 @@ use crate::client::Executor;
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Params {
     /// Filter the results with a start date.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_date: Option<NaiveDate>,
     /// Filter the results with a end date.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_date: Option<NaiveDate>,
     /// The country to filter the alternative titles
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub page: Option<u32>,
 }
 

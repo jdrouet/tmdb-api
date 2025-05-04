@@ -6,10 +6,13 @@ use crate::common::PaginatedResult;
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
     /// Specify which page to query.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub page: Option<u32>,
     /// Specify a ISO 3166-1 code to filter release dates. Must be uppercase.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region: Option<Cow<'a, str>>,
 }
 
