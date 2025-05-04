@@ -3,7 +3,7 @@ use std::borrow::Cow;
 use crate::common::PaginatedResult;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ListMoviesTopRatedParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
     /// Specify which page to query.
@@ -12,7 +12,7 @@ pub struct ListMoviesTopRatedParams<'a> {
     pub region: Option<Cow<'a, str>>,
 }
 
-impl<'a> ListMoviesTopRatedParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_page(&mut self, value: u32) {
         self.page = Some(value);
     }
@@ -59,7 +59,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
     /// ```
     pub async fn list_movies_top_rated(
         &self,
-        params: &ListMoviesTopRatedParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<PaginatedResult<super::MovieShort>> {
         self.execute("/movie/top_rated", params).await
     }

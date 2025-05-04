@@ -53,12 +53,12 @@ pub struct Job {
 }
 
 #[derive(Clone, Debug, Default, Serialize)]
-pub struct GetTVShowAggregateCreditsParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> GetTVShowAggregateCreditsParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -88,7 +88,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
     pub async fn get_tvshow_aggregate_credits(
         &self,
         tvshow_id: u64,
-        params: &GetTVShowAggregateCreditsParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<TVShowAggregateCredits> {
         let url = format!("/tv/{tvshow_id}/aggregate_credits");
         self.execute(&url, params).await

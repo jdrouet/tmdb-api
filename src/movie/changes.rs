@@ -3,7 +3,7 @@ use chrono::NaiveDate;
 use crate::client::Executor;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GetMovieChangesParams {
+pub struct Params {
     /// Filter the results with a start date.
     pub start_date: Option<NaiveDate>,
     /// Filter the results with a end date.
@@ -12,7 +12,7 @@ pub struct GetMovieChangesParams {
     pub page: Option<u32>,
 }
 
-impl GetMovieChangesParams {
+impl Params {
     pub fn set_start_date(&mut self, value: NaiveDate) {
         self.start_date = Some(value);
     }
@@ -83,7 +83,7 @@ impl<E: Executor> crate::Client<E> {
     pub async fn get_movie_changes(
         &self,
         movie_id: u64,
-        params: &GetMovieChangesParams,
+        params: &Params,
     ) -> crate::Result<Response> {
         let url = format!("/movie/{movie_id}/changes");
         self.execute(&url, params).await
@@ -179,7 +179,7 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::GetMovieChangesParams;
+    use super::Params;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
 
@@ -187,7 +187,7 @@ mod integration_tests {
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let params = GetMovieChangesParams::default()
+        let params = Params::default()
             .with_start_date(chrono::NaiveDate::from_ymd_opt(2015, 3, 14).unwrap())
             .with_end_date(chrono::NaiveDate::from_ymd_opt(2019, 3, 14).unwrap());
         let result = client.get_movie_changes(1, &params).await.unwrap();

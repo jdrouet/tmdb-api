@@ -1,12 +1,12 @@
 use std::borrow::Cow;
 
 #[derive(Clone, Debug, Default, Serialize)]
-pub struct GetTVShowSeasonDetailsParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> GetTVShowSeasonDetailsParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -37,7 +37,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
         &self,
         tvshow_id: u64,
         season_number: u64,
-        params: &GetTVShowSeasonDetailsParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<crate::tvshow::Season> {
         let url = format!("/tv/{tvshow_id}/season/{season_number}");
         self.execute(&url, params).await

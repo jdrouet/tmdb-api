@@ -3,14 +3,14 @@ use std::borrow::Cow;
 use crate::common::image::Image;
 
 #[derive(Clone, Debug, Default, Serialize)]
-pub struct GetTVShowImagesParams<'a> {
+pub struct Params<'a> {
     /// specify a comma separated list of ISO-639-1 values to query, for example: en,null
     pub include_image_language: Option<Cow<'a, str>>,
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> GetTVShowImagesParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_include_image_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.include_image_language = Some(value.into());
     }
@@ -57,7 +57,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
     pub async fn get_tvshow_images(
         &self,
         tvshow_id: u64,
-        params: &GetTVShowImagesParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<GetTVshowImagesResponse> {
         let url = format!("/tv/{tvshow_id}/images");
         self.execute(&url, params).await

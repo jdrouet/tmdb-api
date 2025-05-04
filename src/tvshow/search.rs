@@ -3,7 +3,7 @@ use std::borrow::Cow;
 const PATH: &str = "/search/tv";
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SearchTVShowsParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
@@ -24,7 +24,7 @@ pub struct SearchTVShowsParams<'a> {
     pub first_air_date_year: Option<u16>,
 }
 
-impl<'a> SearchTVShowsParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -106,7 +106,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
     pub async fn search_tvshows<'a>(
         &self,
         query: impl Into<Cow<'a, str>>,
-        params: &SearchTVShowsParams<'a>,
+        params: &Params<'a>,
     ) -> crate::Result<crate::common::PaginatedResult<super::TVShowShort>> {
         self.execute(
             PATH,

@@ -5,11 +5,11 @@ use std::borrow::Cow;
 use crate::client::Executor;
 
 #[derive(Debug, Default, serde::Serialize)]
-pub struct ListCountriesParams<'a> {
+pub struct Params<'a> {
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> ListCountriesParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -43,10 +43,7 @@ impl<E: Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn list_countries(
-        &self,
-        params: &ListCountriesParams<'_>,
-    ) -> crate::Result<Vec<Country>> {
+    pub async fn list_countries(&self, params: &Params<'_>) -> crate::Result<Vec<Country>> {
         self.execute::<Vec<Country>, _>("/configuration/countries", params)
             .await
     }

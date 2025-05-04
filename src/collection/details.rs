@@ -44,12 +44,12 @@ pub struct Media {
 }
 
 #[derive(Clone, Debug, Default, Serialize)]
-pub struct CollectionDetailsParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> CollectionDetailsParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -64,7 +64,7 @@ impl<E: Executor> crate::Client<E> {
     pub async fn get_collection_details(
         &self,
         collection_id: u64,
-        params: &CollectionDetailsParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<CollectionDetails> {
         self.execute(&format!("/collection/{collection_id}"), params)
             .await

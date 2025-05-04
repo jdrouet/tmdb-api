@@ -3,14 +3,14 @@ use std::borrow::Cow;
 use crate::common::PaginatedResult;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GetSimilarMoviesParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
     /// Specify which page to query.
     pub page: Option<u32>,
 }
 
-impl<'a> GetSimilarMoviesParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_page(&mut self, value: u32) {
         self.page = Some(value);
     }
@@ -49,7 +49,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
     pub async fn get_similar_movies(
         &self,
         movie_id: u64,
-        params: &GetSimilarMoviesParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<PaginatedResult<super::MovieShort>> {
         let url = format!("/movie/{movie_id}/similar");
         self.execute(&url, params).await

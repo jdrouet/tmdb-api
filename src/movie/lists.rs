@@ -18,7 +18,7 @@ use crate::common::PaginatedResult;
 /// }
 /// ```
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GetMovieListsParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
@@ -27,7 +27,7 @@ pub struct GetMovieListsParams<'a> {
     pub page: Option<u32>,
 }
 
-impl<'a> GetMovieListsParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -80,7 +80,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
     pub async fn get_movie_lists(
         &self,
         movie_id: u64,
-        params: &GetMovieListsParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<PaginatedResult<MovieList>> {
         let url = format!("/movie/{movie_id}/lists");
         self.execute(&url, params).await

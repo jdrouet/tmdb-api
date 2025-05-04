@@ -3,12 +3,12 @@ use std::borrow::Cow;
 use crate::client::Executor;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GetMovieAlternativeTitlesParams<'a> {
+pub struct Params<'a> {
     /// The country to filter the alternative titles
     pub country: Option<Cow<'a, str>>,
 }
 
-impl<'a> GetMovieAlternativeTitlesParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_country(&mut self, value: impl Into<Cow<'a, str>>) {
         self.country = Some(value.into());
     }
@@ -54,7 +54,7 @@ impl<E: Executor> crate::Client<E> {
     pub async fn get_movie_alternative_titles(
         &self,
         movie_id: u64,
-        params: &GetMovieAlternativeTitlesParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<Response> {
         let url = format!("/movie/{movie_id}/alternative_titles");
         self.execute(&url, params).await

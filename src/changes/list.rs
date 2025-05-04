@@ -7,7 +7,7 @@ const MOVIE_PATH: &str = "/movie/changes";
 const PERSON_PATH: &str = "/person/changes";
 
 #[derive(Clone, Debug, Default, Serialize)]
-pub struct ChangeListParams {
+pub struct Params {
     /// Filter the results with a start date.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub start_date: Option<NaiveDate>,
@@ -19,7 +19,7 @@ pub struct ChangeListParams {
     pub page: Option<u32>,
 }
 
-impl ChangeListParams {
+impl Params {
     pub fn set_start_date(&mut self, value: NaiveDate) {
         self.start_date = Some(value);
     }
@@ -66,7 +66,7 @@ impl<E: Executor> crate::Client<E> {
     /// ```
     pub async fn list_movie_changes(
         &self,
-        params: &ChangeListParams,
+        params: &Params,
     ) -> crate::Result<crate::common::PaginatedResult<super::Change>> {
         self.execute(MOVIE_PATH, params).await
     }
@@ -88,7 +88,7 @@ impl<E: Executor> crate::Client<E> {
     /// ```
     pub async fn list_person_changes(
         &self,
-        params: &ChangeListParams,
+        params: &Params,
     ) -> crate::Result<crate::common::PaginatedResult<super::Change>> {
         self.execute(PERSON_PATH, params).await
     }
@@ -110,7 +110,7 @@ impl<E: Executor> crate::Client<E> {
     /// ```
     pub async fn list_tvshow_changes(
         &self,
-        params: &ChangeListParams,
+        params: &Params,
     ) -> crate::Result<crate::common::PaginatedResult<super::Change>> {
         self.execute(TV_PATH, params).await
     }
@@ -118,7 +118,7 @@ impl<E: Executor> crate::Client<E> {
 
 #[cfg(test)]
 mod tests {
-    use crate::changes::list::ChangeListParams;
+    use crate::changes::list::Params;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
     use chrono::NaiveDate;
@@ -175,7 +175,7 @@ mod tests {
             .unwrap();
         let result = client
             .list_tvshow_changes(
-                &ChangeListParams::default()
+                &Params::default()
                     .with_start_date(NaiveDate::from_ymd_opt(2015, 3, 14).unwrap())
                     .with_end_date(NaiveDate::from_ymd_opt(2019, 3, 14).unwrap())
                     .with_page(2),

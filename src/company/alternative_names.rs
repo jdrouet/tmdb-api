@@ -1,6 +1,6 @@
 use crate::{client::Executor, common::EntityResults};
 
-pub type GetCompanyAlternativeNameResponse = EntityResults<Vec<CompanyAlternativeName>>;
+pub type Response = EntityResults<Vec<CompanyAlternativeName>>;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct CompanyAlternativeName {
@@ -28,10 +28,7 @@ impl<E: Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn get_company_alternative_names(
-        &self,
-        company_id: u64,
-    ) -> crate::Result<GetCompanyAlternativeNameResponse> {
+    pub async fn get_company_alternative_names(&self, company_id: u64) -> crate::Result<Response> {
         let path = format!("/company/{company_id}/alternative_names");
         self.execute(&path, &()).await
     }

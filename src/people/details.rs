@@ -3,12 +3,12 @@ use std::borrow::Cow;
 use crate::client::Executor;
 
 #[derive(Debug, Default, serde::Serialize)]
-pub struct GetPersonDetailsParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> GetPersonDetailsParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -38,7 +38,7 @@ impl<E: Executor> crate::Client<E> {
     pub async fn get_person_details(
         &self,
         person_id: u64,
-        params: &GetPersonDetailsParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<super::Person> {
         let url = format!("/person/{person_id}");
         self.execute(&url, &params).await

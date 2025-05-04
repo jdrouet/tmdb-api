@@ -16,11 +16,11 @@ pub struct Response {
 }
 
 #[derive(Debug, Default, serde::Serialize)]
-pub struct ListGenresParams<'a> {
+pub struct Params<'a> {
     language: Option<Cow<'a, str>>,
 }
 
-impl<'a> ListGenresParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -47,10 +47,7 @@ impl<E: Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn list_movie_genres(
-        &self,
-        params: &ListGenresParams<'_>,
-    ) -> crate::Result<Response> {
+    pub async fn list_movie_genres(&self, params: &Params<'_>) -> crate::Result<Response> {
         self.execute(MOVIE_PATH, params).await
     }
 
@@ -69,10 +66,7 @@ impl<E: Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn list_tvshow_genres(
-        &self,
-        params: &ListGenresParams<'_>,
-    ) -> crate::Result<Response> {
+    pub async fn list_tvshow_genres(&self, params: &Params<'_>) -> crate::Result<Response> {
         self.execute(TV_PATH, params).await
     }
 }
@@ -188,7 +182,7 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::ListGenresParams;
+    use super::Params;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
 
@@ -197,7 +191,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let result = client
-            .list_tvshow_genres(&ListGenresParams::default().with_language("en-US"))
+            .list_tvshow_genres(&Params::default().with_language("en-US"))
             .await
             .unwrap();
         assert!(!result.genres.is_empty());
@@ -208,7 +202,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let result = client
-            .list_movie_genres(&ListGenresParams::default().with_language("en-US"))
+            .list_movie_genres(&Params::default().with_language("en-US"))
             .await
             .unwrap();
         assert!(!result.genres.is_empty());

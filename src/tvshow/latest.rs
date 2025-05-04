@@ -1,12 +1,12 @@
 use std::borrow::Cow;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GetLatestTVShowParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> GetLatestTVShowParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -33,10 +33,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn get_latest_tvshow(
-        &self,
-        params: &GetLatestTVShowParams<'_>,
-    ) -> crate::Result<super::TVShow> {
+    pub async fn get_latest_tvshow(&self, params: &Params<'_>) -> crate::Result<super::TVShow> {
         self.execute("/tv/latest", params).await
     }
 }

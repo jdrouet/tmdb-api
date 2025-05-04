@@ -27,8 +27,7 @@ impl<E: Executor> crate::Client<E> {
     /// }
     /// ```
     pub async fn list_languages(&self) -> crate::Result<Vec<Language>> {
-        self.execute::<Vec<Language>, _>("/configuration/languages", &())
-            .await
+        self.execute("/configuration/languages", &()).await
     }
 }
 

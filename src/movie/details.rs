@@ -3,12 +3,12 @@ use std::borrow::Cow;
 use crate::client::Executor;
 
 #[derive(Clone, Debug, Default, Serialize)]
-pub struct GetMovieDetailsParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> GetMovieDetailsParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -38,7 +38,7 @@ impl<E: Executor> crate::Client<E> {
     pub async fn get_movie_details(
         &self,
         movie_id: u64,
-        params: &GetMovieDetailsParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<super::Movie> {
         let url = format!("/movie/{movie_id}");
         self.execute(&url, params).await

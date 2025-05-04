@@ -3,12 +3,12 @@ use std::borrow::Cow;
 use crate::common::{EntityResults, video::Video};
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct GetMovieVideosParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> GetMovieVideosParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -40,7 +40,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
     pub async fn get_movie_videos(
         &self,
         movie_id: u64,
-        params: &GetMovieVideosParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<Response> {
         let url = format!("/movie/{movie_id}/videos");
         self.execute(&url, params).await

@@ -6,12 +6,12 @@ use crate::{
 };
 
 #[derive(Clone, Debug, Default, Serialize)]
-pub struct GetMovieCreditsParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> GetMovieCreditsParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -48,7 +48,7 @@ impl<E: Executor> crate::Client<E> {
     pub async fn get_movie_credits(
         &self,
         movie_id: u64,
-        params: &GetMovieCreditsParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<GetMovieCreditsResponse> {
         let url = format!("/movie/{movie_id}/credits");
         self.execute(&url, params).await
@@ -168,7 +168,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let params = super::GetMovieCreditsParams::default().with_language("fr-FR");
+        let params = super::Params::default().with_language("fr-FR");
         let result = client.get_movie_credits(550, &params).await.unwrap();
         assert_eq!(result.id, 550);
     }

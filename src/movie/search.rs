@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SearchMoviesParams<'a> {
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
@@ -20,7 +20,7 @@ pub struct SearchMoviesParams<'a> {
     pub primary_release_year: Option<u16>,
 }
 
-impl<'a> SearchMoviesParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
@@ -102,7 +102,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
     pub async fn search_movies<'a>(
         &self,
         query: impl Into<Cow<'a, str>>,
-        params: &SearchMoviesParams<'a>,
+        params: &Params<'a>,
     ) -> crate::Result<crate::common::PaginatedResult<super::MovieShort>> {
         self.execute(
             "/search/movie",

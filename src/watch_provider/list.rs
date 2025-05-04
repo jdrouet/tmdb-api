@@ -7,14 +7,14 @@ use crate::common::Results;
 use super::WatchProvider;
 
 #[derive(Debug, Default, serde::Serialize)]
-pub struct ListWatchProviderParams<'a> {
+pub struct Params<'a> {
     /// ISO 3166-1 alpha-2 value to filter the results for one country.
     pub watch_region: Option<Cow<'a, str>>,
     /// ISO 639-1 value to display translated data for the fields that support it.
     pub language: Option<Cow<'a, str>>,
 }
 
-impl<'a> ListWatchProviderParams<'a> {
+impl<'a> Params<'a> {
     pub fn set_watch_region(&mut self, value: impl Into<Cow<'a, str>>) {
         self.watch_region = Some(value.into());
     }
@@ -60,7 +60,7 @@ impl<E: Executor> crate::Client<E> {
     /// ```
     pub async fn list_movie_watch_providers(
         &self,
-        params: &ListWatchProviderParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<Results<Vec<WatchProviderDetail>>> {
         self.execute("/watch/providers/movie", params).await
     }
@@ -82,7 +82,7 @@ impl<E: Executor> crate::Client<E> {
     /// ```
     pub async fn list_tvshow_watch_providers(
         &self,
-        params: &ListWatchProviderParams<'_>,
+        params: &Params<'_>,
     ) -> crate::Result<Results<Vec<WatchProviderDetail>>> {
         self.execute("/watch/providers/tv", params).await
     }
@@ -194,7 +194,7 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::ListWatchProviderParams;
+    use super::Params;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
 
@@ -202,7 +202,7 @@ mod integration_tests {
     async fn execute_tv() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let params = ListWatchProviderParams::default().with_language("en-US");
+        let params = Params::default().with_language("en-US");
         let result = client.list_tvshow_watch_providers(&params).await.unwrap();
         assert!(!result.results.is_empty());
     }
@@ -211,7 +211,7 @@ mod integration_tests {
     async fn execute_movie() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let params = ListWatchProviderParams::default().with_language("en-US");
+        let params = Params::default().with_language("en-US");
         let result = client.list_movie_watch_providers(&params).await.unwrap();
         assert!(!result.results.is_empty());
     }
