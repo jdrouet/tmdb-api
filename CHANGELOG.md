@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.1](https://github.com/jdrouet/tmdb-api/compare/v0.9.1...v1.0.0-alpha.1) - 2025-05-04
+
+### Added
+
+- rewrite library to only use functions on the client ([#102](https://github.com/jdrouet/tmdb-api/pull/102))
+
+### Other
+
+- update readme
+
 ## [0.9.1](https://github.com/jdrouet/tmdb-api/compare/v0.9.0...v0.9.1) - 2025-04-14
 
 ### Fixed
