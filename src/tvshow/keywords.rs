@@ -1,6 +1,8 @@
 //! https://developer.themoviedb.org/reference/tv-series-keywords
 
-use crate::common::{ResultsResponse, keyword::Keyword};
+use crate::common::{EntityResults, keyword::Keyword};
+
+pub type Response = EntityResults<Vec<Keyword>>;
 
 impl<E: crate::client::Executor> crate::Client<E> {
     /// Get tvshow keywords
@@ -18,11 +20,9 @@ impl<E: crate::client::Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn get_tvshow_keywords(&self, tvshow_id: u64) -> crate::Result<Vec<Keyword>> {
+    pub async fn get_tvshow_keywords(&self, tvshow_id: u64) -> crate::Result<Response> {
         let url = format!("/tv/{tvshow_id}/keywords");
-        self.execute::<ResultsResponse<Vec<Keyword>>, _>(&url, &())
-            .await
-            .map(|res| res.results)
+        self.execute(&url, &()).await
     }
 }
 
@@ -51,7 +51,7 @@ mod tests {
             .await;
 
         let result = client.get_tvshow_keywords(1399).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.results.is_empty());
     }
 
     #[tokio::test]
@@ -112,6 +112,6 @@ mod integration_tests {
         let client = Client::<ReqwestExecutor>::new(secret);
 
         let result = client.get_tvshow_keywords(1399).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.results.is_empty());
     }
 }

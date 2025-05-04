@@ -1,6 +1,6 @@
 use crate::client::Executor;
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct CompanyImage {
     pub aspect_ratio: f64,
     pub file_path: String,
@@ -12,8 +12,8 @@ pub struct CompanyImage {
     pub vote_count: u64,
 }
 
-#[derive(Deserialize)]
-struct Response {
+#[derive(Clone, Debug, Deserialize)]
+pub struct Response {
     pub logos: Vec<CompanyImage>,
 }
 
@@ -33,11 +33,9 @@ impl<E: Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn get_company_images(&self, company_id: u64) -> crate::Result<Vec<CompanyImage>> {
+    pub async fn get_company_images(&self, company_id: u64) -> crate::Result<Response> {
         let path = format!("/company/{company_id}/images");
-        self.execute::<Response, _>(&path, &())
-            .await
-            .map(|res| res.logos)
+        self.execute(&path, &()).await
     }
 }
 
@@ -65,7 +63,7 @@ mod tests {
             .build()
             .unwrap();
         let result = client.get_company_images(1).await.unwrap();
-        assert_eq!(result.len(), 2);
+        assert_eq!(result.logos.len(), 2);
 
         m.assert_async().await;
     }
@@ -129,6 +127,6 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let result = client.get_company_images(1).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.logos.is_empty());
     }
 }

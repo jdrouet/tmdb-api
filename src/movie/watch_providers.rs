@@ -2,6 +2,8 @@ use std::collections::HashMap;
 
 use crate::watch_provider::LocatedWatchProvider;
 
+pub type Response = crate::common::EntityResults<HashMap<String, LocatedWatchProvider>>;
+
 impl<E: crate::client::Executor> crate::Client<E> {
     /// Get a list of watch providers for a movie.
     ///
@@ -18,17 +20,9 @@ impl<E: crate::client::Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn get_movie_watch_providers(
-        &self,
-        movie_id: u64,
-    ) -> crate::Result<HashMap<String, LocatedWatchProvider>> {
+    pub async fn get_movie_watch_providers(&self, movie_id: u64) -> crate::Result<Response> {
         let url = format!("/movie/{movie_id}/watch/providers");
-        self.execute::<crate::common::ResultsResponse<HashMap<String, LocatedWatchProvider>>, _>(
-            &url,
-            &(),
-        )
-        .await
-        .map(|res| res.results)
+        self.execute(&url, &()).await
     }
 }
 
@@ -57,7 +51,8 @@ mod tests {
             .await;
 
         let result = client.get_movie_watch_providers(550).await.unwrap();
-        assert!(!result.is_empty());
+        assert_eq!(result.id, 550);
+        assert!(!result.results.is_empty());
     }
 
     #[tokio::test]
@@ -118,7 +113,7 @@ mod integration_tests {
         let client = Client::<ReqwestExecutor>::new(secret);
 
         let result = client.get_movie_watch_providers(550).await.unwrap();
-        // assert_eq!(result.id, 550);
-        assert!(!result.is_empty());
+        assert_eq!(result.id, 550);
+        assert!(!result.results.is_empty());
     }
 }

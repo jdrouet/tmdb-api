@@ -1,6 +1,8 @@
 //! https://developer.themoviedb.org/reference/tv-series-content-ratings
 
-use crate::common::ResultsResponse;
+use crate::common::EntityResults;
+
+pub type Response = EntityResults<Vec<ContentRating>>;
 
 #[derive(Clone, Debug, Default, Deserialize)]
 pub struct ContentRating {
@@ -25,14 +27,9 @@ impl<E: crate::client::Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn get_tvshow_content_ratings(
-        &self,
-        tvshow_id: u64,
-    ) -> crate::Result<Vec<ContentRating>> {
+    pub async fn get_tvshow_content_ratings(&self, tvshow_id: u64) -> crate::Result<Response> {
         let url = format!("/tv/{tvshow_id}/content_ratings");
-        self.execute::<ResultsResponse<Vec<ContentRating>>, _>(&url, &())
-            .await
-            .map(|res| res.results)
+        self.execute(&url, &()).await
     }
 }
 
@@ -62,7 +59,7 @@ mod tests {
             .await;
 
         let result = client.get_tvshow_content_ratings(1399).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.results.is_empty());
     }
 
     #[tokio::test]
@@ -123,6 +120,6 @@ mod integration_tests {
         let client = Client::<ReqwestExecutor>::new(secret);
 
         let result = client.get_tvshow_content_ratings(1399).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.results.is_empty());
     }
 }

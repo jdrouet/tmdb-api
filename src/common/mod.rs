@@ -1,5 +1,3 @@
-use std::fmt::Display;
-
 pub mod country;
 pub mod credits;
 pub mod image;
@@ -17,27 +15,13 @@ pub struct PaginatedResult<T> {
     pub results: Vec<T>,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
-#[serde(rename_all = "lowercase")]
-pub enum MediaType {
-    Movie,
-    Tv,
-    Collection,
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct EntityResults<V> {
+    pub id: u64,
+    pub results: V,
 }
 
-impl Display for MediaType {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let s = match self {
-            MediaType::Movie => "movie",
-            MediaType::Tv => "tv",
-            MediaType::Collection => "collection",
-        };
-
-        write!(f, "{}", s)
-    }
-}
-
-#[derive(serde::Deserialize)]
-pub(crate) struct ResultsResponse<V> {
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct Results<V> {
     pub results: V,
 }

@@ -1,4 +1,6 @@
-use crate::{client::Executor, common::ResultsResponse};
+use crate::{client::Executor, common::EntityResults};
+
+pub type GetCompanyAlternativeNameResponse = EntityResults<Vec<CompanyAlternativeName>>;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct CompanyAlternativeName {
@@ -29,11 +31,9 @@ impl<E: Executor> crate::Client<E> {
     pub async fn get_company_alternative_names(
         &self,
         company_id: u64,
-    ) -> crate::Result<Vec<CompanyAlternativeName>> {
+    ) -> crate::Result<GetCompanyAlternativeNameResponse> {
         let path = format!("/company/{company_id}/alternative_names");
-        self.execute::<ResultsResponse<Vec<CompanyAlternativeName>>, _>(&path, &())
-            .await
-            .map(|res| res.results)
+        self.execute(&path, &()).await
     }
 }
 
@@ -61,7 +61,7 @@ mod tests {
             .build()
             .unwrap();
         let result = client.get_company_alternative_names(1).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.results.is_empty());
 
         m.assert_async().await;
     }
@@ -125,7 +125,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let result = client.get_company_alternative_names(1).await.unwrap();
-        assert!(!result.is_empty());
-        // assert_eq!(result.id, 1);
+        assert!(!result.results.is_empty());
+        assert_eq!(result.id, 1);
     }
 }

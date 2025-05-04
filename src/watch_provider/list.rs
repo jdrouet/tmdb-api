@@ -2,7 +2,7 @@ use std::borrow::Cow;
 use std::collections::HashMap;
 
 use crate::client::Executor;
-use crate::common::ResultsResponse;
+use crate::common::Results;
 
 use super::WatchProvider;
 
@@ -61,13 +61,8 @@ impl<E: Executor> crate::Client<E> {
     pub async fn list_movie_watch_providers(
         &self,
         params: &ListWatchProviderParams<'_>,
-    ) -> crate::Result<Vec<WatchProviderDetail>> {
-        self.execute::<ResultsResponse<Vec<WatchProviderDetail>>, _>(
-            "/watch/providers/movie",
-            params,
-        )
-        .await
-        .map(|res| res.results)
+    ) -> crate::Result<Results<Vec<WatchProviderDetail>>> {
+        self.execute("/watch/providers/movie", params).await
     }
 
     /// List watch providers for tvshows
@@ -88,10 +83,8 @@ impl<E: Executor> crate::Client<E> {
     pub async fn list_tvshow_watch_providers(
         &self,
         params: &ListWatchProviderParams<'_>,
-    ) -> crate::Result<Vec<WatchProviderDetail>> {
-        self.execute::<ResultsResponse<Vec<WatchProviderDetail>>, _>("/watch/providers/tv", params)
-            .await
-            .map(|res| res.results)
+    ) -> crate::Result<Results<Vec<WatchProviderDetail>>> {
+        self.execute("/watch/providers/tv", params).await
     }
 }
 
@@ -122,7 +115,7 @@ mod tests {
             .list_movie_watch_providers(&Default::default())
             .await
             .unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.results.is_empty());
     }
 
     #[tokio::test]
@@ -146,7 +139,7 @@ mod tests {
             .list_tvshow_watch_providers(&Default::default())
             .await
             .unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.results.is_empty());
     }
 
     #[tokio::test]
@@ -211,7 +204,7 @@ mod integration_tests {
         let client = Client::<ReqwestExecutor>::new(secret);
         let params = ListWatchProviderParams::default().with_language("en-US");
         let result = client.list_tvshow_watch_providers(&params).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.results.is_empty());
     }
 
     #[tokio::test]
@@ -220,6 +213,6 @@ mod integration_tests {
         let client = Client::<ReqwestExecutor>::new(secret);
         let params = ListWatchProviderParams::default().with_language("en-US");
         let result = client.list_movie_watch_providers(&params).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.results.is_empty());
     }
 }

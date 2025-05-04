@@ -1,4 +1,6 @@
-use crate::common::{ResultsResponse, release_date::LocatedReleaseDates};
+use crate::common::{EntityResults, release_date::LocatedReleaseDates};
+
+pub type Response = EntityResults<Vec<LocatedReleaseDates>>;
 
 impl<E: crate::client::Executor> crate::Client<E> {
     /// Get the release date along with the certification for a movie.
@@ -16,14 +18,9 @@ impl<E: crate::client::Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn get_movie_release_dates(
-        &self,
-        movie_id: u64,
-    ) -> crate::Result<Vec<LocatedReleaseDates>> {
+    pub async fn get_movie_release_dates(&self, movie_id: u64) -> crate::Result<Response> {
         let url = format!("/movie/{movie_id}/release_dates");
-        self.execute::<ResultsResponse<Vec<LocatedReleaseDates>>, _>(&url, &())
-            .await
-            .map(|res| res.results)
+        self.execute(&url, &()).await
     }
 }
 
@@ -52,7 +49,7 @@ mod tests {
             .await;
 
         let result = client.get_movie_release_dates(550).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.results.is_empty());
     }
 
     #[tokio::test]
@@ -112,7 +109,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let result = client.get_movie_release_dates(550).await.unwrap();
-        assert!(!result.is_empty());
-        // assert_eq!(result.id, 550);
+        assert!(!result.results.is_empty());
+        assert_eq!(result.id, 550);
     }
 }

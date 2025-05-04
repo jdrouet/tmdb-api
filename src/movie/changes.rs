@@ -41,13 +41,13 @@ impl GetMovieChangesParams {
     }
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct MovieChange {
     pub key: String,
     pub items: Vec<MovieChangeItem>,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct MovieChangeItem {
     pub id: String,
     pub action: String,
@@ -59,9 +59,9 @@ pub struct MovieChangeItem {
     // pub original_value: String,
 }
 
-#[derive(Deserialize)]
-struct Response {
-    changes: Vec<MovieChange>,
+#[derive(Clone, Debug, Deserialize)]
+pub struct Response {
+    pub changes: Vec<MovieChange>,
 }
 
 impl<E: Executor> crate::Client<E> {
@@ -84,11 +84,9 @@ impl<E: Executor> crate::Client<E> {
         &self,
         movie_id: u64,
         params: &GetMovieChangesParams,
-    ) -> crate::Result<Vec<MovieChange>> {
+    ) -> crate::Result<Response> {
         let url = format!("/movie/{movie_id}/changes");
-        self.execute::<Response, _>(&url, params)
-            .await
-            .map(|res| res.changes)
+        self.execute(&url, params).await
     }
 }
 
@@ -119,7 +117,7 @@ mod tests {
             .get_movie_changes(3, &Default::default())
             .await
             .unwrap();
-        assert_eq!(result.len(), 1);
+        assert_eq!(result.changes.len(), 1);
 
         m.assert_async().await;
     }
@@ -193,6 +191,6 @@ mod integration_tests {
             .with_start_date(chrono::NaiveDate::from_ymd_opt(2015, 3, 14).unwrap())
             .with_end_date(chrono::NaiveDate::from_ymd_opt(2019, 3, 14).unwrap());
         let result = client.get_movie_changes(1, &params).await.unwrap();
-        assert!(result.is_empty());
+        assert!(result.changes.is_empty());
     }
 }

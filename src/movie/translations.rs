@@ -1,4 +1,4 @@
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct TranslationData {
     #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub title: Option<String>,
@@ -8,7 +8,7 @@ pub struct TranslationData {
     pub homepage: Option<String>,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Translation {
     pub iso_3166_1: String,
     pub iso_639_1: String,
@@ -17,9 +17,10 @@ pub struct Translation {
     pub data: TranslationData,
 }
 
-#[derive(Deserialize)]
-struct Response {
-    translations: Vec<Translation>,
+#[derive(Clone, Debug, Deserialize)]
+pub struct Response {
+    pub id: u64,
+    pub translations: Vec<Translation>,
 }
 
 impl<E: crate::client::Executor> crate::Client<E> {
@@ -38,11 +39,9 @@ impl<E: crate::client::Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn get_movie_translations(&self, movie_id: u64) -> crate::Result<Vec<Translation>> {
+    pub async fn get_movie_translations(&self, movie_id: u64) -> crate::Result<Response> {
         let url = format!("/movie/{movie_id}/translations");
-        self.execute::<Response, _>(&url, &())
-            .await
-            .map(|res| res.translations)
+        self.execute(&url, &()).await
     }
 }
 
@@ -71,7 +70,7 @@ mod tests {
             .await;
 
         let result = client.get_movie_translations(550).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.translations.is_empty());
     }
 
     #[tokio::test]
@@ -132,7 +131,7 @@ mod integration_tests {
         let client = Client::<ReqwestExecutor>::new(secret);
 
         let result = client.get_movie_translations(550).await.unwrap();
-        assert!(!result.is_empty());
-        // assert_eq!(result.id, 550);
+        assert!(!result.translations.is_empty());
+        assert_eq!(result.id, 550);
     }
 }

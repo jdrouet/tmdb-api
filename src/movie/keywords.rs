@@ -1,8 +1,9 @@
 use crate::{client::Executor, common::keyword::Keyword};
 
-#[derive(Deserialize)]
-struct Response {
-    keywords: Vec<Keyword>,
+#[derive(Clone, Debug, Deserialize)]
+pub struct Response {
+    pub id: u64,
+    pub keywords: Vec<Keyword>,
 }
 
 impl<E: Executor> crate::Client<E> {
@@ -21,11 +22,9 @@ impl<E: Executor> crate::Client<E> {
     ///     };
     /// }
     /// ```
-    pub async fn get_movie_keywords(&self, movie_id: u64) -> crate::Result<Vec<Keyword>> {
+    pub async fn get_movie_keywords(&self, movie_id: u64) -> crate::Result<Response> {
         let url = format!("/movie/{movie_id}/keywords");
-        self.execute::<Response, _>(&url, &())
-            .await
-            .map(|res| res.keywords)
+        self.execute::<Response, _>(&url, &()).await
     }
 }
 
@@ -53,7 +52,7 @@ mod tests {
             .build()
             .unwrap();
         let result = client.get_movie_keywords(550).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.keywords.is_empty());
     }
 
     #[tokio::test]
@@ -111,6 +110,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
         let result = client.get_movie_keywords(550).await.unwrap();
-        assert!(!result.is_empty());
+        assert_eq!(result.id, 550);
+        assert!(!result.keywords.is_empty());
     }
 }

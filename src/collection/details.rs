@@ -1,6 +1,14 @@
 use std::borrow::Cow;
 
-use crate::{client::Executor, common::MediaType};
+use crate::client::Executor;
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(rename_all = "lowercase")]
+pub enum MediaType {
+    Movie,
+    Tv,
+    Collection,
+}
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct CollectionDetails {

@@ -10,9 +10,9 @@ use super::Genre;
 const TV_PATH: &str = "/genre/tv/list";
 const MOVIE_PATH: &str = "/genre/movie/list";
 
-#[derive(Deserialize)]
-struct GenreResult {
-    genres: Vec<Genre>,
+#[derive(Clone, Debug, Deserialize)]
+pub struct Response {
+    pub genres: Vec<Genre>,
 }
 
 #[derive(Debug, Default, serde::Serialize)]
@@ -50,10 +50,8 @@ impl<E: Executor> crate::Client<E> {
     pub async fn list_movie_genres(
         &self,
         params: &ListGenresParams<'_>,
-    ) -> crate::Result<Vec<Genre>> {
-        self.execute::<GenreResult, _>(MOVIE_PATH, params)
-            .await
-            .map(|res| res.genres)
+    ) -> crate::Result<Response> {
+        self.execute(MOVIE_PATH, params).await
     }
 
     /// List genres for tvshows
@@ -74,10 +72,8 @@ impl<E: Executor> crate::Client<E> {
     pub async fn list_tvshow_genres(
         &self,
         params: &ListGenresParams<'_>,
-    ) -> crate::Result<Vec<Genre>> {
-        self.execute::<GenreResult, _>(TV_PATH, params)
-            .await
-            .map(|res| res.genres)
+    ) -> crate::Result<Response> {
+        self.execute(TV_PATH, params).await
     }
 }
 
@@ -106,7 +102,7 @@ mod tests {
             .build()
             .unwrap();
         let result = client.list_movie_genres(&Default::default()).await.unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.genres.is_empty());
 
         m.assert_async().await;
     }
@@ -132,7 +128,7 @@ mod tests {
             .list_tvshow_genres(&Default::default())
             .await
             .unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.genres.is_empty());
 
         m.assert_async().await;
     }
@@ -204,7 +200,7 @@ mod integration_tests {
             .list_tvshow_genres(&ListGenresParams::default().with_language("en-US"))
             .await
             .unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.genres.is_empty());
     }
 
     #[tokio::test]
@@ -215,6 +211,6 @@ mod integration_tests {
             .list_movie_genres(&ListGenresParams::default().with_language("en-US"))
             .await
             .unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.genres.is_empty());
     }
 }

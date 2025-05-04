@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-use crate::common::{ResultsResponse, video::Video};
+use crate::common::{EntityResults, video::Video};
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GetMovieVideosParams<'a> {
@@ -18,6 +18,8 @@ impl<'a> GetMovieVideosParams<'a> {
         self
     }
 }
+
+pub type Response = EntityResults<Vec<Video>>;
 
 impl<E: crate::client::Executor> crate::Client<E> {
     /// Get a list of translations that have been created for a movie.
@@ -39,11 +41,9 @@ impl<E: crate::client::Executor> crate::Client<E> {
         &self,
         movie_id: u64,
         params: &GetMovieVideosParams<'_>,
-    ) -> crate::Result<Vec<Video>> {
+    ) -> crate::Result<Response> {
         let url = format!("/movie/{movie_id}/videos");
-        self.execute::<ResultsResponse<Vec<Video>>, _>(&url, params)
-            .await
-            .map(|res| res.results)
+        self.execute(&url, params).await
     }
 }
 
@@ -75,7 +75,8 @@ mod tests {
             .get_movie_videos(550, &Default::default())
             .await
             .unwrap();
-        assert!(!result.is_empty());
+        assert_eq!(result.id, 550);
+        assert!(!result.results.is_empty());
     }
 
     #[tokio::test]
@@ -145,7 +146,7 @@ mod integration_tests {
             .get_movie_videos(550, &Default::default())
             .await
             .unwrap();
-        // assert_eq!(result.id, 550);
-        assert!(!result.is_empty());
+        assert_eq!(result.id, 550);
+        assert!(!result.results.is_empty());
     }
 }

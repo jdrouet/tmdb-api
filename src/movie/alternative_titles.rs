@@ -19,7 +19,7 @@ impl<'a> GetMovieAlternativeTitlesParams<'a> {
     }
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct MovieAlternativeTitle {
     pub iso_3166_1: String,
     pub title: String,
@@ -30,9 +30,9 @@ pub struct MovieAlternativeTitle {
     pub kind: Option<String>,
 }
 
-#[derive(Deserialize)]
-struct Response {
-    titles: Vec<MovieAlternativeTitle>,
+#[derive(Clone, Debug, Deserialize)]
+pub struct Response {
+    pub titles: Vec<MovieAlternativeTitle>,
 }
 
 impl<E: Executor> crate::Client<E> {
@@ -55,11 +55,9 @@ impl<E: Executor> crate::Client<E> {
         &self,
         movie_id: u64,
         params: &GetMovieAlternativeTitlesParams<'_>,
-    ) -> crate::Result<Vec<MovieAlternativeTitle>> {
+    ) -> crate::Result<Response> {
         let url = format!("/movie/{movie_id}/alternative_titles");
-        self.execute::<Response, _>(&url, params)
-            .await
-            .map(|res| res.titles)
+        self.execute(&url, params).await
     }
 }
 
@@ -90,7 +88,7 @@ mod tests {
             .get_movie_alternative_titles(3, &Default::default())
             .await
             .unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.titles.is_empty());
 
         m.assert_async().await;
     }
@@ -163,6 +161,6 @@ mod integration_tests {
             .get_movie_alternative_titles(3, &Default::default())
             .await
             .unwrap();
-        assert!(!result.is_empty());
+        assert!(!result.titles.is_empty());
     }
 }
