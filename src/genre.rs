@@ -3,10 +3,14 @@
 
 use crate::client::Executor;
 
-use super::Genre;
-
 const TV_PATH: &str = "/genre/tv/list";
 const MOVIE_PATH: &str = "/genre/movie/list";
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct Genre {
+    pub id: u64,
+    pub name: String,
+}
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct Response {
@@ -70,7 +74,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/genre-movie-list.json"))
+            .with_body(include_str!("../assets/genre-movie-list.json"))
             .create_async()
             .await;
 
@@ -93,7 +97,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/genre-tv-list.json"))
+            .with_body(include_str!("../assets/genre-tv-list.json"))
             .create_async()
             .await;
 
@@ -119,7 +123,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/invalid-api-key.json"))
+            .with_body(include_str!("../assets/invalid-api-key.json"))
             .create_async()
             .await;
         let client = Client::<ReqwestExecutor>::builder()
@@ -146,7 +150,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/resource-not-found.json"))
+            .with_body(include_str!("../assets/resource-not-found.json"))
             .create_async()
             .await;
         let client = Client::<ReqwestExecutor>::builder()
