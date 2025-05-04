@@ -1,8 +1,7 @@
-#[cfg(feature = "commands")]
 pub mod alternative_names;
-#[cfg(feature = "commands")]
+
 pub mod details;
-#[cfg(feature = "commands")]
+
 pub mod images;
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]

@@ -1,4 +1,3 @@
-#[cfg(feature = "commands")]
 pub mod details;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]

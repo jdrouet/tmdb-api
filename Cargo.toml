@@ -11,9 +11,6 @@ readme = "readme.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [features]
-default = ["commands"]
-commands = ["dep:reqwest"]
-
 # only used for testing
 integration = []
 
@@ -25,7 +22,7 @@ chrono = { version = "0.4", default-features = false, features = [
 reqwest = { version = "0.12", default-features = false, features = [
     "json",
     "rustls-tls",
-], optional = true }
+] }
 serde = { version = "1.0", features = ["derive"] }
 serde_repr = { version = "0.1" }
 thiserror = { version = "1.0" }

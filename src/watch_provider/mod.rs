@@ -1,6 +1,5 @@
 use std::collections::HashMap;
 
-#[cfg(feature = "commands")]
 pub mod list;
 
 #[derive(Clone, Debug, Deserialize, Serialize)]

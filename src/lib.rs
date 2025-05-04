@@ -11,15 +11,13 @@ extern crate serde;
 extern crate serde_repr;
 
 /// The used version of reqwest
-#[cfg(feature = "commands")]
 pub use reqwest;
 
-#[cfg(feature = "commands")]
 pub use client::Client;
 
 pub mod certification;
 pub mod changes;
-#[cfg(feature = "commands")]
+
 pub mod client;
 pub mod collection;
 pub mod company;
