@@ -2,90 +2,78 @@ use std::borrow::Cow;
 
 use crate::common::PaginatedResult;
 
-/// Get a list of the current popular movies on TMDB. This list updates daily.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::popular::MoviePopular;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let result = MoviePopular::default().execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MoviePopular {
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ListPopularMoviesParams<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    pub language: Option<Cow<'a, str>>,
     /// Specify which page to query.
     pub page: Option<u32>,
     /// Specify a ISO 3166-1 code to filter release dates. Must be uppercase.
-    pub region: Option<String>,
+    pub region: Option<Cow<'a, str>>,
 }
 
-impl MoviePopular {
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+impl<'a> ListPopularMoviesParams<'a> {
+    pub fn set_page(&mut self, value: u32) {
+        self.page = Some(value);
+    }
+
+    pub fn with_page(mut self, value: u32) -> Self {
+        self.set_page(value);
         self
     }
 
-    pub fn with_page(mut self, value: Option<u32>) -> Self {
-        self.page = value;
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
+    }
+
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 
-    pub fn with_region(mut self, value: Option<String>) -> Self {
-        self.region = value;
+    pub fn set_region(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.region = Some(value.into());
+    }
+
+    pub fn with_region(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_region(value);
         self
     }
 }
 
-impl crate::prelude::Command for MoviePopular {
-    type Output = PaginatedResult<super::MovieShort>;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Borrowed("/movie/popular")
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        let mut res = Vec::new();
-        if let Some(ref language) = self.language {
-            res.push(("language", Cow::Borrowed(language.as_str())))
-        }
-        if let Some(ref page) = self.page {
-            res.push(("page", Cow::Owned(page.to_string())))
-        }
-        if let Some(ref region) = self.region {
-            res.push(("region", Cow::Borrowed(region.as_str())))
-        }
-        res
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get a list of the current popular movies on TMDB. This list updates daily.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_popular_movies(&Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_popular_movies(
+        &self,
+        params: &ListPopularMoviesParams<'_>,
+    ) -> crate::Result<PaginatedResult<super::MovieShort>> {
+        self.execute("/movie/popular", params).await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MoviePopular;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-
         let _m = server
             .mock("GET", "/movie/popular")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -95,7 +83,15 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MoviePopular::default().execute(&client).await.unwrap();
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let result = client
+            .list_popular_movies(&Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.page, 1);
     }
 
@@ -117,7 +113,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MoviePopular::default().execute(&client).await.unwrap_err();
+        let err = client
+            .list_popular_movies(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -140,7 +139,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MoviePopular::default().execute(&client).await.unwrap_err();
+        let err = client
+            .list_popular_movies(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -157,7 +159,9 @@ mod integration_tests {
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-
-        let _result = MoviePopular::default().execute(&client).await.unwrap();
+        let _result = client
+            .list_popular_movies(&Default::default())
+            .await
+            .unwrap();
     }
 }

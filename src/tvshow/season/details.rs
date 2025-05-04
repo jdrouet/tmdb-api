@@ -1,62 +1,46 @@
 use std::borrow::Cow;
 
-/// Command to get the details of a tvshow season
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::tvshow::season::details::TVShowSeasonDetails;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = TVShowSeasonDetails::new(1, 1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct TVShowSeasonDetails {
-    /// ID of the TV Show
-    pub tv_id: u64,
-    /// Number of the season
-    pub season_number: u64,
+#[derive(Clone, Debug, Default, Serialize)]
+pub struct GetTVShowSeasonDetailsParams<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    pub language: Option<Cow<'a, str>>,
 }
 
-impl TVShowSeasonDetails {
-    pub fn new(tv_id: u64, season_number: u64) -> Self {
-        Self {
-            tv_id,
-            season_number,
-            language: None,
-        }
+impl<'a> GetTVShowSeasonDetailsParams<'a> {
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
     }
 
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 }
 
-impl crate::prelude::Command for TVShowSeasonDetails {
-    type Output = crate::tvshow::Season;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/tv/{}/season/{}", self.tv_id, self.season_number))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        if let Some(language) = self.language.as_ref() {
-            vec![("language", Cow::Borrowed(language.as_str()))]
-        } else {
-            Vec::new()
-        }
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get tvshow season details
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_tvshow_details(42, &Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_tvshow_season_details(
+        &self,
+        tvshow_id: u64,
+        season_number: u64,
+        params: &GetTVShowSeasonDetailsParams<'_>,
+    ) -> crate::Result<crate::tvshow::Season> {
+        let url = format!("/tv/{tvshow_id}/season/{season_number}");
+        self.execute(&url, params).await
     }
 }
 
@@ -66,9 +50,6 @@ mod tests {
 
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::TVShowSeasonDetails;
 
     #[tokio::test]
     async fn it_works() {
@@ -88,8 +69,8 @@ mod tests {
             .create_async()
             .await;
 
-        let result = TVShowSeasonDetails::new(1399, 1)
-            .execute(&client)
+        let result = client
+            .get_tvshow_season_details(1399, 1, &Default::default())
             .await
             .unwrap();
         assert_eq!(result.inner.id, 3624);
@@ -113,8 +94,8 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowSeasonDetails::new(1399, 1)
-            .execute(&client)
+        let err = client
+            .get_tvshow_season_details(1399, 1, &Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -139,8 +120,8 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowSeasonDetails::new(1399, 1)
-            .execute(&client)
+        let err = client
+            .get_tvshow_season_details(1399, 1, &Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -161,9 +142,9 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        for (tv_id, season_id) in [(1, 2328126u64)] {
-            let result = TVShowSeasonDetails::new(tv_id, 1)
-                .execute(&client)
+        for (tv_id, season_id) in [(1, 1), (2328126u64, 1)] {
+            let result = client
+                .get_tvshow_season_details(tv_id, season_id, &Default::default())
                 .await
                 .unwrap();
             assert_eq!(result.inner.id, season_id);

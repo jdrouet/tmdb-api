@@ -21,7 +21,6 @@ impl<E: Executor> crate::Client<E> {
     /// ```rust
     /// use tmdb_api::Client;
     /// use tmdb_api::client::reqwest::ReqwestExecutor;
-    /// use tmdb_api::certification::list::CertificationList;
     ///
     /// #[tokio::main]
     /// async fn main() {
@@ -35,7 +34,7 @@ impl<E: Executor> crate::Client<E> {
     pub async fn list_movie_certifications(
         &self,
     ) -> Result<HashMap<String, Vec<Certification>>, crate::error::Error> {
-        self.execute::<CertificationResult>(MOVIE_PATH, Vec::default())
+        self.execute::<CertificationResult, _>(MOVIE_PATH, &())
             .await
             .map(|res| res.certifications)
     }
@@ -45,7 +44,6 @@ impl<E: Executor> crate::Client<E> {
     /// ```rust
     /// use tmdb_api::Client;
     /// use tmdb_api::client::reqwest::ReqwestExecutor;
-    /// use tmdb_api::certification::list::CertificationList;
     ///
     /// #[tokio::main]
     /// async fn main() {
@@ -59,7 +57,7 @@ impl<E: Executor> crate::Client<E> {
     pub async fn list_tvshow_certifications(
         &self,
     ) -> Result<HashMap<String, Vec<Certification>>, crate::error::Error> {
-        self.execute::<CertificationResult>(TV_PATH, Vec::default())
+        self.execute::<CertificationResult, _>(TV_PATH, &())
             .await
             .map(|res| res.certifications)
     }

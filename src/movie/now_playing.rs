@@ -3,51 +3,41 @@ use std::borrow::Cow;
 
 use crate::common::PaginatedResult;
 
-/// Get a list of movies in theatres. This is a release type query that looks for
-/// all movies that have a release type of 2 or 3 within the specified date range.
-///
-/// You can optionally specify a region parameter which will narrow the search
-/// to only look for theatrical release dates within the specified country.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::now_playing::MovieNowPlaying;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let result = MovieNowPlaying::default().execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieNowPlaying {
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct ListMoviesNowPlayingParams<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    pub language: Option<Cow<'a, str>>,
     /// Specify which page to query.
     pub page: Option<u32>,
     /// Specify a ISO 3166-1 code to filter release dates. Must be uppercase.
-    pub region: Option<String>,
+    pub region: Option<Cow<'a, str>>,
 }
 
-impl MovieNowPlaying {
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+impl<'a> ListMoviesNowPlayingParams<'a> {
+    pub fn set_page(&mut self, value: u32) {
+        self.page = Some(value);
+    }
+
+    pub fn with_page(mut self, value: u32) -> Self {
+        self.set_page(value);
         self
     }
 
-    pub fn with_page(mut self, value: Option<u32>) -> Self {
-        self.page = value;
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
+    }
+
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 
-    pub fn with_region(mut self, value: Option<String>) -> Self {
-        self.region = value;
+    pub fn set_region(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.region = Some(value.into());
+    }
+
+    pub fn with_region(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_region(value);
         self
     }
 }
@@ -61,40 +51,44 @@ pub struct DateRange {
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct MovieNowPlayingResult {
+pub struct ListMoviesNowPlayingResponse {
     #[serde(flatten)]
     pub inner: PaginatedResult<super::MovieShort>,
     pub dates: DateRange,
 }
 
-impl crate::prelude::Command for MovieNowPlaying {
-    type Output = MovieNowPlayingResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Borrowed("/movie/now_playing")
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        let mut res = Vec::new();
-        if let Some(ref language) = self.language {
-            res.push(("language", Cow::Borrowed(language.as_str())))
-        }
-        if let Some(ref page) = self.page {
-            res.push(("page", Cow::Owned(page.to_string())))
-        }
-        if let Some(ref region) = self.region {
-            res.push(("region", Cow::Borrowed(region.as_str())))
-        }
-        res
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get a list of movies in theatres. This is a release type query that looks for
+    /// all movies that have a release type of 2 or 3 within the specified date range.
+    ///
+    /// You can optionally specify a region parameter which will narrow the search
+    /// to only look for theatrical release dates within the specified country.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_movies_now_playing(&Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_movies_now_playing(
+        &self,
+        params: &ListMoviesNowPlayingParams<'_>,
+    ) -> crate::Result<ListMoviesNowPlayingResponse> {
+        self.execute("/movie/now_playing", params).await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MovieNowPlaying;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -115,7 +109,10 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MovieNowPlaying::default().execute(&client).await.unwrap();
+        let result = client
+            .list_movies_now_playing(&Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.inner.page, 1);
     }
 
@@ -137,8 +134,8 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieNowPlaying::default()
-            .execute(&client)
+        let err = client
+            .list_movies_now_playing(&Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -163,8 +160,8 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieNowPlaying::default()
-            .execute(&client)
+        let err = client
+            .list_movies_now_playing(&Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -174,16 +171,18 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieNowPlaying;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let _result = MovieNowPlaying::default().execute(&client).await.unwrap();
+        let _result = client
+            .list_movies_now_playing(&Default::default())
+            .execute(&client)
+            .await
+            .unwrap();
     }
 }

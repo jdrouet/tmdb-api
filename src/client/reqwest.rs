@@ -1,5 +1,3 @@
-use std::borrow::Cow;
-
 #[derive(Debug, Default)]
 pub struct ReqwestExecutor {
     inner: reqwest::Client,
@@ -20,11 +18,11 @@ impl From<reqwest::Error> for crate::error::Error {
 }
 
 impl super::prelude::Executor for ReqwestExecutor {
-    async fn execute<T: serde::de::DeserializeOwned>(
+    async fn execute<T: serde::de::DeserializeOwned, P: serde::Serialize>(
         &self,
         url: &str,
-        params: Vec<(&str, Cow<'_, str>)>,
-    ) -> Result<T, crate::error::Error> {
+        params: P,
+    ) -> crate::Result<T> {
         let res = self
             .inner
             .get(url)

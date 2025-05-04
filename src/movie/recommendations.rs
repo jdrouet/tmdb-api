@@ -2,80 +2,64 @@ use std::borrow::Cow;
 
 use crate::common::PaginatedResult;
 
-/// Get a list of recommended movies for a movie.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::recommendations::MovieRecommendations;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieRecommendations::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieRecommendations {
-    /// ID of the movie.
-    pub movie_id: u64,
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GetMovieRecommendations<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    pub language: Option<Cow<'a, str>>,
     /// Specify which page to query.
     pub page: Option<u32>,
 }
 
-impl MovieRecommendations {
-    pub fn new(movie_id: u64) -> Self {
-        Self {
-            movie_id,
-            language: None,
-            page: None,
-        }
+impl<'a> GetMovieRecommendations<'a> {
+    pub fn set_page(&mut self, value: u32) {
+        self.page = Some(value);
     }
 
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+    pub fn with_page(mut self, value: u32) -> Self {
+        self.set_page(value);
         self
     }
 
-    pub fn with_page(mut self, value: Option<u32>) -> Self {
-        self.page = value;
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
+    }
+
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 }
 
-impl crate::prelude::Command for MovieRecommendations {
-    type Output = PaginatedResult<super::MovieShort>;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/movie/{}/recommendations", self.movie_id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        let mut res = Vec::with_capacity(2);
-        if let Some(language) = self.language.as_ref() {
-            res.push(("language", Cow::Borrowed(language.as_str())));
-        }
-        if let Some(page) = self.page {
-            res.push(("page", Cow::Owned(page.to_string())));
-        }
-        res
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get a list of recommended movies for a movie.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_movie_recommendations(1, &Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_movie_recommendations(
+        &self,
+        movie_id: u64,
+        params: &GetMovieRecommendations<'_>,
+    ) -> crate::Result<PaginatedResult<super::MovieShort>> {
+        let url = format!("/movie/{movie_id}/recommendations");
+        self.execute(&url, params).await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MovieRecommendations;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -96,8 +80,8 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MovieRecommendations::new(550)
-            .execute(&client)
+        let result = client
+            .get_movie_recommendations(550, &Default::default())
             .await
             .unwrap();
         assert_eq!(result.page, 1);
@@ -122,8 +106,8 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieRecommendations::new(550)
-            .execute(&client)
+        let err = client
+            .get_movie_recommendations(550, &Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -148,8 +132,8 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieRecommendations::new(550)
-            .execute(&client)
+        let err = client
+            .get_movie_recommendations(550, &Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -169,8 +153,8 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = MovieRecommendations::new(550)
-            .execute(&client)
+        let result = client
+            .get_movie_recommendations(550, &Default::default())
             .await
             .unwrap();
         assert_eq!(result.page, 1);

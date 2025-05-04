@@ -1,35 +1,8 @@
 //! https://developer.themoviedb.org/reference/tv-series-content-ratings
 
-use std::borrow::Cow;
-
-/// Command to get the content ratings of a TV show.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::tvshow::content_rating::TVShowContentRating;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = TVShowContentRating::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {res:#?}"),
-///         Err(err) => eprintln!("error: {err:?}"),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct TVShowContentRating {
-    pub id: u64,
-}
-
-#[derive(Clone, Debug, Default, Deserialize)]
-pub struct ContentRatingResult {
-    pub id: u64,
-    pub results: Vec<ContentRating>,
+#[derive(Deserialize)]
+struct Response {
+    results: Vec<ContentRating>,
 }
 
 #[derive(Clone, Debug, Default, Deserialize)]
@@ -39,21 +12,30 @@ pub struct ContentRating {
     pub rating: String,
 }
 
-impl TVShowContentRating {
-    pub fn new(tv_show_id: u64) -> Self {
-        Self { id: tv_show_id }
-    }
-}
-
-impl crate::prelude::Command for TVShowContentRating {
-    type Output = ContentRatingResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/tv/{}/content_ratings", self.id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        Vec::new()
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get tvshow content ratings
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_tvshow_content_ratings(42).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_tvshow_content_ratings(
+        &self,
+        tvshow_id: u64,
+    ) -> crate::Result<Vec<ContentRating>> {
+        let url = format!("/tv/{tvshow_id}/content_ratings");
+        self.execute::<Response, _>(&url, &())
+            .await
+            .map(|res| res.results)
     }
 }
 
@@ -63,9 +45,6 @@ mod tests {
 
     use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::TVShowContentRating;
 
     #[tokio::test]
     async fn it_works() {
@@ -85,12 +64,8 @@ mod tests {
             .create_async()
             .await;
 
-        let result = TVShowContentRating::new(1399)
-            .execute(&client)
-            .await
-            .unwrap();
-        assert_eq!(result.id, 1399);
-        assert!(!result.results.is_empty());
+        let result = client.get_tvshow_content_ratings(1399).await.unwrap();
+        assert!(!result.is_empty());
     }
 
     #[tokio::test]
@@ -111,10 +86,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowContentRating::new(1399)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = client.get_tvshow_content_ratings(1399).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -137,10 +109,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowContentRating::new(1399)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = client.get_tvshow_content_ratings(1399).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -159,11 +128,7 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = TVShowContentRating::new(1399)
-            .execute(&client)
-            .await
-            .unwrap();
-        assert_eq!(result.id, 1399);
-        assert!(!result.results.is_empty());
+        let result = client.get_tvshow_content_ratings(1399).await.unwrap();
+        assert!(!result.is_empty());
     }
 }

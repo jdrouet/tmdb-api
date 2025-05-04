@@ -2,75 +2,60 @@ use std::borrow::Cow;
 
 use crate::common::video::Video;
 
-/// Get a list of recommended movies for a movie.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::videos::MovieVideos;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieVideos::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieVideos {
-    /// ID of the movie.
-    pub movie_id: u64,
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GetMovieVideosParams<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    pub language: Option<Cow<'a, str>>,
 }
 
-impl MovieVideos {
-    pub fn new(movie_id: u64) -> Self {
-        Self {
-            movie_id,
-            language: None,
-        }
+impl<'a> GetMovieVideosParams<'a> {
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
     }
 
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 }
 
-#[derive(Debug, Deserialize)]
-pub struct MovieVideosResult {
-    pub id: u64,
-    pub results: Vec<Video>,
+#[derive(Deserialize)]
+struct Response {
+    results: Vec<Video>,
 }
 
-impl crate::prelude::Command for MovieVideos {
-    type Output = MovieVideosResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/movie/{}/videos", self.movie_id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        let mut res = Vec::with_capacity(1);
-        if let Some(language) = self.language.as_ref() {
-            res.push(("language", Cow::Borrowed(language.as_str())));
-        }
-        res
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get a list of translations that have been created for a movie.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_movie_translations(1).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_movie_videos(
+        &self,
+        movie_id: u64,
+        params: &GetMovieVideosParams<'_>,
+    ) -> crate::Result<Vec<Video>> {
+        let url = format!("/movie/{movie_id}/videos");
+        self.execute::<Response, _>(&url, params)
+            .await
+            .map(|res| res.results)
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MovieVideos;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -91,9 +76,11 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MovieVideos::new(550).execute(&client).await.unwrap();
-        assert_eq!(result.id, 550);
-        assert!(!result.results.is_empty());
+        let result = client
+            .get_movie_videos(550, &Default::default())
+            .await
+            .unwrap();
+        assert!(!result.is_empty());
     }
 
     #[tokio::test]
@@ -114,7 +101,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieVideos::new(550).execute(&client).await.unwrap_err();
+        let err = client
+            .get_movie_videos(550, &Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -137,7 +127,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieVideos::new(550).execute(&client).await.unwrap_err();
+        let err = client
+            .get_movie_videos(550, &Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -145,17 +138,18 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieVideos;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = MovieVideos::new(550).execute(&client).await.unwrap();
+        let result = client
+            .get_movie_videos(550, &Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.id, 550);
     }
 }

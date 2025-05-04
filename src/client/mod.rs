@@ -71,6 +71,13 @@ impl<E: prelude::Executor> ClientBuilder<E> {
     }
 }
 
+#[derive(Serialize)]
+struct WithApiKey<'a, V> {
+    api_key: &'a str,
+    #[serde(flatten)]
+    inner: V,
+}
+
 /// HTTP client for TMDB
 ///
 /// ```rust
@@ -112,14 +119,31 @@ impl<E: Executor> Client<E> {
         &self.base_url
     }
 
-    pub async fn execute<T: serde::de::DeserializeOwned>(
+    // pub async fn execute<T: serde::de::DeserializeOwned>(
+    //     &self,
+    //     path: &str,
+    //     mut params: Vec<(&str, Cow<'_, str>)>,
+    // ) -> Result<T, crate::error::Error> {
+    //     params.push(("api_key", Cow::Borrowed(self.api_key.as_str())));
+
+    //     let url = format!("{}{}", self.base_url, path);
+    //     self.executor.execute(&url, params).await
+    // }
+
+    pub async fn execute<T: serde::de::DeserializeOwned, P: serde::Serialize>(
         &self,
         path: &str,
-        mut params: Vec<(&str, Cow<'_, str>)>,
+        params: &P,
     ) -> Result<T, crate::error::Error> {
-        params.push(("api_key", Cow::Borrowed(self.api_key.as_str())));
-
         let url = format!("{}{}", self.base_url, path);
-        self.executor.execute(&url, params).await
+        self.executor
+            .execute(
+                &url,
+                WithApiKey {
+                    api_key: &self.api_key,
+                    inner: params,
+                },
+            )
+            .await
     }
 }

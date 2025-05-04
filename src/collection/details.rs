@@ -1,36 +1,9 @@
 use std::borrow::Cow;
 
-use crate::common::MediaType;
-
-/// Command to get the details of a collection
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::collection::details::CollectionDetails;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = CollectionDetails::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct CollectionDetails {
-    /// ID of the collection
-    pub collection_id: u64,
-    /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
-}
+use crate::{client::Executor, common::MediaType};
 
 #[derive(Debug, Deserialize, Serialize)]
-pub struct CollectionDetailsResult {
+pub struct CollectionDetails {
     #[serde(flatten)]
     pub inner: super::CollectionBase,
     pub parts: Vec<Media>,
@@ -62,33 +35,31 @@ pub struct Media {
     pub release_date: Option<chrono::NaiveDate>,
 }
 
-impl CollectionDetails {
-    pub fn new(collection_id: u64) -> Self {
-        Self {
-            collection_id,
-            language: None,
-        }
+#[derive(Clone, Debug, Default, Serialize)]
+pub struct CollectionDetailsParams<'a> {
+    /// ISO 639-1 value to display translated data for the fields that support it.
+    pub language: Option<Cow<'a, str>>,
+}
+
+impl<'a> CollectionDetailsParams<'a> {
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
     }
 
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 }
 
-impl crate::prelude::Command for CollectionDetails {
-    type Output = CollectionDetailsResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/collection/{}", self.collection_id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        if let Some(ref language) = self.language {
-            vec![("language", Cow::Borrowed(language))]
-        } else {
-            Vec::new()
-        }
+impl<E: Executor> crate::Client<E> {
+    pub async fn get_collection_details(
+        &self,
+        collection_id: u64,
+        params: &CollectionDetailsParams<'_>,
+    ) -> crate::Result<CollectionDetails> {
+        self.execute(&format!("/collection/{collection_id}"), params)
+            .await
     }
 }
 
@@ -98,19 +69,10 @@ mod tests {
 
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::CollectionDetails;
 
     #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-
         let _m = server
             .mock("GET", "/collection/10")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -120,19 +82,22 @@ mod tests {
             .create_async()
             .await;
 
-        let result = CollectionDetails::new(10).execute(&client).await.unwrap();
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let result = client
+            .get_collection_details(10, &Default::default())
+            .await
+            .unwrap();
+
         assert_eq!(result.inner.id, 10);
     }
 
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-
         let _m = server
             .mock("GET", "/collection/0")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -142,8 +107,13 @@ mod tests {
             .create_async()
             .await;
 
-        let err = CollectionDetails::new(0)
-            .execute(&client)
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let err = client
+            .get_collection_details(0, &Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -153,12 +123,6 @@ mod tests {
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-
         let _m = server
             .mock("GET", "/collection/0")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -168,8 +132,13 @@ mod tests {
             .create_async()
             .await;
 
-        let err = CollectionDetails::new(0)
-            .execute(&client)
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let err = client
+            .get_collection_details(0, &Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -191,7 +160,10 @@ mod integration_tests {
         let client = Client::<ReqwestExecutor>::new(secret);
 
         for i in [10, 1196769] {
-            let result = CollectionDetails::new(i).execute(&client).await.unwrap();
+            let result = client
+                .get_collection_details(0, &Default::default())
+                .await
+                .unwrap();
             assert_eq!(result.inner.id, i);
         }
     }

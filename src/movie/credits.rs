@@ -1,68 +1,57 @@
 use std::borrow::Cow;
 
-use crate::common::credits::{Cast, Crew};
+use crate::{
+    client::Executor,
+    common::credits::{Cast, Crew},
+};
 
-/// Command to get alternative titles for a movie
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::credits::MovieCredits;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieCredits::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieCredits {
-    /// ID of the Movie
-    pub movie_id: u64,
+#[derive(Clone, Debug, Default, Serialize)]
+pub struct GetMovieCreditsParams<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    pub language: Option<Cow<'a, str>>,
 }
 
-impl MovieCredits {
-    pub fn new(movie_id: u64) -> Self {
-        Self {
-            movie_id,
-            language: None,
-        }
+impl<'a> GetMovieCreditsParams<'a> {
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
     }
 
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 }
 
-#[derive(Debug, Deserialize, Serialize)]
-pub struct MovieCreditsResult {
+#[derive(Debug, Deserialize)]
+pub struct GetMovieCreditsResponse {
     pub id: u64,
     pub cast: Vec<Cast>,
     pub crew: Vec<Crew>,
 }
 
-impl crate::prelude::Command for MovieCredits {
-    type Output = MovieCreditsResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/movie/{}/credits", self.movie_id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        if let Some(ref country) = self.language {
-            vec![("country", Cow::Borrowed(country))]
-        } else {
-            Vec::new()
-        }
+impl<E: Executor> crate::Client<E> {
+    /// List changes for a movie
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_movie_credits(42, &Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_movie_credits(
+        &self,
+        movie_id: u64,
+        params: &GetMovieCreditsParams<'_>,
+    ) -> crate::Result<GetMovieCreditsResponse> {
+        let url = format!("/movie/{movie_id}/credits");
+        self.execute(&url, params).await
     }
 }
 
@@ -72,20 +61,11 @@ mod tests {
 
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::MovieCredits;
 
     #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-
-        let _m = server
+        let m = server
             .mock("GET", "/movie/3/credits")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
@@ -94,20 +74,24 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MovieCredits::new(3).execute(&client).await.unwrap();
-        assert_eq!(result.id, 550);
-    }
-
-    #[tokio::test]
-    async fn invalid_api_key() {
-        let mut server = mockito::Server::new_async().await;
         let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
             .unwrap();
+        let result = client
+            .get_movie_credits(3, &Default::default())
+            .await
+            .unwrap();
+        assert_eq!(result.id, 550);
 
-        let _m = server
+        m.assert_async().await;
+    }
+
+    #[tokio::test]
+    async fn invalid_api_key() {
+        let mut server = mockito::Server::new_async().await;
+        let m = server
             .mock("GET", "/movie/1/credits")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
@@ -116,21 +100,26 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieCredits::new(1).execute(&client).await.unwrap_err();
-        let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.status_code, 7);
-    }
-
-    #[tokio::test]
-    async fn resource_not_found() {
-        let mut server = mockito::Server::new_async().await;
         let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
             .unwrap();
 
-        let _m = server
+        let err = client
+            .get_movie_credits(1, &Default::default())
+            .await
+            .unwrap_err();
+        let server_err = err.as_server_error().unwrap();
+        assert_eq!(server_err.status_code, 7);
+
+        m.assert_async().await;
+    }
+
+    #[tokio::test]
+    async fn resource_not_found() {
+        let mut server = mockito::Server::new_async().await;
+        let m = server
             .mock("GET", "/movie/1/credits")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
@@ -139,9 +128,19 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieCredits::new(1).execute(&client).await.unwrap_err();
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let err = client
+            .get_movie_credits(1, &Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
+
+        m.assert_async().await;
     }
 }
 
@@ -149,9 +148,6 @@ mod tests {
 mod integration_tests {
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::MovieCredits;
 
     #[tokio::test]
     async fn execute() {
@@ -159,7 +155,10 @@ mod integration_tests {
         let client = Client::<ReqwestExecutor>::new(secret);
 
         for i in [550, 299641] {
-            let result = MovieCredits::new(i).execute(&client).await.unwrap();
+            let result = client
+                .get_movie_credits(i, &Default::default())
+                .await
+                .unwrap();
             assert_eq!(result.id, i);
         }
     }
@@ -169,11 +168,8 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = MovieCredits::new(550)
-            .with_language(Some("fr-FR".into()))
-            .execute(&client)
-            .await
-            .unwrap();
+        let params = super::GetMovieCreditsParams::default().with_language(Some("fr-FR".into()));
+        let result = client.get_movie_credits(550, &params).await.unwrap();
         assert_eq!(result.id, 550);
     }
 }

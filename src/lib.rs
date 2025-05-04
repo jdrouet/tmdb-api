@@ -27,11 +27,11 @@ pub mod error;
 pub mod genre;
 pub mod movie;
 pub mod people;
-#[cfg(feature = "commands")]
-pub mod prelude;
 pub mod tvshow;
 pub mod watch_provider;
 
 pub mod common;
 pub mod configuration;
 mod util;
+
+pub type Result<V> = std::result::Result<V, crate::error::Error>;

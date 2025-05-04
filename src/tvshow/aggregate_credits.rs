@@ -2,33 +2,8 @@
 
 use std::borrow::Cow;
 
-/// Command to get the aggregate credits of a TV show.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::tvshow::aggregate_credits::TVShowAggregateCredits;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = TVShowAggregateCredits::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {res:#?}"),
-///         Err(err) => eprintln!("error: {err:?}"),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct TVShowAggregateCredits {
-    pub id: u64,
-    pub language: Option<String>,
-}
-
 #[derive(Debug, Deserialize)]
-pub struct TVShowAggregateCreditsResult {
+pub struct TVShowAggregateCredits {
     pub id: u64,
     pub cast: Vec<CastPerson>,
     pub crew: Vec<CrewPerson>,
@@ -77,33 +52,46 @@ pub struct Job {
     pub episode_count: u64,
 }
 
-impl TVShowAggregateCredits {
-    pub fn new(tv_show_id: u64) -> Self {
-        Self {
-            id: tv_show_id,
-            language: None,
-        }
+#[derive(Clone, Debug, Default, Serialize)]
+pub struct GetTVShowAggregateCreditsParams<'a> {
+    /// ISO 639-1 value to display translated data for the fields that support it.
+    pub language: Option<Cow<'a, str>>,
+}
+
+impl<'a> GetTVShowAggregateCreditsParams<'a> {
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
     }
 
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 }
 
-impl crate::prelude::Command for TVShowAggregateCredits {
-    type Output = TVShowAggregateCreditsResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/tv/{}/aggregate_credits", self.id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        if let Some(ref language) = self.language {
-            vec![("language", Cow::Borrowed(language))]
-        } else {
-            Vec::new()
-        }
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get tvshow aggregate credits
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_tvshow_aggregate_credits(42, &Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_tvshow_aggregate_credits(
+        &self,
+        tvshow_id: u64,
+        params: &GetTVShowAggregateCreditsParams<'_>,
+    ) -> crate::Result<TVShowAggregateCredits> {
+        let url = format!("/tv/{tvshow_id}/aggregate_credits");
+        self.execute(&url, params).await
     }
 }
 
@@ -113,9 +101,6 @@ mod tests {
 
     use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::TVShowAggregateCredits;
 
     #[tokio::test]
     async fn it_works() {
@@ -135,8 +120,8 @@ mod tests {
             .create_async()
             .await;
 
-        let result = TVShowAggregateCredits::new(1399)
-            .execute(&client)
+        let result = client
+            .get_tvshow_aggregate_credits(1399, &Default::default())
             .await
             .unwrap();
         assert_eq!(result.id, 1399);
@@ -162,8 +147,8 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowAggregateCredits::new(1399)
-            .execute(&client)
+        let err = client
+            .get_tvshow_aggregate_credits(1399, &Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -188,8 +173,8 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowAggregateCredits::new(1399)
-            .execute(&client)
+        let err = client
+            .get_tvshow_aggregate_credits(1399, &Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -210,8 +195,8 @@ mod integration_tests {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = TVShowAggregateCredits::new(1399)
-            .execute(&client)
+        let result = client
+            .get_tvshow_aggregate_credits(1399, &Default::default())
             .await
             .unwrap();
         assert_eq!(result.id, 1399);

@@ -1,56 +1,38 @@
-use std::borrow::Cow;
+use std::collections::HashMap;
 
-use crate::watch_provider::WatchProviderResult;
+use crate::watch_provider::{LocatedWatchProvider, WatchProviderResult};
 
-/// Get a list of watch providers for a movie.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::watch_providers::MovieWatchProviders;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieWatchProviders::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieWatchProviders {
-    /// ID of the movie.
-    pub movie_id: u64,
-}
-
-impl MovieWatchProviders {
-    pub fn new(movie_id: u64) -> Self {
-        Self { movie_id }
-    }
-}
-
-impl crate::prelude::Command for MovieWatchProviders {
-    type Output = WatchProviderResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/movie/{}/watch/providers", self.movie_id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        Vec::new()
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get a list of watch providers for a movie.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_movie_watch_providers(1).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_movie_watch_providers(
+        &self,
+        movie_id: u64,
+    ) -> crate::Result<HashMap<String, LocatedWatchProvider>> {
+        let url = format!("/movie/{movie_id}/watch/providers");
+        self.execute::<WatchProviderResult, _>(&url, &())
+            .await
+            .map(|res| res.results)
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MovieWatchProviders;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -71,12 +53,8 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MovieWatchProviders::new(550)
-            .execute(&client)
-            .await
-            .unwrap();
-        assert_eq!(result.id, 550);
-        assert!(!result.results.is_empty());
+        let result = client.get_movie_watch_providers(550).await.unwrap();
+        assert!(!result.is_empty());
     }
 
     #[tokio::test]
@@ -97,10 +75,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieWatchProviders::new(550)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = client.get_movie_watch_providers(550).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -123,10 +98,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieWatchProviders::new(550)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = client.get_movie_watch_providers(550).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -134,20 +106,15 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieWatchProviders;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = MovieWatchProviders::new(550)
-            .execute(&client)
-            .await
-            .unwrap();
+        let result = client.get_movie_watch_providers(550).await.unwrap();
         assert_eq!(result.id, 550);
     }
 }

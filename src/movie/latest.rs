@@ -1,49 +1,45 @@
 use std::borrow::Cow;
 
-/// Get the most newly created movie. This is a live response and will continuously change.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::latest::MovieLatest;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let result = MovieLatest::default().execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieLatest {
+use crate::client::Executor;
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct GetLatestMovieParams<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    pub language: Option<Cow<'a, str>>,
 }
 
-impl MovieLatest {
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+impl<'a> GetLatestMovieParams<'a> {
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
+    }
+
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 }
 
-impl crate::prelude::Command for MovieLatest {
-    type Output = super::Movie;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Borrowed("/movie/latest")
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        let mut res = Vec::new();
-        if let Some(ref language) = self.language {
-            res.push(("language", Cow::Borrowed(language.as_str())))
-        }
-        res
+impl<E: Executor> crate::Client<E> {
+    /// Get latest movie
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_latest_movie(&Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_latest_movie(
+        &self,
+        params: &GetLatestMovieParams<'_>,
+    ) -> crate::Result<super::Movie> {
+        self.execute("/movie/latest", params).await
     }
 }
 
@@ -53,19 +49,10 @@ mod tests {
 
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::MovieLatest;
 
     #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-
         let _m = server
             .mock("GET", "/movie/latest")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -75,19 +62,18 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MovieLatest::default().execute(&client).await.unwrap();
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let result = client.get_latest_movie(&Default::default()).await.unwrap();
         assert_eq!(result.inner.id, 1236474);
     }
 
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-
         let _m = server
             .mock("GET", "/movie/latest")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -97,7 +83,16 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieLatest::default().execute(&client).await.unwrap_err();
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+
+        let err = client
+            .get_latest_movie(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -105,11 +100,6 @@ mod tests {
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
 
         let _m = server
             .mock("GET", "/movie/latest")
@@ -120,7 +110,16 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieLatest::default().execute(&client).await.unwrap_err();
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+
+        let err = client
+            .get_latest_movie(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -138,7 +137,6 @@ mod integration_tests {
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-
-        let _result = MovieLatest::default().execute(&client).await.unwrap();
+        let _result = client.get_latest_movie(&Default::default()).await.unwrap();
     }
 }

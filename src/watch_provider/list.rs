@@ -2,97 +2,95 @@ use std::borrow::Cow;
 use std::collections::HashMap;
 
 use crate::client::Executor;
-use crate::common::MediaType;
 
 use super::WatchProvider;
 
-/// Command to get the details of a collection
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::watch_provider::list::WatchProviderList;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     use tmdb_api::common::MediaType;
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = WatchProviderList::new(MediaType::Tv);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug)]
-pub struct WatchProviderList {
-    pub media_type: MediaType,
+#[derive(Debug, Default, serde::Serialize)]
+pub struct ListWatchProviderParams<'a> {
     /// ISO 3166-1 alpha-2 value to filter the results for one country.
-    pub watch_region: Option<String>,
+    pub watch_region: Option<Cow<'a, str>>,
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    pub language: Option<Cow<'a, str>>,
 }
 
-impl WatchProviderList {
-    pub fn new(media_type: MediaType) -> Self {
-        Self {
-            media_type,
-            watch_region: None,
-            language: None,
-        }
+impl<'a> ListWatchProviderParams<'a> {
+    pub fn set_watch_region(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.watch_region = Some(value.into());
     }
 
-    pub fn with_watch_region(mut self, watch_region: String) -> Self {
-        self.watch_region = Some(watch_region);
+    pub fn with_watch_region(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_watch_region(value);
         self
     }
 
-    pub fn with_language(mut self, language: String) -> Self {
-        self.language = Some(language);
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
+    }
+
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct WatchProviderListResult {
+pub struct WatchProviderDetail {
     /// A hash map of display priority by country code
     pub display_priorities: HashMap<String, u64>,
     #[serde(flatten)]
     pub inner: WatchProvider,
 }
 
-impl crate::prelude::Command for WatchProviderList {
-    type Output = Vec<WatchProviderListResult>;
+#[derive(serde::Deserialize)]
+struct Response {
+    results: Vec<WatchProviderDetail>,
+}
 
-    fn path(&self) -> Cow<'static, str> {
-        format!("/watch/providers/{}", self.media_type).into()
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        let mut params = Vec::new();
-
-        if let Some(watch_region) = self.watch_region.as_ref() {
-            params.push(("watch_region", Cow::Borrowed(watch_region.as_str())));
-        }
-        if let Some(language) = self.language.as_ref() {
-            params.push(("language", Cow::Borrowed(language.as_str())));
-        }
-        params
-    }
-
-    async fn execute<E: Executor>(
+impl<E: Executor> crate::Client<E> {
+    /// List watch providers for movies
+    ///
+    /// ```rust
+    /// use tmdb_api::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_movie_watch_providers(&Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_movie_watch_providers(
         &self,
-        client: &crate::Client<E>,
-    ) -> Result<Self::Output, crate::error::Error> {
-        #[derive(Deserialize)]
-        struct Result {
-            pub results: Vec<WatchProviderListResult>,
-        }
+        params: &ListWatchProviderParams<'_>,
+    ) -> crate::Result<Vec<WatchProviderDetail>> {
+        self.execute::<Response, _>("/watch/providers/movie", params)
+            .await
+            .map(|res| res.results)
+    }
 
-        client
-            .execute::<Result>(self.path().as_ref(), self.params())
+    /// List watch providers for tvshows
+    ///
+    /// ```rust
+    /// use tmdb_api::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_movie_watch_providers(&Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_tvshow_watch_providers(
+        &self,
+        params: &ListWatchProviderParams<'_>,
+    ) -> crate::Result<Vec<WatchProviderDetail>> {
+        self.execute::<Response, _>("/watch/providers/tv", params)
             .await
             .map(|res| res.results)
     }
@@ -104,21 +102,10 @@ mod tests {
 
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::common::MediaType;
-    use crate::prelude::Command;
-
-    use super::WatchProviderList;
 
     #[tokio::test]
     async fn movie_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-        let cmd = WatchProviderList::new(MediaType::Movie);
-
         let _m = server
             .mock("GET", "/watch/providers/movie")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -127,20 +114,21 @@ mod tests {
             .with_body(include_str!("../../assets/watch-provider-movie-list.json"))
             .create_async()
             .await;
-        let result = cmd.execute(&client).await.unwrap();
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let result = client
+            .list_movie_watch_providers(&Default::default())
+            .await
+            .unwrap();
         assert!(!result.is_empty());
     }
 
     #[tokio::test]
     async fn tv_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-        let cmd = WatchProviderList::new(MediaType::Tv);
-
         let _m = server
             .mock("GET", "/watch/providers/tv")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -149,20 +137,22 @@ mod tests {
             .with_body(include_str!("../../assets/watch-provider-tv-list.json"))
             .create_async()
             .await;
-        let result = cmd.execute(&client).await.unwrap();
+
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let result = client
+            .list_tvshow_watch_providers(&Default::default())
+            .await
+            .unwrap();
         assert!(!result.is_empty());
     }
 
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-        let cmd = WatchProviderList::new(MediaType::Tv);
-
         let _m = server
             .mock("GET", "/watch/providers/tv")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -171,7 +161,16 @@ mod tests {
             .with_body(include_str!("../../assets/invalid-api-key.json"))
             .create_async()
             .await;
-        let err = cmd.execute(&client).await.unwrap_err();
+
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let err = client
+            .list_tvshow_watch_providers(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -179,13 +178,6 @@ mod tests {
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-        let cmd = WatchProviderList::new(MediaType::Tv);
-
         let _m = server
             .mock("GET", "/watch/providers/tv")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -194,7 +186,15 @@ mod tests {
             .with_body(include_str!("../../assets/resource-not-found.json"))
             .create_async()
             .await;
-        let err = cmd.execute(&client).await.unwrap_err();
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let err = client
+            .list_tvshow_watch_providers(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -202,21 +202,16 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
+    use super::ListWatchProviderParams;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::common::MediaType;
-    use crate::prelude::Command;
-
-    use super::WatchProviderList;
 
     #[tokio::test]
     async fn execute_tv() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let mut cmd = WatchProviderList::new(MediaType::Tv);
-        cmd.language = Some("en-US".into());
-
-        let result = cmd.execute(&client).await.unwrap();
+        let params = ListWatchProviderParams::default().with_language("en-US");
+        let result = cmd.list_tvshow_watch_providers(&params).await.unwrap();
         assert!(!result.is_empty());
     }
 
@@ -224,10 +219,8 @@ mod integration_tests {
     async fn execute_movie() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let mut cmd = WatchProviderList::new(MediaType::Movie);
-        cmd.language = Some("en-US".into());
-
-        let result = cmd.execute(&client).await.unwrap();
+        let params = ListWatchProviderParams::default().with_language("en-US");
+        let result = cmd.list_movie_watch_providers(&params).await.unwrap();
         assert!(!result.is_empty());
     }
 }
