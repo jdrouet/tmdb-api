@@ -5,10 +5,15 @@ use std::collections::HashMap;
 
 use crate::client::Executor;
 
-use super::Certification;
-
 const TV_PATH: &str = "/certification/tv/list";
 const MOVIE_PATH: &str = "/certification/movie/list";
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct Certification {
+    pub certification: String,
+    pub meaning: String,
+    pub order: usize,
+}
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct Response {
@@ -76,7 +81,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/certification-tv-list.json"))
+            .with_body(include_str!("../assets/certification-tv-list.json"))
             .create_async()
             .await;
         let result = client.list_tvshow_certifications().await.unwrap();
@@ -98,7 +103,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/certification-movie-list.json"))
+            .with_body(include_str!("../assets/certification-movie-list.json"))
             .create_async()
             .await;
         let result = client.list_movie_certifications().await.unwrap();
@@ -120,7 +125,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/invalid-api-key.json"))
+            .with_body(include_str!("../assets/invalid-api-key.json"))
             .create_async()
             .await;
 
@@ -143,7 +148,7 @@ mod tests {
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/resource-not-found.json"))
+            .with_body(include_str!("../assets/resource-not-found.json"))
             .create_async()
             .await;
 
