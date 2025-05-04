@@ -1,9 +1,6 @@
 //! https://developer.themoviedb.org/reference/tv-series-content-ratings
 
-#[derive(Deserialize)]
-struct Response {
-    results: Vec<ContentRating>,
-}
+use crate::common::ResultsResponse;
 
 #[derive(Clone, Debug, Default, Deserialize)]
 pub struct ContentRating {
@@ -33,7 +30,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
         tvshow_id: u64,
     ) -> crate::Result<Vec<ContentRating>> {
         let url = format!("/tv/{tvshow_id}/content_ratings");
-        self.execute::<Response, _>(&url, &())
+        self.execute::<ResultsResponse<Vec<ContentRating>>, _>(&url, &())
             .await
             .map(|res| res.results)
     }

@@ -1,4 +1,4 @@
-use crate::client::Executor;
+use crate::{client::Executor, common::ResultsResponse};
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct CompanyAlternativeName {
@@ -8,11 +8,6 @@ pub struct CompanyAlternativeName {
         rename = "type"
     )]
     pub kind: Option<String>,
-}
-
-#[derive(Deserialize)]
-struct Response {
-    results: Vec<CompanyAlternativeName>,
 }
 
 impl<E: Executor> crate::Client<E> {
@@ -36,7 +31,7 @@ impl<E: Executor> crate::Client<E> {
         company_id: u64,
     ) -> crate::Result<Vec<CompanyAlternativeName>> {
         let path = format!("/company/{company_id}/alternative_names");
-        self.execute::<Response, _>(&path, &())
+        self.execute::<ResultsResponse<Vec<CompanyAlternativeName>>, _>(&path, &())
             .await
             .map(|res| res.results)
     }

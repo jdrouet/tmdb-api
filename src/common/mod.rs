@@ -36,3 +36,8 @@ impl Display for MediaType {
         write!(f, "{}", s)
     }
 }
+
+#[derive(serde::Deserialize)]
+pub(crate) struct ResultsResponse<V> {
+    pub results: V,
+}

@@ -1,11 +1,6 @@
 //! https://developer.themoviedb.org/reference/tv-series-keywords
 
-use crate::common::keyword::Keyword;
-
-#[derive(Deserialize)]
-struct Response {
-    results: Vec<Keyword>,
-}
+use crate::common::{ResultsResponse, keyword::Keyword};
 
 impl<E: crate::client::Executor> crate::Client<E> {
     /// Get tvshow keywords
@@ -25,7 +20,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
     /// ```
     pub async fn get_tvshow_keywords(&self, tvshow_id: u64) -> crate::Result<Vec<Keyword>> {
         let url = format!("/tv/{tvshow_id}/keywords");
-        self.execute::<Response, _>(&url, &())
+        self.execute::<ResultsResponse<Vec<Keyword>>, _>(&url, &())
             .await
             .map(|res| res.results)
     }

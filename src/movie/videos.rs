@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-use crate::common::video::Video;
+use crate::common::{ResultsResponse, video::Video};
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GetMovieVideosParams<'a> {
@@ -17,11 +17,6 @@ impl<'a> GetMovieVideosParams<'a> {
         self.set_language(value);
         self
     }
-}
-
-#[derive(Deserialize)]
-struct Response {
-    results: Vec<Video>,
 }
 
 impl<E: crate::client::Executor> crate::Client<E> {
@@ -46,7 +41,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
         params: &GetMovieVideosParams<'_>,
     ) -> crate::Result<Vec<Video>> {
         let url = format!("/movie/{movie_id}/videos");
-        self.execute::<Response, _>(&url, params)
+        self.execute::<ResultsResponse<Vec<Video>>, _>(&url, params)
             .await
             .map(|res| res.results)
     }

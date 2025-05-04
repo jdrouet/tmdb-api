@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::watch_provider::{LocatedWatchProvider, WatchProviderResult};
+use crate::watch_provider::LocatedWatchProvider;
 
 impl<E: crate::client::Executor> crate::Client<E> {
     /// Get a list of watch providers for a tvshow.
@@ -23,9 +23,12 @@ impl<E: crate::client::Executor> crate::Client<E> {
         tvshow_id: u64,
     ) -> crate::Result<HashMap<String, LocatedWatchProvider>> {
         let url = format!("/tv/{tvshow_id}/watch/providers");
-        self.execute::<WatchProviderResult, _>(&url, &())
-            .await
-            .map(|res| res.results)
+        self.execute::<crate::common::ResultsResponse<HashMap<String, LocatedWatchProvider>>, _>(
+            &url,
+            &(),
+        )
+        .await
+        .map(|res| res.results)
     }
 }
 

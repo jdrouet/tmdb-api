@@ -1,9 +1,4 @@
-use crate::common::release_date::LocatedReleaseDates;
-
-#[derive(serde::Deserialize)]
-struct Response {
-    results: Vec<LocatedReleaseDates>,
-}
+use crate::common::{ResultsResponse, release_date::LocatedReleaseDates};
 
 impl<E: crate::client::Executor> crate::Client<E> {
     /// Get the release date along with the certification for a movie.
@@ -26,7 +21,7 @@ impl<E: crate::client::Executor> crate::Client<E> {
         movie_id: u64,
     ) -> crate::Result<Vec<LocatedReleaseDates>> {
         let url = format!("/movie/{movie_id}/release_dates");
-        self.execute::<Response, _>(&url, &())
+        self.execute::<ResultsResponse<Vec<LocatedReleaseDates>>, _>(&url, &())
             .await
             .map(|res| res.results)
     }

@@ -2,6 +2,7 @@ use std::borrow::Cow;
 use std::collections::HashMap;
 
 use crate::client::Executor;
+use crate::common::ResultsResponse;
 
 use super::WatchProvider;
 
@@ -41,11 +42,6 @@ pub struct WatchProviderDetail {
     pub inner: WatchProvider,
 }
 
-#[derive(serde::Deserialize)]
-struct Response {
-    results: Vec<WatchProviderDetail>,
-}
-
 impl<E: Executor> crate::Client<E> {
     /// List watch providers for movies
     ///
@@ -66,9 +62,12 @@ impl<E: Executor> crate::Client<E> {
         &self,
         params: &ListWatchProviderParams<'_>,
     ) -> crate::Result<Vec<WatchProviderDetail>> {
-        self.execute::<Response, _>("/watch/providers/movie", params)
-            .await
-            .map(|res| res.results)
+        self.execute::<ResultsResponse<Vec<WatchProviderDetail>>, _>(
+            "/watch/providers/movie",
+            params,
+        )
+        .await
+        .map(|res| res.results)
     }
 
     /// List watch providers for tvshows
@@ -90,7 +89,7 @@ impl<E: Executor> crate::Client<E> {
         &self,
         params: &ListWatchProviderParams<'_>,
     ) -> crate::Result<Vec<WatchProviderDetail>> {
-        self.execute::<Response, _>("/watch/providers/tv", params)
+        self.execute::<ResultsResponse<Vec<WatchProviderDetail>>, _>("/watch/providers/tv", params)
             .await
             .map(|res| res.results)
     }
