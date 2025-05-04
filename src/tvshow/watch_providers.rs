@@ -1,56 +1,35 @@
-use std::borrow::Cow;
+use std::collections::HashMap;
 
-use crate::watch_provider::WatchProviderResult;
+use crate::watch_provider::LocatedWatchProvider;
 
-/// Get a list of watch providers for a TV show.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::tvshow::watch_providers::TVShowWatchProviders;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = TVShowWatchProviders::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct TVShowWatchProviders {
-    /// ID of the movie.
-    pub tv_id: u64,
-}
+pub type Response = crate::common::EntityResults<HashMap<String, LocatedWatchProvider>>;
 
-impl TVShowWatchProviders {
-    pub fn new(tv_id: u64) -> Self {
-        Self { tv_id }
-    }
-}
-
-impl crate::prelude::Command for TVShowWatchProviders {
-    type Output = WatchProviderResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/tv/{}/watch/providers", self.tv_id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        Vec::new()
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get a list of watch providers for a tvshow.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_tvshow_watch_providers(1).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_tvshow_watch_providers(&self, tvshow_id: u64) -> crate::Result<Response> {
+        let url = format!("/tv/{tvshow_id}/watch/providers");
+        self.execute(&url, &()).await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::TVShowWatchProviders;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -71,11 +50,7 @@ mod tests {
             .create_async()
             .await;
 
-        let result = TVShowWatchProviders::new(1399)
-            .execute(&client)
-            .await
-            .unwrap();
-        assert_eq!(result.id, 1399);
+        let result = client.get_tvshow_watch_providers(1399).await.unwrap();
         assert!(!result.results.is_empty());
     }
 
@@ -97,10 +72,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowWatchProviders::new(1399)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = client.get_tvshow_watch_providers(1399).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -123,10 +95,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowWatchProviders::new(1399)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = client.get_tvshow_watch_providers(1399).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -134,20 +103,15 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::TVShowWatchProviders;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = TVShowWatchProviders::new(1399)
-            .execute(&client)
-            .await
-            .unwrap();
-        assert_eq!(result.id, 1399);
+        let result = client.get_tvshow_watch_providers(1399).await.unwrap();
+        assert!(!result.results.is_empty());
     }
 }

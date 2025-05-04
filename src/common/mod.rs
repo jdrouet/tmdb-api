@@ -1,4 +1,4 @@
-use std::fmt::Display;
+use std::borrow::Cow;
 
 pub mod country;
 pub mod credits;
@@ -17,22 +17,61 @@ pub struct PaginatedResult<T> {
     pub results: Vec<T>,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
-#[serde(rename_all = "lowercase")]
-pub enum MediaType {
-    Movie,
-    Tv,
-    Collection,
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct EntityResults<V> {
+    pub id: u64,
+    pub results: V,
 }
 
-impl Display for MediaType {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let s = match self {
-            MediaType::Movie => "movie",
-            MediaType::Tv => "tv",
-            MediaType::Collection => "collection",
-        };
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct Results<V> {
+    pub results: V,
+}
 
-        write!(f, "{}", s)
+#[derive(Clone, Debug, Default, Serialize)]
+pub struct LanguageParams<'a> {
+    /// ISO 639-1 value to display translated data for the fields that support it.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub language: Option<Cow<'a, str>>,
+}
+
+impl<'a> LanguageParams<'a> {
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
+    }
+
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
+        self
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct LanguagePageParams<'a> {
+    /// ISO 639-1 value to display translated data for the fields that support it.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub language: Option<Cow<'a, str>>,
+    /// Specify which page to query.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub page: Option<u32>,
+}
+
+impl<'a> LanguagePageParams<'a> {
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
+    }
+
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
+        self
+    }
+
+    pub fn set_page(&mut self, value: u32) {
+        self.page = Some(value);
+    }
+
+    pub fn with_page(mut self, value: u32) -> Self {
+        self.set_page(value);
+        self
     }
 }

@@ -1,61 +1,35 @@
 //! https://developer.themoviedb.org/reference/configuration-countries
 
-use std::borrow::Cow;
+use crate::client::Executor;
 
-/// Get a list of all countries
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::configuration::countries::Countries;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let result = Countries::default().execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {res:#?}"),
-///         Err(err) => eprintln!("error: {err:?}"),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct Countries {
-    language: Option<String>,
-}
+pub type Params<'a> = crate::common::LanguageParams<'a>;
 
 #[derive(Debug, Deserialize)]
-pub struct CountriesResult {
+pub struct Country {
     pub iso_3166_1: String,
     pub english_name: String,
     pub native_name: String,
 }
 
-impl Countries {
-    pub fn new() -> Self {
-        Self { language: None }
-    }
-
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
-        self
-    }
-}
-
-impl crate::prelude::Command for Countries {
-    type Output = Vec<CountriesResult>;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Borrowed("/configuration/countries")
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        if let Some(ref language) = self.language {
-            vec![("language", Cow::Borrowed(language))]
-        } else {
-            Vec::new()
-        }
+impl<E: Executor> crate::Client<E> {
+    /// Get a list of all jobs
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_countries(&Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_countries(&self, params: &Params<'_>) -> crate::Result<Vec<Country>> {
+        self.execute::<Vec<Country>, _>("/configuration/countries", params)
+            .await
     }
 }
 
@@ -65,20 +39,11 @@ mod tests {
 
     use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::Countries;
 
     #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-
-        let _m = server
+        let m = server
             .mock("GET", "/configuration/countries")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
@@ -87,20 +52,21 @@ mod tests {
             .create_async()
             .await;
 
-        let result = Countries::default().execute(&client).await.unwrap();
-        assert!(!result.is_empty());
-    }
-
-    #[tokio::test]
-    async fn invalid_api_key() {
-        let mut server = mockito::Server::new_async().await;
         let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
             .unwrap();
+        let result = client.list_countries(&Default::default()).await.unwrap();
+        assert!(!result.is_empty());
 
-        let _m = server
+        m.assert_async().await;
+    }
+
+    #[tokio::test]
+    async fn invalid_api_key() {
+        let mut server = mockito::Server::new_async().await;
+        let m = server
             .mock("GET", "/configuration/countries")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
@@ -109,21 +75,26 @@ mod tests {
             .create_async()
             .await;
 
-        let err = Countries::default().execute(&client).await.unwrap_err();
-        let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.status_code, 7);
-    }
-
-    #[tokio::test]
-    async fn resource_not_found() {
-        let mut server = mockito::Server::new_async().await;
         let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
             .unwrap();
 
-        let _m = server
+        let err = client
+            .list_countries(&Default::default())
+            .await
+            .unwrap_err();
+        let server_err = err.as_server_error().unwrap();
+        assert_eq!(server_err.status_code, 7);
+
+        m.assert_async().await;
+    }
+
+    #[tokio::test]
+    async fn resource_not_found() {
+        let mut server = mockito::Server::new_async().await;
+        let m = server
             .mock("GET", "/configuration/countries")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
@@ -132,9 +103,20 @@ mod tests {
             .create_async()
             .await;
 
-        let err = Countries::default().execute(&client).await.unwrap_err();
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+
+        let err = client
+            .list_countries(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
+
+        m.assert_async().await;
     }
 }
 
@@ -142,16 +124,12 @@ mod tests {
 mod integration_tests {
     use crate::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::Countries;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-
-        let result = Countries::default().execute(&client).await.unwrap();
+        let result = client.list_countries(&Default::default()).await.unwrap();
         assert!(!result.is_empty());
     }
 }

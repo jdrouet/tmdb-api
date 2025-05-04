@@ -1,37 +1,6 @@
-use std::borrow::Cow;
-
 use crate::common::PaginatedResult;
 
-/// Get the release date along with the certification for a movie.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::reviews::MovieReviews;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieReviews::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieReviews {
-    /// ID of the movie.
-    pub movie_id: u64,
-}
-
-impl MovieReviews {
-    pub fn new(movie_id: u64) -> Self {
-        Self { movie_id }
-    }
-}
+pub type Params<'a> = crate::common::LanguagePageParams<'a>;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct AuthorDetails {
@@ -52,24 +21,36 @@ pub struct MovieReview {
     pub updated_at: chrono::DateTime<chrono::Utc>,
 }
 
-impl crate::prelude::Command for MovieReviews {
-    type Output = PaginatedResult<MovieReview>;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/movie/{}/reviews", self.movie_id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        Vec::new()
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get the release date along with the certification for a movie.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_movie_reviews(1, &Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_movie_reviews(
+        &self,
+        movie_id: u64,
+        params: &Params<'_>,
+    ) -> crate::Result<PaginatedResult<MovieReview>> {
+        let url = format!("/movie/{movie_id}/reviews");
+        self.execute(&url, params).await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MovieReviews;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -90,7 +71,10 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MovieReviews::new(550).execute(&client).await.unwrap();
+        let result = client
+            .get_movie_reviews(550, &Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.page, 1);
         assert!(!result.results.is_empty());
     }
@@ -113,7 +97,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieReviews::new(550).execute(&client).await.unwrap_err();
+        let err = client
+            .get_movie_reviews(550, &Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -136,7 +123,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieReviews::new(550).execute(&client).await.unwrap_err();
+        let err = client
+            .get_movie_reviews(550, &Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -144,17 +134,17 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieReviews;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-
-        let result = MovieReviews::new(550).execute(&client).await.unwrap();
+        let result = client
+            .get_movie_reviews(550, &Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.page, 1);
     }
 }

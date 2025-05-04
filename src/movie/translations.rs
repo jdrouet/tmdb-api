@@ -1,37 +1,4 @@
-use std::borrow::Cow;
-
-/// Get a list of translations that have been created for a movie.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::translations::MovieTranslations;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieTranslations::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieTranslations {
-    /// ID of the movie.
-    pub movie_id: u64,
-}
-
-impl MovieTranslations {
-    pub fn new(movie_id: u64) -> Self {
-        Self { movie_id }
-    }
-}
-
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct TranslationData {
     #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub title: Option<String>,
@@ -41,7 +8,7 @@ pub struct TranslationData {
     pub homepage: Option<String>,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Translation {
     pub iso_3166_1: String,
     pub iso_639_1: String,
@@ -50,30 +17,38 @@ pub struct Translation {
     pub data: TranslationData,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
-pub struct MovieTranslationsResult {
+#[derive(Clone, Debug, Deserialize)]
+pub struct Response {
     pub id: u64,
     pub translations: Vec<Translation>,
 }
 
-impl crate::prelude::Command for MovieTranslations {
-    type Output = MovieTranslationsResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/movie/{}/translations", self.movie_id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        Vec::new()
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get a list of translations that have been created for a movie.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_movie_translations(1).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_movie_translations(&self, movie_id: u64) -> crate::Result<Response> {
+        let url = format!("/movie/{movie_id}/translations");
+        self.execute(&url, &()).await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MovieTranslations;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -94,8 +69,7 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MovieTranslations::new(550).execute(&client).await.unwrap();
-        assert_eq!(result.id, 550);
+        let result = client.get_movie_translations(550).await.unwrap();
         assert!(!result.translations.is_empty());
     }
 
@@ -117,10 +91,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieTranslations::new(550)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = client.get_movie_translations(550).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -143,10 +114,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieTranslations::new(550)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = client.get_movie_translations(550).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -154,17 +122,16 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieTranslations;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let result = MovieTranslations::new(550).execute(&client).await.unwrap();
+        let result = client.get_movie_translations(550).await.unwrap();
+        assert!(!result.translations.is_empty());
         assert_eq!(result.id, 550);
     }
 }

@@ -1,62 +1,33 @@
-use std::borrow::Cow;
+use crate::common::{EntityResults, release_date::LocatedReleaseDates};
 
-use crate::common::release_date::LocatedReleaseDates;
+pub type Response = EntityResults<Vec<LocatedReleaseDates>>;
 
-/// Get the release date along with the certification for a movie.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::release_dates::MovieReleaseDates;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieReleaseDates::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieReleaseDates {
-    /// ID of the movie.
-    pub movie_id: u64,
-}
-
-impl MovieReleaseDates {
-    pub fn new(movie_id: u64) -> Self {
-        Self { movie_id }
-    }
-}
-
-#[derive(Debug, Deserialize, Serialize)]
-pub struct MovieReleaseDatesResult {
-    pub id: u64,
-    pub results: Vec<LocatedReleaseDates>,
-}
-
-impl crate::prelude::Command for MovieReleaseDates {
-    type Output = MovieReleaseDatesResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/movie/{}/release_dates", self.movie_id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        Vec::new()
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get the release date along with the certification for a movie.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_movie_release_dates(1).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_movie_release_dates(&self, movie_id: u64) -> crate::Result<Response> {
+        let url = format!("/movie/{movie_id}/release_dates");
+        self.execute(&url, &()).await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MovieReleaseDates;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -77,8 +48,7 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MovieReleaseDates::new(550).execute(&client).await.unwrap();
-        assert_eq!(result.id, 550);
+        let result = client.get_movie_release_dates(550).await.unwrap();
         assert!(!result.results.is_empty());
     }
 
@@ -100,10 +70,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieReleaseDates::new(550)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = client.get_movie_release_dates(550).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -126,10 +93,7 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieReleaseDates::new(550)
-            .execute(&client)
-            .await
-            .unwrap_err();
+        let err = client.get_movie_release_dates(550).await.unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -137,17 +101,15 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieReleaseDates;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-
-        let result = MovieReleaseDates::new(550).execute(&client).await.unwrap();
+        let result = client.get_movie_release_dates(550).await.unwrap();
+        assert!(!result.results.is_empty());
         assert_eq!(result.id, 550);
     }
 }

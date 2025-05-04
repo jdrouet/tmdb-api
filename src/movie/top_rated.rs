@@ -2,79 +2,76 @@ use std::borrow::Cow;
 
 use crate::common::PaginatedResult;
 
-/// Get a list of the current popular movies on TMDB. This list updates daily.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::top_rated::MovieTopRated;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let result = MovieTopRated::default().execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieTopRated {
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub language: Option<Cow<'a, str>>,
     /// Specify which page to query.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub page: Option<u32>,
     /// Specify a ISO 3166-1 code to filter release dates. Must be uppercase.
-    pub region: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub region: Option<Cow<'a, str>>,
 }
 
-impl MovieTopRated {
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+impl<'a> Params<'a> {
+    pub fn set_page(&mut self, value: u32) {
+        self.page = Some(value);
+    }
+
+    pub fn with_page(mut self, value: u32) -> Self {
+        self.set_page(value);
         self
     }
 
-    pub fn with_page(mut self, value: Option<u32>) -> Self {
-        self.page = value;
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
+    }
+
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 
-    pub fn with_region(mut self, value: Option<String>) -> Self {
-        self.region = value;
+    pub fn set_region(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.region = Some(value.into());
+    }
+
+    pub fn with_region(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_region(value);
         self
     }
 }
 
-impl crate::prelude::Command for MovieTopRated {
-    type Output = PaginatedResult<super::MovieShort>;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Borrowed("/movie/top_rated")
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        let mut res = Vec::new();
-        if let Some(ref language) = self.language {
-            res.push(("language", Cow::Borrowed(language.as_str())))
-        }
-        if let Some(ref page) = self.page {
-            res.push(("page", Cow::Owned(page.to_string())))
-        }
-        if let Some(ref region) = self.region {
-            res.push(("region", Cow::Borrowed(region.as_str())))
-        }
-        res
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get a list of the current popular movies on TMDB. This list updates daily.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_movies_top_rated(&Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_movies_top_rated(
+        &self,
+        params: &Params<'_>,
+    ) -> crate::Result<PaginatedResult<super::MovieShort>> {
+        self.execute("/movie/top_rated", params).await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MovieTopRated;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -95,7 +92,10 @@ mod tests {
             .create_async()
             .await;
 
-        let result = MovieTopRated::default().execute(&client).await.unwrap();
+        let result = client
+            .list_movies_top_rated(&Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.page, 1);
     }
 
@@ -117,7 +117,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieTopRated::default().execute(&client).await.unwrap_err();
+        let err = client
+            .list_movies_top_rated(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -140,7 +143,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = MovieTopRated::default().execute(&client).await.unwrap_err();
+        let err = client
+            .list_movies_top_rated(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -148,16 +154,17 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieTopRated;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let _result = MovieTopRated::default().execute(&client).await.unwrap();
+        let _result = client
+            .list_movies_top_rated(&Default::default())
+            .await
+            .unwrap();
     }
 }

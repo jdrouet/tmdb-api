@@ -2,77 +2,74 @@ use std::borrow::Cow;
 
 use crate::common::image::Image;
 
-/// Get the images that belong to a show.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::tvshow::images::TVShowImages;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = TVShowImages::new(1);
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct TVShowImages {
-    /// ID of the show
-    pub tvshow_id: u64,
+#[derive(Clone, Debug, Default, Serialize)]
+pub struct Params<'a> {
+    /// specify a comma separated list of ISO-639-1 values to query, for example: en,null
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub include_image_language: Option<Cow<'a, str>>,
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub language: Option<Cow<'a, str>>,
 }
 
-impl TVShowImages {
-    pub fn new(tvshow_id: u64) -> Self {
-        Self {
-            tvshow_id,
-            language: None,
-        }
+impl<'a> Params<'a> {
+    pub fn set_include_image_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.include_image_language = Some(value.into());
     }
 
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+    pub fn with_include_image_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_include_image_language(value);
+        self
+    }
+
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
+    }
+
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-pub struct TVShowImagesResult {
+pub struct GetTVshowImagesResponse {
     pub id: u64,
     pub backdrops: Vec<Image>,
     pub posters: Vec<Image>,
     pub logos: Vec<Image>,
 }
 
-impl crate::prelude::Command for TVShowImages {
-    type Output = TVShowImagesResult;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Owned(format!("/tv/{}/images", self.tvshow_id))
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        if let Some(ref language) = self.language {
-            vec![("language", Cow::Borrowed(language))]
-        } else {
-            Vec::new()
-        }
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get tvshow images
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.get_tvshow_images(42, &Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn get_tvshow_images(
+        &self,
+        tvshow_id: u64,
+        params: &Params<'_>,
+    ) -> crate::Result<GetTVshowImagesResponse> {
+        let url = format!("/tv/{tvshow_id}/images");
+        self.execute(&url, params).await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::TVShowImages;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -84,8 +81,6 @@ mod tests {
             .build()
             .unwrap();
 
-        let cmd = TVShowImages::new(550);
-
         let _m = server
             .mock("GET", "/tv/550/images")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -94,7 +89,10 @@ mod tests {
             .with_body(include_str!("../../assets/tv-images.json"))
             .create_async()
             .await;
-        let result = cmd.execute(&client).await.unwrap();
+        let result = client
+            .get_tvshow_images(550, &Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.id, 550);
     }
 
@@ -107,8 +105,6 @@ mod tests {
             .build()
             .unwrap();
 
-        let cmd = TVShowImages::new(42);
-
         let _m = server
             .mock("GET", "/tv/42/images")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -117,7 +113,10 @@ mod tests {
             .with_body(include_str!("../../assets/invalid-api-key.json"))
             .create_async()
             .await;
-        let err = cmd.execute(&client).await.unwrap_err();
+        let err = client
+            .get_tvshow_images(42, &Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -131,8 +130,6 @@ mod tests {
             .build()
             .unwrap();
 
-        let cmd = TVShowImages::new(42);
-
         let _m = server
             .mock("GET", "/tv/42/images")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
@@ -141,7 +138,10 @@ mod tests {
             .with_body(include_str!("../../assets/resource-not-found.json"))
             .create_async()
             .await;
-        let err = cmd.execute(&client).await.unwrap_err();
+        let err = client
+            .get_tvshow_images(42, &Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -149,18 +149,18 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::TVShowImages;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let cmd = TVShowImages::new(550);
 
-        let result = cmd.execute(&client).await.unwrap();
+        let result = client
+            .get_tvshow_images(550, &Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.id, 550);
     }
 }

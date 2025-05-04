@@ -1,8 +1,6 @@
 //! https://developer.themoviedb.org/reference/genre-movie-list
 //! https://developer.themoviedb.org/reference/genre-tv-list
 
-use std::borrow::Cow;
-
 use crate::client::Executor;
 
 use super::Genre;
@@ -10,81 +8,50 @@ use super::Genre;
 const TV_PATH: &str = "/genre/tv/list";
 const MOVIE_PATH: &str = "/genre/movie/list";
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub(crate) struct GenreResult {
+#[derive(Clone, Debug, Deserialize)]
+pub struct Response {
     pub genres: Vec<Genre>,
 }
 
-/// Command to list genres
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::genre::list::GenreList;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = GenreList::tv();
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct GenreList {
-    path: &'static str,
-    /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
-}
+pub type Params<'a> = crate::common::LanguageParams<'a>;
 
-impl GenreList {
-    pub fn tv() -> Self {
-        Self {
-            path: TV_PATH,
-            language: None,
-        }
+impl<E: Executor> crate::Client<E> {
+    /// List genres for movies
+    ///
+    /// ```rust
+    /// use tmdb_api::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_movie_genres(&Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_movie_genres(&self, params: &Params<'_>) -> crate::Result<Response> {
+        self.execute(MOVIE_PATH, params).await
     }
 
-    pub fn movie() -> Self {
-        Self {
-            path: MOVIE_PATH,
-            language: None,
-        }
-    }
-
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
-        self
-    }
-}
-
-impl crate::prelude::Command for GenreList {
-    type Output = Vec<Genre>;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Borrowed(self.path)
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        if let Some(language) = self.language.as_ref() {
-            vec![("language", Cow::Borrowed(language.as_str()))]
-        } else {
-            Vec::new()
-        }
-    }
-
-    async fn execute<E: Executor>(
-        &self,
-        client: &crate::Client<E>,
-    ) -> Result<Self::Output, crate::error::Error> {
-        client
-            .execute::<GenreResult>(self.path().as_ref(), self.params())
-            .await
-            .map(|res| res.genres)
+    /// List genres for tvshows
+    ///
+    /// ```rust
+    /// use tmdb_api::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_tvshow_genres(&Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_tvshow_genres(&self, params: &Params<'_>) -> crate::Result<Response> {
+        self.execute(TV_PATH, params).await
     }
 }
 
@@ -94,21 +61,11 @@ mod tests {
 
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::GenreList;
 
     #[tokio::test]
     async fn movie_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
-            .with_api_key("secret".into())
-            .with_base_url(server.url())
-            .build()
-            .unwrap();
-        let cmd = GenreList::movie();
-
-        let _m = server
+        let m = server
             .mock("GET", super::MOVIE_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
@@ -116,21 +73,22 @@ mod tests {
             .with_body(include_str!("../../assets/genre-movie-list.json"))
             .create_async()
             .await;
-        let result = cmd.execute(&client).await.unwrap();
-        assert!(!result.is_empty());
-    }
 
-    #[tokio::test]
-    async fn tv_works() {
-        let mut server = mockito::Server::new_async().await;
         let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
             .unwrap();
-        let cmd = GenreList::tv();
+        let result = client.list_movie_genres(&Default::default()).await.unwrap();
+        assert!(!result.genres.is_empty());
 
-        let _m = server
+        m.assert_async().await;
+    }
+
+    #[tokio::test]
+    async fn tv_works() {
+        let mut server = mockito::Server::new_async().await;
+        let m = server
             .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
@@ -138,21 +96,25 @@ mod tests {
             .with_body(include_str!("../../assets/genre-tv-list.json"))
             .create_async()
             .await;
-        let result = cmd.execute(&client).await.unwrap();
-        assert!(!result.is_empty());
-    }
 
-    #[tokio::test]
-    async fn invalid_api_key() {
-        let mut server = mockito::Server::new_async().await;
         let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
             .unwrap();
-        let cmd = GenreList::tv();
+        let result = client
+            .list_tvshow_genres(&Default::default())
+            .await
+            .unwrap();
+        assert!(!result.genres.is_empty());
 
-        let _m = server
+        m.assert_async().await;
+    }
+
+    #[tokio::test]
+    async fn invalid_api_key() {
+        let mut server = mockito::Server::new_async().await;
+        let m = server
             .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
@@ -160,22 +122,26 @@ mod tests {
             .with_body(include_str!("../../assets/invalid-api-key.json"))
             .create_async()
             .await;
-        let err = cmd.execute(&client).await.unwrap_err();
-        let server_err = err.as_server_error().unwrap();
-        assert_eq!(server_err.status_code, 7);
-    }
-
-    #[tokio::test]
-    async fn resource_not_found() {
-        let mut server = mockito::Server::new_async().await;
         let client = Client::<ReqwestExecutor>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
             .unwrap();
-        let cmd = GenreList::tv();
 
-        let _m = server
+        let err = client
+            .list_tvshow_genres(&Default::default())
+            .await
+            .unwrap_err();
+        let server_err = err.as_server_error().unwrap();
+        assert_eq!(server_err.status_code, 7);
+
+        m.assert_async().await;
+    }
+
+    #[tokio::test]
+    async fn resource_not_found() {
+        let mut server = mockito::Server::new_async().await;
+        let m = server
             .mock("GET", super::TV_PATH)
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
@@ -183,39 +149,46 @@ mod tests {
             .with_body(include_str!("../../assets/resource-not-found.json"))
             .create_async()
             .await;
-        let err = cmd.execute(&client).await.unwrap_err();
+        let client = Client::<ReqwestExecutor>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+        let err = client
+            .list_tvshow_genres(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
+        m.assert_async().await;
     }
 }
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
+    use super::Params;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
-
-    use super::GenreList;
 
     #[tokio::test]
     async fn execute_tv() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let mut cmd = GenreList::tv();
-        cmd.language = Some("en-US".into());
-
-        let result = cmd.execute(&client).await.unwrap();
-        assert!(!result.is_empty());
+        let result = client
+            .list_tvshow_genres(&Params::default().with_language("en-US"))
+            .await
+            .unwrap();
+        assert!(!result.genres.is_empty());
     }
 
     #[tokio::test]
     async fn execute_movie() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let mut cmd = GenreList::movie();
-        cmd.language = Some("en-US".into());
-
-        let result = cmd.execute(&client).await.unwrap();
-        assert!(!result.is_empty());
+        let result = client
+            .list_movie_genres(&Params::default().with_language("en-US"))
+            .await
+            .unwrap();
+        assert!(!result.genres.is_empty());
     }
 }

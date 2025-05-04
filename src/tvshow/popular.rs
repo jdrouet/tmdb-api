@@ -1,70 +1,35 @@
-use std::borrow::Cow;
-
 use crate::common::PaginatedResult;
 
-/// Get a list of the current popular movies on TMDB. This list updates daily.
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::tvshow::popular::TVShowPopular;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let result = TVShowPopular::default().execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct TVShowPopular {
-    /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
-    /// Specify which page to query.
-    pub page: Option<u32>,
-}
+pub type Params<'a> = crate::common::LanguagePageParams<'a>;
 
-impl TVShowPopular {
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
-        self
-    }
-
-    pub fn with_page(mut self, value: Option<u32>) -> Self {
-        self.page = value;
-        self
-    }
-}
-
-impl crate::prelude::Command for TVShowPopular {
-    type Output = PaginatedResult<super::TVShowShort>;
-
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Borrowed("/tv/popular")
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        let mut res = Vec::new();
-        if let Some(ref language) = self.language {
-            res.push(("language", Cow::Borrowed(language.as_str())))
-        }
-        if let Some(ref page) = self.page {
-            res.push(("page", Cow::Owned(page.to_string())))
-        }
-        res
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Get a list of the current popular tvshows on TMDB. This list updates daily.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.list_popular_movies(&Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn list_popular_tvshows(
+        &self,
+        params: &Params<'_>,
+    ) -> crate::Result<PaginatedResult<super::TVShowShort>> {
+        self.execute("/tv/popular", params).await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::TVShowPopular;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -85,7 +50,10 @@ mod tests {
             .create_async()
             .await;
 
-        let result = TVShowPopular::default().execute(&client).await.unwrap();
+        let result = client
+            .list_popular_tvshows(&Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.page, 1);
     }
 
@@ -107,7 +75,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowPopular::default().execute(&client).await.unwrap_err();
+        let err = client
+            .list_popular_tvshows(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -130,7 +101,10 @@ mod tests {
             .create_async()
             .await;
 
-        let err = TVShowPopular::default().execute(&client).await.unwrap_err();
+        let err = client
+            .list_popular_tvshows(&Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -138,16 +112,17 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::TVShowPopular;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
 
-        let _result = TVShowPopular::default().execute(&client).await.unwrap();
+        let _result = client
+            .list_popular_tvshows(&Default::default())
+            .await
+            .unwrap();
     }
 }

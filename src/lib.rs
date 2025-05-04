@@ -11,15 +11,13 @@ extern crate serde;
 extern crate serde_repr;
 
 /// The used version of reqwest
-#[cfg(feature = "commands")]
 pub use reqwest;
 
-#[cfg(feature = "commands")]
 pub use client::Client;
 
 pub mod certification;
 pub mod changes;
-#[cfg(feature = "commands")]
+
 pub mod client;
 pub mod collection;
 pub mod company;
@@ -27,11 +25,11 @@ pub mod error;
 pub mod genre;
 pub mod movie;
 pub mod people;
-#[cfg(feature = "commands")]
-pub mod prelude;
 pub mod tvshow;
 pub mod watch_provider;
 
 pub mod common;
 pub mod configuration;
 mod util;
+
+pub type Result<V> = std::result::Result<V, crate::error::Error>;

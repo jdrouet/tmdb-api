@@ -1,128 +1,124 @@
 use std::borrow::Cow;
 
-const PATH: &str = "/search/movie";
-
-/// Command to search for movies
-///
-/// ```rust
-/// use tmdb_api::prelude::Command;
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-/// use tmdb_api::movie::search::MovieSearch;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     let cmd = MovieSearch::new("die hard".into());
-///     let result = cmd.execute(&client).await;
-///     match result {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default)]
-pub struct MovieSearch {
-    /// Text query to search.
-    pub query: String,
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support it.
-    pub language: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub language: Option<Cow<'a, str>>,
     /// Which page to query.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub page: Option<u32>,
     /// Whether to include adult (pornography) content in the results.
+    #[serde(skip_serializing_if = "crate::util::is_false")]
     pub include_adult: bool,
     /// ISO 3166-1 code to filter release region. Must be uppercase.
-    pub region: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub region: Option<Cow<'a, str>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub year: Option<u16>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_release_year: Option<u16>,
 }
 
-impl MovieSearch {
-    pub fn new(query: String) -> Self {
-        Self {
-            query,
-            language: None,
-            page: None,
-            include_adult: false,
-            region: None,
-            year: None,
-            primary_release_year: None,
-        }
+impl<'a> Params<'a> {
+    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.language = Some(value.into());
     }
 
-    pub fn with_language(mut self, value: Option<String>) -> Self {
-        self.language = value;
+    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_language(value);
         self
     }
 
-    pub fn with_page(mut self, value: Option<u32>) -> Self {
-        self.page = value;
+    pub fn set_page(&mut self, value: u32) {
+        self.page = Some(value);
+    }
+
+    pub fn with_page(mut self, value: u32) -> Self {
+        self.set_page(value);
         self
+    }
+
+    pub fn set_include_adult(&mut self, value: bool) {
+        self.include_adult = value;
     }
 
     pub fn with_include_adult(mut self, value: bool) -> Self {
-        self.include_adult = value;
+        self.set_include_adult(value);
         self
     }
 
-    pub fn with_region(mut self, value: Option<String>) -> Self {
-        self.region = value;
+    pub fn set_region(&mut self, value: impl Into<Cow<'a, str>>) {
+        self.region = Some(value.into());
+    }
+
+    pub fn with_region(mut self, value: impl Into<Cow<'a, str>>) -> Self {
+        self.set_region(value);
         self
     }
 
-    pub fn with_year(mut self, value: Option<u16>) -> Self {
-        self.year = value;
+    pub fn set_year(&mut self, value: u16) {
+        self.year = Some(value);
+    }
+
+    pub fn with_year(mut self, value: u16) -> Self {
+        self.set_year(value);
         self
     }
 
-    pub fn with_primary_release_year(mut self, value: Option<u16>) -> Self {
-        self.primary_release_year = value;
+    pub fn set_primary_release_year(&mut self, value: u16) {
+        self.primary_release_year = Some(value);
+    }
+
+    pub fn with_primary_release_year(mut self, value: u16) -> Self {
+        self.set_primary_release_year(value);
         self
     }
 }
 
-impl crate::prelude::Command for MovieSearch {
-    type Output = crate::common::PaginatedResult<super::MovieShort>;
+#[derive(serde::Serialize)]
+struct WithQuery<'a, V> {
+    query: Cow<'a, str>,
+    #[serde(flatten)]
+    inner: V,
+}
 
-    fn path(&self) -> Cow<'static, str> {
-        Cow::Borrowed(PATH)
-    }
-
-    fn params(&self) -> Vec<(&'static str, Cow<'_, str>)> {
-        let mut res = vec![("query", Cow::Borrowed(self.query.as_str()))];
-
-        if let Some(language) = self.language.as_ref() {
-            res.push(("language", Cow::Borrowed(language.as_str())));
-        }
-        if let Some(page) = self.page {
-            res.push(("page", Cow::Owned(page.to_string())));
-        }
-        if self.include_adult {
-            res.push(("include_adult", Cow::Borrowed("true")));
-        }
-        if let Some(region) = self.region.as_ref() {
-            res.push(("region", Cow::Borrowed(region.as_str())));
-        }
-        if let Some(year) = self.year {
-            res.push(("year", Cow::Owned(year.to_string())));
-        }
-        if let Some(primary_release_year) = self.primary_release_year {
-            res.push((
-                "primary_release_year",
-                Cow::Owned(primary_release_year.to_string()),
-            ));
-        }
-
-        res
+impl<E: crate::client::Executor> crate::Client<E> {
+    /// Search for movies by their original, translated and alternative titles.
+    ///
+    /// ```rust
+    /// use tmdb_api::client::Client;
+    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    ///
+    /// #[tokio::main]
+    /// async fn main() {
+    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     match client.search_movies("die hard", &Default::default()).await {
+    ///         Ok(res) => println!("found: {:#?}", res),
+    ///         Err(err) => eprintln!("error: {:?}", err),
+    ///     };
+    /// }
+    /// ```
+    pub async fn search_movies<'a>(
+        &self,
+        query: impl Into<Cow<'a, str>>,
+        params: &Params<'a>,
+    ) -> crate::Result<crate::common::PaginatedResult<super::MovieShort>> {
+        self.execute(
+            "/search/movie",
+            &WithQuery {
+                query: query.into(),
+                inner: params,
+            },
+        )
+        .await
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::MovieSearch;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
     use mockito::Matcher;
 
     #[tokio::test]
@@ -134,10 +130,8 @@ mod tests {
             .build()
             .unwrap();
 
-        let cmd = MovieSearch::new("Whatever".into());
-
         let _m = server
-            .mock("GET", super::PATH)
+            .mock("GET", "/search/movie")
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
                 Matcher::UrlEncoded("query".into(), "Whatever".into()),
@@ -147,7 +141,10 @@ mod tests {
             .with_body(include_str!("../../assets/search-movie.json"))
             .create_async()
             .await;
-        let result = cmd.execute(&client).await.unwrap();
+        let result = client
+            .search_movies("Whatever", &Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.page, 1);
         assert!(!result.results.is_empty());
         assert!(result.total_pages > 0);
@@ -165,10 +162,8 @@ mod tests {
             .build()
             .unwrap();
 
-        let cmd = MovieSearch::new("Whatever".into());
-
         let _m = server
-            .mock("GET", super::PATH)
+            .mock("GET", "/search/movie")
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
                 Matcher::UrlEncoded("query".into(), "Whatever".into()),
@@ -178,7 +173,11 @@ mod tests {
             .with_body(include_str!("../../assets/invalid-api-key.json"))
             .create_async()
             .await;
-        let err = cmd.execute(&client).await.unwrap_err();
+        let err = client
+            .search_movies("Whatever", &Default::default())
+            .await
+            .unwrap_err();
+        println!("err {err:?}");
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 7);
     }
@@ -192,10 +191,8 @@ mod tests {
             .build()
             .unwrap();
 
-        let cmd = MovieSearch::new("Whatever".into());
-
         let _m = server
-            .mock("GET", super::PATH)
+            .mock("GET", "/search/movie")
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
                 Matcher::UrlEncoded("query".into(), "Whatever".into()),
@@ -205,7 +202,10 @@ mod tests {
             .with_body(include_str!("../../assets/resource-not-found.json"))
             .create_async()
             .await;
-        let err = cmd.execute(&client).await.unwrap_err();
+        let err = client
+            .search_movies("Whatever", &Default::default())
+            .await
+            .unwrap_err();
         let server_err = err.as_server_error().unwrap();
         assert_eq!(server_err.status_code, 34);
     }
@@ -219,10 +219,8 @@ mod tests {
             .build()
             .unwrap();
 
-        let cmd = MovieSearch::new("".into());
-
         let _m = server
-            .mock("GET", super::PATH)
+            .mock("GET", "/search/movie")
             .match_query(Matcher::AllOf(vec![
                 Matcher::UrlEncoded("api_key".into(), "secret".into()),
                 Matcher::UrlEncoded("query".into(), "".into()),
@@ -232,7 +230,10 @@ mod tests {
             .with_body(include_str!("../../assets/validation-error.json"))
             .create_async()
             .await;
-        let err = cmd.execute(&client).await.unwrap_err();
+        let err = client
+            .search_movies("", &Default::default())
+            .await
+            .unwrap_err();
         let validation_err = err.as_validation_error().unwrap();
         assert_eq!(validation_err.errors.len(), 1);
     }
@@ -261,18 +262,17 @@ mod tests {
 
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
-    use super::MovieSearch;
     use crate::client::Client;
     use crate::client::reqwest::ReqwestExecutor;
-    use crate::prelude::Command;
 
     #[tokio::test]
     async fn search_rrrrrrr() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let cmd = MovieSearch::new("Rrrrrrr".into());
-
-        let result = cmd.execute(&client).await.unwrap();
+        let result = client
+            .search_movies("Rrrrrrr", &Default::default())
+            .await
+            .unwrap();
         assert_eq!(result.page, 1);
         assert_eq!(result.results.len(), 1);
         assert_eq!(result.total_pages, 1);
@@ -285,8 +285,9 @@ mod integration_tests {
     async fn search_simpsons() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
         let client = Client::<ReqwestExecutor>::new(secret);
-        let cmd = MovieSearch::new("simpsons".into());
-
-        let _result = cmd.execute(&client).await.unwrap();
+        let _result = client
+            .search_movies("simpsons", &Default::default())
+            .await
+            .unwrap();
     }
 }

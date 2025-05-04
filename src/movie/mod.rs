@@ -1,44 +1,43 @@
-#[cfg(feature = "commands")]
 pub mod alternative_titles;
-#[cfg(feature = "commands")]
+
 pub mod changes;
-#[cfg(feature = "commands")]
+
 pub mod credits;
-#[cfg(feature = "commands")]
+
 pub mod details;
-#[cfg(feature = "commands")]
+
 pub mod external_ids;
-#[cfg(feature = "commands")]
+
 pub mod images;
-#[cfg(feature = "commands")]
+
 pub mod keywords;
-#[cfg(feature = "commands")]
+
 pub mod latest;
-#[cfg(feature = "commands")]
+
 pub mod lists;
-#[cfg(feature = "commands")]
+
 pub mod now_playing;
-#[cfg(feature = "commands")]
+
 pub mod popular;
-#[cfg(feature = "commands")]
+
 pub mod recommendations;
-#[cfg(feature = "commands")]
+
 pub mod release_dates;
-#[cfg(feature = "commands")]
+
 pub mod reviews;
-#[cfg(feature = "commands")]
+
 pub mod search;
-#[cfg(feature = "commands")]
+
 pub mod similar;
-#[cfg(feature = "commands")]
+
 pub mod top_rated;
-#[cfg(feature = "commands")]
+
 pub mod translations;
-#[cfg(feature = "commands")]
+
 pub mod upcoming;
-#[cfg(feature = "commands")]
+
 pub mod videos;
-#[cfg(feature = "commands")]
+
 pub mod watch_providers;
 
 use crate::collection::CollectionBase;
