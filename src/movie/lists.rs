@@ -1,51 +1,6 @@
-use std::borrow::Cow;
-
 use crate::common::PaginatedResult;
 
-/// Get a list of lists that this movie belongs to.
-///
-/// ```rust
-/// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
-///
-/// #[tokio::main]
-/// async fn main() {
-///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
-///     match client.get_movie_lists(42, &Default::default()).await {
-///         Ok(res) => println!("found: {:#?}", res),
-///         Err(err) => eprintln!("error: {:?}", err),
-///     };
-/// }
-/// ```
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Params<'a> {
-    /// ISO 639-1 value to display translated data for the fields that support it.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub language: Option<Cow<'a, str>>,
-    /// Specify which page to query.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub page: Option<u32>,
-}
-
-impl<'a> Params<'a> {
-    pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
-        self.language = Some(value.into());
-    }
-
-    pub fn with_language(mut self, value: impl Into<Cow<'a, str>>) -> Self {
-        self.set_language(value);
-        self
-    }
-
-    pub fn set_page(&mut self, value: u32) {
-        self.page = Some(value);
-    }
-
-    pub fn with_page(mut self, value: u32) -> Self {
-        self.set_page(value);
-        self
-    }
-}
+pub type Params<'a> = crate::common::LanguagePageParams<'a>;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct MovieList {

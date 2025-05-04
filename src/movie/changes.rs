@@ -1,48 +1,6 @@
-use chrono::NaiveDate;
-
 use crate::client::Executor;
 
-#[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Params {
-    /// Filter the results with a start date.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub start_date: Option<NaiveDate>,
-    /// Filter the results with a end date.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub end_date: Option<NaiveDate>,
-    /// The country to filter the alternative titles
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub page: Option<u32>,
-}
-
-impl Params {
-    pub fn set_start_date(&mut self, value: NaiveDate) {
-        self.start_date = Some(value);
-    }
-
-    pub fn with_start_date(mut self, value: NaiveDate) -> Self {
-        self.set_start_date(value);
-        self
-    }
-
-    pub fn set_end_date(&mut self, value: NaiveDate) {
-        self.end_date = Some(value);
-    }
-
-    pub fn with_end_date(mut self, value: NaiveDate) -> Self {
-        self.set_end_date(value);
-        self
-    }
-
-    pub fn set_page(&mut self, value: u32) {
-        self.page = Some(value);
-    }
-
-    pub fn with_page(mut self, value: u32) -> Self {
-        self.set_page(value);
-        self
-    }
-}
+pub use crate::changes::list::Params;
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct MovieChange {
