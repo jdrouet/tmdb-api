@@ -10,6 +10,8 @@ extern crate serde;
 #[macro_use]
 extern crate serde_repr;
 
+/// The used version of chrono
+pub use chrono;
 /// The used version of reqwest
 pub use reqwest;
 
