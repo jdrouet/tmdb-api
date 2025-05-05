@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.2](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) - 2025-05-05
+
+### Added
+
+- export chrono
+
+### Other
+
+- update readme
+- move genre module
+- move certification module
+- *(deps)* bump dependencies
+
 ## [1.0.0-alpha.1](https://github.com/jdrouet/tmdb-api/compare/v0.9.1...v1.0.0-alpha.1) - 2025-05-04
 
 ### Added
