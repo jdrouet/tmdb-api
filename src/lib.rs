@@ -1,7 +1,4 @@
-//! Another implementation of a client for the TMDB API
-//!
-//! It provides a support for async and implements each command using the Command pattern.
-
+#![doc = include_str!("../readme.md")]
 #![warn(clippy::all, rust_2018_idioms)]
 #![forbid(unsafe_code)]
 

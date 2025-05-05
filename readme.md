@@ -10,9 +10,9 @@ cargo add tmdb-api
 
 ## Usage
 
-```rust
-use tmdb_api::prelude::Command;
+```rust,no_run
 use tmdb_api::client::Client;
+use tmdb_api::client::reqwest::ReqwestExecutor;
 
 #[tokio::main]
 async fn main() {
