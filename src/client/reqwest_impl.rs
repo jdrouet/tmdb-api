@@ -40,6 +40,7 @@ impl super::prelude::Executor for reqwest::Client {
     }
 }
 
+#[cfg(feature = "reqwest-middleware")]
 impl From<reqwest_middleware::Error> for crate::error::Error {
     fn from(value: reqwest_middleware::Error) -> Self {
         crate::error::Error::Request {
@@ -48,6 +49,7 @@ impl From<reqwest_middleware::Error> for crate::error::Error {
     }
 }
 
+#[cfg(feature = "reqwest-middleware")]
 impl super::prelude::Executor for reqwest_middleware::ClientWithMiddleware {
     async fn execute<T: serde::de::DeserializeOwned, P: serde::Serialize>(
         &self,

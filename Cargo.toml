@@ -11,6 +11,7 @@ readme = "readme.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [features]
+reqwest-middleware = ["dep:reqwest-middleware"]
 # only used for testing
 integration = []
 
@@ -23,7 +24,7 @@ reqwest = { version = "0.12", default-features = false, features = [
     "json",
     "rustls-tls",
 ] }
-reqwest-middleware = { version = "0.4" }
+reqwest-middleware = { version = "0.4", optional = true }
 serde = { version = "1.0", features = ["derive"] }
 serde_repr = { version = "0.1" }
 thiserror = { version = "2.0" }

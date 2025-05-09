@@ -1,6 +1,7 @@
 pub mod prelude;
 
 pub use reqwest;
+#[cfg(feature = "reqwest-middleware")]
 pub use reqwest_middleware;
 
 mod reqwest_impl;
