@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.3](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) - 2025-05-09
+
+### Added
+
+- put reqwest-middleware behind feature flag
+- remove reqwest executor
+- add reqwest_middleware as possible executor
+
+### Other
+
+- use reqwest::Client instead of ReqwestExecutor
+- *(deps)* bump tokio from 1.44.2 to 1.45.0 ([#105](https://github.com/jdrouet/tmdb-api/pull/105))
+
 ## [1.0.0-alpha.2](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) - 2025-05-05
 
 ### Added
