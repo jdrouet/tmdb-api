@@ -59,7 +59,7 @@ mod tests {
     use mockito::Matcher;
 
     use crate::client::Client;
-    use crate::client::reqwest::reqwest::Client as ReqwestClient;
+    use crate::client::reqwest::Client as ReqwestClient;
 
     #[tokio::test]
     async fn it_works() {
@@ -140,7 +140,7 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use crate::client::Client;
-    use crate::client::reqwest::reqwest::Client as ReqwestClient;
+    use crate::client::reqwest::Client as ReqwestClient;
 
     #[tokio::test]
     async fn execute() {

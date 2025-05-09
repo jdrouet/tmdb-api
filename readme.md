@@ -12,7 +12,7 @@ cargo add tmdb-api
 
 ```rust,no_run
 use tmdb_api::client::Client;
-use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
+use tmdb_api::client::reqwest::Client as ReqwestClient;
 
 #[tokio::main]
 async fn main() {

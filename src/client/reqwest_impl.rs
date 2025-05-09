@@ -1,35 +1,3 @@
-pub use reqwest;
-pub use reqwest_middleware;
-
-#[derive(Debug, Default)]
-pub struct ReqwestExecutor {
-    inner: reqwest::Client,
-}
-
-impl From<reqwest::Client> for ReqwestExecutor {
-    fn from(inner: reqwest::Client) -> Self {
-        Self { inner }
-    }
-}
-
-impl From<reqwest::Error> for crate::error::Error {
-    fn from(value: reqwest::Error) -> Self {
-        crate::error::Error::Request {
-            source: Box::new(value),
-        }
-    }
-}
-
-impl super::prelude::Executor for ReqwestExecutor {
-    async fn execute<T: serde::de::DeserializeOwned, P: serde::Serialize>(
-        &self,
-        url: &str,
-        params: P,
-    ) -> crate::Result<T> {
-        super::prelude::Executor::execute(&self.inner, url, params).await
-    }
-}
-
 impl super::prelude::Executor for reqwest::Client {
     async fn execute<T: serde::de::DeserializeOwned, P: serde::Serialize>(
         &self,

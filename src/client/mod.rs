@@ -1,5 +1,9 @@
 pub mod prelude;
-pub mod reqwest;
+
+pub use reqwest;
+pub use reqwest_middleware;
+
+mod reqwest_impl;
 
 use std::borrow::Cow;
 
@@ -82,7 +86,7 @@ struct WithApiKey<'a, V> {
 ///
 /// ```rust
 /// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
+/// use tmdb_api::client::reqwest::Client as ReqwestClient;
 ///
 /// let client = Client::<ReqwestClient>::new("this-is-my-secret-token".into());
 /// ```

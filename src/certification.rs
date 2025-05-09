@@ -25,7 +25,7 @@ impl<E: Executor> crate::Client<E> {
     ///
     /// ```rust
     /// use tmdb_api::Client;
-    /// use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
+    /// use tmdb_api::client::reqwest::Client as ReqwestClient;
     ///
     /// #[tokio::main]
     /// async fn main() {
@@ -44,7 +44,7 @@ impl<E: Executor> crate::Client<E> {
     ///
     /// ```rust
     /// use tmdb_api::Client;
-    /// use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
+    /// use tmdb_api::client::reqwest::Client as ReqwestClient;
     ///
     /// #[tokio::main]
     /// async fn main() {
@@ -65,7 +65,7 @@ mod tests {
     use mockito::Matcher;
 
     use crate::Client;
-    use crate::client::reqwest::reqwest::Client as ReqwestClient;
+    use crate::client::reqwest::Client as ReqwestClient;
 
     #[tokio::test]
     async fn tv_works() {
@@ -161,7 +161,7 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use crate::client::Client;
-    use crate::client::reqwest::reqwest::Client as ReqwestClient;
+    use crate::client::reqwest::Client as ReqwestClient;
 
     #[tokio::test]
     async fn execute_tv() {
