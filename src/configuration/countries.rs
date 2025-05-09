@@ -16,11 +16,11 @@ impl<E: Executor> crate::Client<E> {
     ///
     /// ```rust
     /// use tmdb_api::client::Client;
-    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    /// use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
     ///
     /// #[tokio::main]
     /// async fn main() {
-    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     let client = Client::<ReqwestClient>::new("this-is-my-secret-token".into());
     ///     match client.list_countries(&Default::default()).await {
     ///         Ok(res) => println!("found: {:#?}", res),
     ///         Err(err) => eprintln!("error: {:?}", err),
@@ -38,7 +38,7 @@ mod tests {
     use mockito::Matcher;
 
     use crate::Client;
-    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::reqwest::reqwest::Client as ReqwestClient;
 
     #[tokio::test]
     async fn it_works() {
@@ -52,7 +52,7 @@ mod tests {
             .create_async()
             .await;
 
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -75,7 +75,7 @@ mod tests {
             .create_async()
             .await;
 
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -103,7 +103,7 @@ mod tests {
             .create_async()
             .await;
 
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -123,12 +123,12 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use crate::Client;
-    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::reqwest::reqwest::Client as ReqwestClient;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-        let client = Client::<ReqwestExecutor>::new(secret);
+        let client = Client::<ReqwestClient>::new(secret);
         let result = client.list_countries(&Default::default()).await.unwrap();
         assert!(!result.is_empty());
     }

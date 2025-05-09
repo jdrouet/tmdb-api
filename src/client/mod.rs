@@ -4,7 +4,7 @@ pub mod reqwest;
 use std::borrow::Cow;
 
 pub use self::prelude::Executor;
-pub type ReqwestClient = Client<reqwest::ReqwestExecutor>;
+pub type ReqwestClient = Client<::reqwest::Client>;
 
 const BASE_URL: &str = "https://api.themoviedb.org/3";
 
@@ -82,9 +82,9 @@ struct WithApiKey<'a, V> {
 ///
 /// ```rust
 /// use tmdb_api::client::Client;
-/// use tmdb_api::client::reqwest::ReqwestExecutor;
+/// use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
 ///
-/// let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+/// let client = Client::<ReqwestClient>::new("this-is-my-secret-token".into());
 /// ```
 pub struct Client<E> {
     executor: E,

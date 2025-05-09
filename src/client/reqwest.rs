@@ -1,3 +1,6 @@
+pub use reqwest;
+pub use reqwest_middleware;
+
 #[derive(Debug, Default)]
 pub struct ReqwestExecutor {
     inner: reqwest::Client,

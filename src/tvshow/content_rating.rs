@@ -16,11 +16,11 @@ impl<E: crate::client::Executor> crate::Client<E> {
     ///
     /// ```rust
     /// use tmdb_api::client::Client;
-    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    /// use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
     ///
     /// #[tokio::main]
     /// async fn main() {
-    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     let client = Client::<ReqwestClient>::new("this-is-my-secret-token".into());
     ///     match client.get_tvshow_content_ratings(42).await {
     ///         Ok(res) => println!("found: {:#?}", res),
     ///         Err(err) => eprintln!("error: {:?}", err),
@@ -38,12 +38,12 @@ mod tests {
     use mockito::Matcher;
 
     use crate::Client;
-    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::reqwest::reqwest::Client as ReqwestClient;
 
     #[tokio::test]
     async fn it_works() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -65,7 +65,7 @@ mod tests {
     #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -88,7 +88,7 @@ mod tests {
     #[tokio::test]
     async fn resource_not_found() {
         let mut server = mockito::Server::new_async().await;
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -112,12 +112,12 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use crate::Client;
-    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::reqwest::reqwest::Client as ReqwestClient;
 
     #[tokio::test]
     async fn execute() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-        let client = Client::<ReqwestExecutor>::new(secret);
+        let client = Client::<ReqwestClient>::new(secret);
 
         let result = client.get_tvshow_content_ratings(1399).await.unwrap();
         assert!(!result.results.is_empty());

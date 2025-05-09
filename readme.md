@@ -12,12 +12,12 @@ cargo add tmdb-api
 
 ```rust,no_run
 use tmdb_api::client::Client;
-use tmdb_api::client::reqwest::ReqwestExecutor;
+use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
 
 #[tokio::main]
 async fn main() {
     let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-    let client = Client::<ReqwestExecutor>::new(secret);
+    let client = Client::<ReqwestClient>::new(secret);
     let res = client.search_tvshows("simpsons", &Default::default()).await.unwrap();
     let item = res.results.first().unwrap();
     println!("TVShow found: {}", item.inner.name);

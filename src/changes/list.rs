@@ -53,11 +53,11 @@ impl<E: Executor> crate::Client<E> {
     ///
     /// ```rust
     /// use tmdb_api::Client;
-    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    /// use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
     ///
     /// #[tokio::main]
     /// async fn main() {
-    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     let client = Client::<ReqwestClient>::new("this-is-my-secret-token".into());
     ///     match client.list_movie_changes(&Default::default()).await {
     ///         Ok(res) => println!("found: {:#?}", res),
     ///         Err(err) => eprintln!("error: {:?}", err),
@@ -75,11 +75,11 @@ impl<E: Executor> crate::Client<E> {
     ///
     /// ```rust
     /// use tmdb_api::Client;
-    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    /// use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
     ///
     /// #[tokio::main]
     /// async fn main() {
-    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     let client = Client::<ReqwestClient>::new("this-is-my-secret-token".into());
     ///     match client.list_person_changes(&Default::default()).await {
     ///         Ok(res) => println!("found: {:#?}", res),
     ///         Err(err) => eprintln!("error: {:?}", err),
@@ -97,11 +97,11 @@ impl<E: Executor> crate::Client<E> {
     ///
     /// ```rust
     /// use tmdb_api::Client;
-    /// use tmdb_api::client::reqwest::ReqwestExecutor;
+    /// use tmdb_api::client::reqwest::reqwest::Client as ReqwestClient;
     ///
     /// #[tokio::main]
     /// async fn main() {
-    ///     let client = Client::<ReqwestExecutor>::new("this-is-my-secret-token".into());
+    ///     let client = Client::<ReqwestClient>::new("this-is-my-secret-token".into());
     ///     match client.list_tvshow_changes(&Default::default()).await {
     ///         Ok(res) => println!("found: {:#?}", res),
     ///         Err(err) => eprintln!("error: {:?}", err),
@@ -120,7 +120,7 @@ impl<E: Executor> crate::Client<E> {
 mod tests {
     use crate::changes::list::Params;
     use crate::client::Client;
-    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::reqwest::reqwest::Client as ReqwestClient;
     use chrono::NaiveDate;
     use mockito::Matcher;
 
@@ -136,7 +136,7 @@ mod tests {
             .create_async()
             .await;
 
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -168,7 +168,7 @@ mod tests {
             .create_async()
             .await;
 
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -198,7 +198,7 @@ mod tests {
             .create_async()
             .await;
 
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -224,7 +224,7 @@ mod tests {
             .create_async()
             .await;
 
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -250,7 +250,7 @@ mod tests {
             .create_async()
             .await;
 
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -277,7 +277,7 @@ mod tests {
             .create_async()
             .await;
 
-        let client = Client::<ReqwestExecutor>::builder()
+        let client = Client::<ReqwestClient>::builder()
             .with_api_key("secret".into())
             .with_base_url(server.url())
             .build()
@@ -296,12 +296,12 @@ mod tests {
 #[cfg(all(test, feature = "integration"))]
 mod integration_tests {
     use crate::client::Client;
-    use crate::client::reqwest::ReqwestExecutor;
+    use crate::client::reqwest::reqwest::Client as ReqwestClient;
 
     #[tokio::test]
     async fn execute_tv() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-        let client = Client::<ReqwestExecutor>::new(secret);
+        let client = Client::<ReqwestClient>::new(secret);
 
         let result = client
             .list_tvshow_changes(&Default::default())
@@ -313,7 +313,7 @@ mod integration_tests {
     #[tokio::test]
     async fn execute_movie() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-        let client = Client::<ReqwestExecutor>::new(secret);
+        let client = Client::<ReqwestClient>::new(secret);
 
         let result = client
             .list_movie_changes(&Default::default())
@@ -325,7 +325,7 @@ mod integration_tests {
     #[tokio::test]
     async fn execute_person() {
         let secret = std::env::var("TMDB_TOKEN_V3").unwrap();
-        let client = Client::<ReqwestExecutor>::new(secret);
+        let client = Client::<ReqwestClient>::new(secret);
 
         let result = client
             .list_person_changes(&Default::default())
