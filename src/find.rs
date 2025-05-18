@@ -60,7 +60,7 @@ impl<'a> Params<'a> {
     }
 }
 
-impl<'a> From<ExternalIdSource> for Params<'a> {
+impl From<ExternalIdSource> for Params<'_> {
     fn from(value: ExternalIdSource) -> Self {
         Self {
             external_source: value,
@@ -373,8 +373,14 @@ mod tests {
         assert_eq!(inner.id, 112257);
         assert_eq!(inner.name, "Season 1");
         assert_eq!(inner.overview, None);
-        assert_eq!(inner.poster_path, Some("/59SVNwLfoMnZPPB6ukW6dlPxAdI.jpg".into()));
-        assert_eq!(inner.air_date, Some(NaiveDate::parse_from_str("2022-09-21", "%Y-%m-%d").unwrap()));
+        assert_eq!(
+            inner.poster_path,
+            Some("/59SVNwLfoMnZPPB6ukW6dlPxAdI.jpg".into())
+        );
+        assert_eq!(
+            inner.air_date,
+            Some(NaiveDate::parse_from_str("2022-09-21", "%Y-%m-%d").unwrap())
+        );
         assert_eq!(inner.season_number, 1);
         assert_eq!(season.episode_count, 12);
 
