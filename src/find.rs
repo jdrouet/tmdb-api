@@ -42,31 +42,24 @@ pub enum ExternalIdSource {
     Youtube,
 }
 
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Params<'a> {
-    pub external_source: ExternalIdSource,
     /// ISO 639-1 value to display translated data for the fields that support it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
 }
 
 impl<'a> Params<'a> {
-    pub fn from_external_source(external_source: ExternalIdSource) -> Self {
-        external_source.into()
-    }
-
     pub fn set_language(&mut self, value: impl Into<Cow<'a, str>>) {
         self.language = Some(value.into());
     }
 }
 
-impl From<ExternalIdSource> for Params<'_> {
-    fn from(value: ExternalIdSource) -> Self {
-        Self {
-            external_source: value,
-            language: None,
-        }
-    }
+#[derive(serde::Serialize)]
+struct WithQuery<V> {
+    external_source: ExternalIdSource,
+    #[serde(flatten)]
+    inner: V,
 }
 
 impl<E: Executor> crate::Client<E> {
@@ -77,12 +70,11 @@ impl<E: Executor> crate::Client<E> {
     /// use tmdb_api::client::Client;
     /// use tmdb_api::client::reqwest::Client as ReqwestClient;
     /// use tmdb_api::find::ExternalIdSource;
-    /// use tmdb_api::find::Params;
     ///
     /// #[tokio::main]
     /// async fn main() {
     ///     let client = Client::<ReqwestClient>::new("this-is-my-secret-token".into());
-    ///     match client.find_by_id("tt31193180", &ExternalIdSource::Imdb.into()).await {
+    ///     match client.find_by_id("tt31193180", ExternalIdSource::Imdb, &Default::default()).await {
     ///         Ok(res) => println!("found: {:#?}", res),
     ///         Err(err) => eprintln!("error: {:?}", err),
     ///     }
@@ -91,10 +83,15 @@ impl<E: Executor> crate::Client<E> {
     pub async fn find_by_id(
         &self,
         external_id: &str,
+        external_source: ExternalIdSource,
         params: &Params<'_>,
     ) -> crate::Result<FindResults> {
         let url = format!("/find/{}", external_id);
-        self.execute(&url, params).await
+        let query = WithQuery {
+            inner: params,
+            external_source,
+        };
+        self.execute(&url, &query).await
     }
 }
 
@@ -129,7 +126,7 @@ mod tests {
             .await;
 
         let result = client
-            .find_by_id("tt31193180", &ExternalIdSource::Imdb.into())
+            .find_by_id("tt31193180", ExternalIdSource::Imdb, &Default::default())
             .await
             .unwrap();
 
@@ -195,7 +192,7 @@ mod tests {
             .await;
 
         let result = client
-            .find_by_id("nm0000354", &ExternalIdSource::Imdb.into())
+            .find_by_id("nm0000354", ExternalIdSource::Imdb, &Default::default())
             .await
             .unwrap();
 
@@ -236,7 +233,7 @@ mod tests {
             .await;
 
         let result = client
-            .find_by_id("72023", &ExternalIdSource::Tvdb.into())
+            .find_by_id("72023", ExternalIdSource::Tvdb, &Default::default())
             .await
             .unwrap();
 
@@ -300,7 +297,7 @@ mod tests {
             .await;
 
         let result = client
-            .find_by_id("72023", &ExternalIdSource::Tvdb.into())
+            .find_by_id("72023", ExternalIdSource::Tvdb, &Default::default())
             .await
             .unwrap();
 
@@ -356,7 +353,7 @@ mod tests {
             .await;
 
         let result = client
-            .find_by_id("1940416", &ExternalIdSource::Tvdb.into())
+            .find_by_id("1940416", ExternalIdSource::Tvdb, &Default::default())
             .await
             .unwrap();
 
