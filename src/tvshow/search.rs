@@ -4,7 +4,8 @@ const PATH: &str = "/search/tv";
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Params<'a> {
-    /// ISO 639-1 value to display translated data for the fields that support it.
+    /// ISO 639-1 value to display translated data for the fields that support
+    /// it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
     /// Which page to query.
@@ -16,7 +17,8 @@ pub struct Params<'a> {
     /// ISO 3166-1 code to filter release region. Must be uppercase.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub region: Option<Cow<'a, str>>,
-    /// Search the first air date and all episode air dates. Valid values are: 1000..9999
+    /// Search the first air date and all episode air dates. Valid values are:
+    /// 1000..9999
     #[serde(skip_serializing_if = "Option::is_none")]
     pub year: Option<u16>,
     /// Search only the first air date. Valid values are: 1000..9999
@@ -121,9 +123,10 @@ impl<E: crate::client::Executor> crate::Client<E> {
 
 #[cfg(test)]
 mod tests {
+    use mockito::Matcher;
+
     use crate::client::Client;
     use crate::client::reqwest::Client as ReqwestClient;
-    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {

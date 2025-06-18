@@ -21,7 +21,8 @@ pub struct Response {
 }
 
 impl<E: Executor> crate::Client<E> {
-    /// Get an up to date list of the officially supported movie certifications on TMDB
+    /// Get an up to date list of the officially supported movie certifications
+    /// on TMDB
     ///
     /// ```rust
     /// use tmdb_api::Client;
@@ -40,7 +41,8 @@ impl<E: Executor> crate::Client<E> {
         self.execute(MOVIE_PATH, &()).await
     }
 
-    /// Get an up to date list of the officially supported tv show certifications on TMDB
+    /// Get an up to date list of the officially supported tv show
+    /// certifications on TMDB
     ///
     /// ```rust
     /// use tmdb_api::Client;

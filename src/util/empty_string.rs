@@ -1,4 +1,5 @@
-//! Deserializes empty strings as [None] into whatever type implementing [FromStr].
+//! Deserializes empty strings as [None] into whatever type implementing
+//! [FromStr].
 
 use std::str::FromStr;
 

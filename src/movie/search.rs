@@ -2,7 +2,8 @@ use std::borrow::Cow;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Params<'a> {
-    /// ISO 639-1 value to display translated data for the fields that support it.
+    /// ISO 639-1 value to display translated data for the fields that support
+    /// it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
     /// Which page to query.
@@ -117,9 +118,10 @@ impl<E: crate::client::Executor> crate::Client<E> {
 
 #[cfg(test)]
 mod tests {
+    use mockito::Matcher;
+
     use crate::client::Client;
     use crate::client::reqwest::Client as ReqwestClient;
-    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {
@@ -241,20 +243,24 @@ mod tests {
     // #[tokio::test]
     // async fn premature_end_of_line() {
     // let mut server = mockito::Server::new_async().await;
-    // let client = Client::<ReqwestClient>::builder().with_api_key("secret".into()).with_base_url(server.url()).build().unwrap();
+    // let client =
+    // Client::<ReqwestClient>::builder().with_api_key("secret".into()).
+    // with_base_url(server.url()).build().unwrap();
 
-    //     let client = Client::<ReqwestClient>::new("secret".into()).with_base_url(mockito::server_url());
-    //     let cmd = MovieSearch::new("game of thrones".into());
+    //     let client =
+    // Client::<ReqwestClient>::new("secret".into()).
+    // with_base_url(mockito::server_url());     let cmd =
+    // MovieSearch::new("game of thrones".into());
 
     //     let _m = mock("GET", super::PATH)
     //         .match_query(Matcher::AllOf(vec![
     //             Matcher::UrlEncoded("api_key".into(), "secret".into()),
-    //             Matcher::UrlEncoded("query".into(), "game of thrones".into()),
-    //         ]))
+    //             Matcher::UrlEncoded("query".into(), "game of
+    // thrones".into()),         ]))
     //         .with_status(200)
     //         .with_header("content-type", "application/json;charset=utf-8")
-    //         .with_body(include_str!("../../assets/search-tv-decoding-error.json"))
-    //         .create_async().await;
+    //         .with_body(include_str!("../../assets/search-tv-decoding-error.
+    // json"))         .create_async().await;
     //     let result = cmd.execute(&client).await.unwrap();
     //     assert_eq!(result.page, 1);
     // }

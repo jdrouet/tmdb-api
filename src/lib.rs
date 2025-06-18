@@ -9,10 +9,9 @@ extern crate serde_repr;
 
 /// The used version of chrono
 pub use chrono;
+pub use client::Client;
 /// The used version of reqwest
 pub use reqwest;
-
-pub use client::Client;
 
 pub mod certification;
 pub mod changes;

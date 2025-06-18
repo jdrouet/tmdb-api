@@ -30,7 +30,8 @@ pub struct Results<V> {
 
 #[derive(Clone, Debug, Default, Serialize)]
 pub struct LanguageParams<'a> {
-    /// ISO 639-1 value to display translated data for the fields that support it.
+    /// ISO 639-1 value to display translated data for the fields that support
+    /// it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
 }
@@ -48,7 +49,8 @@ impl<'a> LanguageParams<'a> {
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LanguagePageParams<'a> {
-    /// ISO 639-1 value to display translated data for the fields that support it.
+    /// ISO 639-1 value to display translated data for the fields that support
+    /// it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
     /// Specify which page to query.

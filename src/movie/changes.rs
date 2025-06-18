@@ -1,6 +1,5 @@
-use crate::client::Executor;
-
 pub use crate::changes::list::Params;
+use crate::client::Executor;
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct MovieChange {
@@ -53,9 +52,10 @@ impl<E: Executor> crate::Client<E> {
 
 #[cfg(test)]
 mod tests {
+    use mockito::Matcher;
+
     use crate::client::Client;
     use crate::client::reqwest::Client as ReqwestClient;
-    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {

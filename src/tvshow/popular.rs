@@ -3,7 +3,8 @@ use crate::common::PaginatedResult;
 pub type Params<'a> = crate::common::LanguagePageParams<'a>;
 
 impl<E: crate::client::Executor> crate::Client<E> {
-    /// Get a list of the current popular tvshows on TMDB. This list updates daily.
+    /// Get a list of the current popular tvshows on TMDB. This list updates
+    /// daily.
     ///
     /// ```rust
     /// use tmdb_api::client::Client;
@@ -28,9 +29,10 @@ impl<E: crate::client::Executor> crate::Client<E> {
 
 #[cfg(test)]
 mod tests {
+    use mockito::Matcher;
+
     use crate::client::Client;
     use crate::client::reqwest::Client as ReqwestClient;
-    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {

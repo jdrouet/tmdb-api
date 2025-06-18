@@ -1,7 +1,5 @@
-use crate::{
-    client::Executor,
-    common::credits::{Cast, Crew},
-};
+use crate::client::Executor;
+use crate::common::credits::{Cast, Crew};
 
 pub type Params<'a> = crate::common::LanguageParams<'a>;
 

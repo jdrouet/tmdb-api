@@ -4,10 +4,12 @@ use crate::common::image::Image;
 
 #[derive(Clone, Debug, Default, Serialize)]
 pub struct Params<'a> {
-    /// specify a comma separated list of ISO-639-1 values to query, for example: en,null
+    /// specify a comma separated list of ISO-639-1 values to query, for
+    /// example: en,null
     #[serde(skip_serializing_if = "Option::is_none")]
     pub include_image_language: Option<Cow<'a, str>>,
-    /// ISO 639-1 value to display translated data for the fields that support it.
+    /// ISO 639-1 value to display translated data for the fields that support
+    /// it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
 }
@@ -68,9 +70,10 @@ impl<E: crate::client::Executor> crate::Client<E> {
 
 #[cfg(test)]
 mod tests {
+    use mockito::Matcher;
+
     use crate::client::Client;
     use crate::client::reqwest::Client as ReqwestClient;
-    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {

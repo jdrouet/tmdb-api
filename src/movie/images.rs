@@ -1,4 +1,5 @@
-use crate::{client::Executor, common::image::Image};
+use crate::client::Executor;
+use crate::common::image::Image;
 
 pub type Params<'a> = crate::common::LanguageParams<'a>;
 

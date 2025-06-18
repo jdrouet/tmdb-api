@@ -1,6 +1,7 @@
 //! https://developer.themoviedb.org/reference/tv-series-keywords
 
-use crate::common::{EntityResults, keyword::Keyword};
+use crate::common::EntityResults;
+use crate::common::keyword::Keyword;
 
 pub type Response = EntityResults<Vec<Keyword>>;
 
@@ -28,9 +29,10 @@ impl<E: crate::client::Executor> crate::Client<E> {
 
 #[cfg(test)]
 mod tests {
+    use mockito::Matcher;
+
     use crate::Client;
     use crate::client::reqwest::Client as ReqwestClient;
-    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {

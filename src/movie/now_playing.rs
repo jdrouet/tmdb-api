@@ -1,11 +1,13 @@
-use chrono::NaiveDate;
 use std::borrow::Cow;
+
+use chrono::NaiveDate;
 
 use crate::common::PaginatedResult;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Params<'a> {
-    /// ISO 639-1 value to display translated data for the fields that support it.
+    /// ISO 639-1 value to display translated data for the fields that support
+    /// it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
     /// Specify which page to query.
@@ -61,11 +63,13 @@ pub struct ListMoviesNowPlayingResponse {
 }
 
 impl<E: crate::client::Executor> crate::Client<E> {
-    /// Get a list of movies in theatres. This is a release type query that looks for
-    /// all movies that have a release type of 2 or 3 within the specified date range.
+    /// Get a list of movies in theatres. This is a release type query that
+    /// looks for all movies that have a release type of 2 or 3 within the
+    /// specified date range.
     ///
-    /// You can optionally specify a region parameter which will narrow the search
-    /// to only look for theatrical release dates within the specified country.
+    /// You can optionally specify a region parameter which will narrow the
+    /// search to only look for theatrical release dates within the
+    /// specified country.
     ///
     /// ```rust
     /// use tmdb_api::client::Client;
@@ -90,9 +94,10 @@ impl<E: crate::client::Executor> crate::Client<E> {
 
 #[cfg(test)]
 mod tests {
+    use mockito::Matcher;
+
     use crate::client::Client;
     use crate::client::reqwest::Client as ReqwestClient;
-    use mockito::Matcher;
 
     #[tokio::test]
     async fn it_works() {

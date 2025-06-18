@@ -1,17 +1,17 @@
 use std::borrow::Cow;
 use std::collections::HashMap;
 
+use super::WatchProvider;
 use crate::client::Executor;
 use crate::common::Results;
-
-use super::WatchProvider;
 
 #[derive(Debug, Default, serde::Serialize)]
 pub struct Params<'a> {
     /// ISO 3166-1 alpha-2 value to filter the results for one country.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub watch_region: Option<Cow<'a, str>>,
-    /// ISO 639-1 value to display translated data for the fields that support it.
+    /// ISO 639-1 value to display translated data for the fields that support
+    /// it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Cow<'a, str>>,
 }

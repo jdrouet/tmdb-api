@@ -49,7 +49,8 @@ impl Params {
 }
 
 impl<E: Executor> crate::Client<E> {
-    /// Get a list of all of the movie ids that have been changed in the past 24 hours.
+    /// Get a list of all of the movie ids that have been changed in the past 24
+    /// hours.
     ///
     /// ```rust
     /// use tmdb_api::Client;
@@ -71,7 +72,8 @@ impl<E: Executor> crate::Client<E> {
         self.execute(MOVIE_PATH, params).await
     }
 
-    /// Get a list of all of the person ids that have been changed in the past 24 hours.
+    /// Get a list of all of the person ids that have been changed in the past
+    /// 24 hours.
     ///
     /// ```rust
     /// use tmdb_api::Client;
@@ -93,7 +95,8 @@ impl<E: Executor> crate::Client<E> {
         self.execute(PERSON_PATH, params).await
     }
 
-    /// Get a list of all of the tvshow ids that have been changed in the past 24 hours.
+    /// Get a list of all of the tvshow ids that have been changed in the past
+    /// 24 hours.
     ///
     /// ```rust
     /// use tmdb_api::Client;
@@ -118,11 +121,12 @@ impl<E: Executor> crate::Client<E> {
 
 #[cfg(test)]
 mod tests {
+    use chrono::NaiveDate;
+    use mockito::Matcher;
+
     use crate::changes::list::Params;
     use crate::client::Client;
     use crate::client::reqwest::Client as ReqwestClient;
-    use chrono::NaiveDate;
-    use mockito::Matcher;
 
     #[tokio::test]
     async fn tv_works() {
