@@ -6,6 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.4](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) - 2025-06-18
+
+### Added
+
+- make error source Sync and static
+
+### Other
+
+- format code
+- *(deps)* bump reqwest from 0.12.19 to 0.12.20 ([#113](https://github.com/jdrouet/tmdb-api/pull/113))
+- *(deps)* bump reqwest from 0.12.16 to 0.12.19 ([#112](https://github.com/jdrouet/tmdb-api/pull/112))
+- *(deps)* bump reqwest from 0.12.15 to 0.12.16 ([#110](https://github.com/jdrouet/tmdb-api/pull/110))
+- *(deps)* bump tokio from 1.45.0 to 1.45.1 ([#108](https://github.com/jdrouet/tmdb-api/pull/108))
+
 ## [1.0.0-alpha.3](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) - 2025-05-09
 
 ### Added
