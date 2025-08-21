@@ -1,4 +1,24 @@
 # Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.0.0-alpha.5](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) - 2025-08-21
+
+### Other
+
+- *(deps)* bump thiserror from 2.0.12 to 2.0.16 ([#130](https://github.com/jdrouet/tmdb-api/pull/130))
+- *(deps)* bump serde_json from 1.0.142 to 1.0.143 ([#128](https://github.com/jdrouet/tmdb-api/pull/128))
+- *(deps)* bump tokio from 1.46.1 to 1.47.1 ([#123](https://github.com/jdrouet/tmdb-api/pull/123))
+- *(deps)* bump serde_json from 1.0.140 to 1.0.142 ([#124](https://github.com/jdrouet/tmdb-api/pull/124))
+- *(deps)* bump tokio from 1.45.1 to 1.46.1 ([#119](https://github.com/jdrouet/tmdb-api/pull/119))
+- *(deps)* bump reqwest from 0.12.21 to 0.12.22 ([#117](https://github.com/jdrouet/tmdb-api/pull/117))
+- *(deps)* bump reqwest from 0.12.20 to 0.12.21 ([#115](https://github.com/jdrouet/tmdb-api/pull/115))
+# Changelog
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
