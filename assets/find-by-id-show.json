@@ -1,0 +1,48 @@
+{
+  "movie_results": [],
+  "person_results": [],
+  "tv_results": [
+    {
+      "backdrop_path": "/dGzPJnh8YcUS4J10sNunohaXMVn.jpg",
+      "id": 1406,
+      "name": "Deadwood",
+      "original_name": "Deadwood",
+      "overview": "The story of the early days of Deadwood, South Dakota; woven around actual historic events with most of the main characters based on real people. Deadwood starts as a gold mining camp and gradually turns from a lawless wild-west community into an organized wild-west civilized town. The story focuses on the real-life characters Seth Bullock and Al Swearengen.",
+      "poster_path": "/4Yp35DVbVOAWkfQUIQ7pbh3u0aN.jpg",
+      "media_type": "tv",
+      "adult": false,
+      "original_language": "en",
+      "genre_ids": [
+        37,
+        80,
+        18
+      ],
+      "popularity": 19.7755,
+      "first_air_date": "2004-03-21",
+      "vote_average": 8.122,
+      "vote_count": 840,
+      "origin_country": [
+        "US"
+      ]
+    }
+  ],
+  "tv_episode_results": [
+    {
+      "id": 1005780,
+      "name": "Indiscretion",
+      "overview": "Stardate: Unknown. Kira and Gul Dukat go after the lost prison ship Ravinok. Dukat has a secret. Meanwhile Kasidy Yates tries to find work near Bajor, leaving Sisko uncomfortable.",
+      "media_type": "tv_episode",
+      "vote_average": 7.375,
+      "vote_count": 24,
+      "air_date": "1995-10-23",
+      "episode_number": 5,
+      "episode_type": "standard",
+      "production_code": "40510-477",
+      "runtime": 45,
+      "season_number": 4,
+      "show_id": 580,
+      "still_path": "/lwckcpWV44isBX4dxYbPivv0crq.jpg"
+    }
+  ],
+  "tv_season_results": []
+}
