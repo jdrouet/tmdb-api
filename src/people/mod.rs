@@ -1,6 +1,7 @@
 pub mod details;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct PersonShort {
     pub id: u64,
     pub credit_id: Option<String>,
@@ -10,6 +11,7 @@ pub struct PersonShort {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Person {
     #[serde(flatten)]
     pub inner: PersonShort,

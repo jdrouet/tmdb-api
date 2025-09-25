@@ -4,6 +4,7 @@ use crate::common::image::Image;
 pub type Params<'a> = crate::common::LanguageParams<'a>;
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct GetMovieImagesResponse {
     pub id: u64,
     pub backdrops: Vec<Image>,

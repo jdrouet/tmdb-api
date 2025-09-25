@@ -77,6 +77,7 @@ impl<E: prelude::Executor> ClientBuilder<E> {
 }
 
 #[derive(Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 struct WithApiKey<'a, V> {
     api_key: &'a str,
     #[serde(flatten)]

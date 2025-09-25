@@ -1,10 +1,12 @@
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct LocatedReleaseDates {
     pub iso_3166_1: String,
     pub release_dates: Vec<ReleaseDate>,
 }
 
 #[derive(Serialize_repr, Deserialize_repr, PartialEq, Debug)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 #[repr(u8)]
 pub enum ReleaseDateKind {
     Premiere = 1,
@@ -16,6 +18,7 @@ pub enum ReleaseDateKind {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct ReleaseDate {
     #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub certification: Option<String>,

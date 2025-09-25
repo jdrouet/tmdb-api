@@ -3,6 +3,7 @@ use std::borrow::Cow;
 use crate::client::Executor;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Params<'a> {
     /// The country to filter the alternative titles
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -21,6 +22,7 @@ impl<'a> Params<'a> {
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct MovieAlternativeTitle {
     pub iso_3166_1: String,
     pub title: String,

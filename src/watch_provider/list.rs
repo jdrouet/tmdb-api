@@ -6,6 +6,7 @@ use crate::client::Executor;
 use crate::common::Results;
 
 #[derive(Debug, Default, serde::Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Params<'a> {
     /// ISO 3166-1 alpha-2 value to filter the results for one country.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -37,6 +38,7 @@ impl<'a> Params<'a> {
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct WatchProviderDetail {
     /// A hash map of display priority by country code
     pub display_priorities: HashMap<String, u64>,
