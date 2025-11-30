@@ -65,6 +65,9 @@ pub struct EpisodeShort {
     pub overview: Option<String>,
     pub production_code: String,
     pub season_number: u64,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub runtime: Option<u32>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub still_path: Option<String>,
     pub vote_average: f64,
     pub vote_count: u64,
