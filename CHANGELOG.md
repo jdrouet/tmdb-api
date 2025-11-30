@@ -6,6 +6,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.5](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) - 2025-11-30
+
+### Added
+
+- add runtime to episode structure ([#143](https://github.com/jdrouet/tmdb-api/pull/143))
+
+### Other
+
+- *(deps)* bump tokio from 1.47.1 to 1.48.0 ([#141](https://github.com/jdrouet/tmdb-api/pull/141))
+- *(deps)* bump reqwest from 0.12.23 to 0.12.24 ([#140](https://github.com/jdrouet/tmdb-api/pull/140))
+- *(deps)* bump thiserror from 2.0.16 to 2.0.17 ([#138](https://github.com/jdrouet/tmdb-api/pull/138))
+- *(deps)* bump serde from 1.0.225 to 1.0.228 ([#139](https://github.com/jdrouet/tmdb-api/pull/139))
+- *(deps)* bump serde from 1.0.219 to 1.0.224 ([#134](https://github.com/jdrouet/tmdb-api/pull/134))
+- *(deps)* bump chrono from 0.4.41 to 0.4.42 ([#132](https://github.com/jdrouet/tmdb-api/pull/132))
+- *(deps)* bump serde_json from 1.0.143 to 1.0.145 ([#133](https://github.com/jdrouet/tmdb-api/pull/133))
+- *(deps)* bump reqwest from 0.12.22 to 0.12.23 ([#126](https://github.com/jdrouet/tmdb-api/pull/126))
+- *(deps)* bump thiserror from 2.0.12 to 2.0.16 ([#130](https://github.com/jdrouet/tmdb-api/pull/130))
+- *(deps)* bump serde_json from 1.0.142 to 1.0.143 ([#128](https://github.com/jdrouet/tmdb-api/pull/128))
+- *(deps)* bump tokio from 1.46.1 to 1.47.1 ([#123](https://github.com/jdrouet/tmdb-api/pull/123))
+- *(deps)* bump serde_json from 1.0.140 to 1.0.142 ([#124](https://github.com/jdrouet/tmdb-api/pull/124))
+- *(deps)* bump tokio from 1.45.1 to 1.46.1 ([#119](https://github.com/jdrouet/tmdb-api/pull/119))
+- *(deps)* bump reqwest from 0.12.21 to 0.12.22 ([#117](https://github.com/jdrouet/tmdb-api/pull/117))
+- *(deps)* bump reqwest from 0.12.20 to 0.12.21 ([#115](https://github.com/jdrouet/tmdb-api/pull/115))
+
 ## [1.0.0-alpha.4](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) - 2025-06-18
 
 ### Added
