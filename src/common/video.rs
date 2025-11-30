@@ -1,4 +1,5 @@
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Video {
     pub id: String,
     pub name: String,

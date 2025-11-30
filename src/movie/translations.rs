@@ -1,4 +1,5 @@
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct TranslationData {
     #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub title: Option<String>,
@@ -9,6 +10,7 @@ pub struct TranslationData {
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Translation {
     pub iso_3166_1: String,
     pub iso_639_1: String,

@@ -9,6 +9,7 @@ const TV_PATH: &str = "/certification/tv/list";
 const MOVIE_PATH: &str = "/certification/movie/list";
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Certification {
     pub certification: String,
     pub meaning: String,

@@ -14,6 +14,7 @@ readme = "readme.md"
 reqwest-middleware = ["dep:reqwest-middleware"]
 # only used for testing
 integration = []
+ts-rs = ["dep:ts-rs"]
 
 [dependencies]
 chrono = { version = "0.4", default-features = false, features = [
@@ -28,6 +29,7 @@ reqwest-middleware = { version = "0.4", optional = true }
 serde = { version = "1.0", features = ["derive"] }
 serde_repr = { version = "0.1" }
 thiserror = { version = "2.0" }
+ts-rs = { version = "11.0.1", optional = true, features = ["chrono-impl", "no-serde-warnings"] }
 
 [dev-dependencies]
 mockito = { version = "1.4" }

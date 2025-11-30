@@ -7,6 +7,7 @@ const TV_PATH: &str = "/genre/tv/list";
 const MOVIE_PATH: &str = "/genre/movie/list";
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Genre {
     pub id: u64,
     pub name: String,

@@ -1,6 +1,7 @@
 use crate::people::PersonShort;
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct CreditCommon {
     pub credit_id: String,
     pub adult: bool,
@@ -10,6 +11,7 @@ pub struct CreditCommon {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Cast {
     #[serde(flatten)]
     pub credit: CreditCommon,
@@ -21,6 +23,7 @@ pub struct Cast {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Crew {
     #[serde(flatten)]
     pub credit: CreditCommon,

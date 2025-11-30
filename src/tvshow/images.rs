@@ -3,6 +3,7 @@ use std::borrow::Cow;
 use crate::common::image::Image;
 
 #[derive(Clone, Debug, Default, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Params<'a> {
     /// specify a comma separated list of ISO-639-1 values to query, for
     /// example: en,null
@@ -35,6 +36,7 @@ impl<'a> Params<'a> {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct GetTVshowImagesResponse {
     pub id: u64,
     pub backdrops: Vec<Image>,

@@ -2,12 +2,14 @@ pub use crate::changes::list::Params;
 use crate::client::Executor;
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct MovieChange {
     pub key: String,
     pub items: Vec<MovieChangeItem>,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct MovieChangeItem {
     pub id: String,
     pub action: String,

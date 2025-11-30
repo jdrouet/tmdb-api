@@ -10,6 +10,7 @@ pub mod status;
 pub mod video;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct PaginatedResult<T> {
     pub page: u64,
     pub total_results: u64,
@@ -18,17 +19,20 @@ pub struct PaginatedResult<T> {
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct EntityResults<V> {
     pub id: u64,
     pub results: V,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Results<V> {
     pub results: V,
 }
 
 #[derive(Clone, Debug, Default, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct LanguageParams<'a> {
     /// ISO 639-1 value to display translated data for the fields that support
     /// it.
@@ -48,6 +52,7 @@ impl<'a> LanguageParams<'a> {
 }
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct LanguagePageParams<'a> {
     /// ISO 639-1 value to display translated data for the fields that support
     /// it.
