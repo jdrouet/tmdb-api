@@ -20,6 +20,7 @@ pub mod client;
 pub mod collection;
 pub mod company;
 pub mod error;
+pub mod find;
 pub mod genre;
 pub mod movie;
 pub mod people;
