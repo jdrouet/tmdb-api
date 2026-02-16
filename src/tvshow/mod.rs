@@ -24,6 +24,8 @@ pub mod season;
 
 pub mod similar;
 
+pub mod videos;
+
 pub mod watch_providers;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
