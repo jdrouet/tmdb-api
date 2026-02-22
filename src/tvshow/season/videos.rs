@@ -6,7 +6,7 @@ pub type Params<'a> = crate::common::LanguageParams<'a>;
 pub type Response = EntityResults<Vec<Video>>;
 
 impl<E: crate::client::Executor> crate::Client<E> {
-    /// Get a list of videos that have been added to a movie.
+    /// Get a list of videos that have been added to a TV season.
     ///
     /// ```rust
     /// use tmdb_api::client::Client;
@@ -15,18 +15,19 @@ impl<E: crate::client::Executor> crate::Client<E> {
     /// #[tokio::main]
     /// async fn main() {
     ///     let client = Client::<ReqwestClient>::new("this-is-my-secret-token".into());
-    ///     match client.get_movie_translations(1).await {
+    ///     match client.get_tvshow_season_videos(1399, 1, &Default::default()).await {
     ///         Ok(res) => println!("found: {:#?}", res),
     ///         Err(err) => eprintln!("error: {:?}", err),
     ///     };
     /// }
     /// ```
-    pub async fn get_movie_videos(
+    pub async fn get_tvshow_season_videos(
         &self,
-        movie_id: u64,
+        tvshow_id: u64,
+        season_number: u64,
         params: &Params<'_>,
     ) -> crate::Result<Response> {
-        let url = format!("/movie/{movie_id}/videos");
+        let url = format!("/tv/{tvshow_id}/season/{season_number}/videos");
         self.execute(&url, params).await
     }
 }
@@ -48,19 +49,19 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/videos")
+            .mock("GET", "/tv/1399/season/1/videos")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(200)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/movie-videos.json"))
+            .with_body(include_str!("../../../assets/tv-season-videos.json"))
             .create_async()
             .await;
 
         let result = client
-            .get_movie_videos(550, &Default::default())
+            .get_tvshow_season_videos(1399, 1, &Default::default())
             .await
             .unwrap();
-        assert_eq!(result.id, 550);
+        assert_eq!(result.id, 3624);
         assert!(!result.results.is_empty());
     }
 
@@ -74,16 +75,16 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/videos")
+            .mock("GET", "/tv/1399/season/1/videos")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(401)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/invalid-api-key.json"))
+            .with_body(include_str!("../../../assets/invalid-api-key.json"))
             .create_async()
             .await;
 
         let err = client
-            .get_movie_videos(550, &Default::default())
+            .get_tvshow_season_videos(1399, 1, &Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -100,16 +101,16 @@ mod tests {
             .unwrap();
 
         let _m = server
-            .mock("GET", "/movie/550/videos")
+            .mock("GET", "/tv/1399/season/1/videos")
             .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
             .with_status(404)
             .with_header("content-type", "application/json")
-            .with_body(include_str!("../../assets/resource-not-found.json"))
+            .with_body(include_str!("../../../assets/resource-not-found.json"))
             .create_async()
             .await;
 
         let err = client
-            .get_movie_videos(550, &Default::default())
+            .get_tvshow_season_videos(1399, 1, &Default::default())
             .await
             .unwrap_err();
         let server_err = err.as_server_error().unwrap();
@@ -128,10 +129,9 @@ mod integration_tests {
         let client = Client::<ReqwestClient>::new(secret);
 
         let result = client
-            .get_movie_videos(550, &Default::default())
+            .get_tvshow_season_videos(1399, 1, &Default::default())
             .await
             .unwrap();
-        assert_eq!(result.id, 550);
-        assert!(!result.results.is_empty());
+        assert_eq!(result.id, 3624);
     }
 }
