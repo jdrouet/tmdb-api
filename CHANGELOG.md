@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.6](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) - 2026-02-22
+
+### Added
+
+- add support for video retrieval, resolves #120 ([#156](https://github.com/jdrouet/tmdb-api/pull/156))
+
 ## [1.0.0-alpha.5](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) - 2025-11-30
 
 ### Added
