@@ -1,0 +1,20 @@
+{
+  "movie_results": [],
+  "person_results": [],
+  "tv_results": [],
+  "tv_episode_results": [],
+  "tv_season_results": [
+    {
+      "id": 112257,
+      "name": "Season 1",
+      "overview": "",
+      "poster_path": "/59SVNwLfoMnZPPB6ukW6dlPxAdI.jpg",
+      "media_type": "tv_season",
+      "vote_average": 8.2,
+      "air_date": "2022-09-21",
+      "season_number": 1,
+      "show_id": 83867,
+      "episode_count": 12
+    }
+  ]
+}
