@@ -6,7 +6,7 @@ pub type Params<'a> = crate::common::LanguageParams<'a>;
 pub type Response = EntityResults<Vec<Video>>;
 
 impl<E: crate::client::Executor> crate::Client<E> {
-    /// Get a list of translations that have been created for a movie.
+    /// Get a list of videos that have been added to a movie.
     ///
     /// ```rust
     /// use tmdb_api::client::Client;
