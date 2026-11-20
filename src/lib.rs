@@ -22,6 +22,7 @@ pub mod company;
 pub mod error;
 pub mod genre;
 pub mod movie;
+pub mod multi;
 pub mod people;
 pub mod tvshow;
 pub mod watch_provider;
