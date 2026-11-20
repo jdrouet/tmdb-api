@@ -60,6 +60,39 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn person_without_numeric_id() {
+        let mut body: serde_json::Value =
+            serde_json::from_str(include_str!("../../../assets/tv-season-details.json")).unwrap();
+        let guest = &mut body["episodes"][0]["guest_stars"][0];
+        guest.as_object_mut().unwrap().remove("id");
+        guest["person_id"] = "5d3417f2caab6d0b29a99a53".into();
+
+        let mut server = mockito::Server::new_async().await;
+        let client = Client::<ReqwestClient>::builder()
+            .with_api_key("secret".into())
+            .with_base_url(server.url())
+            .build()
+            .unwrap();
+
+        let _m = server
+            .mock("GET", "/tv/1399/season/1")
+            .match_query(Matcher::UrlEncoded("api_key".into(), "secret".into()))
+            .with_status(200)
+            .with_header("content-type", "application/json")
+            .with_body(body.to_string())
+            .create_async()
+            .await;
+
+        let result = client
+            .get_tvshow_season_details(1399, 1, &Default::default())
+            .await
+            .unwrap();
+        let guest = &result.episodes[0].guest_stars[0];
+        assert_eq!(guest.id, None);
+        assert_eq!(guest.person_id.as_deref(), Some("5d3417f2caab6d0b29a99a53"));
+    }
+
+    #[tokio::test]
     async fn invalid_api_key() {
         let mut server = mockito::Server::new_async().await;
         let client = Client::<ReqwestClient>::builder()
