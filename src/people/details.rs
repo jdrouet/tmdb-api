@@ -56,7 +56,7 @@ mod tests {
             .get_person_details(287, &Default::default())
             .await
             .unwrap();
-        assert_eq!(result.inner.id, 287);
+        assert_eq!(result.inner.id, Some(287));
 
         m.assert_async().await;
     }
@@ -131,7 +131,7 @@ mod integration_tests {
                 .get_person_details(id, &Default::default())
                 .await
                 .unwrap();
-            assert_eq!(result.inner.id, id);
+            assert_eq!(result.inner.id, Some(id));
         }
     }
 }

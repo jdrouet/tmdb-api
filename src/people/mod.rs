@@ -2,7 +2,10 @@ pub mod details;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct PersonShort {
-    pub id: u64,
+    /// TMDB omits it for some people, who only have a non numeric `person_id`.
+    pub id: Option<u64>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub person_id: Option<String>,
     pub credit_id: Option<String>,
     pub name: String,
     pub gender: Option<u64>,
