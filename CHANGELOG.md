@@ -6,6 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.6](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) - 2026-11-20
+
+### Added
+
+- add support for video retrieval, resolves #120 ([#156](https://github.com/jdrouet/tmdb-api/pull/156))
+
+### Fixed
+
+- *(people)* [**breaking**] accept people without a numeric id ([#162](https://github.com/jdrouet/tmdb-api/pull/162))
+
+### Other
+
+- *(deps)* update lockfile to latest compatible versions ([#163](https://github.com/jdrouet/tmdb-api/pull/163))
+- *(deps)* bump reqwest to 0.13 and reqwest-middleware to 0.5 ([#161](https://github.com/jdrouet/tmdb-api/pull/161))
+- *(deps)* bump reqwest from 0.12.24 to 0.12.28 ([#149](https://github.com/jdrouet/tmdb-api/pull/149))
+- *(deps)* bump tokio from 1.48.0 to 1.49.0 ([#152](https://github.com/jdrouet/tmdb-api/pull/152))
+- *(deps)* bump serde_json from 1.0.145 to 1.0.149 ([#153](https://github.com/jdrouet/tmdb-api/pull/153))
+- *(deps)* bump bytes from 1.10.1 to 1.11.1 ([#155](https://github.com/jdrouet/tmdb-api/pull/155))
+
 ## [1.0.0-alpha.5](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) - 2025-11-30
 
 ### Added
