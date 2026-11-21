@@ -3,6 +3,7 @@ use crate::common::PaginatedResult;
 pub type Params<'a> = crate::common::LanguagePageParams<'a>;
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct MovieList {
     pub id: u64,
     pub name: String,

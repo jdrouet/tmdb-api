@@ -3,6 +3,7 @@ use crate::common::PaginatedResult;
 pub type Params<'a> = crate::common::LanguagePageParams<'a>;
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct AuthorDetails {
     pub name: String,
     pub username: String,
@@ -11,6 +12,7 @@ pub struct AuthorDetails {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct MovieReview {
     pub id: String,
     pub author: String,

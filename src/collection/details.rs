@@ -1,6 +1,7 @@
 use crate::client::Executor;
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 #[serde(rename_all = "lowercase")]
 pub enum MediaType {
     Movie,
@@ -9,6 +10,7 @@ pub enum MediaType {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct CollectionDetails {
     #[serde(flatten)]
     pub inner: super::CollectionBase,
@@ -16,6 +18,7 @@ pub struct CollectionDetails {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Media {
     pub id: u64,
     pub media_type: MediaType,

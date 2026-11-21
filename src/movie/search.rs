@@ -1,6 +1,7 @@
 use std::borrow::Cow;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support
     /// it.
@@ -78,6 +79,7 @@ impl<'a> Params<'a> {
 }
 
 #[derive(serde::Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 struct WithQuery<'a, V> {
     query: Cow<'a, str>,
     #[serde(flatten)]

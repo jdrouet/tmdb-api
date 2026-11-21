@@ -1,6 +1,7 @@
 pub mod details;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct PersonShort {
     /// TMDB omits it for some people, who only have a non numeric `person_id`.
     pub id: Option<u64>,
@@ -13,6 +14,7 @@ pub struct PersonShort {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Person {
     #[serde(flatten)]
     pub inner: PersonShort,

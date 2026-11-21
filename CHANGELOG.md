@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Support `ts-rs` exports for TV show, season, and episode video endpoints and episode runtime.
+
 ## [1.0.0-alpha.5](https://github.com/jdrouet/tmdb-api/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) - 2025-11-30
 
 ### Added

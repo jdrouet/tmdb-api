@@ -1,4 +1,5 @@
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Image {
     pub aspect_ratio: f64,
     pub file_path: String,

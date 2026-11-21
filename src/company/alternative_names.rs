@@ -4,6 +4,7 @@ use crate::common::EntityResults;
 pub type Response = EntityResults<Vec<CompanyAlternativeName>>;
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct CompanyAlternativeName {
     pub name: String,
     #[serde(

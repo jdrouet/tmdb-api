@@ -5,6 +5,7 @@ use chrono::NaiveDate;
 use crate::common::PaginatedResult;
 
 #[derive(Clone, Debug, Default, serde::Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Params<'a> {
     /// ISO 639-1 value to display translated data for the fields that support
     /// it.
@@ -48,6 +49,7 @@ impl<'a> Params<'a> {
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct DateRange {
     #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub maximum: Option<NaiveDate>,
@@ -56,6 +58,7 @@ pub struct DateRange {
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct ListMoviesNowPlayingResponse {
     #[serde(flatten)]
     pub inner: PaginatedResult<super::MovieShort>,

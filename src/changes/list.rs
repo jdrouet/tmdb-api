@@ -7,6 +7,7 @@ const MOVIE_PATH: &str = "/movie/changes";
 const PERSON_PATH: &str = "/person/changes";
 
 #[derive(Clone, Debug, Default, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Params {
     /// Filter the results with a start date.
     #[serde(skip_serializing_if = "Option::is_none")]

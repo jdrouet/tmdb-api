@@ -1,4 +1,5 @@
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct ServerOtherBodyError {
     pub status_code: u16,
     pub status_message: String,
@@ -16,6 +17,7 @@ impl std::fmt::Display for ServerOtherBodyError {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct ServerValidationBodyError {
     pub errors: Vec<String>,
 }
@@ -32,6 +34,7 @@ impl std::fmt::Display for ServerValidationBodyError {
 }
 
 #[derive(Debug, Deserialize, Serialize, thiserror::Error)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 #[serde(untagged)]
 pub enum ServerBodyError {
     #[error(transparent)]

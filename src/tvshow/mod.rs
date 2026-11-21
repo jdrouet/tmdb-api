@@ -29,6 +29,7 @@ pub mod videos;
 pub mod watch_providers;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct TVShowBase {
     pub id: u64,
     pub name: String,
@@ -51,6 +52,7 @@ pub struct TVShowBase {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct TVShowShort {
     #[serde(flatten)]
     pub inner: TVShowBase,
@@ -58,6 +60,7 @@ pub struct TVShowShort {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct EpisodeShort {
     pub air_date: Option<chrono::NaiveDate>,
     pub episode_number: u64,
@@ -76,6 +79,7 @@ pub struct EpisodeShort {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Episode {
     #[serde(flatten)]
     pub inner: EpisodeShort,
@@ -85,6 +89,7 @@ pub struct Episode {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct SeasonBase {
     #[serde(deserialize_with = "crate::util::empty_string::deserialize")]
     pub air_date: Option<chrono::NaiveDate>,
@@ -97,6 +102,7 @@ pub struct SeasonBase {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct SeasonShort {
     #[serde(flatten)]
     pub inner: SeasonBase,
@@ -105,6 +111,7 @@ pub struct SeasonShort {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct Season {
     pub _id: String,
     #[serde(flatten)]
@@ -113,6 +120,7 @@ pub struct Season {
 }
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[cfg_attr(feature = "ts-rs", derive(ts_rs::TS))]
 pub struct TVShow {
     #[serde(flatten)]
     pub inner: TVShowBase,
